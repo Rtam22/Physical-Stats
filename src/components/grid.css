@@ -1,3 +1,13 @@
 .grid {
   position: relative;
+  display: grid;
+  padding: 20px;
+  justify-content: center;
+}
+
+@media (max-width: 400px) {
+  .grid {
+    padding: 2px;
+    gap: 20px !important;
+  }
 }

@@ -1,5 +1,10 @@
+type AthleteId = string;
+type UserId = string;
+
 export type AthleteData = {
   info: {
+    id: AthleteId;
+    img: string;
     name: string;
     age: number;
     height: string;
@@ -7,13 +12,23 @@ export type AthleteData = {
     team: string;
     backgroundSport: string;
   };
-  attributes: {
-    strength: number;
-    explosiveness: number;
-    endurance: number;
-    cardio: number;
-    grit: number;
-    leadership: number;
-    adaptability: number;
-  };
+};
+
+export type AttributeKey =
+  | "strength"
+  | "explosiveness"
+  | "endurance"
+  | "cardio"
+  | "grit"
+  | "leadership"
+  | "adaptability";
+
+export type AttributeValues = Record<AttributeKey, number>;
+
+export type AttributeSubmission = {
+  athleteId: AthleteId;
+  id: UserId;
+  username: string;
+  favorite: boolean;
+  values: AttributeValues;
 };

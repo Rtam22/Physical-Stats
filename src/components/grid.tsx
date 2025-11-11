@@ -3,34 +3,34 @@ import "./grid.css";
 import { motion, AnimatePresence } from "framer-motion";
 
 type GridProps = {
-  columns: number;
   items: React.ReactElement<{ id: string }>[];
   cellGap?: number;
-  cellWidth?: number;
-  cellHeight?: number;
+  cellMinWidth?: string;
+  cellMaxWidth?: string;
+  cellHeight?: string;
+  width?: string;
 };
 
-function Grid({ columns, items, cellGap, cellHeight, cellWidth }: GridProps) {
-  const cellW = cellWidth ? cellWidth : 100;
-  const cellH = cellHeight ? cellHeight : 100;
-  const gap = cellGap ? cellGap : 8;
-
-  function calculateLocation(index: number) {
-    const x = index % columns;
-    const y = Math.floor(index / columns);
-    return {
-      left: x * (cellW + gap),
-      top: y * (cellH + gap),
-      width: cellW,
-      height: cellH,
-    };
-  }
-
+function Grid({
+  items,
+  cellGap = 40,
+  cellHeight = "auto",
+  cellMinWidth = "1fr",
+  cellMaxWidth = "1fr",
+  width = "100%",
+}: GridProps) {
   return (
-    <div className="grid">
+    <div
+      className="grid"
+      style={{
+        gap: cellGap,
+        gridAutoRows: cellHeight,
+        width: width,
+        gridTemplateColumns: `repeat(auto-fit, minmax(${cellMinWidth}, ${cellMaxWidth}))`,
+      }}
+    >
       <AnimatePresence>
-        {items.map((item, index) => {
-          const styles = calculateLocation(index);
+        {items.map((item) => {
           const id = item.props.id;
           return (
             <motion.div
@@ -40,7 +40,6 @@ function Grid({ columns, items, cellGap, cellHeight, cellWidth }: GridProps) {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.96 }}
               transition={{ type: "spring", stiffness: 500, damping: 40 }}
-              style={{ position: "absolute", ...styles }}
             >
               {item}
             </motion.div>
