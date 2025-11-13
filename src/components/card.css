@@ -1,9 +1,18 @@
+.top-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5%;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
 .athlete-card {
   height: auto;
   width: 100%;
   min-width: 0;
   border: 1px solid white;
   border-radius: 10px;
+  display: flex;
 }
 
 .athlete-card img {
@@ -14,11 +23,21 @@
 }
 
 .athlete-card .image-container {
-  width: 50%;
+  width: 45%;
   height: auto;
 }
 
 .athlete-card .attribute-container {
-  width: 50%;
+  width: 55%;
   height: 100%;
+}
+
+.athlete-card .attribute-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 180px;
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
 }

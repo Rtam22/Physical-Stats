@@ -14,6 +14,11 @@ export type AthleteData = {
   };
 };
 
+export type AthleteDataWithAttributes = AthleteData & {
+  attributes: AttributeValues;
+  favorites: number;
+};
+
 export type AttributeKey =
   | "strength"
   | "explosiveness"
