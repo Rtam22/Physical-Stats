@@ -3,13 +3,11 @@ import Card from "../components/card";
 import Grid from "../components/grid";
 import { athleteList, attributeSubmissionsTest } from "../data/athleteData";
 import "./mainPage.css";
-import type {
-  AthleteDataWithAttributes,
-  AttributeKey,
-  AttributeSubmission,
-  AttributeValues,
-} from "../data/athleteType";
-import { roundToHalf } from "../utils/math";
+import type { AthleteDataWithAttributes, AthleteId } from "../data/athleteType";
+import {
+  getAthleteAttributes,
+  getFavoriteCount,
+} from "../utils/attributeUtils";
 
 function MainPage() {
   const [athletes, setAthletes] = useState<AthleteDataWithAttributes[]>(() =>
@@ -28,6 +26,12 @@ function MainPage() {
     }))
   );
 
+  const [modal, setModal] = useState<AthleteId | null>(null);
+
+  function handleModal(athleteId: AthleteId | null) {
+    setModal(athleteId);
+  }
+
   useEffect(() => {
     setAthletes((prev) => {
       return prev.map((athlete) => {
@@ -44,71 +48,6 @@ function MainPage() {
     });
   }, []);
 
-  const KEYS: AttributeKey[] = [
-    "strength",
-    "explosiveness",
-    "endurance",
-    "cardio",
-    "grit",
-    "leadership",
-    "adaptability",
-  ];
-
-  function sumAttributes(
-    athleteId: string,
-    attributeSubmissions: AttributeSubmission[]
-  ) {
-    let totals: AttributeValues = {
-      strength: 0,
-      explosiveness: 0,
-      endurance: 0,
-      cardio: 0,
-      grit: 0,
-      leadership: 0,
-      adaptability: 0,
-    };
-    let count = 0;
-
-    for (const submission of attributeSubmissions) {
-      if (submission.athleteId === athleteId) {
-        for (const key of KEYS) {
-          totals[key] += submission.values[key];
-        }
-        count++;
-      }
-    }
-
-    return { totals: totals, count: count };
-  }
-
-  function averageAttributes(totals: AttributeValues, count: number) {
-    let result: AttributeValues = { ...totals };
-    for (const key of KEYS) {
-      result[key] = roundToHalf(result[key] / count);
-    }
-    return result;
-  }
-
-  function getAthleteAttributes(
-    athleteId: string,
-    attributeSubmissions: AttributeSubmission[]
-  ) {
-    const sAttributes = sumAttributes(athleteId, attributeSubmissions);
-    return averageAttributes(sAttributes.totals, sAttributes.count);
-  }
-
-  function getFavoriteCount(
-    athleteId: string,
-    attributeSubmissions: AttributeSubmission[]
-  ) {
-    let count = 0;
-    for (const submission of attributeSubmissions) {
-      if (submission.favorite === true && athleteId === submission.athleteId)
-        count++;
-    }
-    return count;
-  }
-
   return (
     <div className="main-page">
       <Grid
@@ -122,6 +61,7 @@ function MainPage() {
               athlete={athlete}
               attributes={athlete.attributes}
               favorites={athlete.favorites}
+              handleOnClick={handleModal}
             />
           )),
         ]}

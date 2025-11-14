@@ -49,42 +49,7 @@ import yunSungBin from "../assets/athletes/yun-sung-bin.webp";
 import yushinOkami from "../assets/athletes/yushin-okami.webp";
 
 export const athleteList: AthleteData[] = [
-  {
-    info: {
-      id: "alexandra-milne",
-      img: alexandraMilne,
-      name: "Alexandra Milne",
-      age: 0,
-      height: "—",
-      weight: "—",
-      team: "—",
-      backgroundSport: "—",
-    },
-  },
-  {
-    info: {
-      id: "igedz-executioner",
-      img: igedzExecutioner,
-      name: "Igedz Executioner",
-      age: 0,
-      height: "—",
-      weight: "—",
-      team: "—",
-      backgroundSport: "—",
-    },
-  },
-  {
-    info: {
-      id: "robert-whittaker",
-      img: robertWhittaker,
-      name: "Robert Whittaker",
-      age: 43,
-      height: "—",
-      weight: "—",
-      team: "South Korea",
-      backgroundSport: "MMA",
-    },
-  },
+  //TEAM KOREA
   {
     info: {
       id: "kim-dong-hyun",
@@ -157,7 +122,7 @@ export const athleteList: AthleteData[] = [
       backgroundSport: "Ssireum (Korean wrestling)",
     },
   },
-
+  //TEAM JAPAN
   {
     info: {
       id: "yushin-okami",
@@ -230,18 +195,8 @@ export const athleteList: AthleteData[] = [
       backgroundSport: "Baseball",
     },
   },
-  {
-    info: {
-      id: "mark-mugen",
-      img: markMugen,
-      name: "Mark Mugen",
-      age: 36,
-      height: "—",
-      weight: "—",
-      team: "Japan",
-      backgroundSport: "MMA",
-    },
-  },
+
+  //TEAM THAILAND
 
   {
     info: {
@@ -316,6 +271,19 @@ export const athleteList: AthleteData[] = [
     },
   },
 
+  //TEAM MONGOLIA
+  {
+    info: {
+      id: "orkhonbayar",
+      img: orkhonbayar,
+      name: "Orkhonbayar",
+      age: 27,
+      height: "—",
+      weight: "—",
+      team: "Mongolia",
+      backgroundSport: "Bokh Wrestler",
+    },
+  },
   {
     info: {
       id: "adiyasuren",
@@ -325,7 +293,7 @@ export const athleteList: AthleteData[] = [
       height: "—",
       weight: "—",
       team: "Mongolia",
-      backgroundSport: "Wrestling",
+      backgroundSport: "Judo",
     },
   },
   {
@@ -349,7 +317,7 @@ export const athleteList: AthleteData[] = [
       height: "—",
       weight: "—",
       team: "Mongolia",
-      backgroundSport: "Boxing",
+      backgroundSport: "MMA Fighter",
     },
   },
   {
@@ -357,11 +325,11 @@ export const athleteList: AthleteData[] = [
       id: "khandsuren",
       img: khandsuren,
       name: "Khandsuren",
-      age: 30,
+      age: 28,
       height: "—",
       weight: "—",
       team: "Mongolia",
-      backgroundSport: "Wrestling",
+      backgroundSport: "Vollyball",
     },
   },
   {
@@ -373,28 +341,29 @@ export const athleteList: AthleteData[] = [
       height: "—",
       weight: "—",
       team: "Mongolia",
-      backgroundSport: "MMA",
-    },
-  },
-  {
-    info: {
-      id: "orkhonbayar",
-      img: orkhonbayar,
-      name: "Orkhonbayar",
-      age: 27,
-      height: "—",
-      weight: "—",
-      team: "Mongolia",
-      backgroundSport: "Weightlifting",
+      backgroundSport: "Circus Artist",
     },
   },
 
+  // TEAM TURKEY
+  {
+    info: {
+      id: "recep-kara",
+      img: recepKara,
+      name: "Recep Kara",
+      age: 44,
+      height: "—",
+      weight: "—",
+      team: "Turkey",
+      backgroundSport: "Oil Wrestling",
+    },
+  },
   {
     info: {
       id: "ali-sofuoglu",
       img: aliSofuoglu,
       name: "Ali Sofuoğlu",
-      age: 29,
+      age: 30,
       height: "—",
       weight: "—",
       team: "Turkey",
@@ -406,7 +375,7 @@ export const athleteList: AthleteData[] = [
       id: "anil-berk-baki",
       img: anilBerkBaki,
       name: "Anıl Berk Baki",
-      age: 25,
+      age: 34,
       height: "—",
       weight: "—",
       team: "Turkey",
@@ -418,11 +387,11 @@ export const athleteList: AthleteData[] = [
       id: "nefise-karatay",
       img: nefiseKaratay,
       name: "Nefise Karatay",
-      age: 41,
+      age: 25,
       height: "—",
       weight: "—",
       team: "Turkey",
-      backgroundSport: "Acting / Modeling",
+      backgroundSport: "Track Athlete",
     },
   },
   {
@@ -430,31 +399,20 @@ export const athleteList: AthleteData[] = [
       id: "ogeday-girisken",
       img: ogedayGirisken,
       name: "Ogeday Girişken",
-      age: 29,
+      age: 33,
       height: "—",
       weight: "—",
       team: "Turkey",
-      backgroundSport: "Canoeing",
+      backgroundSport: "Rower",
     },
   },
-  {
-    info: {
-      id: "recep-kara",
-      img: recepKara,
-      name: "Recep Kara",
-      age: 42,
-      height: "—",
-      weight: "—",
-      team: "Turkey",
-      backgroundSport: "Oil Wrestling",
-    },
-  },
+
   {
     info: {
       id: "yasemin-adar",
       img: yaseminAdar,
       name: "Yasemin Adar",
-      age: 32,
+      age: 34,
       height: "—",
       weight: "—",
       team: "Turkey",
@@ -462,12 +420,50 @@ export const athleteList: AthleteData[] = [
     },
   },
 
+  //TEAM AUSTRALIA
+
+  {
+    info: {
+      id: "robert-whittaker",
+      img: robertWhittaker,
+      name: "Robert Whittaker",
+      age: 34,
+      height: "—",
+      weight: "—",
+      team: "Australia",
+      backgroundSport: "MMA",
+    },
+  },
+  {
+    info: {
+      id: "alexandra-milne",
+      img: alexandraMilne,
+      name: "Alexandra Milne",
+      age: 0,
+      height: "—",
+      weight: "—",
+      team: "Australia",
+      backgroundSport: "Fitness Coach",
+    },
+  },
+  {
+    info: {
+      id: "dom-tomato",
+      img: domTomato,
+      name: "Dom Tomato",
+      age: 0,
+      height: "—",
+      weight: "—",
+      team: "Australia",
+      backgroundSport: "Parkour",
+    },
+  },
   {
     info: {
       id: "eddie-williams",
       img: eddieWilliams,
       name: "Eddie Williams",
-      age: 30,
+      age: 35,
       height: "—",
       weight: "—",
       team: "Australia",
@@ -476,14 +472,41 @@ export const athleteList: AthleteData[] = [
   },
   {
     info: {
-      id: "katelin-van-zyl",
-      img: katelinVanZyl,
-      name: "Katelin Van Zyl",
-      age: 34,
+      id: "eloni-vunakece",
+      img: eloniVunakece,
+      name: "Eloni Vunakece",
+      age: 38,
       height: "—",
       weight: "—",
       team: "Australia",
-      backgroundSport: "Fitness / Coaching",
+      backgroundSport: "Rugby League",
+    },
+  },
+  {
+    info: {
+      id: "katelin-van-zyl",
+      img: katelinVanZyl,
+      name: "Katelin Van Zyl",
+      age: 0,
+      height: "—",
+      weight: "—",
+      team: "Australia",
+      backgroundSport: "CrossFit Hyrox",
+    },
+  },
+
+  //TEAM PHILIPPINES
+
+  {
+    info: {
+      id: "manny-pacquiao",
+      img: mannyPacquiao,
+      name: "Manny Pacquiao",
+      age: 46,
+      height: "—",
+      weight: "—",
+      team: "Philippines",
+      backgroundSport: "Boxing",
     },
   },
   {
@@ -491,11 +514,47 @@ export const athleteList: AthleteData[] = [
       id: "lara-lorraine",
       img: laraLorraine,
       name: "Lara Lorraine",
-      age: 28,
+      age: 0,
       height: "—",
       weight: "—",
-      team: "Australia",
+      team: "Philippines",
       backgroundSport: "CrossFit",
+    },
+  },
+  {
+    info: {
+      id: "mark-mugen",
+      img: markMugen,
+      name: "Mark Mugen",
+      age: 37,
+      height: "—",
+      weight: "—",
+      team: "Philippines",
+      backgroundSport: "Sambo",
+    },
+  },
+  {
+    info: {
+      id: "justin-coveney",
+      img: justinCoveney,
+      name: "Justin Coveney",
+      age: 0,
+      height: "—",
+      weight: "—",
+      team: "Philippines",
+      backgroundSport: "Rugby",
+    },
+  },
+  {
+    info: {
+      id: "ray-jefferson",
+      img: rayJefferson,
+      name: "Ray Jefferson",
+      age: 0,
+      height: "—",
+      weight: "—",
+      team: "Philippines",
+      backgroundSport: "Strongman",
     },
   },
   {
@@ -506,33 +565,34 @@ export const athleteList: AthleteData[] = [
       age: 29,
       height: "—",
       weight: "—",
-      team: "Australia",
-      backgroundSport: "Dance / Fitness",
+      team: "Philippines",
+      backgroundSport: "Hurdler",
+    },
+  },
+  //TEAM INDONESIA
+  {
+    info: {
+      id: "igedz-executioner",
+      img: igedzExecutioner,
+      name: "Igedz Executioner",
+      age: 0,
+      height: "—",
+      weight: "—",
+      team: "Indonesia",
+      backgroundSport: "BodyBuilder",
     },
   },
 
   {
     info: {
-      id: "manny-pacquiao",
-      img: mannyPacquiao,
-      name: "Manny Pacquiao",
-      age: 45,
-      height: "—",
-      weight: "—",
-      team: "Philippines",
-      backgroundSport: "Boxing",
-    },
-  },
-  {
-    info: {
       id: "maria-selena",
       img: mariaSelena,
       name: "Maria Selena",
-      age: 33,
+      age: 35,
       height: "—",
       weight: "—",
       team: "Indonesia",
-      backgroundSport: "Basketball / TV",
+      backgroundSport: "Basketball",
     },
   },
   {
@@ -540,7 +600,7 @@ export const athleteList: AthleteData[] = [
       id: "marcus-gideon",
       img: marcusGideon,
       name: "Marcus Gideon",
-      age: 33,
+      age: 34,
       height: "—",
       weight: "—",
       team: "Indonesia",
@@ -555,8 +615,8 @@ export const athleteList: AthleteData[] = [
       age: 35,
       height: "—",
       weight: "—",
-      team: "Singapore",
-      backgroundSport: "Fitness Coach",
+      team: "Indonesia",
+      backgroundSport: "Swimmer",
     },
   },
   {
@@ -564,49 +624,14 @@ export const athleteList: AthleteData[] = [
       id: "fina-philippe",
       img: finaPhilippe,
       name: "Fina Philippe",
-      age: 30,
+      age: 35,
       height: "—",
       weight: "—",
-      team: "Hong Kong",
-      backgroundSport: "Fitness / Acting",
+      team: "Indonesia",
+      backgroundSport: "Jiujitsu",
     },
   },
-  {
-    info: {
-      id: "eloni-vunakece",
-      img: eloniVunakece,
-      name: "Eloni Vunakece",
-      age: 36,
-      height: "—",
-      weight: "—",
-      team: "Fiji",
-      backgroundSport: "Rugby League",
-    },
-  },
-  {
-    info: {
-      id: "justin-coveney",
-      img: justinCoveney,
-      name: "Justin Coveney",
-      age: 31,
-      height: "—",
-      weight: "—",
-      team: "United Kingdom",
-      backgroundSport: "Parkour",
-    },
-  },
-  {
-    info: {
-      id: "ray-jefferson",
-      img: rayJefferson,
-      name: "Ray Jefferson",
-      age: 33,
-      height: "—",
-      weight: "—",
-      team: "United States",
-      backgroundSport: "Track & Field",
-    },
-  },
+
   {
     info: {
       id: "jeremiah-lakhwani",
@@ -615,20 +640,8 @@ export const athleteList: AthleteData[] = [
       age: 27,
       height: "—",
       weight: "—",
-      team: "Malaysia",
-      backgroundSport: "Basketball",
-    },
-  },
-  {
-    info: {
-      id: "dom-tomato",
-      img: domTomato,
-      name: "Dom Tomato",
-      age: 30,
-      height: "—",
-      weight: "—",
-      team: "France",
-      backgroundSport: "Freerunning",
+      team: "Indonesia",
+      backgroundSport: "Hybrid",
     },
   },
 ];

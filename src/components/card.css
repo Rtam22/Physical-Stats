@@ -41,3 +41,16 @@
   padding: 5px;
   box-sizing: border-box;
 }
+
+.athlete-card .attribute-message {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.athlete-card .attribute-message:hover {
+  color: rgb(95, 234, 80);
+}
