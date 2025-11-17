@@ -1,0 +1,12 @@
+.modal {
+  background-color: var(--background-primary);
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.modal.middle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

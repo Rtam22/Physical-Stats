@@ -1,4 +1,4 @@
-import type { AthleteData, AttributeSubmission } from "./athleteType";
+import type { AthleteData, AttributeSubmission } from "../types/athleteType";
 import adiyasuren from "../assets/athletes/adiyasuren.webp";
 import alexandraMilne from "../assets/athletes/alexandra-milne.webp";
 import aliSofuoglu from "../assets/athletes/ali-sofuoglu.webp";

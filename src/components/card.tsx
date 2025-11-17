@@ -1,13 +1,15 @@
-import type { AthleteData, AttributeValues } from "../data/athleteType";
+import type { AthleteData, AttributeValues } from "../types/athleteType";
 import AttributeBar from "./attributeBar";
 import "./card.css";
-import type { AthleteId } from "../data/athleteType";
+import type { AthleteId } from "../types/athleteType";
+import type { ModalType } from "../types/modalTypes";
 type CardProps = {
   id: string;
   athlete: AthleteData;
   attributes: AttributeValues;
   favorites: number;
-  handleOnClick: (AthleteId: AthleteId) => void;
+  handleClick: (athleteId: AthleteId | null, type: ModalType) => void;
+  size: "small" | "large";
 };
 
 function Card({
@@ -15,7 +17,8 @@ function Card({
   id,
   attributes,
   favorites,
-  handleOnClick,
+  size,
+  handleClick,
 }: CardProps) {
   const hasAttributes = checkAttributes(attributes);
 
@@ -42,7 +45,7 @@ function Card({
           ) : (
             <div
               className="attribute-message"
-              onClick={() => handleOnClick(id)}
+              onClick={() => handleClick(id, "setAttributes")}
             >
               No stats yet. Click to submit yours!
             </div>

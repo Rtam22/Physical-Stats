@@ -3,11 +3,17 @@ import Card from "../components/card";
 import Grid from "../components/grid";
 import { athleteList, attributeSubmissionsTest } from "../data/athleteData";
 import "./mainPage.css";
-import type { AthleteDataWithAttributes, AthleteId } from "../data/athleteType";
+import type {
+  AthleteDataWithAttributes,
+  AthleteId,
+} from "../types/athleteType";
 import {
   getAthleteAttributes,
   getFavoriteCount,
 } from "../utils/attributeUtils";
+import Modal from "../components/modal";
+import type { ModalState, ModalType } from "../types/modalTypes";
+import BackDrop from "../components/backdrop";
 
 function MainPage() {
   const [athletes, setAthletes] = useState<AthleteDataWithAttributes[]>(() =>
@@ -25,11 +31,19 @@ function MainPage() {
       favorites: 0,
     }))
   );
+  const [modal, setModal] = useState<ModalState | null>(null);
 
-  const [modal, setModal] = useState<AthleteId | null>(null);
+  function handleSetModal(athleteId: AthleteId | null, type: ModalType) {
+    const athlete = athletes.find((athlete) => athlete.info.id === athleteId);
+    if (!athlete) {
+      console.log("Error: cannot find athlete");
+      return;
+    }
+    setModal({ type, athlete });
+  }
 
-  function handleModal(athleteId: AthleteId | null) {
-    setModal(athleteId);
+  function handleCloseModal() {
+    setModal(null);
   }
 
   useEffect(() => {
@@ -50,6 +64,13 @@ function MainPage() {
 
   return (
     <div className="main-page">
+      {modal && (
+        <BackDrop onClose={handleCloseModal}>
+          <Modal type="middle" onClose={handleCloseModal}>
+            <div>dsadsa</div>
+          </Modal>
+        </BackDrop>
+      )}
       <Grid
         cellMinWidth="250px"
         cellMaxWidth="460px"
@@ -57,11 +78,12 @@ function MainPage() {
         items={[
           ...athletes.map((athlete) => (
             <Card
-              id={athlete.info.name}
+              id={athlete.info.id}
               athlete={athlete}
               attributes={athlete.attributes}
               favorites={athlete.favorites}
-              handleOnClick={handleModal}
+              size="small"
+              handleClick={handleSetModal}
             />
           )),
         ]}

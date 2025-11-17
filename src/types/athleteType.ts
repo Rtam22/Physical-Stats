@@ -1,4 +1,4 @@
-type AthleteId = string;
+export type AthleteId = string;
 type UserId = string;
 
 export type AthleteData = {

@@ -2,7 +2,7 @@ import type {
   AttributeKey,
   AttributeSubmission,
   AttributeValues,
-} from "../data/athleteType";
+} from "../types/athleteType";
 import { roundToHalf } from "./mathUtils";
 
 const KEYS: AttributeKey[] = [
