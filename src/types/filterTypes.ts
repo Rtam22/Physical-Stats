@@ -1,0 +1,8 @@
+import type { AthleteTeams, AttributeKey } from "./athleteType";
+
+export type SortKey = AttributeKey | "mvp" | "favorite" | "total";
+
+export type FilterValue = {
+  sort: AttributeKey | "none" | "total" | "favorite";
+  team: AthleteTeams | "none";
+};

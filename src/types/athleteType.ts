@@ -14,19 +14,30 @@ export type AthleteData = {
   };
 };
 
+export type AthleteTeams =
+  | "korea"
+  | "japan"
+  | "turkey"
+  | "mongolia"
+  | "australia"
+  | "philippines"
+  | "indonesia";
+
 export type AthleteDataWithAttributes = AthleteData & {
   attributes: AttributeValues;
-  favorites: number;
+  favorite: number;
+  mvp: number;
+  total: number;
 };
 
 export type AttributeKey =
   | "strength"
   | "explosiveness"
+  | "speed"
   | "endurance"
   | "cardio"
   | "grit"
-  | "leadership"
-  | "adaptability";
+  | "leadership";
 
 export type AttributeValues = Record<AttributeKey, number>;
 

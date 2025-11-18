@@ -1,4 +1,5 @@
 import type {
+  AthleteDataWithAttributes,
   AttributeKey,
   AttributeSubmission,
   AttributeValues,
@@ -8,11 +9,11 @@ import { roundToHalf } from "./mathUtils";
 const KEYS: AttributeKey[] = [
   "strength",
   "explosiveness",
+  "speed",
   "endurance",
   "cardio",
   "grit",
   "leadership",
-  "adaptability",
 ];
 
 function sumAttributes(
@@ -22,11 +23,11 @@ function sumAttributes(
   let totals: AttributeValues = {
     strength: 0,
     explosiveness: 0,
+    speed: 0,
     endurance: 0,
     cardio: 0,
     grit: 0,
     leadership: 0,
-    adaptability: 0,
   };
   let count = 0;
 
@@ -68,4 +69,14 @@ export function getFavoriteCount(
       count++;
   }
   return count;
+}
+
+export function calculateAttributeTotal(athlete: AthleteDataWithAttributes) {
+  let sum = 0;
+  for (const key of Object.keys(
+    athlete.attributes
+  ) as (keyof AttributeValues)[]) {
+    sum += athlete.attributes[key];
+  }
+  return sum;
 }

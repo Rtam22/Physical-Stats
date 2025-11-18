@@ -48,6 +48,16 @@ import yoshioItoi from "../assets/athletes/yoshio-itoi.webp";
 import yunSungBin from "../assets/athletes/yun-sung-bin.webp";
 import yushinOkami from "../assets/athletes/yushin-okami.webp";
 
+export const initialAttributes = {
+  strength: 0,
+  explosiveness: 0,
+  speed: 0,
+  endurance: 0,
+  cardio: 0,
+  grit: 0,
+  leadership: 0,
+};
+
 export const athleteList: AthleteData[] = [
   //TEAM KOREA
   {
@@ -656,11 +666,11 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     values: {
       strength: 6,
       explosiveness: 7,
+      speed: 8,
       endurance: 8,
       cardio: 7.5,
       grit: 7,
       leadership: 6.5,
-      adaptability: 5,
     },
   },
   {
@@ -671,11 +681,11 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     values: {
       strength: 5.5,
       explosiveness: 6.5,
+      speed: 8,
       endurance: 7.5,
       cardio: 8,
       grit: 6,
       leadership: 7,
-      adaptability: 6,
     },
   },
   {
@@ -686,11 +696,11 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     values: {
       strength: 7,
       explosiveness: 7.5,
+      speed: 8,
       endurance: 8.5,
       cardio: 7,
       grit: 7.5,
       leadership: 7,
-      adaptability: 5.5,
     },
   },
 
@@ -703,11 +713,11 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     values: {
       strength: 9,
       explosiveness: 8.5,
+      speed: 8,
       endurance: 6.5,
       cardio: 6,
       grit: 9.5,
       leadership: 5.5,
-      adaptability: 4.5,
     },
   },
   {
@@ -718,11 +728,11 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     values: {
       strength: 8.5,
       explosiveness: 8,
+      speed: 8,
       endurance: 6,
       cardio: 6.5,
       grit: 8.5,
       leadership: 6,
-      adaptability: 5,
     },
   },
   {
@@ -733,11 +743,11 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     values: {
       strength: 9.5,
       explosiveness: 9,
+      speed: 8,
       endurance: 7,
       cardio: 6.5,
       grit: 9,
       leadership: 6.5,
-      adaptability: 4,
     },
   },
 
@@ -750,11 +760,11 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     values: {
       strength: 9,
       explosiveness: 8,
+      speed: 8,
       endurance: 7.5,
       cardio: 8.5,
       grit: 9.5,
       leadership: 8.5,
-      adaptability: 8,
     },
   },
   {
@@ -765,11 +775,11 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     values: {
       strength: 8.5,
       explosiveness: 8.5,
+      speed: 8,
       endurance: 8,
       cardio: 8,
       grit: 9,
       leadership: 8,
-      adaptability: 7.5,
     },
   },
   {
@@ -780,11 +790,11 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     values: {
       strength: 9,
       explosiveness: 7.5,
+      speed: 8,
       endurance: 7,
       cardio: 8,
       grit: 9,
       leadership: 8,
-      adaptability: 7,
     },
   },
 
@@ -797,11 +807,11 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     values: {
       strength: 8,
       explosiveness: 6.5,
+      speed: 8,
       endurance: 6.5,
       cardio: 6.5,
       grit: 7.5,
       leadership: 8,
-      adaptability: 6,
     },
   },
   {
@@ -812,11 +822,11 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     values: {
       strength: 7.5,
       explosiveness: 6,
+      speed: 8,
       endurance: 7,
       cardio: 6,
       grit: 7,
       leadership: 7.5,
-      adaptability: 6.5,
     },
   },
   {
@@ -827,11 +837,11 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     values: {
       strength: 8.5,
       explosiveness: 7,
+      speed: 8,
       endurance: 7,
       cardio: 6.5,
       grit: 8,
       leadership: 8,
-      adaptability: 6.5,
     },
   },
 
@@ -844,11 +854,11 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     values: {
       strength: 8,
       explosiveness: 8.5,
+      speed: 8,
       endurance: 8,
       cardio: 8.5,
       grit: 8,
       leadership: 7.5,
-      adaptability: 7,
     },
   },
   {
@@ -859,11 +869,11 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     values: {
       strength: 7.5,
       explosiveness: 8,
+      speed: 8,
       endurance: 7.5,
       cardio: 8,
       grit: 7.5,
       leadership: 7,
-      adaptability: 7,
     },
   },
   {
@@ -874,11 +884,11 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     values: {
       strength: 8.5,
       explosiveness: 9,
+      speed: 8,
       endurance: 8.5,
       cardio: 9,
       grit: 8.5,
       leadership: 8,
-      adaptability: 7.5,
     },
   },
 
@@ -891,11 +901,11 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     values: {
       strength: 7.5,
       explosiveness: 9,
+      speed: 8,
       endurance: 8,
       cardio: 9,
       grit: 8,
       leadership: 6.5,
-      adaptability: 7,
     },
   },
   {
@@ -906,11 +916,11 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     values: {
       strength: 7,
       explosiveness: 8.5,
+      speed: 8,
       endurance: 7.5,
       cardio: 8.5,
       grit: 7.5,
       leadership: 6,
-      adaptability: 7.5,
     },
   },
   {
@@ -921,11 +931,11 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     values: {
       strength: 8,
       explosiveness: 9.5,
+      speed: 8,
       endurance: 8,
       cardio: 9,
       grit: 8.5,
       leadership: 7,
-      adaptability: 7.5,
     },
   },
 
@@ -938,11 +948,11 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     values: {
       strength: 8.5,
       explosiveness: 7,
+      speed: 8,
       endurance: 7.5,
       cardio: 7,
       grit: 9,
       leadership: 8,
-      adaptability: 7,
     },
   },
   {
@@ -953,11 +963,11 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     values: {
       strength: 8,
       explosiveness: 6.5,
+      speed: 8,
       endurance: 7,
       cardio: 6.5,
       grit: 8.5,
       leadership: 7.5,
-      adaptability: 6.5,
     },
   },
   {
@@ -968,11 +978,11 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     values: {
       strength: 9,
       explosiveness: 7.5,
+      speed: 8,
       endurance: 8,
       cardio: 7.5,
       grit: 9.5,
       leadership: 8,
-      adaptability: 7.5,
     },
   },
 
@@ -985,11 +995,11 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     values: {
       strength: 7.5,
       explosiveness: 8,
+      speed: 8,
       endurance: 8,
       cardio: 8.5,
       grit: 8,
       leadership: 7,
-      adaptability: 7,
     },
   },
   {
@@ -1000,11 +1010,11 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     values: {
       strength: 7,
       explosiveness: 7.5,
+      speed: 8,
       endurance: 7.5,
       cardio: 8,
       grit: 7.5,
       leadership: 6.5,
-      adaptability: 7,
     },
   },
   {
@@ -1015,11 +1025,11 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     values: {
       strength: 8,
       explosiveness: 8.5,
+      speed: 8,
       endurance: 8.5,
       cardio: 9,
       grit: 8.5,
       leadership: 7.5,
-      adaptability: 7.5,
     },
   },
 
@@ -1032,11 +1042,11 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     values: {
       strength: 9,
       explosiveness: 8,
+      speed: 8,
       endurance: 7.5,
       cardio: 7,
       grit: 8.5,
       leadership: 7,
-      adaptability: 6.5,
     },
   },
   {
@@ -1047,11 +1057,11 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     values: {
       strength: 8.5,
       explosiveness: 7.5,
+      speed: 8,
       endurance: 7,
       cardio: 6.5,
       grit: 8,
       leadership: 6.5,
-      adaptability: 6,
     },
   },
   {
@@ -1062,11 +1072,11 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     values: {
       strength: 9.5,
       explosiveness: 8.5,
+      speed: 8,
       endurance: 7.5,
       cardio: 7,
       grit: 9,
       leadership: 7.5,
-      adaptability: 6.5,
     },
   },
 
@@ -1079,11 +1089,11 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     values: {
       strength: 8,
       explosiveness: 9.5,
+      speed: 8,
       endurance: 7.5,
       cardio: 8.5,
       grit: 9,
       leadership: 7.5,
-      adaptability: 8,
     },
   },
   {
@@ -1094,11 +1104,11 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     values: {
       strength: 8.5,
       explosiveness: 9,
+      speed: 8,
       endurance: 7.5,
       cardio: 8,
       grit: 8.5,
       leadership: 7,
-      adaptability: 7.5,
     },
   },
   {
@@ -1109,11 +1119,11 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     values: {
       strength: 8,
       explosiveness: 9,
+      speed: 8,
       endurance: 7,
       cardio: 8,
       grit: 8.5,
       leadership: 7,
-      adaptability: 7.5,
     },
   },
 
@@ -1126,11 +1136,11 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     values: {
       strength: 7.5,
       explosiveness: 7,
+      speed: 8,
       endurance: 7.5,
       cardio: 8,
       grit: 8,
       leadership: 6.5,
-      adaptability: 7,
     },
   },
   {
@@ -1141,11 +1151,11 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     values: {
       strength: 7,
       explosiveness: 7.5,
+      speed: 8,
       endurance: 7,
       cardio: 7.5,
       grit: 7.5,
       leadership: 6,
-      adaptability: 6.5,
     },
   },
   {
@@ -1156,11 +1166,11 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     values: {
       strength: 8,
       explosiveness: 7.5,
+      speed: 8,
       endurance: 7.5,
       cardio: 8.5,
       grit: 8.5,
       leadership: 7,
-      adaptability: 7,
     },
   },
 ];

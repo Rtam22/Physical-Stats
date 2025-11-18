@@ -1,7 +1,64 @@
+import type { FilterValue } from "../types/filterTypes";
 import "./filters.css";
 
-function Filters() {
-  return <div>filters</div>;
+type FilterProps = {
+  filterValues: FilterValue;
+  setFilter: (newFilters: Partial<FilterValue>) => void;
+};
+
+function Filters({ filterValues, setFilter }: FilterProps) {
+  return (
+    <div className="filters">
+      <section>
+        <label htmlFor="">MVP</label>
+        <input type="checkbox" />
+      </section>
+      <section>
+        <label htmlFor="">Search</label>
+        <input type="text" />
+      </section>
+      <section>
+        <label htmlFor="">Team</label>
+        <select
+          id="team"
+          value={filterValues.team}
+          onChange={(e) =>
+            setFilter({ team: e.target.value as FilterValue["team"] })
+          }
+        >
+          <option value="none">None</option>
+          <option value="korea">Korea</option>
+          <option value="japan">Japan</option>
+          <option value="australia">Australia</option>
+          <option value="indonesia">Indonesia</option>
+          <option value="philippines">Philippines</option>
+          <option value="indonesia">Indonesia</option>
+          <option value="mongolia">Mongolia</option>
+        </select>
+      </section>
+      <section>
+        <label htmlFor="attribute">Sort</label>
+        <select
+          id="attribute"
+          value={filterValues.sort}
+          onChange={(e) =>
+            setFilter({ sort: e.target.value as FilterValue["sort"] })
+          }
+        >
+          <option value="none">None</option>
+          <option value="total">Total score</option>
+          <option value="favorite">Favorite</option>
+          <option value="strength">Strength</option>
+          <option value="explosiveness">Explosiveness</option>
+          <option value="speed">Speed</option>
+          <option value="endurance">Endurance</option>
+          <option value="cardio">Cardio</option>
+          <option value="grit">Grit</option>
+          <option value="leadership">Leadership</option>
+        </select>
+      </section>
+    </div>
+  );
 }
 
 export default Filters;
