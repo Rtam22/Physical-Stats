@@ -11,7 +11,11 @@ function Filters({ filterValues, setFilter }: FilterProps) {
     <div className="filters">
       <section>
         <label htmlFor="">MVP</label>
-        <input type="checkbox" />
+        <input
+          type="checkbox"
+          checked={filterValues.mvp}
+          onChange={() => setFilter({ mvp: !filterValues.mvp })}
+        />
       </section>
       <section>
         <label htmlFor="">Search</label>

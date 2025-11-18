@@ -8,6 +8,8 @@ type CardProps = {
   athlete: AthleteData;
   attributes: AttributeValues;
   favorites: number;
+  total: number;
+  mvp: boolean;
   handleClick: (athleteId: AthleteId | null, type: ModalType) => void;
   size: "small" | "large";
 };
@@ -18,6 +20,8 @@ function Card({
   attributes,
   favorites,
   size,
+  mvp,
+  total,
   handleClick,
 }: CardProps) {
   const hasAttributes = checkAttributes(attributes);
@@ -29,6 +33,7 @@ function Card({
   return (
     <div className="card-container">
       <div className="top-container">
+        {mvp ? <p className="mvp-container">crown</p> : null}
         <p>{athlete.info.name}</p>
         <p>*{favorites}</p>
       </div>
@@ -51,7 +56,10 @@ function Card({
             </div>
           )}
         </div>
-      </div>{" "}
+      </div>
+      <div className="bottom-container">
+        <p>Total: {total}</p>
+      </div>
     </div>
   );
 }

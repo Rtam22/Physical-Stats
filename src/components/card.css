@@ -54,3 +54,20 @@
 .athlete-card .attribute-message:hover {
   color: rgb(95, 234, 80);
 }
+
+.bottom-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 7px 5% 0px 5%;
+}
+
+.bottom-container p {
+  font-size: 13px;
+}
+
+.mvp-container {
+  position: absolute;
+  transform: translate(-22px, -17px) rotate(-10deg);
+  color: rgb(229, 255, 0);
+}

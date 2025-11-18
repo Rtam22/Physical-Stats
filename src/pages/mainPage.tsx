@@ -13,8 +13,10 @@ import type {
 } from "../types/athleteType";
 import {
   calculateAttributeTotal,
+  checkIfMVP,
   getAthleteAttributes,
   getFavoriteCount,
+  getMVPCount,
 } from "../utils/attributeUtils";
 import Modal from "../components/modal";
 import type { ModalState, ModalType } from "../types/modalTypes";
@@ -29,14 +31,16 @@ function MainPage() {
       ...a,
       attributes: initialAttributes,
       favorite: 0,
-      mvp: 0,
+      mvp: false,
       total: 0,
+      mvpCount: 0,
     }))
   );
   const [modal, setModal] = useState<ModalState | null>(null);
   const [filters, setFilters] = useState<FilterValue>({
     sort: "none",
     team: "none",
+    mvp: false,
   });
 
   const filteredAthletes = useMemo(() => {
@@ -57,24 +61,31 @@ function MainPage() {
   }
 
   useEffect(() => {
-    setAthletes((prev) => {
-      return prev.map((athlete) => {
-        const attributes = getAthleteAttributes(
-          athlete.info.id,
-          attributeSubmissionsTest
-        );
-        const favorite = getFavoriteCount(
-          athlete.info.id,
-          attributeSubmissionsTest
-        );
-        return {
-          ...athlete,
-          attributes: attributes,
-          favorite: favorite,
-          total: calculateAttributeTotal(athlete),
-        };
-      });
+    const updatedAthletes = athletes.map((athlete) => {
+      const attributes = getAthleteAttributes(
+        athlete.info.id,
+        attributeSubmissionsTest
+      );
+      const favorite = getFavoriteCount(
+        athlete.info.id,
+        attributeSubmissionsTest
+      );
+      const mvpCount = getMVPCount(athlete.info.id, attributeSubmissionsTest);
+      return {
+        ...athlete,
+        attributes: attributes,
+        favorite: favorite,
+        total: calculateAttributeTotal(athlete),
+        mvpCount: mvpCount,
+      };
     });
+
+    const finalAthletes = updatedAthletes.map((athlete) => {
+      const mvp = checkIfMVP(athlete, updatedAthletes);
+      return { ...athlete, mvp: mvp };
+    });
+
+    setAthletes(finalAthletes);
   }, []);
 
   return (
@@ -104,6 +115,8 @@ function MainPage() {
               attributes={athlete.attributes}
               favorites={athlete.favorite}
               size="small"
+              mvp={athlete.mvp}
+              total={athlete.total}
               handleClick={handleSetModal}
             />
           )),

@@ -26,7 +26,8 @@ export type AthleteTeams =
 export type AthleteDataWithAttributes = AthleteData & {
   attributes: AttributeValues;
   favorite: number;
-  mvp: number;
+  mvp: boolean;
+  mvpCount: number;
   total: number;
 };
 
@@ -47,4 +48,5 @@ export type AttributeSubmission = {
   username: string;
   favorite: boolean;
   values: AttributeValues;
+  mvp?: boolean;
 };

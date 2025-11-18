@@ -781,6 +781,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 9,
       leadership: 8,
     },
+    mvp: true,
   },
   {
     athleteId: "robert-whittaker",
@@ -796,6 +797,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 9,
       leadership: 8,
     },
+    mvp: true,
   },
 
   // --- Kim Dong-hyun ---
@@ -828,6 +830,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 7,
       leadership: 7.5,
     },
+    mvp: true,
   },
   {
     athleteId: "kim-dong-hyun",
@@ -860,6 +863,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 8,
       leadership: 7.5,
     },
+    mvp: true,
   },
   {
     athleteId: "kim-hae-jong",
@@ -875,6 +879,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 7.5,
       leadership: 7,
     },
+    mvp: true,
   },
   {
     athleteId: "kim-hae-jong",
@@ -907,6 +912,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 8,
       leadership: 6.5,
     },
+    mvp: true,
   },
   {
     athleteId: "yun-sung-bin",
@@ -922,6 +928,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 7.5,
       leadership: 6,
     },
+    mvp: true,
   },
   {
     athleteId: "yun-sung-bin",
@@ -937,6 +944,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 8.5,
       leadership: 7,
     },
+    mvp: true,
   },
 
   // --- Jang Eun-sil ---
@@ -954,6 +962,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 9,
       leadership: 8,
     },
+    mvp: true,
   },
   {
     athleteId: "jang-eun-sil",
@@ -1031,6 +1040,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 8.5,
       leadership: 7.5,
     },
+    mvp: true,
   },
 
   // --- Kim Min-jae ---
@@ -1078,6 +1088,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 9,
       leadership: 7.5,
     },
+    mvp: true,
   },
 
   // --- Superbon Singha Mawynn ---
@@ -1095,6 +1106,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 9,
       leadership: 7.5,
     },
+    mvp: true,
   },
   {
     athleteId: "superbon-singha-mawynn",
@@ -1110,6 +1122,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 8.5,
       leadership: 7,
     },
+    mvp: true,
   },
   {
     athleteId: "superbon-singha-mawynn",
@@ -1125,6 +1138,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 8.5,
       leadership: 7,
     },
+    mvp: true,
   },
 
   // --- Sunny Kerdkao Wechokittikorn ---

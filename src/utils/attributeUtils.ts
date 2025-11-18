@@ -80,3 +80,35 @@ export function calculateAttributeTotal(athlete: AthleteDataWithAttributes) {
   }
   return sum;
 }
+
+export function getMVPCount(
+  athleteId: string,
+  attributeSubmissions: AttributeSubmission[]
+) {
+  let count = 0;
+  for (const submission of attributeSubmissions) {
+    if (submission.athleteId === athleteId) {
+      if (submission.mvp) count++;
+    }
+  }
+  return count;
+}
+
+export function checkIfMVP(
+  currentAthlete: AthleteDataWithAttributes,
+  athletes: AthleteDataWithAttributes[]
+) {
+  if (currentAthlete.mvpCount <= 0) return false;
+  let mvp = true;
+  const sameTeamAthletes = athletes.filter(
+    (a) => a.info.team === currentAthlete.info.team
+  );
+
+  for (const a of sameTeamAthletes) {
+    if (a.info.id === currentAthlete.info.id) continue;
+    if (currentAthlete.mvpCount < a.mvpCount) {
+      mvp = false;
+    }
+  }
+  return mvp;
+}

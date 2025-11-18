@@ -18,3 +18,15 @@ body {
   padding: 0 !important;
   margin: 0 !important;
 }
+
+input:focus,
+select:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+input,
+select {
+  height: 22px;
+  padding: 0 5px;
+}
