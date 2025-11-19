@@ -6,4 +6,5 @@ export type FilterValue = {
   sort: AttributeKey | "none" | "total" | "favorite";
   team: AthleteTeams | "none";
   mvp: boolean;
+  search: string;
 };

@@ -1,3 +1,4 @@
+import { teamList } from "../data/athleteData";
 import type { FilterValue } from "../types/filterTypes";
 import "./filters.css";
 
@@ -19,7 +20,11 @@ function Filters({ filterValues, setFilter }: FilterProps) {
       </section>
       <section>
         <label htmlFor="">Search</label>
-        <input type="text" />
+        <input
+          type="text"
+          value={filterValues.search}
+          onChange={(e) => setFilter({ search: e.target.value })}
+        />
       </section>
       <section>
         <label htmlFor="">Team</label>
@@ -31,13 +36,9 @@ function Filters({ filterValues, setFilter }: FilterProps) {
           }
         >
           <option value="none">None</option>
-          <option value="korea">Korea</option>
-          <option value="japan">Japan</option>
-          <option value="australia">Australia</option>
-          <option value="indonesia">Indonesia</option>
-          <option value="philippines">Philippines</option>
-          <option value="indonesia">Indonesia</option>
-          <option value="mongolia">Mongolia</option>
+          {teamList.map((team) => (
+            <option value={team}>{team}</option>
+          ))}
         </select>
       </section>
       <section>

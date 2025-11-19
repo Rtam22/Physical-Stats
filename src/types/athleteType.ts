@@ -9,19 +9,20 @@ export type AthleteData = {
     age: number;
     height: string;
     weight: string;
-    team: string;
+    team: AthleteTeams;
     backgroundSport: string;
   };
 };
 
 export type AthleteTeams =
-  | "korea"
-  | "japan"
-  | "turkey"
-  | "mongolia"
-  | "australia"
-  | "philippines"
-  | "indonesia";
+  | "South Korea"
+  | "Japan"
+  | "Turkey"
+  | "Mongolia"
+  | "Australia"
+  | "Philippines"
+  | "Indonesia"
+  | "Thailand";
 
 export type AthleteDataWithAttributes = AthleteData & {
   attributes: AttributeValues;

@@ -1,4 +1,8 @@
-import type { AthleteData, AttributeSubmission } from "../types/athleteType";
+import type {
+  AthleteData,
+  AthleteTeams,
+  AttributeSubmission,
+} from "../types/athleteType";
 import adiyasuren from "../assets/athletes/adiyasuren.webp";
 import alexandraMilne from "../assets/athletes/alexandra-milne.webp";
 import aliSofuoglu from "../assets/athletes/ali-sofuoglu.webp";
@@ -57,6 +61,17 @@ export const initialAttributes = {
   grit: 0,
   leadership: 0,
 };
+
+export const teamList: AthleteTeams[] = [
+  "South Korea",
+  "Japan",
+  "Turkey",
+  "Mongolia",
+  "Australia",
+  "Philippines",
+  "Indonesia",
+  "Thailand",
+];
 
 export const athleteList: AthleteData[] = [
   //TEAM KOREA

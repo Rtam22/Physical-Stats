@@ -33,7 +33,7 @@ function Card({
   return (
     <div className="card-container">
       <div className="top-container">
-        {mvp ? <p className="mvp-container">crown</p> : null}
+        {mvp ? <p className="mvp-container">MVP</p> : null}
         <p>{athlete.info.name}</p>
         <p>*{favorites}</p>
       </div>

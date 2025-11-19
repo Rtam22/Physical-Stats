@@ -1,3 +1,4 @@
+import { initialAttributes } from "../data/athleteData";
 import type {
   AthleteDataWithAttributes,
   AttributeKey,
@@ -44,6 +45,7 @@ function sumAttributes(
 }
 
 function averageAttributes(totals: AttributeValues, count: number) {
+  if (count === 0) return initialAttributes;
   let result: AttributeValues = { ...totals };
   for (const key of KEYS) {
     result[key] = roundToHalf(result[key] / count);
@@ -78,6 +80,7 @@ export function calculateAttributeTotal(athlete: AthleteDataWithAttributes) {
   ) as (keyof AttributeValues)[]) {
     sum += athlete.attributes[key];
   }
+  console.log(athlete);
   return sum;
 }
 

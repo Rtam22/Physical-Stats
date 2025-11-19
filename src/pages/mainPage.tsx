@@ -41,6 +41,7 @@ function MainPage() {
     sort: "none",
     team: "none",
     mvp: false,
+    search: "",
   });
 
   const filteredAthletes = useMemo(() => {
@@ -71,18 +72,20 @@ function MainPage() {
         attributeSubmissionsTest
       );
       const mvpCount = getMVPCount(athlete.info.id, attributeSubmissionsTest);
+
       return {
         ...athlete,
         attributes: attributes,
         favorite: favorite,
-        total: calculateAttributeTotal(athlete),
+
         mvpCount: mvpCount,
       };
     });
 
     const finalAthletes = updatedAthletes.map((athlete) => {
       const mvp = checkIfMVP(athlete, updatedAthletes);
-      return { ...athlete, mvp: mvp };
+      const total = calculateAttributeTotal(athlete);
+      return { ...athlete, mvp: mvp, total: total };
     });
 
     setAthletes(finalAthletes);

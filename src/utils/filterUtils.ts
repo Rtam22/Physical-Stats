@@ -2,7 +2,7 @@ import type { AthleteDataWithAttributes } from "../types/athleteType";
 import type { FilterValue, SortKey } from "../types/filterTypes";
 
 function getValue(athlete: AthleteDataWithAttributes, key: SortKey) {
-  if (key === "favorite" || key === "mvp" || key === "total") {
+  if (key === "favorite" || key === "total") {
     return athlete[key] ? athlete[key] : 0;
   }
 
@@ -21,8 +21,19 @@ function filterAthlete(
   athlete: AthleteDataWithAttributes
 ) {
   const teamResult =
-    filters.team === athlete.info.team || "none" ? true : false;
-  return teamResult;
+    filters.team === "none" ? true : filters.team === athlete.info.team;
+
+  const mvpResult = filters.mvp === false ? true : athlete.mvp ? true : false;
+
+  const searchResult =
+    filters.search === ""
+      ? true
+      : athlete.info.name
+          .toLowerCase()
+          .includes(filters.search.toLowerCase()) ||
+        athlete.info.team.toLowerCase().includes(filters.search.toLowerCase());
+
+  return teamResult && mvpResult && searchResult;
 }
 
 export function applyFilters(
