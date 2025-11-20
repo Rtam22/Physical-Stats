@@ -1,0 +1,212 @@
+.set-attribute-form {
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  display: flex;
+  overflow-y: auto;
+  overflow-x: hidden;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.set-attribute-form .profile-container {
+  width: 50%;
+  padding-left: 50px;
+  position: relative;
+}
+
+.set-attribute-form .attribute-form {
+  width: 50%;
+  height: 500px;
+}
+
+.set-attribute-form textarea {
+  height: 130px;
+  width: 63%;
+  padding: 5px;
+}
+
+.set-attribute-form .profile-container img {
+  width: 100%;
+}
+
+.set-attribute-form .mvp-container {
+  z-index: 20;
+  left: 80px;
+  top: 15px;
+}
+
+.set-attribute-form .attribute-form form {
+  width: 100%;
+  max-width: 550px;
+  height: auto;
+  padding: 50px 30px 30px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.set-attribute-form .profile-container p {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.set-attribute-form section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.set-attribute-form section div {
+  width: 100%;
+  display: flex;
+  gap: 15px;
+}
+
+.set-attribute-form .number-display {
+  width: 30px;
+  height: 18px;
+  background-color: rgb(107, 107, 107);
+  border: none;
+  color: white;
+
+  text-align: center;
+}
+
+.set-attribute-form button {
+  margin-left: 95px;
+  width: 65%;
+  height: 28px;
+}
+
+.set-attribute-form input[type="range"] {
+  height: 5px;
+  width: 80%;
+}
+
+.set-attribute-form input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+}
+.set-attribute-form input[type="checkbox"]:hover,
+.set-attribute-form input[type="range"]:hover {
+  cursor: pointer;
+}
+
+.set-attribute-form label {
+  font-size: 14px;
+  min-width: 80px;
+  text-align: right;
+}
+
+.input-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.attribute-container {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: 100%;
+}
+
+.user-name {
+  width: 65%;
+}
+
+@media (max-width: 850px) {
+  .set-attribute-form .mvp-container {
+    left: 40px;
+  }
+  .set-attribute-form {
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .set-attribute-form .profile-container {
+    padding-left: 0px;
+  }
+  .set-attribute-form .profile-container {
+    width: 100%;
+    max-width: 300px;
+    min-width: 100px;
+  }
+
+  .set-attribute-form .attribute-form {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .attribute-form form {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 400px) {
+  .set-attribute-form .mvp-container {
+    left: 20px;
+    top: 20px;
+    font-size: 18px !important;
+  }
+  .set-attribute-form .flex {
+    flex-direction: row;
+    gap: 0;
+  }
+  .set-attribute-form .profile-container {
+    padding-left: 0px;
+  }
+  .set-attribute-form .profile-container {
+    width: 100%;
+    max-width: 250px;
+    min-width: 100px;
+  }
+
+  .set-attribute-form .slider-form {
+    width: 100%;
+  }
+  .set-attribute-form .attribute-form form {
+    padding: 50px 0px 10px 0px;
+  }
+
+  .set-attribute-form {
+    justify-content: flex-start;
+  }
+  .set-attribute-form section {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .set-attribute-form label {
+    text-align: center;
+  }
+
+  .attribute-container .attributes {
+    flex-direction: column;
+  }
+
+  .input-container {
+    justify-content: space-between;
+  }
+
+  .set-attribute-form button {
+    margin-left: 0;
+
+    height: 28px;
+  }
+
+  .user-name,
+  .set-attribute-form button,
+  .attribute-container .attributes {
+    width: 90%;
+  }
+
+  .set-attribute-form .attribute-form form {
+    padding: 2%;
+  }
+}

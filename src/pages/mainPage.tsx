@@ -9,7 +9,7 @@ import {
 import "./mainPage.css";
 import type {
   AthleteDataWithAttributes,
-  AthleteId,
+  AthleteIdKey,
 } from "../types/athleteType";
 import {
   calculateAttributeTotal,
@@ -24,6 +24,7 @@ import BackDrop from "../components/backdrop";
 import Filters from "../components/filters";
 import { applyFilters } from "../utils/filterUtils";
 import type { FilterValue } from "../types/filterTypes";
+import SetAttributeForm from "../components/setAttributeForm";
 
 function MainPage() {
   const [athletes, setAthletes] = useState<AthleteDataWithAttributes[]>(() =>
@@ -36,6 +37,11 @@ function MainPage() {
       mvpCount: 0,
     }))
   );
+
+  const [submittedVote, setSubmittedVote] = useState<AthleteIdKey[]>([
+    "kim-dong-hyun",
+    "kim-min-jae",
+  ]);
   const [modal, setModal] = useState<ModalState | null>(null);
   const [filters, setFilters] = useState<FilterValue>({
     sort: "none",
@@ -44,11 +50,15 @@ function MainPage() {
     search: "",
   });
 
+  function handleSubmitVote(athlete: AthleteDataWithAttributes) {
+    setSubmittedVote([...submittedVote, athlete.info.id]);
+  }
+
   const filteredAthletes = useMemo(() => {
     return applyFilters(athletes, filters);
   }, [filters, athletes]);
 
-  function handleSetModal(athleteId: AthleteId | null, type: ModalType) {
+  function handleSetModal(athleteId: AthleteIdKey | null, type: ModalType) {
     const athlete = athletes.find((athlete) => athlete.info.id === athleteId);
     if (!athlete) {
       console.log("Error: cannot find athlete");
@@ -101,8 +111,16 @@ function MainPage() {
       />
       {modal && (
         <BackDrop onClose={handleCloseModal}>
-          <Modal type="middle" onClose={handleCloseModal}>
-            <div>dsadsa</div>
+          <Modal
+            width="90%"
+            height="90vh"
+            type="middle"
+            onClose={handleCloseModal}
+          >
+            <SetAttributeForm
+              athlete={modal.athlete}
+              handleSubmit={handleSubmitVote}
+            />
           </Modal>
         </BackDrop>
       )}
@@ -121,6 +139,7 @@ function MainPage() {
               mvp={athlete.mvp}
               total={athlete.total}
               handleClick={handleSetModal}
+              hasVoted={submittedVote.includes(athlete.info.id as AthleteIdKey)}
             />
           )),
         ]}

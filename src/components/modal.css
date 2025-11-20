@@ -9,4 +9,13 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 850px) {
+  .modal.middle {
+    width: 100% !important;
+    height: 100vh !important;
+  }
 }

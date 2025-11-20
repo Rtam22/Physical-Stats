@@ -1,17 +1,21 @@
-import type { AthleteData, AttributeValues } from "../types/athleteType";
+import type {
+  AthleteData,
+  AthleteIdKey,
+  AttributeValues,
+} from "../types/athleteType";
 import AttributeBar from "./attributeBar";
 import "./card.css";
-import type { AthleteId } from "../types/athleteType";
 import type { ModalType } from "../types/modalTypes";
 type CardProps = {
-  id: string;
+  id: AthleteIdKey;
   athlete: AthleteData;
   attributes: AttributeValues;
   favorites: number;
   total: number;
   mvp: boolean;
-  handleClick: (athleteId: AthleteId | null, type: ModalType) => void;
+  handleClick: (athleteId: AthleteIdKey | null, type: ModalType) => void;
   size: "small" | "large";
+  hasVoted: boolean;
 };
 
 function Card({
@@ -22,6 +26,7 @@ function Card({
   size,
   mvp,
   total,
+  hasVoted,
   handleClick,
 }: CardProps) {
   const hasAttributes = checkAttributes(attributes);
@@ -42,7 +47,7 @@ function Card({
           <img src={athlete.info.img} alt="" />
         </div>
         <div className="attribute-container">
-          {hasAttributes ? (
+          {hasAttributes && hasVoted ? (
             Object.entries(attributes).map(([key, value]) => {
               const title = key.charAt(0).toUpperCase() + key.slice(1);
               return <AttributeBar key={key} title={title} value={value} />;
@@ -52,13 +57,15 @@ function Card({
               className="attribute-message"
               onClick={() => handleClick(id, "setAttributes")}
             >
-              No stats yet. Click to submit yours!
+              {hasAttributes
+                ? "Submit your scores to see how others rated them!"
+                : "No stats yet. Click to submit yours!"}
             </div>
           )}
         </div>
       </div>
       <div className="bottom-container">
-        <p>Total: {total}</p>
+        {hasAttributes && hasVoted && <p>Total: {total}</p>}
       </div>
     </div>
   );

@@ -62,6 +62,16 @@ export const initialAttributes = {
   leadership: 0,
 };
 
+export const initialFormAttributes = {
+  strength: 5,
+  explosiveness: 5,
+  speed: 5,
+  endurance: 5,
+  cardio: 5,
+  grit: 5,
+  leadership: 5,
+};
+
 export const teamList: AthleteTeams[] = [
   "South Korea",
   "Japan",
