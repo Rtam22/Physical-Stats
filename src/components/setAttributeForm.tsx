@@ -10,7 +10,7 @@ import { capitalize } from "../utils/textUtils";
 
 type SetAttributeFormProps = {
   athlete: AthleteDataWithAttributes;
-  handleSubmit: (athlete: AthleteDataWithAttributes) => void;
+  handleSubmit: (submission: AttributeSubmission) => void;
 };
 
 function SetAttributeForm({ athlete, handleSubmit }: SetAttributeFormProps) {
@@ -31,11 +31,12 @@ function SetAttributeForm({ athlete, handleSubmit }: SetAttributeFormProps) {
     "endurance",
     "cardio",
     "grit",
-    "leadership",
+    "adaptability",
   ];
 
-  function handleSubmitForm() {
-    handleSubmit;
+  function handleSubmitForm(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    handleSubmit(submission);
   }
 
   return (
@@ -63,7 +64,10 @@ function SetAttributeForm({ athlete, handleSubmit }: SetAttributeFormProps) {
                     onChange={(e) =>
                       setSubmission((prev) => ({
                         ...prev,
-                        values: { ...prev.values, [attribute]: e.target.value },
+                        values: {
+                          ...prev.values,
+                          [attribute]: Number(e.target.value),
+                        },
                       }))
                     }
                   />
@@ -100,8 +104,10 @@ function SetAttributeForm({ athlete, handleSubmit }: SetAttributeFormProps) {
               placeholder="Leave your thoughts and opinion here"
             />
           </section>
-          <section className="flex">
-            <label htmlFor="mvp">MVP</label>
+          <section>
+            <label htmlFor="mvp" className="mvp">
+              MVP
+            </label>
             <input
               id="mvp"
               type="checkbox"
@@ -110,14 +116,20 @@ function SetAttributeForm({ athlete, handleSubmit }: SetAttributeFormProps) {
                 setSubmission({ ...submission, mvp: !submission.mvp })
               }
             />
-
-            <label htmlFor="mvp">Favorite</label>
+          </section>
+          <section>
+            <label htmlFor="mvp" className="favorite">
+              Favorite
+            </label>
             <input
-              id="mvp"
+              id="favorite"
               type="checkbox"
               checked={submission.favorite}
               onChange={() =>
-                setSubmission({ ...submission, favorite: !submission.favorite })
+                setSubmission({
+                  ...submission,
+                  favorite: !submission.favorite,
+                })
               }
             />
           </section>

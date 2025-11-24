@@ -37,7 +37,9 @@ function Filters({ filterValues, setFilter }: FilterProps) {
         >
           <option value="none">None</option>
           {teamList.map((team) => (
-            <option value={team}>{team}</option>
+            <option key={team} value={team}>
+              {team}
+            </option>
           ))}
         </select>
       </section>

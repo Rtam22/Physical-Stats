@@ -38,7 +38,7 @@ export type AttributeKey =
   | "endurance"
   | "cardio"
   | "grit"
-  | "leadership";
+  | "adaptability";
 
 export type AttributeValues = Record<AttributeKey, number>;
 

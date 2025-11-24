@@ -10,6 +10,7 @@ import "./mainPage.css";
 import type {
   AthleteDataWithAttributes,
   AthleteIdKey,
+  AttributeSubmission,
 } from "../types/athleteType";
 import {
   calculateAttributeTotal,
@@ -38,6 +39,9 @@ function MainPage() {
     }))
   );
 
+  const [attributeSubmissions, setAttributeSubmissions] = useState<
+    AttributeSubmission[]
+  >(attributeSubmissionsTest);
   const [submittedVote, setSubmittedVote] = useState<AthleteIdKey[]>([
     "kim-dong-hyun",
     "kim-min-jae",
@@ -50,8 +54,11 @@ function MainPage() {
     search: "",
   });
 
-  function handleSubmitVote(athlete: AthleteDataWithAttributes) {
-    setSubmittedVote([...submittedVote, athlete.info.id]);
+  function handleSubmitVote(submission: AttributeSubmission) {
+    setSubmittedVote([...submittedVote, submission.athleteId]);
+    setAttributeSubmissions((prev) => [...prev, submission]);
+    console.log(submission);
+    handleCloseModal();
   }
 
   const filteredAthletes = useMemo(() => {
@@ -75,13 +82,10 @@ function MainPage() {
     const updatedAthletes = athletes.map((athlete) => {
       const attributes = getAthleteAttributes(
         athlete.info.id,
-        attributeSubmissionsTest
+        attributeSubmissions
       );
-      const favorite = getFavoriteCount(
-        athlete.info.id,
-        attributeSubmissionsTest
-      );
-      const mvpCount = getMVPCount(athlete.info.id, attributeSubmissionsTest);
+      const favorite = getFavoriteCount(athlete.info.id, attributeSubmissions);
+      const mvpCount = getMVPCount(athlete.info.id, attributeSubmissions);
 
       return {
         ...athlete,
@@ -99,7 +103,7 @@ function MainPage() {
     });
 
     setAthletes(finalAthletes);
-  }, []);
+  }, [attributeSubmissions]);
 
   return (
     <div className="main-page">

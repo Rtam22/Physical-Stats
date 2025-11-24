@@ -209,4 +209,11 @@
   .set-attribute-form .attribute-form form {
     padding: 2%;
   }
+
+  .set-attribute-form .mvp,
+  .set-attribute-form .favorite {
+    text-align: left;
+    min-width: 0;
+    padding: 0 5px;
+  }
 }

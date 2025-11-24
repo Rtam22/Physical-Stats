@@ -14,7 +14,7 @@ const KEYS: AttributeKey[] = [
   "endurance",
   "cardio",
   "grit",
-  "leadership",
+  "adaptability",
 ];
 
 function sumAttributes(
@@ -28,7 +28,7 @@ function sumAttributes(
     endurance: 0,
     cardio: 0,
     grit: 0,
-    leadership: 0,
+    adaptability: 0,
   };
   let count = 0;
 
@@ -80,7 +80,6 @@ export function calculateAttributeTotal(athlete: AthleteDataWithAttributes) {
   ) as (keyof AttributeValues)[]) {
     sum += athlete.attributes[key];
   }
-  console.log(athlete);
   return sum;
 }
 

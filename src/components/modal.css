@@ -1,7 +1,14 @@
 .modal {
   background-color: var(--background-primary);
-  padding: 20px;
+  padding: 10px 20px 20px 20px;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.close-container {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .modal.middle {
@@ -11,6 +18,11 @@
   transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
+}
+
+.modal .close-container button {
+  padding: 3px 5px;
+  font-size: 12px;
 }
 
 @media (max-width: 850px) {
