@@ -66,6 +66,7 @@ function MainPage() {
   }, [filters, athletes]);
 
   function handleSetModal(athleteId: AthleteIdKey | null, type: ModalType) {
+    console.log(type);
     const athlete = athletes.find((athlete) => athlete.info.id === athleteId);
     if (!athlete) {
       console.log("Error: cannot find athlete");
@@ -121,10 +122,12 @@ function MainPage() {
             type="middle"
             onClose={handleCloseModal}
           >
-            <SetAttributeForm
-              athlete={modal.athlete}
-              handleSubmit={handleSubmitVote}
-            />
+            {modal.type === "setAttributes" && (
+              <SetAttributeForm
+                athlete={modal.athlete}
+                handleSubmit={handleSubmitVote}
+              />
+            )}
           </Modal>
         </BackDrop>
       )}

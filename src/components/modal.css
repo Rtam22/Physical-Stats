@@ -17,7 +17,6 @@
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
-  justify-content: center;
 }
 
 .modal .close-container button {
@@ -25,9 +24,22 @@
   font-size: 12px;
 }
 
+.modal-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
 @media (max-width: 850px) {
   .modal.middle {
     width: 100% !important;
     height: 100vh !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .modal {
+    padding: 10px 5px;
   }
 }

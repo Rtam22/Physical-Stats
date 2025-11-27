@@ -36,7 +36,14 @@ function Card({
   }
 
   return (
-    <div className="card-container">
+    <div
+      className="card-container"
+      onClick={() => {
+        hasAttributes && hasVoted
+          ? handleClick(id, "athleteView")
+          : handleClick(id, "setAttributes");
+      }}
+    >
       <div className="top-container">
         {mvp ? <p className="mvp-container">MVP</p> : null}
         <p>{athlete.info.name}</p>
@@ -53,10 +60,7 @@ function Card({
               return <AttributeBar key={key} title={title} value={value} />;
             })
           ) : (
-            <div
-              className="attribute-message"
-              onClick={() => handleClick(id, "setAttributes")}
-            >
+            <div className="attribute-message">
               {hasAttributes
                 ? "Submit your scores to see how others rated them!"
                 : "No stats yet. Click to submit yours!"}

@@ -18,7 +18,7 @@ function Modal({ type, children, width, height, onClose }: ModalProps) {
       <div className="close-container">
         <button onClick={onClose}>X</button>
       </div>
-      {children}
+      <div className="modal-content">{children}</div>
     </div>
   );
 }

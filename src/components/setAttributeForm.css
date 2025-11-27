@@ -57,10 +57,17 @@
   gap: 15px;
 }
 
-.set-attribute-form section div {
+.set-attribute-form .input-container,
+.set-attribute-form .attributes {
   width: 100%;
   display: flex;
   gap: 15px;
+}
+
+.set-attribute-form label {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2px;
 }
 
 .set-attribute-form .number-display {
@@ -69,7 +76,6 @@
   background-color: rgb(107, 107, 107);
   border: none;
   color: white;
-
   text-align: center;
 }
 
@@ -215,5 +221,9 @@
     text-align: left;
     min-width: 0;
     padding: 0 5px;
+  }
+
+  .set-attribute-form label {
+    justify-content: center;
   }
 }

@@ -7,6 +7,7 @@ import type {
 import "./setAttributeForm.css";
 import { initialFormAttributes } from "../data/athleteData";
 import { capitalize } from "../utils/textUtils";
+import ToolTip from "./toolTip";
 
 type SetAttributeFormProps = {
   athlete: AthleteDataWithAttributes;
@@ -51,7 +52,10 @@ function SetAttributeForm({ athlete, handleSubmit }: SetAttributeFormProps) {
           <section className="attribute-container">
             {attributeKey.map((attribute, index) => (
               <div className="attributes" key={index}>
-                <label htmlFor={attribute}>{capitalize(attribute)}</label>
+                <label htmlFor={attribute}>
+                  <p>{capitalize(attribute)}</p>
+                  <ToolTip information="dsadsd sa dsadssa ds asd asd dsa d a das sa asd da d sa dssasd dasdsadsadsadsad sa dsa dsa das sdsadsadsadsa sd dsa das dss dadasd s ada sasd" />
+                </label>
                 <div className="input-container">
                   <input
                     id={attribute}
@@ -91,7 +95,7 @@ function SetAttributeForm({ athlete, handleSubmit }: SetAttributeFormProps) {
                 </div>
               </div>
             ))}
-          </section>{" "}
+          </section>
           <section>
             <label htmlFor="comment">Comment</label>
             <textarea

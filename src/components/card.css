@@ -51,8 +51,13 @@
   align-items: center;
 }
 
-.athlete-card .attribute-message:hover {
+.athlete-card:hover .attribute-message {
   color: rgb(95, 234, 80);
+}
+
+.athlete-card:hover {
+  cursor: pointer;
+  border: solid 1px rgb(95, 234, 80);
 }
 
 .bottom-container {
