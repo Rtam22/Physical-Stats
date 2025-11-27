@@ -4,6 +4,7 @@ import type {
   AttributeKey,
   AttributeSubmission,
   AttributeValues,
+  RankKey,
 } from "../types/athleteType";
 import { roundToHalf } from "./mathUtils";
 
@@ -113,4 +114,67 @@ export function checkIfMVP(
     }
   }
   return mvp;
+}
+
+export function getAttributesFromSubmissions(
+  submissions: AttributeSubmission[],
+  athletes: AthleteDataWithAttributes[]
+) {
+  return athletes.map((athlete) => {
+    const attributes = getAthleteAttributes(athlete.info.id, submissions);
+    const favorite = getFavoriteCount(athlete.info.id, submissions);
+    const mvpCount = getMVPCount(athlete.info.id, submissions);
+    const ranking = getRankingFromSubmission(submissions, athlete);
+    return {
+      ...athlete,
+      attributes: attributes,
+      favorite: favorite,
+      mvpCount: mvpCount,
+      ranking: ranking,
+    };
+  });
+}
+
+function getHighest(count: Record<RankKey, number>): RankKey | null {
+  let highestKey: RankKey | null = "S";
+  let highestValue = -Infinity;
+
+  for (const key of Object.keys(count) as RankKey[]) {
+    if (count[key] > highestValue) {
+      highestValue = count[key];
+      highestKey = key;
+    }
+  }
+  if (Object.values(count).every((v) => v === 0)) {
+    return null;
+  }
+
+  return highestKey;
+}
+
+function getRankingFromSubmission(
+  submissions: AttributeSubmission[],
+  athlete: AthleteDataWithAttributes
+) {
+  let count: Record<RankKey, number> = {
+    S: 0,
+    A: 0,
+    B: 0,
+    C: 0,
+    D: 0,
+  };
+  for (const submission of submissions) {
+    if (submission.ranking && athlete.info.id === submission.athleteId)
+      count[submission.ranking]++;
+  }
+
+  return getHighest(count);
+}
+
+export function getValuesForAttributes(athletes: AthleteDataWithAttributes[]) {
+  return athletes.map((athlete) => {
+    const mvp = checkIfMVP(athlete, athletes);
+    const total = calculateAttributeTotal(athlete);
+    return { ...athlete, mvp: mvp, total: total };
+  });
 }

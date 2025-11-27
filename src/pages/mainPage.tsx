@@ -13,11 +13,8 @@ import type {
   AttributeSubmission,
 } from "../types/athleteType";
 import {
-  calculateAttributeTotal,
-  checkIfMVP,
-  getAthleteAttributes,
-  getFavoriteCount,
-  getMVPCount,
+  getAttributesFromSubmissions,
+  getValuesForAttributes,
 } from "../utils/attributeUtils";
 import Modal from "../components/modal";
 import type { ModalState, ModalType } from "../types/modalTypes";
@@ -26,8 +23,12 @@ import Filters from "../components/filters";
 import { applyFilters } from "../utils/filterUtils";
 import type { FilterValue } from "../types/filterTypes";
 import SetAttributeForm from "../components/setAttributeForm";
+import TierListGrid from "../components/tierListGrid";
+
+type Tabs = "athletes" | "tierList";
 
 function MainPage() {
+  const [tab, setTab] = useState<Tabs>("athletes");
   const [athletes, setAthletes] = useState<AthleteDataWithAttributes[]>(() =>
     athleteList.map((a) => ({
       ...a,
@@ -36,6 +37,7 @@ function MainPage() {
       mvp: false,
       total: 0,
       mvpCount: 0,
+      ranking: null,
     }))
   );
 
@@ -80,77 +82,85 @@ function MainPage() {
   }
 
   useEffect(() => {
-    const updatedAthletes = athletes.map((athlete) => {
-      const attributes = getAthleteAttributes(
-        athlete.info.id,
-        attributeSubmissions
-      );
-      const favorite = getFavoriteCount(athlete.info.id, attributeSubmissions);
-      const mvpCount = getMVPCount(athlete.info.id, attributeSubmissions);
-
-      return {
-        ...athlete,
-        attributes: attributes,
-        favorite: favorite,
-
-        mvpCount: mvpCount,
-      };
-    });
-
-    const finalAthletes = updatedAthletes.map((athlete) => {
-      const mvp = checkIfMVP(athlete, updatedAthletes);
-      const total = calculateAttributeTotal(athlete);
-      return { ...athlete, mvp: mvp, total: total };
-    });
-
+    const updatedAthletes = getAttributesFromSubmissions(
+      attributeSubmissions,
+      athletes
+    );
+    const finalAthletes = getValuesForAttributes(updatedAthletes);
     setAthletes(finalAthletes);
   }, [attributeSubmissions]);
 
   return (
     <div className="main-page">
-      <Filters
-        filterValues={filters}
-        setFilter={(newFilters) =>
-          setFilters((prev) => ({ ...prev, ...newFilters }))
-        }
-      />
-      {modal && (
-        <BackDrop onClose={handleCloseModal}>
-          <Modal
-            width="90%"
-            height="90vh"
-            type="middle"
-            onClose={handleCloseModal}
-          >
-            {modal.type === "setAttributes" && (
-              <SetAttributeForm
-                athlete={modal.athlete}
-                handleSubmit={handleSubmitVote}
-              />
-            )}
-          </Modal>
-        </BackDrop>
+      <div className="button-container">
+        <button
+          onClick={() => setTab("athletes")}
+          className={`${tab === "athletes" ? "active" : ""}`}
+        >
+          Athletes
+        </button>
+        <button
+          onClick={() => setTab("tierList")}
+          className={`${tab === "tierList" ? "active" : ""}`}
+        >
+          TierList
+        </button>
+      </div>
+      {tab === "tierList" && (
+        <>
+          <TierListGrid athletes={athletes} />
+        </>
       )}
-      <Grid
-        cellMinWidth="250px"
-        cellMaxWidth="460px"
-        width="80%"
-        items={[
-          ...filteredAthletes.map((athlete) => (
-            <Card
-              id={athlete.info.id}
-              athlete={athlete}
-              attributes={athlete.attributes}
-              favorites={athlete.favorite}
-              size="small"
-              mvp={athlete.mvp}
-              total={athlete.total}
-              handleClick={handleSetModal}
-              hasVoted={submittedVote.includes(athlete.info.id as AthleteIdKey)}
-            />
-          )),
-        ]}
-      />
+
+      {tab === "athletes" && (
+        <>
+          <Filters
+            filterValues={filters}
+            setFilter={(newFilters) =>
+              setFilters((prev) => ({ ...prev, ...newFilters }))
+            }
+          />
+          {modal && (
+            <BackDrop onClose={handleCloseModal}>
+              <Modal
+                width="90%"
+                height="90vh"
+                type="middle"
+                onClose={handleCloseModal}
+              >
+                {modal.type === "setAttributes" && (
+                  <SetAttributeForm
+                    athlete={modal.athlete}
+                    handleSubmit={handleSubmitVote}
+                  />
+                )}
+              </Modal>
+            </BackDrop>
+          )}
+          <Grid
+            cellMinWidth="250px"
+            cellMaxWidth="460px"
+            width="80%"
+            items={[
+              ...filteredAthletes.map((athlete) => (
+                <Card
+                  id={athlete.info.id}
+                  athlete={athlete}
+                  attributes={athlete.attributes}
+                  favorites={athlete.favorite}
+                  size="small"
+                  mvp={athlete.mvp}
+                  total={athlete.total}
+                  handleClick={handleSetModal}
+                  hasVoted={submittedVote.includes(
+                    athlete.info.id as AthleteIdKey
+                  )}
+                />
+              )),
+            ]}
+          />
+        </>
+      )}
     </div>
   );
 }

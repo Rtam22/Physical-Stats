@@ -697,6 +697,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 7,
       adaptability: 6.5,
     },
+    ranking: "A",
   },
   {
     athleteId: "alexandra-milne",
@@ -712,6 +713,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 6,
       adaptability: 7,
     },
+    ranking: "A",
   },
   {
     athleteId: "alexandra-milne",
@@ -727,6 +729,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 7.5,
       adaptability: 7,
     },
+    ranking: "B",
   },
 
   // --- Igedz Executioner ---
@@ -744,6 +747,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 9.5,
       adaptability: 5.5,
     },
+    ranking: "B",
   },
   {
     athleteId: "igedz-executioner",
@@ -759,6 +763,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 8.5,
       adaptability: 6,
     },
+    ranking: "B",
   },
   {
     athleteId: "igedz-executioner",
@@ -774,6 +779,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 9,
       adaptability: 6.5,
     },
+    ranking: "C",
   },
 
   // --- Robert Whittaker ---
@@ -791,6 +797,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 9.5,
       adaptability: 8.5,
     },
+    ranking: "S",
   },
   {
     athleteId: "robert-whittaker",
@@ -807,6 +814,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 8,
     },
     mvp: true,
+    ranking: "S",
   },
   {
     athleteId: "robert-whittaker",
@@ -823,6 +831,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 8,
     },
     mvp: true,
+    ranking: "B",
   },
 
   // --- Kim Dong-hyun ---
@@ -840,6 +849,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 7.5,
       adaptability: 8,
     },
+    ranking: "B",
   },
   {
     athleteId: "kim-dong-hyun",
@@ -855,6 +865,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 7,
       adaptability: 7.5,
     },
+    ranking: "B",
     mvp: true,
   },
   {
@@ -871,6 +882,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 8,
       adaptability: 8,
     },
+    ranking: "B",
   },
 
   // --- Kim Hae-jong (Amotti) ---
@@ -888,6 +900,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 8,
       adaptability: 7.5,
     },
+    ranking: "B",
     mvp: true,
   },
   {
@@ -904,6 +917,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 7.5,
       adaptability: 7,
     },
+    ranking: "B",
     mvp: true,
   },
   {
@@ -920,6 +934,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 8.5,
       adaptability: 8,
     },
+    ranking: "B",
   },
 
   // --- Yun Sung-bin ---
@@ -937,6 +952,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 8,
       adaptability: 6.5,
     },
+    ranking: "B",
     mvp: true,
   },
   {
@@ -953,6 +969,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 7.5,
       adaptability: 6,
     },
+    ranking: "B",
     mvp: true,
   },
   {
@@ -969,6 +986,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 8.5,
       adaptability: 7,
     },
+    ranking: "B",
     mvp: true,
   },
 
@@ -987,6 +1005,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 9,
       adaptability: 8,
     },
+    ranking: "B",
     mvp: true,
   },
   {
@@ -1003,6 +1022,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 8.5,
       adaptability: 7.5,
     },
+    ranking: "B",
   },
   {
     athleteId: "jang-eun-sil",
@@ -1018,6 +1038,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 9.5,
       adaptability: 8,
     },
+    ranking: "B",
   },
 
   // --- Choi Seung-yeon ---
@@ -1035,6 +1056,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 8,
       adaptability: 7,
     },
+    ranking: "B",
   },
   {
     athleteId: "choi-seung-yeon",
@@ -1050,6 +1072,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 7.5,
       adaptability: 6.5,
     },
+    ranking: "B",
   },
   {
     athleteId: "choi-seung-yeon",
@@ -1065,6 +1088,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 8.5,
       adaptability: 7.5,
     },
+    ranking: "B",
     mvp: true,
   },
 
@@ -1083,6 +1107,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 8.5,
       adaptability: 7,
     },
+    ranking: "B",
   },
   {
     athleteId: "kim-min-jae",
@@ -1098,6 +1123,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 8,
       adaptability: 6.5,
     },
+    ranking: "B",
   },
   {
     athleteId: "kim-min-jae",
@@ -1113,6 +1139,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 9,
       adaptability: 7.5,
     },
+    ranking: "B",
     mvp: true,
   },
 
@@ -1131,6 +1158,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 9,
       adaptability: 7.5,
     },
+    ranking: "B",
     mvp: true,
   },
   {
@@ -1147,6 +1175,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 8.5,
       adaptability: 7,
     },
+    ranking: "B",
     mvp: true,
   },
   {
@@ -1163,6 +1192,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 8.5,
       adaptability: 7,
     },
+    ranking: "B",
     mvp: true,
   },
 
@@ -1181,6 +1211,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 8,
       adaptability: 6.5,
     },
+    ranking: "B",
   },
   {
     athleteId: "sunny-kerdkao",
@@ -1196,6 +1227,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 7.5,
       adaptability: 6,
     },
+    ranking: "B",
   },
   {
     athleteId: "sunny-kerdkao",
@@ -1211,5 +1243,6 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 8.5,
       adaptability: 7,
     },
+    ranking: "B",
   },
 ];

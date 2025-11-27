@@ -23,12 +23,15 @@ export type AthleteTeams =
   | "Indonesia"
   | "Thailand";
 
+export type RankKey = "S" | "A" | "B" | "C" | "D";
+
 export type AthleteDataWithAttributes = AthleteData & {
   attributes: AttributeValues;
   favorite: number;
   mvp: boolean;
   mvpCount: number;
   total: number;
+  ranking: RankKey | null;
 };
 
 export type AttributeKey =
@@ -50,6 +53,7 @@ export type AttributeSubmission = {
   values: AttributeValues;
   mvp?: boolean;
   comment?: string;
+  ranking: RankKey | "";
 };
 
 export type AthleteIdKey =

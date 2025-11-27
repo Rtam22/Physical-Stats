@@ -1,13 +1,14 @@
 import { useState } from "react";
 import type {
   AthleteDataWithAttributes,
-  AttributeKey,
   AttributeSubmission,
+  RankKey,
 } from "../types/athleteType";
 import "./setAttributeForm.css";
 import { initialFormAttributes } from "../data/athleteData";
 import { capitalize } from "../utils/textUtils";
 import ToolTip from "./toolTip";
+import { attributeKey, rankingKey } from "../data/attributeKey";
 
 type SetAttributeFormProps = {
   athlete: AthleteDataWithAttributes;
@@ -23,17 +24,8 @@ function SetAttributeForm({ athlete, handleSubmit }: SetAttributeFormProps) {
     values: initialFormAttributes,
     mvp: false,
     comment: "",
+    ranking: "",
   });
-
-  const attributeKey: AttributeKey[] = [
-    "strength",
-    "explosiveness",
-    "speed",
-    "endurance",
-    "cardio",
-    "grit",
-    "adaptability",
-  ];
 
   function handleSubmitForm(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -107,6 +99,29 @@ function SetAttributeForm({ athlete, handleSubmit }: SetAttributeFormProps) {
               }
               placeholder="Leave your thoughts and opinion here"
             />
+          </section>
+          <section>
+            <label htmlFor="ranking">Ranking</label>
+            <select
+              name="ranking"
+              id="ranking"
+              value={submission.ranking}
+              onChange={(e) =>
+                setSubmission({
+                  ...submission,
+                  ranking: e.target.value as RankKey,
+                })
+              }
+            >
+              <option value={""}></option>
+              {rankingKey.map((key) => {
+                return (
+                  <option key={key} value={key}>
+                    {key}
+                  </option>
+                );
+              })}
+            </select>
           </section>
           <section>
             <label htmlFor="mvp" className="mvp">
