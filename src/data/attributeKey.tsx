@@ -10,4 +10,11 @@ export const attributeKey: AttributeKey[] = [
   "adaptability",
 ];
 
-export const rankingKey: RankKey[] = ["S", "A", "B", "C", "D"];
+type RankKeyColor = { key: RankKey; color: string };
+export const ranksKey: RankKeyColor[] = [
+  { key: "S", color: "#FF807D" },
+  { key: "A", color: "#FFBF7E" },
+  { key: "B", color: "#FFE080" },
+  { key: "C", color: "#FEFE7F" },
+  { key: "D", color: "#BDFF7E" },
+];

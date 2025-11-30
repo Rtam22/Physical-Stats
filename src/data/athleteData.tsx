@@ -917,7 +917,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 7.5,
       adaptability: 7,
     },
-    ranking: "B",
+    ranking: "S",
     mvp: true,
   },
   {
@@ -934,7 +934,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       grit: 8.5,
       adaptability: 8,
     },
-    ranking: "B",
+    ranking: "A",
   },
 
   // --- Yun Sung-bin ---

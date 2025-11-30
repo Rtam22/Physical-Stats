@@ -20,7 +20,7 @@ import Modal from "../components/modal";
 import type { ModalState, ModalType } from "../types/modalTypes";
 import BackDrop from "../components/backdrop";
 import Filters from "../components/filters";
-import { applyFilters } from "../utils/filterUtils";
+import { applyFilters, filterAthletesBySubmitted } from "../utils/filterUtils";
 import type { FilterValue } from "../types/filterTypes";
 import SetAttributeForm from "../components/setAttributeForm";
 import TierListGrid from "../components/tierListGrid";
@@ -59,7 +59,6 @@ function MainPage() {
   function handleSubmitVote(submission: AttributeSubmission) {
     setSubmittedVote([...submittedVote, submission.athleteId]);
     setAttributeSubmissions((prev) => [...prev, submission]);
-    console.log(submission);
     handleCloseModal();
   }
 
@@ -108,7 +107,9 @@ function MainPage() {
       </div>
       {tab === "tierList" && (
         <>
-          <TierListGrid athletes={athletes} />
+          <TierListGrid
+            athletes={filterAthletesBySubmitted(submittedVote, athletes)}
+          />
         </>
       )}
 

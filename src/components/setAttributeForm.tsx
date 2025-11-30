@@ -8,7 +8,7 @@ import "./setAttributeForm.css";
 import { initialFormAttributes } from "../data/athleteData";
 import { capitalize } from "../utils/textUtils";
 import ToolTip from "./toolTip";
-import { attributeKey, rankingKey } from "../data/attributeKey";
+import { attributeKey, ranksKey } from "../data/attributeKey";
 
 type SetAttributeFormProps = {
   athlete: AthleteDataWithAttributes;
@@ -114,10 +114,10 @@ function SetAttributeForm({ athlete, handleSubmit }: SetAttributeFormProps) {
               }
             >
               <option value={""}></option>
-              {rankingKey.map((key) => {
+              {ranksKey.map((key) => {
                 return (
-                  <option key={key} value={key}>
-                    {key}
+                  <option key={key.key} value={key.key}>
+                    {key.key}
                   </option>
                 );
               })}

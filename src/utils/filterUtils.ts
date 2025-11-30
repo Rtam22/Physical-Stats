@@ -1,4 +1,7 @@
-import type { AthleteDataWithAttributes } from "../types/athleteType";
+import type {
+  AthleteDataWithAttributes,
+  AthleteIdKey,
+} from "../types/athleteType";
 import type { FilterValue, SortKey } from "../types/filterTypes";
 
 function getValue(athlete: AthleteDataWithAttributes, key: SortKey) {
@@ -48,4 +51,16 @@ export function applyFilters(
     filters.sort === "none" ? filtered : sortAthletes(filters.sort, filtered);
 
   return sorted;
+}
+
+export function filterAthletesBySubmitted(
+  submitted: AthleteIdKey[],
+  athletes: AthleteDataWithAttributes[]
+) {
+  let filteredAthletes: AthleteDataWithAttributes[] = [];
+  for (const id of submitted) {
+    const athlete = athletes.find((a) => id === a.info.id);
+    if (athlete) filteredAthletes = [...filteredAthletes, athlete];
+  }
+  return filteredAthletes;
 }
