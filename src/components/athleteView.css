@@ -1,0 +1,37 @@
+.athlete-view {
+  display: flex;
+  max-width: 700px;
+  min-width: 280px;
+  width: 80%;
+  height: 240px;
+  gap: 20px;
+}
+
+.athlete-view .information-container {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.athlete-view .image-container {
+  width: 25%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.athlete-view .image-container img {
+  height: 100%;
+  width: auto;
+  max-width: none;
+  display: block;
+}
+
+.athlete-view span {
+  display: flex;
+  gap: 20px;
+}

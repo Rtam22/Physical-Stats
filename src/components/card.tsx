@@ -14,7 +14,6 @@ type CardProps = {
   total: number;
   mvp: boolean;
   handleClick: (athleteId: AthleteIdKey | null, type: ModalType) => void;
-  size: "small" | "large";
   hasVoted: boolean;
 };
 
@@ -23,7 +22,6 @@ function Card({
   id,
   attributes,
   favorites,
-  size,
   mvp,
   total,
   hasVoted,

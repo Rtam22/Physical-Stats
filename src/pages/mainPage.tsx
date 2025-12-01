@@ -24,6 +24,8 @@ import { applyFilters, filterAthletesBySubmitted } from "../utils/filterUtils";
 import type { FilterValue } from "../types/filterTypes";
 import SetAttributeForm from "../components/setAttributeForm";
 import TierListGrid from "../components/tierListGrid";
+import AthleteView from "../components/athleteView";
+import PaginationList from "../components/paginationList";
 
 type Tabs = "athletes" | "tierList";
 
@@ -125,7 +127,7 @@ function MainPage() {
             <BackDrop onClose={handleCloseModal}>
               <Modal
                 width="90%"
-                height="90vh"
+                height="auto"
                 type="middle"
                 onClose={handleCloseModal}
               >
@@ -134,6 +136,13 @@ function MainPage() {
                     athlete={modal.athlete}
                     handleSubmit={handleSubmitVote}
                   />
+                )}
+
+                {modal.type === "athleteView" && (
+                  <div className="container">
+                    <AthleteView athlete={modal.athlete} />
+                    <PaginationList items={[]} title="Submission History" />
+                  </div>
                 )}
               </Modal>
             </BackDrop>
@@ -149,7 +158,6 @@ function MainPage() {
                   athlete={athlete}
                   attributes={athlete.attributes}
                   favorites={athlete.favorite}
-                  size="small"
                   mvp={athlete.mvp}
                   total={athlete.total}
                   handleClick={handleSetModal}
