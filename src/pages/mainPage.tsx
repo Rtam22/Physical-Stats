@@ -1,21 +1,8 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import Card from "../components/athletes/card";
 import Grid from "../components/layout/grid";
-import {
-  athleteList,
-  attributeSubmissionsTest,
-  initialAttributes,
-} from "../data/athleteData";
 import "./mainPage.css";
-import type {
-  AthleteDataWithAttributes,
-  AthleteIdKey,
-  AttributeSubmission,
-} from "../types/athleteType";
-import {
-  getAttributesFromSubmissions,
-  getValuesForAttributes,
-} from "../utils/attributeUtils";
+import type { AthleteIdKey, AttributeSubmission } from "../types/athleteType";
 import Modal from "../components/layout/modal";
 import type { ModalState, ModalType } from "../types/modalTypes";
 import BackDrop from "../components/layout/backDrop";
@@ -26,30 +13,19 @@ import SetAttributeForm from "../components/athletes/setAttributeForm";
 import TierListGrid from "../components/athletes/tierListGrid";
 import AthleteView from "../components/athletes/athleteView";
 import PaginationList from "../components/layout/paginationList";
+import { useAthletes } from "../hooks/useAthletes";
+import { useSubmissions } from "../hooks/useSubmissions";
 
 type Tabs = "athletes" | "tierList";
 
 function MainPage() {
   const [tab, setTab] = useState<Tabs>("athletes");
-  const [athletes, setAthletes] = useState<AthleteDataWithAttributes[]>(() =>
-    athleteList.map((a) => ({
-      ...a,
-      attributes: initialAttributes,
-      favorite: 0,
-      mvp: false,
-      total: 0,
-      mvpCount: 0,
-      ranking: null,
-    }))
-  );
+  const { submissions, submittedVote, handleSubmitSubmissions } =
+    useSubmissions();
+  const { athletes } = useAthletes({
+    attributeSubmissions: submissions,
+  });
 
-  const [attributeSubmissions, setAttributeSubmissions] = useState<
-    AttributeSubmission[]
-  >(attributeSubmissionsTest);
-  const [submittedVote, setSubmittedVote] = useState<AthleteIdKey[]>([
-    "kim-dong-hyun",
-    "kim-min-jae",
-  ]);
   const [modal, setModal] = useState<ModalState | null>(null);
   const [filters, setFilters] = useState<FilterValue>({
     sort: "none",
@@ -59,8 +35,7 @@ function MainPage() {
   });
 
   function handleSubmitVote(submission: AttributeSubmission) {
-    setSubmittedVote((prev) => [...prev, submission.athleteId]);
-    setAttributeSubmissions((prev) => [...prev, submission]);
+    handleSubmitSubmissions(submission);
     handleCloseModal();
   }
 
@@ -96,15 +71,6 @@ function MainPage() {
   function handleCloseModal() {
     setModal(null);
   }
-
-  useEffect(() => {
-    const updatedAthletes = getAttributesFromSubmissions(
-      attributeSubmissions,
-      athletes
-    );
-    const finalAthletes = getValuesForAttributes(updatedAthletes);
-    setAthletes(finalAthletes);
-  }, [attributeSubmissions]);
 
   return (
     <div className="main-page">

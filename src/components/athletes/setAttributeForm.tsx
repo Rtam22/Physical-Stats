@@ -7,7 +7,7 @@ import type {
 import "./setAttributeForm.css";
 import { initialFormAttributes } from "../../data/athleteData";
 import { capitalize } from "../../utils/textUtils";
-import ToolTip from "../toolTip";
+import ToolTip from "../ui/toolTip";
 import { attributeKey, ranksKey } from "../../data/attributeKey";
 
 type SetAttributeFormProps = {
