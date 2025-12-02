@@ -3,7 +3,7 @@ import type {
   AthleteIdKey,
   AttributeValues,
 } from "../../types/athleteType";
-import AttributeBar from "./attributeBar";
+import AttributeBar from "./attributes/attributeBar";
 import "./card.css";
 import type { ModalType } from "../../types/modalTypes";
 type CardProps = {

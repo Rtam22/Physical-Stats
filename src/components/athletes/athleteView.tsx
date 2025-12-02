@@ -1,6 +1,6 @@
 import type { AthleteDataWithAttributes } from "../../types/athleteType";
 import "./athleteView.css";
-import AttributeBar from "./attributeBar";
+import AttributeBar from "./attributes/attributeBar";
 
 type AtheleteViewProps = {
   athlete: AthleteDataWithAttributes;
