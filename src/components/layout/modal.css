@@ -1,6 +1,6 @@
 .modal {
   background-color: var(--background-primary);
-  padding: 40px 40px 40px 40px;
+  padding: 40px 40px 100px 40px;
   border-radius: 5px;
   display: flex;
   flex-direction: column;

@@ -2,10 +2,10 @@ import type {
   AthleteData,
   AthleteIdKey,
   AttributeValues,
-} from "../types/athleteType";
+} from "../../types/athleteType";
 import AttributeBar from "./attributeBar";
 import "./card.css";
-import type { ModalType } from "../types/modalTypes";
+import type { ModalType } from "../../types/modalTypes";
 type CardProps = {
   id: AthleteIdKey;
   athlete: AthleteData;

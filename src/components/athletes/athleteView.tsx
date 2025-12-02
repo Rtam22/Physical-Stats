@@ -1,4 +1,4 @@
-import type { AthleteDataWithAttributes } from "../types/athleteType";
+import type { AthleteDataWithAttributes } from "../../types/athleteType";
 import "./athleteView.css";
 import AttributeBar from "./attributeBar";
 
@@ -17,6 +17,7 @@ function AthleteView({ athlete }: AtheleteViewProps) {
           <h2>{athlete.info.name}</h2>
           <h2>*{athlete.favorite}</h2>{" "}
         </span>
+        <p></p>
         <div className="attribute-container">
           {Object.entries(athlete.attributes).map(([key, value]) => {
             const title = key.charAt(0).toUpperCase() + key.slice(1);

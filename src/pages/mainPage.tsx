@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import Card from "../components/card";
-import Grid from "../components/grid";
+import Card from "../components/athletes/card";
+import Grid from "../components/layout/grid";
 import {
   athleteList,
   attributeSubmissionsTest,
@@ -16,16 +16,16 @@ import {
   getAttributesFromSubmissions,
   getValuesForAttributes,
 } from "../utils/attributeUtils";
-import Modal from "../components/modal";
+import Modal from "../components/layout/modal";
 import type { ModalState, ModalType } from "../types/modalTypes";
-import BackDrop from "../components/backdrop";
-import Filters from "../components/filters";
+import BackDrop from "../components/layout/backDrop";
+import Filters from "../components/filters/filters";
 import { applyFilters, filterAthletesBySubmitted } from "../utils/filterUtils";
 import type { FilterValue } from "../types/filterTypes";
-import SetAttributeForm from "../components/setAttributeForm";
-import TierListGrid from "../components/tierListGrid";
-import AthleteView from "../components/athleteView";
-import PaginationList from "../components/paginationList";
+import SetAttributeForm from "../components/athletes/setAttributeForm";
+import TierListGrid from "../components/athletes/tierListGrid";
+import AthleteView from "../components/athletes/athleteView";
+import PaginationList from "../components/layout/paginationList";
 
 type Tabs = "athletes" | "tierList";
 
@@ -59,7 +59,7 @@ function MainPage() {
   });
 
   function handleSubmitVote(submission: AttributeSubmission) {
-    setSubmittedVote([...submittedVote, submission.athleteId]);
+    setSubmittedVote((prev) => [...prev, submission.athleteId]);
     setAttributeSubmissions((prev) => [...prev, submission]);
     handleCloseModal();
   }
@@ -67,6 +67,21 @@ function MainPage() {
   const filteredAthletes = useMemo(() => {
     return applyFilters(athletes, filters);
   }, [filters, athletes]);
+
+  const gridItems = useMemo(() => {
+    return filteredAthletes.map((athlete) => (
+      <Card
+        id={athlete.info.id}
+        athlete={athlete}
+        attributes={athlete.attributes}
+        favorites={athlete.favorite}
+        mvp={athlete.mvp}
+        total={athlete.total}
+        handleClick={handleSetModal}
+        hasVoted={submittedVote.includes(athlete.info.id as AthleteIdKey)}
+      />
+    ));
+  }, [filteredAthletes]);
 
   function handleSetModal(athleteId: AthleteIdKey | null, type: ModalType) {
     console.log(type);
@@ -93,6 +108,30 @@ function MainPage() {
 
   return (
     <div className="main-page">
+      {modal && (
+        <BackDrop onClose={handleCloseModal}>
+          <Modal
+            width="80%"
+            height="auto"
+            type="middle"
+            onClose={handleCloseModal}
+          >
+            {modal.type === "setAttributes" && (
+              <SetAttributeForm
+                athlete={modal.athlete}
+                handleSubmit={handleSubmitVote}
+              />
+            )}
+
+            {modal.type === "athleteView" && (
+              <div className="container">
+                <AthleteView athlete={modal.athlete} />
+                <PaginationList items={[]} title="Submission History" />
+              </div>
+            )}
+          </Modal>
+        </BackDrop>
+      )}
       <div className="button-container">
         <button
           onClick={() => setTab("athletes")}
@@ -111,6 +150,7 @@ function MainPage() {
         <>
           <TierListGrid
             athletes={filterAthletesBySubmitted(submittedVote, athletes)}
+            onCardClick={handleSetModal}
           />
         </>
       )}
@@ -123,50 +163,12 @@ function MainPage() {
               setFilters((prev) => ({ ...prev, ...newFilters }))
             }
           />
-          {modal && (
-            <BackDrop onClose={handleCloseModal}>
-              <Modal
-                width="90%"
-                height="auto"
-                type="middle"
-                onClose={handleCloseModal}
-              >
-                {modal.type === "setAttributes" && (
-                  <SetAttributeForm
-                    athlete={modal.athlete}
-                    handleSubmit={handleSubmitVote}
-                  />
-                )}
 
-                {modal.type === "athleteView" && (
-                  <div className="container">
-                    <AthleteView athlete={modal.athlete} />
-                    <PaginationList items={[]} title="Submission History" />
-                  </div>
-                )}
-              </Modal>
-            </BackDrop>
-          )}
           <Grid
             cellMinWidth="250px"
             cellMaxWidth="460px"
             width="80%"
-            items={[
-              ...filteredAthletes.map((athlete) => (
-                <Card
-                  id={athlete.info.id}
-                  athlete={athlete}
-                  attributes={athlete.attributes}
-                  favorites={athlete.favorite}
-                  mvp={athlete.mvp}
-                  total={athlete.total}
-                  handleClick={handleSetModal}
-                  hasVoted={submittedVote.includes(
-                    athlete.info.id as AthleteIdKey
-                  )}
-                />
-              )),
-            ]}
+            items={gridItems}
           />
         </>
       )}

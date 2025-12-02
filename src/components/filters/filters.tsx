@@ -1,5 +1,5 @@
-import { teamList } from "../data/athleteData";
-import type { FilterValue } from "../types/filterTypes";
+import { teamList } from "../../data/athleteData";
+import type { FilterValue } from "../../types/filterTypes";
 import "./filters.css";
 
 type FilterProps = {

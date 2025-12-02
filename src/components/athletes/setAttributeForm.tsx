@@ -3,12 +3,12 @@ import type {
   AthleteDataWithAttributes,
   AttributeSubmission,
   RankKey,
-} from "../types/athleteType";
+} from "../../types/athleteType";
 import "./setAttributeForm.css";
-import { initialFormAttributes } from "../data/athleteData";
-import { capitalize } from "../utils/textUtils";
-import ToolTip from "./toolTip";
-import { attributeKey, ranksKey } from "../data/attributeKey";
+import { initialFormAttributes } from "../../data/athleteData";
+import { capitalize } from "../../utils/textUtils";
+import ToolTip from "../toolTip";
+import { attributeKey, ranksKey } from "../../data/attributeKey";
 
 type SetAttributeFormProps = {
   athlete: AthleteDataWithAttributes;
@@ -37,7 +37,9 @@ function SetAttributeForm({ athlete, handleSubmit }: SetAttributeFormProps) {
       <div className="profile-container">
         {submission.mvp && <p className="mvp-container">MVP</p>}
         <p>{athlete.info.name}</p>
-        <img src={athlete.info.img} alt={`${athlete.info.name} portrait`} />
+        <div className="image-container">
+          <img src={athlete.info.img} alt={`${athlete.info.name} portrait`} />
+        </div>
       </div>
       <div className="attribute-form">
         <form onSubmit={handleSubmitForm}>
