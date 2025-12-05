@@ -95,9 +95,9 @@ function SetAttributeForm({ athlete, handleSubmit }: SetAttributeFormProps) {
             <textarea
               className="comment"
               id="comment"
-              value={submission.username}
+              value={submission.comment}
               onChange={(e) =>
-                setSubmission({ ...submission, username: e.target.value })
+                setSubmission({ ...submission, comment: e.target.value })
               }
               placeholder="Leave your thoughts and opinion here"
             />

@@ -698,6 +698,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 6.5,
     },
     ranking: "A",
+    comment: "Really solid conditioning, could work on raw strength.",
   },
   {
     athleteId: "alexandra-milne",
@@ -714,6 +715,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 7,
     },
     ranking: "A",
+    comment: "Great engine, just needs more explosive power.",
   },
   {
     athleteId: "alexandra-milne",
@@ -730,6 +732,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 7,
     },
     ranking: "B",
+    comment: "Consistent all-rounder with good work capacity.",
   },
 
   // --- Igedz Executioner ---
@@ -748,6 +751,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 5.5,
     },
     ranking: "B",
+    comment: "Crazy grit. Gas tank could be an issue in long events.",
   },
   {
     athleteId: "igedz-executioner",
@@ -764,6 +768,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 6,
     },
     ranking: "B",
+    comment: "Explosive and hits hard, struggles adapting on new tasks.",
   },
   {
     athleteId: "igedz-executioner",
@@ -780,6 +785,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 6.5,
     },
     ranking: "C",
+    comment: "Monster strength, but cardio will hold him back.",
   },
 
   // --- Robert Whittaker ---
@@ -798,6 +804,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 8.5,
     },
     ranking: "S",
+    comment: "Elite mindset, mixes power and cardio perfectly.",
   },
   {
     athleteId: "robert-whittaker",
@@ -815,6 +822,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     },
     mvp: true,
     ranking: "S",
+    comment: "Champ-level grit, no real weaknesses here.",
   },
   {
     athleteId: "robert-whittaker",
@@ -832,6 +840,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     },
     mvp: true,
     ranking: "B",
+    comment: "Always shows up in clutch moments.",
   },
 
   // --- Kim Dong-hyun ---
@@ -850,6 +859,24 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 8,
     },
     ranking: "B",
+    comment: "Very technical and adaptable in pressure situations.",
+  },
+  {
+    athleteId: "kim-dong-hyun",
+    id: "user-kimdh-1",
+    username: "stusssnGun",
+    favorite: false,
+    values: {
+      strength: 8,
+      explosiveness: 6.5,
+      speed: 8,
+      endurance: 6.5,
+      cardio: 6.5,
+      grit: 7.5,
+      adaptability: 8,
+    },
+    ranking: "B",
+    comment: "Very technical and adaptable in pressure situations.",
   },
   {
     athleteId: "kim-dong-hyun",
@@ -867,6 +894,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     },
     ranking: "B",
     mvp: true,
+    comment: "Tough competitor, just needs sharper explosiveness.",
   },
   {
     athleteId: "kim-dong-hyun",
@@ -883,6 +911,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 8,
     },
     ranking: "B",
+    comment: "Strong veteran presence, good balance overall.",
   },
 
   // --- Kim Hae-jong (Amotti) ---
@@ -902,6 +931,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     },
     ranking: "B",
     mvp: true,
+    comment: "Great programming background, recovers fast between efforts.",
   },
   {
     athleteId: "kim-hae-jong",
@@ -919,6 +949,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     },
     ranking: "S",
     mvp: true,
+    comment: "Well-rounded engine, real threat in endurance events.",
   },
   {
     athleteId: "kim-hae-jong",
@@ -935,6 +966,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 8,
     },
     ranking: "A",
+    comment: "Explosive athlete, looks built for sprint-style challenges.",
   },
 
   // --- Yun Sung-bin ---
@@ -954,6 +986,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     },
     ranking: "B",
     mvp: true,
+    comment: "One of the most explosive in the field.",
   },
   {
     athleteId: "yun-sung-bin",
@@ -971,12 +1004,13 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     },
     ranking: "B",
     mvp: true,
+    comment: "Elite power output, cardio surprisingly strong.",
   },
   {
     athleteId: "yun-sung-bin",
     id: "user-yun-3",
     username: "skeletonGold",
-    favorite: true,
+    favorite: false,
     values: {
       strength: 8,
       explosiveness: 9.5,
@@ -988,6 +1022,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     },
     ranking: "B",
     mvp: true,
+    comment: "Explosiveness off the charts.",
   },
 
   // --- Jang Eun-sil ---
@@ -1007,6 +1042,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     },
     ranking: "B",
     mvp: true,
+    comment: "Incredible grit, wrestling background shows in every event.",
   },
   {
     athleteId: "jang-eun-sil",
@@ -1023,6 +1059,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 7.5,
     },
     ranking: "B",
+    comment: "Very tough mentally, could improve explosiveness.",
   },
   {
     athleteId: "jang-eun-sil",
@@ -1039,6 +1076,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 8,
     },
     ranking: "B",
+    comment: "Elite grip and strength, scary in head-to-head events.",
   },
 
   // --- Choi Seung-yeon ---
@@ -1057,6 +1095,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 7,
     },
     ranking: "B",
+    comment: "Super smooth pacing, efficient movement patterns.",
   },
   {
     athleteId: "choi-seung-yeon",
@@ -1073,6 +1112,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 6.5,
     },
     ranking: "B",
+    comment: "Very consistent, nothing flashy but no weakness.",
   },
   {
     athleteId: "choi-seung-yeon",
@@ -1090,6 +1130,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     },
     ranking: "B",
     mvp: true,
+    comment: "Insane cardio, thrives in long grinders.",
   },
 
   // --- Kim Min-jae ---
@@ -1108,6 +1149,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 7,
     },
     ranking: "B",
+    comment: "Strong base and good leverage in physical contests.",
   },
   {
     athleteId: "kim-min-jae",
@@ -1124,6 +1166,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 6.5,
     },
     ranking: "B",
+    comment: "Very durable, could boost cardio capacity.",
   },
   {
     athleteId: "kim-min-jae",
@@ -1141,6 +1184,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     },
     ranking: "B",
     mvp: true,
+    comment: "Legit powerhouse, anchors well in physical challenges.",
   },
 
   // --- Superbon Singha Mawynn ---
@@ -1160,6 +1204,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     },
     ranking: "B",
     mvp: true,
+    comment: "Explosive striking power translates well to tasks.",
   },
   {
     athleteId: "superbon-singha-mawynn",
@@ -1177,6 +1222,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     },
     ranking: "B",
     mvp: true,
+    comment: "Fast and accurate, good in bursts.",
   },
   {
     athleteId: "superbon-singha-mawynn",
@@ -1194,6 +1240,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     },
     ranking: "B",
     mvp: true,
+    comment: "Excellent balance of power and stamina.",
   },
 
   // --- Sunny Kerdkao Wechokittikorn ---
@@ -1212,6 +1259,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 6.5,
     },
     ranking: "B",
+    comment: "Very tough competitor, reliable under pressure.",
   },
   {
     athleteId: "sunny-kerdkao",
@@ -1228,6 +1276,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 6,
     },
     ranking: "B",
+    comment: "Solid speed, best in mid-duration challenges.",
   },
   {
     athleteId: "sunny-kerdkao",
@@ -1244,5 +1293,6 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 7,
     },
     ranking: "B",
+    comment: "Scrappy and physical, won’t quit easily.",
   },
 ];

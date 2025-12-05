@@ -1,0 +1,39 @@
+.submission-card {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: auto;
+  border: 1px solid rgb(141, 141, 141);
+  padding: 10px;
+  border-radius: 5px;
+  gap: 15px;
+}
+
+.submission-card .container-top {
+  display: flex;
+}
+
+.submission-card .container-top div {
+  width: 50%;
+}
+
+.submission-card .content {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.submission-card .content p {
+  text-align: left;
+}
+
+.submission-card .comment {
+  border: 1px solid rgb(195, 195, 195);
+  padding: 10px;
+  border-radius: 5px;
+  color: var(--secondary-color);
+  margin-top: 5px;
+}
+
+.submission-card .comment-container {
+  width: 50%;
+}

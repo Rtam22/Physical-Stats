@@ -17,6 +17,7 @@ import { useAthletes } from "../hooks/useAthletes";
 import { useSubmissions } from "../hooks/useSubmissions";
 import type { TabID, TabsConfig } from "../components/layout/tabs";
 import Tabs from "../components/layout/tabs";
+import SubmissionCard from "../components/athletes/submissionCard";
 
 function MainPage() {
   const [activeTab, setActiveTab] = useState<TabID>("athletes");
@@ -123,7 +124,20 @@ function MainPage() {
             {modal.type === "athleteView" && (
               <div className="container">
                 <AthleteView athlete={modal.athlete} />
-                <PaginationList items={[]} title="Submission History" />
+                <PaginationList
+                  items={[
+                    ...submissions
+                      .filter(
+                        (submission) =>
+                          submission.athleteId === modal.athlete.info.id
+                      )
+                      .map((submission) => {
+                        return <SubmissionCard submission={submission} />;
+                      }),
+                  ]}
+                  title="Submission History"
+                  itemsAmountOnPage={3}
+                />
               </div>
             )}
           </Modal>

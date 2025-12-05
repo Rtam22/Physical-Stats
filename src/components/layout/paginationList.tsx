@@ -22,8 +22,8 @@ function PaginationList({
   }, [currentPage]);
 
   const arrayIndex = useMemo(() => {
-    const firstIndex = itemsAmountOnPage * currentPage;
-    const lastIndex = firstIndex + pageRange;
+    const firstIndex = itemsAmountOnPage * currentPage - itemsAmountOnPage;
+    const lastIndex = firstIndex + (itemsAmountOnPage - 1);
     return { firstIndex: firstIndex, lastIndex: lastIndex };
   }, [currentPage]);
 
@@ -52,6 +52,7 @@ function PaginationList({
     return pages;
   }
 
+  console.log(arrayIndex);
   return (
     <div className="pagination-list">
       <h3>{title}</h3>
@@ -70,13 +71,7 @@ function PaginationList({
         )}
       </div>
       <div className="button-container">
-        {pagesTotal <= 1 ? (
-          <>
-            {numberOfPages.map((page) => {
-              return <button>{page}</button>;
-            })}
-          </>
-        ) : (
+        {pagesTotal > 1 && (
           <>
             <button
               onClick={() => {

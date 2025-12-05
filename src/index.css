@@ -1,11 +1,14 @@
 :root {
   --background-primary: rgb(56, 56, 56);
+  --primary-color: white;
+  --secondary-color: rgb(225, 225, 225);
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-align: left;
 }
 
 html,
@@ -70,4 +73,13 @@ button.active {
 .button-container {
   display: flex;
   gap: 10px;
+}
+
+.flex {
+  display: flex;
+  gap: 5px;
+}
+
+.dim {
+  color: rgb(198, 198, 198);
 }

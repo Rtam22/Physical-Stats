@@ -43,8 +43,7 @@
 }
 
 .tool-tip:hover .information-display,
-.tool-tip:focus-within .information-display,
-.tool-tip.open .information-display {
+.tool-tip:focus-within .information-display {
   opacity: 1;
   pointer-events: auto;
 }
