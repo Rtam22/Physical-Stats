@@ -110,7 +110,7 @@ function MainPage() {
         <BackDrop onClose={handleCloseModal}>
           <Modal
             width="80%"
-            height="auto"
+            height="90vh"
             type="middle"
             onClose={handleCloseModal}
           >

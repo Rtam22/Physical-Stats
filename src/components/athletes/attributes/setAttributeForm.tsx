@@ -92,15 +92,21 @@ function SetAttributeForm({ athlete, handleSubmit }: SetAttributeFormProps) {
           </section>
           <section>
             <label htmlFor="comment">Comment</label>
-            <textarea
-              className="comment"
-              id="comment"
-              value={submission.comment}
-              onChange={(e) =>
-                setSubmission({ ...submission, comment: e.target.value })
-              }
-              placeholder="Leave your thoughts and opinion here"
-            />
+            <span style={{ width: "100%" }}>
+              <textarea
+                maxLength={200}
+                className="comment"
+                id="comment"
+                value={submission.comment}
+                onChange={(e) =>
+                  setSubmission({ ...submission, comment: e.target.value })
+                }
+                placeholder="Leave your thoughts and opinion here"
+              />
+              <p style={{ textAlign: "right" }}>
+                {submission.comment?.split("").length}/200
+              </p>
+            </span>
           </section>
           <section>
             <label htmlFor="ranking">Ranking</label>

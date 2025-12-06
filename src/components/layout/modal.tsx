@@ -5,7 +5,7 @@ type ModalProps = {
   children?: React.ReactNode;
   width?: string;
   height?: string;
-  onClose: () => void;
+  onClose?: () => void;
 };
 
 function Modal({ type, children, width, height, onClose }: ModalProps) {
@@ -15,9 +15,12 @@ function Modal({ type, children, width, height, onClose }: ModalProps) {
       style={{ width, height }}
       onClick={(e) => e.stopPropagation()}
     >
-      <div className="close-container">
-        <button onClick={onClose}>X</button>
-      </div>
+      {onClose && (
+        <div className="close-container">
+          <button onClick={onClose}>X</button>
+        </div>
+      )}
+
       <div className="modal-content">{children}</div>
     </div>
   );

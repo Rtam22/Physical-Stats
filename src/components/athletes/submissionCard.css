@@ -9,6 +9,10 @@
   gap: 15px;
 }
 
+.submission-card .attribute-container {
+  width: 50%;
+}
+
 .submission-card .container-top {
   display: flex;
 }
@@ -26,14 +30,27 @@
   text-align: left;
 }
 
+.user-container {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
 .submission-card .comment {
-  border: 1px solid rgb(195, 195, 195);
+  border: 1px solid rgb(90, 89, 89);
   padding: 10px;
   border-radius: 5px;
   color: var(--secondary-color);
   margin-top: 5px;
+  height: 90%;
 }
 
-.submission-card .comment-container {
+.submission-card .comment.grayed {
+  color: rgb(193, 193, 193);
+}
+
+.submission-card .information-container {
+  display: flex;
+  flex-direction: column;
   width: 50%;
 }

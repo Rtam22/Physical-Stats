@@ -58,6 +58,7 @@ button {
   font: inherit;
   color: inherit;
   cursor: pointer;
+  text-align: center;
 }
 
 button:hover {
@@ -82,4 +83,23 @@ button.active {
 
 .dim {
   color: rgb(198, 198, 198);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2c2c2c;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #666;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #999;
 }

@@ -698,7 +698,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 6.5,
     },
     ranking: "A",
-    comment: "Really solid conditioning, could work on raw strength.",
+    comment:
+      "Really solid conditioning and speed for her size. She doesn’t overpower anyone in pure strength events, but she rarely falls apart when the workout drags on. With a bit more focus on heavy barbell work and positional strength, she could close the gap on the stronger athletes while keeping her engine.",
   },
   {
     athleteId: "alexandra-milne",
@@ -715,7 +716,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 7,
     },
     ranking: "A",
-    comment: "Great engine, just needs more explosive power.",
+    comment:
+      "Great engine, just needs more pop on the heavy and explosive stuff. You can tell she’s comfortable when things are cyclical and repeatable, but less so when it’s max effort or big power output.",
   },
   {
     athleteId: "alexandra-milne",
@@ -732,7 +734,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 7,
     },
     ranking: "B",
-    comment: "Consistent all-rounder with good work capacity.",
+    comment:
+      "Very balanced profile with above-average numbers across the board. She paces well, rarely looks rushed, and seems to understand how to manage her effort over a full event. If she sharpens her top-end strength a bit more, she could easily move into consistent A or even S-tier territory.",
   },
 
   // --- Igedz Executioner ---
@@ -751,7 +754,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 5.5,
     },
     ranking: "B",
-    comment: "Crazy grit. Gas tank could be an issue in long events.",
+    comment:
+      "Ridiculously strong and explosive, especially in short, violent efforts. Any task that comes down to raw power or a heavy static hold is basically made for him. But once the event gets long or requires a lot of quick problem solving, you can see him slow down mentally and physically. A bit more conditioning and practice with unusual movement patterns would make him terrifying.",
   },
   {
     athleteId: "igedz-executioner",
@@ -768,7 +772,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 6,
     },
     ranking: "B",
-    comment: "Explosive and hits hard, struggles adapting on new tasks.",
+    comment:
+      "Explosive and hits hard, but the gas tank clearly isn’t his biggest strength. He’s the type who can dominate the opening phase of a challenge, then start to fade if the pace doesn’t let up.",
   },
   {
     athleteId: "igedz-executioner",
@@ -785,7 +790,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 6.5,
     },
     ranking: "C",
-    comment: "Monster strength, but cardio will hold him back.",
+    comment:
+      "Monster strength with legit knockout-level explosiveness. In one-on-one or short-burst events he looks almost unbeatable. The main limiter is that he still moves like a power athlete trying to survive endurance work rather than someone trained for it. If he ever dials in proper pacing and better breathing mechanics, his results would jump immediately.",
   },
 
   // --- Robert Whittaker ---
@@ -804,7 +810,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 8.5,
     },
     ranking: "S",
-    comment: "Elite mindset, mixes power and cardio perfectly.",
+    comment:
+      "Elite mindset and championship-level grit. You can see years of high-level fight experience in how calm he stays even when he’s behind. Strong, fast, and with great cardio, but the real weapon is his ability to adjust mid-event and choose smarter lines than his opponents.",
   },
   {
     athleteId: "robert-whittaker",
@@ -822,7 +829,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     },
     mvp: true,
     ranking: "S",
-    comment: "Champ-level grit, no real weaknesses here.",
+    comment:
+      "Champ-level grit with no obvious holes. He might not be the single best in any one category numerically, but he’s near the top in almost everything that matters: power, pace, composure, and decision-making. And when it gets ugly, he tends to rise rather than fade.",
   },
   {
     athleteId: "robert-whittaker",
@@ -840,7 +848,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     },
     mvp: true,
     ranking: "B",
-    comment: "Always shows up in clutch moments.",
+    comment:
+      "Always dangerous in any kind of grindy, head-to-head challenge. He’s not the flashiest mover but he rarely breaks mentally. You can pretty much bank on him to keep pushing when others start to look for a way out.",
   },
 
   // --- Kim Dong-hyun ---
@@ -859,24 +868,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 8,
     },
     ranking: "B",
-    comment: "Very technical and adaptable in pressure situations.",
-  },
-  {
-    athleteId: "kim-dong-hyun",
-    id: "user-kimdh-1",
-    username: "stusssnGun",
-    favorite: false,
-    values: {
-      strength: 8,
-      explosiveness: 6.5,
-      speed: 8,
-      endurance: 6.5,
-      cardio: 6.5,
-      grit: 7.5,
-      adaptability: 8,
-    },
-    ranking: "B",
-    comment: "Very technical and adaptable in pressure situations.",
+    comment:
+      "Very technical and composed, you can see the veteran MMA experience. He’s strong enough to hang with bigger athletes and smart enough to find efficient ways to move, especially in close-contact or grappling-style tasks.",
   },
   {
     athleteId: "kim-dong-hyun",
@@ -894,7 +887,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     },
     ranking: "B",
     mvp: true,
-    comment: "Tough competitor, just needs sharper explosiveness.",
+    comment:
+      "Feels like a classic veteran competitor: good fundamentals, solid base, and not easily rattled. He may not have the same pop as younger athletes, but his anticipation and positioning help close that gap a lot.",
   },
   {
     athleteId: "kim-dong-hyun",
@@ -911,7 +905,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 8,
     },
     ranking: "B",
-    comment: "Strong veteran presence, good balance overall.",
+    comment:
+      "Strong veteran presence with a good mix of strength and fight IQ. Not the best gas tank in the roster, but he usually makes smart choices and doesn’t waste effort, which keeps him competitive deep into events.",
   },
 
   // --- Kim Hae-jong (Amotti) ---
@@ -931,7 +926,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     },
     ranking: "B",
     mvp: true,
-    comment: "Great programming background, recovers fast between efforts.",
+    comment:
+      "You can tell there’s a CrossFit engine behind his numbers. Great mix of power, conditioning, and movement efficiency. He recovers quickly between efforts and knows how to pace himself instead of sprinting blindly into the red.",
   },
   {
     athleteId: "kim-hae-jong",
@@ -949,7 +945,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     },
     ranking: "S",
     mvp: true,
-    comment: "Well-rounded engine, real threat in endurance events.",
+    comment:
+      "Moves like someone who’s done a lot of structured programming: good positions, smart pacing, and very controlled breathing. He may not lead every event, but he’s always in the mix when it comes down to overall performance.",
   },
   {
     athleteId: "kim-hae-jong",
@@ -966,7 +963,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 8,
     },
     ranking: "A",
-    comment: "Explosive athlete, looks built for sprint-style challenges.",
+    comment:
+      "Explosive, conditioned, and very efficient technically. This is the type of athlete who can handle repeated high-intensity efforts without falling apart. A real threat in any multi-stage, multi-modality format where others start dropping off after a few rounds.",
   },
 
   // --- Yun Sung-bin ---
@@ -986,7 +984,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     },
     ranking: "B",
     mvp: true,
-    comment: "One of the most explosive in the field.",
+    comment:
+      "One of the most explosive athletes in the entire pool, and the cardio to back it up. He looks built for sled pushes, sprints, and any kind of all-out effort where power and speed matter. The only real question mark is how quickly he adjusts to totally unfamiliar movement tasks.",
   },
   {
     athleteId: "yun-sung-bin",
@@ -1004,13 +1003,14 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     },
     ranking: "B",
     mvp: true,
-    comment: "Elite power output, cardio surprisingly strong.",
+    comment:
+      "Elite power output with a solid engine behind it. He shines in tasks that reward acceleration and repeated sprints, and even in longer events he doesn’t fall off a cliff. A bit more practice with odd-object or awkward movement patterns would round him out nicely.",
   },
   {
     athleteId: "yun-sung-bin",
     id: "user-yun-3",
     username: "skeletonGold",
-    favorite: false,
+    favorite: true,
     values: {
       strength: 8,
       explosiveness: 9.5,
@@ -1022,7 +1022,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     },
     ranking: "B",
     mvp: true,
-    comment: "Explosiveness off the charts.",
+    comment:
+      "Explosiveness is off the charts and the cardio is well above average. He’s the kind of athlete who can repeatedly hit high power outputs without completely crashing. If he improves his adaptability and comfort with non-linear challenges, he could easily edge toward S-tier.",
   },
 
   // --- Jang Eun-sil ---
@@ -1042,7 +1043,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     },
     ranking: "B",
     mvp: true,
-    comment: "Incredible grit, wrestling background shows in every event.",
+    comment:
+      "Her wrestling and ssireum background shows up in every physical exchange. She has great hip strength, control in close quarters, and a very clear refusal to quit. Even when she’s out-sized, she finds a way to stay dangerous in grappling-style tasks.",
   },
   {
     athleteId: "jang-eun-sil",
@@ -1059,7 +1061,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 7.5,
     },
     ranking: "B",
-    comment: "Very tough mentally, could improve explosiveness.",
+    comment:
+      "Very tough mentally, you can tell she’s used to grinding through hard training. She doesn’t have the top-end explosiveness of some other athletes, but makes up for it with technique and stubbornness.",
   },
   {
     athleteId: "jang-eun-sil",
@@ -1076,7 +1079,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 8,
     },
     ranking: "B",
-    comment: "Elite grip and strength, scary in head-to-head events.",
+    comment:
+      "Elite grip and strength with huge grit on top of it. In any challenge where you have to hold, drag, or wrestle for position, she’s a nightmare opponent. She might not be the fastest over long distances, but in contested space she almost always looks in control.",
   },
 
   // --- Choi Seung-yeon ---
@@ -1095,7 +1099,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 7,
     },
     ranking: "B",
-    comment: "Super smooth pacing, efficient movement patterns.",
+    comment:
+      "Super smooth pacing and efficient movement patterns. She looks like someone who has done a lot of metcons and knows exactly how to avoid redlining too early. Very dangerous in workouts with lots of transitions and mixed movements.",
   },
   {
     athleteId: "choi-seung-yeon",
@@ -1112,7 +1117,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 6.5,
     },
     ranking: "B",
-    comment: "Very consistent, nothing flashy but no weakness.",
+    comment:
+      "Very consistent, rarely makes big mistakes. She may not have a singular standout stat, but there’s also no glaring weakness. That kind of reliability is huge in multi-event formats where bad performances are heavily punished.",
   },
   {
     athleteId: "choi-seung-yeon",
@@ -1130,7 +1136,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     },
     ranking: "B",
     mvp: true,
-    comment: "Insane cardio, thrives in long grinders.",
+    comment:
+      "Insane cardio and work capacity. She shines in high-rep, long-duration grinders where other competitors start to break down mentally and physically. Great at maintaining form under fatigue, which keeps her efficient when everyone else is falling apart.",
   },
 
   // --- Kim Min-jae ---
@@ -1149,7 +1156,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 7,
     },
     ranking: "B",
-    comment: "Strong base and good leverage in physical contests.",
+    comment:
+      "Strong base, heavy hands, and a ton of lower-body power from ssireum. He looks incredibly comfortable any time the challenge becomes a pushing, pulling, or grappling match. Cardio is good enough, but not his superpower.",
   },
   {
     athleteId: "kim-min-jae",
@@ -1166,7 +1174,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 6.5,
     },
     ranking: "B",
-    comment: "Very durable, could boost cardio capacity.",
+    comment:
+      "Very durable and hard to move. He may slow down as the event goes on, but he doesn’t mentally check out. Would really benefit from some dedicated aerobic work to match his strength with a deeper engine.",
   },
   {
     athleteId: "kim-min-jae",
@@ -1184,7 +1193,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     },
     ranking: "B",
     mvp: true,
-    comment: "Legit powerhouse, anchors well in physical challenges.",
+    comment:
+      "Legit powerhouse with great grip and balance. He’s at his best in head-to-head, strength-oriented tasks where leverage and positioning matter. If he pushed his cardio just a little higher, he’d be an absolute menace in every phase.",
   },
 
   // --- Superbon Singha Mawynn ---
@@ -1204,7 +1214,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     },
     ranking: "B",
     mvp: true,
-    comment: "Explosive striking power translates well to tasks.",
+    comment:
+      "Explosive striking power translates surprisingly well into power-based tasks. He moves with that relaxed, efficient style you see in elite strikers, which helps him conserve energy even when he’s working hard. Could stand to improve a bit in more chaotic, non-linear challenges where technique doesn’t look like traditional fight movement.",
   },
   {
     athleteId: "superbon-singha-mawynn",
@@ -1222,7 +1233,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     },
     ranking: "B",
     mvp: true,
-    comment: "Fast and accurate, good in bursts.",
+    comment:
+      "Fast, accurate, and clearly used to high-pressure situations. His explosiveness gives him a serious edge any time the challenge rewards quick bursts rather than long slogs. A bit more exposure to odd-object strength would make him even more complete.",
   },
   {
     athleteId: "superbon-singha-mawynn",
@@ -1240,7 +1252,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     },
     ranking: "B",
     mvp: true,
-    comment: "Excellent balance of power and stamina.",
+    comment:
+      "Excellent balance of power and stamina. You can see that fight conditioning base: he’s comfortable pushing hard, backing off slightly, then surging again. Might not be the best pure strongman type, but for mixed challenges he’s consistently dangerous.",
   },
 
   // --- Sunny Kerdkao Wechokittikorn ---
@@ -1259,7 +1272,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 6.5,
     },
     ranking: "B",
-    comment: "Very tough competitor, reliable under pressure.",
+    comment:
+      "Very tough competitor with that classic rugby-style physicality. He might not top the charts on any single metric, but he’s solid across everything and clearly comfortable with contact and collision.",
   },
   {
     athleteId: "sunny-kerdkao",
@@ -1276,7 +1290,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 6,
     },
     ranking: "B",
-    comment: "Solid speed, best in mid-duration challenges.",
+    comment:
+      "Solid speed and effort, especially in mid-duration challenges where sprinting the whole time isn’t an option. Feels like the kind of athlete who will always give you a dependable performance even if he doesn’t win the event.",
   },
   {
     athleteId: "sunny-kerdkao",
@@ -1293,6 +1308,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       adaptability: 7,
     },
     ranking: "B",
-    comment: "Scrappy and physical, won’t quit easily.",
+    comment:
+      "Scrappy, physical, and clearly used to high-contact, high-fatigue scenarios. He doesn’t back down easily and seems to get more competitive the more tired everyone else gets. Great fit for grindy, team-based or attrition-style events.",
   },
 ];

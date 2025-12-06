@@ -17,8 +17,11 @@
 }
 
 .set-attribute-form .image-container {
-  width: 100%;
+  width: 90%;
   height: 90%;
+  max-height: 520px;
+  display: flex;
+  justify-content: center;
 }
 
 .set-attribute-form .attribute-form {
@@ -28,7 +31,7 @@
 
 .set-attribute-form textarea {
   height: 130px;
-  width: 63%;
+  width: 100%;
   padding: 5px;
 }
 
@@ -46,21 +49,23 @@
   width: 100%;
   max-width: 550px;
   height: auto;
-  padding: 50px 30px 30px 30px;
+  padding: 30px 30px 30px 30px;
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 15px;
 }
 
 .set-attribute-form .profile-container p {
   font-size: 24px;
   margin-bottom: 5px;
+  text-align: center;
+  width: 90%;
 }
 
 .set-attribute-form section {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 12px;
 }
 
 .set-attribute-form .input-container,
@@ -68,6 +73,7 @@
   width: 100%;
   display: flex;
   gap: 15px;
+  justify-content: space-between;
 }
 
 .set-attribute-form label {
@@ -93,7 +99,7 @@
 
 .set-attribute-form input[type="range"] {
   height: 5px;
-  width: 80%;
+  width: 90%;
 }
 
 .set-attribute-form input[type="checkbox"] {
@@ -131,8 +137,18 @@
 }
 
 @media (max-width: 850px) {
+  .set-attribute-form .profile-container p {
+    width: 100%;
+  }
+  .set-attribute-form .image-container {
+    width: 100%;
+  }
+
   .set-attribute-form .mvp-container {
     left: 40px;
+  }
+  .set-attribute-form .profile-container img {
+    width: 100%;
   }
   .set-attribute-form {
     align-items: center;
