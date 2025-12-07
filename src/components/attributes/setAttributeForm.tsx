@@ -3,12 +3,12 @@ import type {
   AthleteDataWithAttributes,
   AttributeSubmission,
   RankKey,
-} from "../../../types/athleteType";
+} from "../../types/athleteType";
 import "./setAttributeForm.css";
-import { initialFormAttributes } from "../../../data/athleteData";
-import { capitalize } from "../../../utils/textUtils";
-import ToolTip from "../../ui/toolTip";
-import { attributeKey, ranksKey } from "../../../data/attributeKey";
+import { initialFormAttributes } from "../../data/athleteData";
+import { capitalize } from "../../utils/textUtils";
+import ToolTip from "../ui/toolTip";
+import { attributeKey, ranksKey } from "../../data/attributeKey";
 
 type SetAttributeFormProps = {
   athlete: AthleteDataWithAttributes;
@@ -103,7 +103,7 @@ function SetAttributeForm({ athlete, handleSubmit }: SetAttributeFormProps) {
                 }
                 placeholder="Leave your thoughts and opinion here"
               />
-              <p style={{ textAlign: "right" }}>
+              <p style={{ textAlign: "right", color: "" }}>
                 {submission.comment?.split("").length}/200
               </p>
             </span>

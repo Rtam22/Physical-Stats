@@ -1,5 +1,5 @@
 import type { AttributeSubmission } from "../../types/athleteType";
-import AttributeBar from "./attributes/attributeBar";
+import AttributeBar from "../attributes/attributeBar";
 import "./submissionCard.css";
 
 type SubmissionCardProps = {

@@ -1,15 +1,13 @@
-import { useMemo, useState } from "react";
-import Card from "../components/athletes/card";
-import Grid from "../components/layout/grid";
+import { useState } from "react";
 import "./mainPage.css";
 import type { AthleteIdKey, AttributeSubmission } from "../types/athleteType";
 import Modal from "../components/layout/modal";
 import type { ModalState, ModalType } from "../types/modalTypes";
 import BackDrop from "../components/layout/backDrop";
 import Filters from "../components/filters/filters";
-import { applyFilters, filterAthletesBySubmitted } from "../utils/filterUtils";
+import { filterAthletesBySubmitted } from "../utils/filterUtils";
 import type { FilterValue } from "../types/filterTypes";
-import SetAttributeForm from "../components/athletes/attributes/setAttributeForm";
+import SetAttributeForm from "../components/attributes/setAttributeForm";
 import TierListGrid from "../components/athletes/tierListGrid";
 import AthleteView from "../components/athletes/athleteView";
 import PaginationList from "../components/layout/paginationList";
@@ -17,41 +15,25 @@ import { useAthletes } from "../hooks/useAthletes";
 import { useSubmissions } from "../hooks/useSubmissions";
 import type { TabID, TabsConfig } from "../components/layout/tabs";
 import Tabs from "../components/layout/tabs";
-import SubmissionCard from "../components/athletes/submissionCard";
+import useAthleteFilters from "../hooks/useAthleteFilters";
+import AthleteGridSection from "../components/athletes/athleteGridSection";
+import SubmissionCard from "../components/submission/submissionCard";
 
 function MainPage() {
   const [activeTab, setActiveTab] = useState<TabID>("athletes");
+  const [modal, setModal] = useState<ModalState | null>(null);
   const { submissions, submittedVote, handleSubmitSubmissions } =
     useSubmissions();
-  const { athletes } = useAthletes({
-    attributeSubmissions: submissions,
-  });
-  const [modal, setModal] = useState<ModalState | null>(null);
   const [filters, setFilters] = useState<FilterValue>({
     sort: "none",
     team: "none",
     mvp: false,
     search: "",
   });
-
-  const filteredAthletes = useMemo(() => {
-    return applyFilters(athletes, filters);
-  }, [filters, athletes]);
-
-  const gridItems = useMemo(() => {
-    return filteredAthletes.map((athlete) => (
-      <Card
-        id={athlete.info.id}
-        athlete={athlete}
-        attributes={athlete.attributes}
-        favorites={athlete.favorite}
-        mvp={athlete.mvp}
-        total={athlete.total}
-        handleClick={handleSetModal}
-        hasVoted={submittedVote.includes(athlete.info.id as AthleteIdKey)}
-      />
-    ));
-  }, [filteredAthletes]);
+  const { athletes } = useAthletes({
+    attributeSubmissions: submissions,
+  });
+  const { filteredAthletes } = useAthleteFilters({ filters, athletes });
 
   function handleSubmitVote(submission: AttributeSubmission) {
     handleSubmitSubmissions(submission);
@@ -82,11 +64,10 @@ function MainPage() {
               setFilters((prev) => ({ ...prev, ...newFilters }))
             }
           />
-          <Grid
-            cellMinWidth="250px"
-            cellMaxWidth="460px"
-            width="80%"
-            items={gridItems}
+          <AthleteGridSection
+            athletes={filteredAthletes}
+            submittedVote={submittedVote}
+            onCardClick={handleSetModal}
           />
         </>
       ),

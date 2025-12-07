@@ -3,8 +3,8 @@ import type {
   AthleteIdKey,
   AttributeValues,
 } from "../../types/athleteType";
-import AttributeBar from "./attributes/attributeBar";
-import "./card.css";
+import AttributeBar from "../attributes/attributeBar";
+import "./athleteCard.css";
 import type { ModalType } from "../../types/modalTypes";
 type CardProps = {
   id: AthleteIdKey;
@@ -17,7 +17,7 @@ type CardProps = {
   hasVoted: boolean;
 };
 
-function Card({
+function AthleteCard({
   athlete,
   id,
   attributes,
@@ -72,4 +72,4 @@ function Card({
     </div>
   );
 }
-export default Card;
+export default AthleteCard;
