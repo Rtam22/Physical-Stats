@@ -10,14 +10,13 @@ import type { FilterValue } from "../types/filterTypes";
 import SetAttributeForm from "../components/attributes/setAttributeForm";
 import TierListGrid from "../components/athletes/tierListGrid";
 import AthleteView from "../components/athletes/athleteView";
-import PaginationList from "../components/layout/paginationList";
 import { useAthletes } from "../hooks/useAthletes";
 import { useSubmissions } from "../hooks/useSubmissions";
 import type { TabID, TabsConfig } from "../components/layout/tabs";
 import Tabs from "../components/layout/tabs";
 import useAthleteFilters from "../hooks/useAthleteFilters";
 import AthleteGridSection from "../components/athletes/athleteGridSection";
-import SubmissionCard from "../components/submission/submissionCard";
+import NavigationTabs from "../components/navigation/navigationTabs";
 
 function MainPage() {
   const [activeTab, setActiveTab] = useState<TabID>("athletes");
@@ -103,41 +102,12 @@ function MainPage() {
             )}
 
             {modal.type === "athleteView" && (
-              <div className="container">
-                <AthleteView athlete={modal.athlete} />
-                <PaginationList
-                  items={[
-                    ...submissions
-                      .filter(
-                        (submission) =>
-                          submission.athleteId === modal.athlete.info.id
-                      )
-                      .map((submission) => {
-                        return <SubmissionCard submission={submission} />;
-                      }),
-                  ]}
-                  title="Submission History"
-                  itemsAmountOnPage={3}
-                />
-              </div>
+              <AthleteView submissions={submissions} athlete={modal.athlete} />
             )}
           </Modal>
         </BackDrop>
       )}
-      <div className="button-container">
-        <button
-          onClick={() => setActiveTab("athletes")}
-          className={`${activeTab === "athletes" ? "active" : ""}`}
-        >
-          Athletes
-        </button>
-        <button
-          onClick={() => setActiveTab("tierList")}
-          className={`${activeTab === "tierList" ? "active" : ""}`}
-        >
-          TierList
-        </button>
-      </div>
+      <NavigationTabs active={activeTab} changeTab={(e) => setActiveTab(e)} />
       <Tabs activeTab={activeTab} tabs={tabs} />
     </div>
   );
