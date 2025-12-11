@@ -10,16 +10,35 @@
 .team-builder .button-container {
   padding: 0 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
+}
+
+.team-builder .button-container,
+.team-builder .search-container,
+.team-builder .selected-team-container {
+  margin-bottom: 10px;
 }
 
 .team-builder .button-container button:not(:disabled):hover {
   cursor: pointer;
-  text-decoration: underline;
 }
 
 .team-builder .button-container button:not(:disabled).main {
-  color: rgb(35, 243, 8);
+  border: transparent;
+  color: rgb(255, 255, 255);
+  background-color: rgb(65, 176, 104);
+}
+
+.team-builder .search-container {
+  width: 95%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.team-builder .button-container button:disabled {
+  border: transparent;
+  color: rgb(204, 204, 204);
+  background-color: rgb(112, 118, 114);
 }
 
 .team-builder .male-section,
@@ -48,7 +67,9 @@
   justify-content: center;
   align-items: center;
   gap: 30px;
-  padding: 10px 20px 20px 20px;
+  padding: 20px 20px 20px 20px;
+  border-radius: 5px;
+  border: 1px solid rgb(104, 104, 104);
 }
 
 .team-builder .athlete-container {
@@ -82,7 +103,9 @@
   gap: 20px;
   height: auto;
   justify-content: center;
-  padding: 20px;
+  padding: 35px 20px;
+  border: 1px solid rgb(104, 104, 104);
+  border-radius: 5px;
 }
 
 .team-builder .athlete-container img {

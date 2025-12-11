@@ -5,10 +5,13 @@ import useTeamBuilder from "../../hooks/useAthleteTeamBuilder";
 
 type AthleteTeamBuilderProps = {
   athletes: AthleteDataWithAttributes[];
-  setTeam: (athletes: AthleteDataWithAttributes[]) => void;
+  handleSetTeam: (athletes: AthleteDataWithAttributes[]) => void;
 };
 
-function AthleteTeamBuilder({ athletes, setTeam }: AthleteTeamBuilderProps) {
+function AthleteTeamBuilder({
+  athletes,
+  handleSetTeam,
+}: AthleteTeamBuilderProps) {
   const {
     availableAthletes,
     maleSelected,
@@ -23,7 +26,7 @@ function AthleteTeamBuilder({ athletes, setTeam }: AthleteTeamBuilderProps) {
   } = useTeamBuilder({ athletes });
 
   function handleCompleteTeam() {
-    setTeam(selectedAthletes);
+    handleSetTeam(selectedAthletes);
   }
 
   function generateSelectedCard(index: number, gender: "male" | "female") {
@@ -42,7 +45,12 @@ function AthleteTeamBuilder({ athletes, setTeam }: AthleteTeamBuilderProps) {
         layout
         transition={{ type: "spring", stiffness: 400, damping: 30 }}
       >
-        <img src={athlete.info.imgSm} alt={`${athlete.info.name}'s image`} />
+        <img
+          src={athlete.info.imgSm}
+          decoding="async"
+          loading="lazy"
+          alt={`${athlete.info.name}'s image`}
+        />
       </motion.button>
     );
   }
@@ -52,9 +60,8 @@ function AthleteTeamBuilder({ athletes, setTeam }: AthleteTeamBuilderProps) {
       <div>
         {" "}
         <div className="button-container">
-          <button className="button-plain">Skip</button>
           <button
-            className="button-plain main"
+            className="button-focus main"
             disabled={!(teamCounter.male === 4 && teamCounter.female === 2)}
             onClick={handleCompleteTeam}
           >
@@ -72,7 +79,7 @@ function AthleteTeamBuilder({ athletes, setTeam }: AthleteTeamBuilderProps) {
               return generateSelectedCard(index, "female");
             })}
           </div>
-        </div>
+        </div>{" "}
       </div>
       <div className="search-container">
         <input

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { act, useEffect, useMemo, useState } from "react";
 import "./mainPage.css";
 import type {
   AthleteDataWithAttributes,
@@ -20,7 +20,7 @@ import Tabs from "../components/layout/tabs";
 import useAthleteFilters from "../hooks/useAthleteFilters";
 import AthleteGridSection from "../components/athletes/athleteGridSection";
 import NavigationTabs from "../components/navigation/navigationTabs";
-import type { TabID, TabsConfig } from "../types/tabTypes";
+import { allTabs, type TabID, type TabsConfig } from "../types/tabTypes";
 import AthleteTeamBuilder from "../components/athletes/athleteTeamBuilder";
 
 function MainPage() {
@@ -38,9 +38,26 @@ function MainPage() {
     attributeSubmissions: submissions,
   });
   const { filteredAthletes } = useAthleteFilters({ filters, athletes });
-  const [selectedTeam, setSelectedTeam] = useState<AthleteDataWithAttributes[]>(
-    []
-  );
+  const [username, setUsername] = useState<string>("");
+  const [selectedTeam, setSelectedTeam] = useState<
+    AthleteDataWithAttributes[] | null
+  >(null);
+
+  const filteredTabs: TabID[] = useMemo(() => {
+    return allTabs.filter((tab) => {
+      const notDoneTeamBuilder = tab === "teamBuilder" && selectedTeam !== null;
+      const hasDoneTeamBuilder = tab === "teams" && selectedTeam === null;
+      const isUsername = tab === "username";
+      if (notDoneTeamBuilder || hasDoneTeamBuilder || isUsername) {
+        return;
+      }
+      return tab;
+    });
+  }, [selectedTeam]);
+
+  useEffect(() => {
+    //if (!username) setActiveTab("username");
+  }, []);
 
   function handleSubmitVote(submission: AttributeSubmission) {
     handleSubmitSubmissions(submission);
@@ -60,14 +77,16 @@ function MainPage() {
     setModal(null);
   }
 
+  function handleSetTeam(athletes: AthleteDataWithAttributes[]) {
+    setActiveTab("teams");
+    setSelectedTeam(athletes);
+  }
+
   const tabs: TabsConfig[] = [
     {
       id: "teamBuilder",
       content: (
-        <AthleteTeamBuilder
-          athletes={athletes}
-          setTeam={(selected) => setSelectedTeam(selected)}
-        />
+        <AthleteTeamBuilder athletes={athletes} handleSetTeam={handleSetTeam} />
       ),
     },
     {
@@ -124,7 +143,14 @@ function MainPage() {
           </Modal>
         </BackDrop>
       )}
-      <NavigationTabs active={activeTab} changeTab={(e) => setActiveTab(e)} />
+      {activeTab !== "username" && (
+        <NavigationTabs
+          active={activeTab}
+          changeTab={(e) => setActiveTab(e)}
+          allTabs={filteredTabs}
+        />
+      )}
+
       <Tabs activeTab={activeTab} tabs={tabs} />
     </div>
   );
