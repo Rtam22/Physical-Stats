@@ -1,12 +1,5 @@
-import type { ReactNode } from "react";
 import "./tabs.css";
-
-export type TabID = "athletes" | "tierList";
-
-export type TabsConfig = {
-  id: TabID;
-  content: ReactNode;
-};
+import type { TabID, TabsConfig } from "../../types/tabTypes";
 
 type TabsProps = {
   activeTab: TabID;

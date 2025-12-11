@@ -1,0 +1,92 @@
+.team-builder {
+  width: 90%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.team-builder .button-container {
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.team-builder .button-container button:not(:disabled):hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.team-builder .button-container button:not(:disabled).main {
+  color: rgb(35, 243, 8);
+}
+
+.team-builder .male-section,
+.team-builder .female-section {
+  display: flex;
+  gap: 10px;
+}
+.team-builder .male-section {
+  width: auto;
+  justify-content: flex-end;
+}
+.team-builder .female-section {
+  justify-content: flex-start;
+  width: 50%;
+}
+
+.team-builder button:hover {
+  background-color: transparent;
+  cursor: default;
+}
+
+.team-builder .selected-team-container {
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 10px 20px 20px 20px;
+}
+
+.team-builder .athlete-container {
+  width: 95px;
+  height: 130px;
+  border: 1px solid rgb(192, 192, 192);
+  border-radius: 5px;
+  overflow: hidden;
+  padding: 0;
+}
+
+.team-builder .athlete-container:disabled img {
+  cursor: default;
+  opacity: 0.3;
+}
+
+.team-builder .athlete-container:disabled {
+  border: 1px solid rgb(71, 71, 71);
+  pointer-events: none;
+}
+
+.team-builder .athlete-container:not(:disabled) :hover {
+  cursor: pointer;
+  border: 1px solid rgb(77, 189, 67);
+}
+
+.team-builder .athletes-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 20px;
+  height: auto;
+  justify-content: center;
+  padding: 20px;
+}
+
+.team-builder .athlete-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

@@ -1,6 +1,10 @@
 import { useState } from "react";
 import "./mainPage.css";
-import type { AthleteIdKey, AttributeSubmission } from "../types/athleteType";
+import type {
+  AthleteDataWithAttributes,
+  AthleteIdKey,
+  AttributeSubmission,
+} from "../types/athleteType";
 import Modal from "../components/layout/modal";
 import type { ModalState, ModalType } from "../types/modalTypes";
 import BackDrop from "../components/layout/backDrop";
@@ -12,11 +16,12 @@ import TierListGrid from "../components/athletes/tierListGrid";
 import AthleteView from "../components/athletes/athleteView";
 import { useAthletes } from "../hooks/useAthletes";
 import { useSubmissions } from "../hooks/useSubmissions";
-import type { TabID, TabsConfig } from "../components/layout/tabs";
 import Tabs from "../components/layout/tabs";
 import useAthleteFilters from "../hooks/useAthleteFilters";
 import AthleteGridSection from "../components/athletes/athleteGridSection";
 import NavigationTabs from "../components/navigation/navigationTabs";
+import type { TabID, TabsConfig } from "../types/tabTypes";
+import AthleteTeamBuilder from "../components/athletes/athleteTeamBuilder";
 
 function MainPage() {
   const [activeTab, setActiveTab] = useState<TabID>("athletes");
@@ -33,6 +38,9 @@ function MainPage() {
     attributeSubmissions: submissions,
   });
   const { filteredAthletes } = useAthleteFilters({ filters, athletes });
+  const [selectedTeam, setSelectedTeam] = useState<AthleteDataWithAttributes[]>(
+    []
+  );
 
   function handleSubmitVote(submission: AttributeSubmission) {
     handleSubmitSubmissions(submission);
@@ -53,6 +61,15 @@ function MainPage() {
   }
 
   const tabs: TabsConfig[] = [
+    {
+      id: "teamBuilder",
+      content: (
+        <AthleteTeamBuilder
+          athletes={athletes}
+          setTeam={(selected) => setSelectedTeam(selected)}
+        />
+      ),
+    },
     {
       id: "athletes",
       content: (

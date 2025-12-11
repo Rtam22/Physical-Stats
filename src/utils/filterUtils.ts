@@ -4,6 +4,13 @@ import type {
 } from "../types/athleteType";
 import type { FilterValue, SortKey } from "../types/filterTypes";
 
+export const baseFilters: FilterValue = {
+  sort: "none",
+  team: "none",
+  mvp: false,
+  search: "",
+};
+
 function getValue(athlete: AthleteDataWithAttributes, key: SortKey) {
   if (key === "favorite" || key === "total") {
     return athlete[key] ? athlete[key] : 0;
@@ -28,13 +35,7 @@ function filterAthlete(
 
   const mvpResult = filters.mvp === false ? true : athlete.mvp ? true : false;
 
-  const searchResult =
-    filters.search === ""
-      ? true
-      : athlete.info.name
-          .toLowerCase()
-          .includes(filters.search.toLowerCase()) ||
-        athlete.info.team.toLowerCase().includes(filters.search.toLowerCase());
+  const searchResult = searchFilter(filters.search, athlete);
 
   return teamResult && mvpResult && searchResult;
 }
@@ -53,6 +54,16 @@ export function applyFilters(
   return sorted;
 }
 
+export function searchFilter(
+  searchTerm: string,
+  athlete: AthleteDataWithAttributes
+) {
+  return searchTerm === ""
+    ? true
+    : athlete.info.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        athlete.info.team.toLowerCase().includes(searchTerm.toLowerCase());
+}
+
 export function filterAthletesBySubmitted(
   submitted: AthleteIdKey[],
   athletes: AthleteDataWithAttributes[]
@@ -63,4 +74,12 @@ export function filterAthletesBySubmitted(
     if (athlete) filteredAthletes = [...filteredAthletes, athlete];
   }
   return filteredAthletes;
+}
+
+export function filterByMale(athletes: AthleteDataWithAttributes[]) {
+  return athletes.filter((athlete) => athlete.info.gender === "male");
+}
+
+export function filterByFemale(athletes: AthleteDataWithAttributes[]) {
+  return athletes.filter((athlete) => athlete.info.gender === "female");
 }

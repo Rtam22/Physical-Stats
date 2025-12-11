@@ -49,7 +49,7 @@ function AthleteCard({
       </div>
       <div className="athlete-card" id={id}>
         <div className="image-container">
-          <img src={athlete.info.img} alt="" />
+          <img src={athlete.info.imgSm} alt="" />
         </div>
         <div className="attribute-container">
           {hasAttributes && hasVoted ? (

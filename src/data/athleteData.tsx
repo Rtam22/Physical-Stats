@@ -52,6 +52,55 @@ import yoshioItoi from "../assets/athletes/yoshio-itoi.webp";
 import yunSungBin from "../assets/athletes/yun-sung-bin.webp";
 import yushinOkami from "../assets/athletes/yushin-okami.webp";
 
+import adiyasurenSm from "../assets/athletes/adiyasuren-sm.jpg";
+import alexandraMilneSm from "../assets/athletes/alexandra-milne-sm.jpg";
+import aliSofuogluSm from "../assets/athletes/ali-sofuoglu-sm.jpg";
+import amottiSm from "../assets/athletes/amotti-sm.jpg";
+import anilBerkBakiSm from "../assets/athletes/anil-berk-baki-sm.jpg";
+import anuchaYospanyaSm from "../assets/athletes/anucha-yospanya-sm.jpg";
+import choiSeungSm from "../assets/athletes/choi-seung-sm.jpg";
+import domTomatoSm from "../assets/athletes/dom-tomato-sm.jpg";
+import dulguunSm from "../assets/athletes/dulguun-sm.jpg";
+import eddieWilliamsSm from "../assets/athletes/eddie-williams-sm.jpg";
+import eloniVunakeceSm from "../assets/athletes/eloni-vunakece-sm.jpg";
+import enkhOrgilSm from "../assets/athletes/enkh-orgil-sm.jpg";
+import finaPhilippeSm from "../assets/athletes/fina-philippe-sm.jpg";
+import glennVictorSm from "../assets/athletes/glenn-victor-sm.jpg";
+import igedzExecutionerSm from "../assets/athletes/igedz-executioner-sm.jpg";
+import jamesRusameekaeSm from "../assets/athletes/james-rusameekae-sm.jpg";
+import jangEunSilSm from "../assets/athletes/jang-eun-sil-sm.jpg";
+import jarUrachaSm from "../assets/athletes/jar-uracha-sm.jpg";
+import jeremiahLakhwaniSm from "../assets/athletes/jeremiah-lakhwani-sm.jpg";
+import justinCoveneySm from "../assets/athletes/justin-coveney-sm.jpg";
+import kanaWatanabeSm from "../assets/athletes/kana-watanabe-sm.jpg";
+import katelinVanZylSm from "../assets/athletes/katelin-van-zyl-sm.jpg";
+import katsumiNakamuraSm from "../assets/athletes/katsumi-nakamura-sm.jpg";
+import khandsurenSm from "../assets/athletes/khandsuren-sm.jpg";
+import kimDongHyunSm from "../assets/athletes/kim-dong-hyun-sm.jpg";
+import kimMinJaeSm from "../assets/athletes/kim-min-jae-sm.jpg";
+import laraLorraineSm from "../assets/athletes/lara-lorraine-sm.jpg";
+import lfKhagvaOchirSm from "../assets/athletes/lfkhagva-ochir-sm.jpg";
+import mannyPacquiaoSm from "../assets/athletes/manny-pacquiao-sm.jpg";
+import marcusGideonSm from "../assets/athletes/marcus-gideon-sm.jpg";
+import mariaSelenaSm from "../assets/athletes/maria-selena-sm.jpg";
+import markMugenSm from "../assets/athletes/mark-mugen-sm.jpg";
+import nefiseKarataySm from "../assets/athletes/nefise-karatay-sm.jpg";
+import nonokaOzakiSm from "../assets/athletes/nonoka-ozaki-sm.jpg";
+import ogedayGiriskenSm from "../assets/athletes/ogeday-girisken-sm.jpg";
+import orkhonbayarSm from "../assets/athletes/orkhonbayar-sm.jpg";
+import playNuannareeSm from "../assets/athletes/play-nuannaree-sm.jpg";
+import rayJeffersonSm from "../assets/athletes/ray-jefferson-sm.jpg";
+import recepKaraSm from "../assets/athletes/recep-kara-sm.jpg";
+import robertWhittakerSm from "../assets/athletes/robert-whittaker-sm.jpg";
+import robynLaurenSm from "../assets/athletes/robyn-lauren-sm.jpg";
+import soichiHashimotoSm from "../assets/athletes/soichi-hashimoto-sm.jpg";
+import sunnyKerdkaoSm from "../assets/athletes/sunny-kerdkao-sm.jpg";
+import superbonSm from "../assets/athletes/superbon-sm.jpg";
+import yaseminAdarSm from "../assets/athletes/yasemin-adar-sm.jpg";
+import yoshioItoiSm from "../assets/athletes/yoshio-itoi-sm.jpg";
+import yunSungBinSm from "../assets/athletes/yun-sung-bin-sm.jpg";
+import yushinOkamiSm from "../assets/athletes/yushin-okami-sm.jpg";
+
 export const initialAttributes = {
   strength: 0,
   explosiveness: 0,
@@ -89,8 +138,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "kim-dong-hyun",
       img: kimDongHyun,
+      imgSm: kimDongHyunSm,
       name: "Kim Dong-hyun",
       age: 43,
+      gender: "male",
       height: "—",
       weight: "—",
       team: "South Korea",
@@ -101,8 +152,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "kim-hae-jong",
       img: amotti,
+      imgSm: amottiSm,
       name: "Kim Hae-jong (Amotti)",
       age: 32,
+      gender: "male",
       height: "—",
       weight: "—",
       team: "South Korea",
@@ -113,8 +166,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "yun-sung-bin",
       img: yunSungBin,
+      imgSm: yunSungBinSm,
       name: "Yun Sung-bin",
       age: 31,
+      gender: "male",
       height: "—",
       weight: "—",
       team: "South Korea",
@@ -125,8 +180,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "jang-eun-sil",
       img: jangEunSil,
+      imgSm: jangEunSilSm,
       name: "Jang Eun-sil",
       age: 34,
+      gender: "female",
       height: "—",
       weight: "—",
       team: "South Korea",
@@ -137,8 +194,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "choi-seung-yeon",
       img: choiSeung,
+      imgSm: choiSeungSm,
       name: "Choi Seung-yeon",
       age: 26,
+      gender: "female",
       height: "—",
       weight: "—",
       team: "South Korea",
@@ -149,8 +208,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "kim-min-jae",
       img: kimMinJae,
+      imgSm: kimMinJaeSm,
       name: "Kim Min-jae",
       age: 28,
+      gender: "male",
       height: "—",
       weight: "—",
       team: "South Korea",
@@ -162,8 +223,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "yushin-okami",
       img: yushinOkami,
+      imgSm: yushinOkamiSm,
       name: "Yushin Okami",
       age: 44,
+      gender: "male",
       height: "—",
       weight: "—",
       team: "Japan",
@@ -174,8 +237,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "kana-watanabe",
       img: kanaWatanabe,
+      imgSm: kanaWatanabeSm,
       name: "Kana Watanabe",
       age: 37,
+      gender: "female",
       height: "—",
       weight: "—",
       team: "Japan",
@@ -186,8 +251,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "nonoka-ozaki",
       img: nonokaOzaki,
+      imgSm: nonokaOzakiSm,
       name: "Nonoka Ozaki",
       age: 22,
+      gender: "female",
       height: "—",
       weight: "—",
       team: "Japan",
@@ -198,8 +265,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "soichi-hashimoto",
       img: soichiHashimoto,
+      imgSm: soichiHashimotoSm,
       name: "Soichi Hashimoto",
       age: 34,
+      gender: "male",
       height: "—",
       weight: "—",
       team: "Japan",
@@ -210,8 +279,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "katsumi-nakamura",
       img: katsumiNakamura,
+      imgSm: katsumiNakamuraSm,
       name: "Katsumi Nakamura",
       age: 31,
+      gender: "male",
       height: "—",
       weight: "—",
       team: "Japan",
@@ -222,8 +293,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "yoshio-itoi",
       img: yoshioItoi,
+      imgSm: yoshioItoiSm,
       name: "Yoshio Itoi",
       age: 44,
+      gender: "male",
       height: "—",
       weight: "—",
       team: "Japan",
@@ -237,8 +310,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "superbon-singha-mawynn",
       img: superbon,
+      imgSm: superbonSm,
       name: "Superbon Singha Mawynn",
       age: 35,
+      gender: "male",
       height: "—",
       weight: "—",
       team: "Thailand",
@@ -249,8 +324,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "james-rusameekae",
       img: jamesRusameekae,
+      imgSm: jamesRusameekaeSm,
       name: "James Rusameekae",
       age: 39,
+      gender: "male",
       height: "—",
       weight: "—",
       team: "Thailand",
@@ -261,8 +338,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "sunny-kerdkao",
       img: sunnyKerdkao,
+      imgSm: sunnyKerdkaoSm,
       name: "Sunny Kerdkao Wechokittikorn",
       age: 24,
+      gender: "male",
       height: "—",
       weight: "—",
       team: "Thailand",
@@ -273,8 +352,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "jar-uracha",
       img: jarUracha,
+      imgSm: jarUrachaSm,
       name: "Jar Uracha Teerawanitsan",
       age: 32,
+      gender: "female",
       height: "—",
       weight: "—",
       team: "Thailand",
@@ -285,8 +366,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "anucha-yospanya",
       img: anuchaYospanya,
+      imgSm: anuchaYospanyaSm,
       name: "Anucha Yospanya",
       age: 31,
+      gender: "male",
       height: "—",
       weight: "—",
       team: "Thailand",
@@ -297,8 +380,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "ploy-nuannaree",
       img: playNuannaree,
+      imgSm: playNuannareeSm,
       name: "Ploy Nuannaree",
       age: 33,
+      gender: "female",
       height: "—",
       weight: "—",
       team: "Thailand",
@@ -311,8 +396,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "orkhonbayar",
       img: orkhonbayar,
+      imgSm: orkhonbayarSm,
       name: "Orkhonbayar",
       age: 27,
+      gender: "male",
       height: "—",
       weight: "—",
       team: "Mongolia",
@@ -323,8 +410,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "adiyasuren",
       img: adiyasuren,
+      imgSm: adiyasurenSm,
       name: "Adiyasuren",
       age: 27,
+      gender: "female",
       height: "—",
       weight: "—",
       team: "Mongolia",
@@ -335,8 +424,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "dulguun",
       img: dulguun,
+      imgSm: dulguunSm,
       name: "Dulguun",
       age: 29,
+      gender: "male",
       height: "—",
       weight: "—",
       team: "Mongolia",
@@ -347,8 +438,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "enkh-orgil",
       img: enkhOrgil,
+      imgSm: enkhOrgilSm,
       name: "Enkh-Orgil",
       age: 25,
+      gender: "male",
       height: "—",
       weight: "—",
       team: "Mongolia",
@@ -359,8 +452,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "khandsuren",
       img: khandsuren,
+      imgSm: khandsurenSm,
       name: "Khandsuren",
       age: 28,
+      gender: "female",
       height: "—",
       weight: "—",
       team: "Mongolia",
@@ -371,8 +466,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "lfkhagva-ochir",
       img: lfKhagvaOchir,
+      imgSm: lfKhagvaOchirSm,
       name: "L.F. Khagva-Ochir",
       age: 35,
+      gender: "male",
       height: "—",
       weight: "—",
       team: "Mongolia",
@@ -385,8 +482,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "recep-kara",
       img: recepKara,
+      imgSm: recepKaraSm,
       name: "Recep Kara",
       age: 44,
+      gender: "male",
       height: "—",
       weight: "—",
       team: "Turkey",
@@ -397,8 +496,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "ali-sofuoglu",
       img: aliSofuoglu,
+      imgSm: aliSofuogluSm,
       name: "Ali Sofuoğlu",
       age: 30,
+      gender: "male",
       height: "—",
       weight: "—",
       team: "Turkey",
@@ -409,8 +510,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "anil-berk-baki",
       img: anilBerkBaki,
+      imgSm: anilBerkBakiSm,
       name: "Anıl Berk Baki",
       age: 34,
+      gender: "male",
       height: "—",
       weight: "—",
       team: "Turkey",
@@ -421,8 +524,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "nefise-karatay",
       img: nefiseKaratay,
+      imgSm: nefiseKarataySm,
       name: "Nefise Karatay",
       age: 25,
+      gender: "female",
       height: "—",
       weight: "—",
       team: "Turkey",
@@ -433,8 +538,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "ogeday-girisken",
       img: ogedayGirisken,
+      imgSm: ogedayGiriskenSm,
       name: "Ogeday Girişken",
       age: 33,
+      gender: "male",
       height: "—",
       weight: "—",
       team: "Turkey",
@@ -446,8 +553,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "yasemin-adar",
       img: yaseminAdar,
+      imgSm: yaseminAdarSm,
       name: "Yasemin Adar",
       age: 34,
+      gender: "female",
       height: "—",
       weight: "—",
       team: "Turkey",
@@ -461,8 +570,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "robert-whittaker",
       img: robertWhittaker,
+      imgSm: robertWhittakerSm,
       name: "Robert Whittaker",
       age: 34,
+      gender: "male",
       height: "—",
       weight: "—",
       team: "Australia",
@@ -473,8 +584,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "alexandra-milne",
       img: alexandraMilne,
+      imgSm: alexandraMilneSm,
       name: "Alexandra Milne",
       age: 0,
+      gender: "female",
       height: "—",
       weight: "—",
       team: "Australia",
@@ -485,8 +598,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "dom-tomato",
       img: domTomato,
+      imgSm: domTomatoSm,
       name: "Dom Tomato",
       age: 0,
+      gender: "male",
       height: "—",
       weight: "—",
       team: "Australia",
@@ -497,8 +612,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "eddie-williams",
       img: eddieWilliams,
+      imgSm: eddieWilliamsSm,
       name: "Eddie Williams",
       age: 35,
+      gender: "male",
       height: "—",
       weight: "—",
       team: "Australia",
@@ -509,8 +626,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "eloni-vunakece",
       img: eloniVunakece,
+      imgSm: eloniVunakeceSm,
       name: "Eloni Vunakece",
       age: 38,
+      gender: "male",
       height: "—",
       weight: "—",
       team: "Australia",
@@ -521,8 +640,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "katelin-van-zyl",
       img: katelinVanZyl,
+      imgSm: katelinVanZylSm,
       name: "Katelin Van Zyl",
       age: 0,
+      gender: "female",
       height: "—",
       weight: "—",
       team: "Australia",
@@ -536,8 +657,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "manny-pacquiao",
       img: mannyPacquiao,
+      imgSm: mannyPacquiaoSm,
       name: "Manny Pacquiao",
       age: 46,
+      gender: "male",
       height: "—",
       weight: "—",
       team: "Philippines",
@@ -548,8 +671,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "lara-lorraine",
       img: laraLorraine,
+      imgSm: laraLorraineSm,
       name: "Lara Lorraine",
       age: 0,
+      gender: "female",
       height: "—",
       weight: "—",
       team: "Philippines",
@@ -560,8 +685,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "mark-mugen",
       img: markMugen,
+      imgSm: markMugenSm,
       name: "Mark Mugen",
       age: 37,
+      gender: "male",
       height: "—",
       weight: "—",
       team: "Philippines",
@@ -572,8 +699,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "justin-coveney",
       img: justinCoveney,
+      imgSm: justinCoveneySm,
       name: "Justin Coveney",
       age: 0,
+      gender: "male",
       height: "—",
       weight: "—",
       team: "Philippines",
@@ -584,8 +713,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "ray-jefferson",
       img: rayJefferson,
+      imgSm: rayJeffersonSm,
       name: "Ray Jefferson",
       age: 0,
+      gender: "male",
       height: "—",
       weight: "—",
       team: "Philippines",
@@ -596,8 +727,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "robyn-lauren",
       img: robynLauren,
+      imgSm: robynLaurenSm,
       name: "Robyn Lauren",
       age: 29,
+      gender: "female",
       height: "—",
       weight: "—",
       team: "Philippines",
@@ -609,8 +742,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "igedz-executioner",
       img: igedzExecutioner,
+      imgSm: igedzExecutionerSm,
       name: "Igedz Executioner",
       age: 0,
+      gender: "male",
       height: "—",
       weight: "—",
       team: "Indonesia",
@@ -622,8 +757,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "maria-selena",
       img: mariaSelena,
+      imgSm: mariaSelenaSm,
       name: "Maria Selena",
       age: 35,
+      gender: "female",
       height: "—",
       weight: "—",
       team: "Indonesia",
@@ -634,8 +771,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "marcus-gideon",
       img: marcusGideon,
+      imgSm: marcusGideonSm,
       name: "Marcus Gideon",
       age: 34,
+      gender: "male",
       height: "—",
       weight: "—",
       team: "Indonesia",
@@ -646,8 +785,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "glenn-victor",
       img: glennVictor,
+      imgSm: glennVictorSm,
       name: "Glenn Victor",
       age: 35,
+      gender: "male",
       height: "—",
       weight: "—",
       team: "Indonesia",
@@ -658,8 +799,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "fina-philippe",
       img: finaPhilippe,
+      imgSm: finaPhilippeSm,
       name: "Fina Philippe",
       age: 35,
+      gender: "female",
       height: "—",
       weight: "—",
       team: "Indonesia",
@@ -671,8 +814,10 @@ export const athleteList: AthleteData[] = [
     info: {
       id: "jeremiah-lakhwani",
       img: jeremiahLakhwani,
+      imgSm: jeremiahLakhwaniSm,
       name: "Jeremiah Lakhwani",
       age: 27,
+      gender: "male",
       height: "—",
       weight: "—",
       team: "Indonesia",

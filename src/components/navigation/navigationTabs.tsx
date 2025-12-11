@@ -1,4 +1,4 @@
-import type { TabID } from "../layout/tabs";
+import type { TabID } from "../../types/tabTypes";
 
 type NavigationTabsProps = {
   active: TabID;
@@ -8,6 +8,12 @@ type NavigationTabsProps = {
 function NavigationTabs({ active, changeTab }: NavigationTabsProps) {
   return (
     <div className="button-container">
+      <button
+        onClick={() => changeTab("teamBuilder")}
+        className={`${active === "teamBuilder" ? "active" : ""}`}
+      >
+        Team Builder
+      </button>
       <button
         onClick={() => changeTab("athletes")}
         className={`${active === "athletes" ? "active" : ""}`}

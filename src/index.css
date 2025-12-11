@@ -76,6 +76,14 @@ button.active {
   gap: 10px;
 }
 
+.button-plain {
+  border: none;
+}
+
+.button-plain:disabled {
+  color: rgb(138, 138, 138);
+}
+
 .flex {
   display: flex;
   gap: 5px;

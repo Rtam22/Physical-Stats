@@ -4,7 +4,9 @@ export type AthleteData = {
   info: {
     id: AthleteIdKey;
     img: string;
+    imgSm: string;
     name: string;
+    gender: "male" | "female";
     age: number;
     height: string;
     weight: string;
