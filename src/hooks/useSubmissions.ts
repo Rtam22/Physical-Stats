@@ -1,9 +1,5 @@
 import { useState } from "react";
-import type {
-  AthleteIdKey,
-  AthleteTeams,
-  AttributeSubmission,
-} from "../types/athleteType";
+import type { AthleteIdKey, AttributeSubmission } from "../types/athleteType";
 import { submissionService } from "../services/submissionService";
 
 export function useSubmissions() {
@@ -13,9 +9,13 @@ export function useSubmissions() {
   const [submittedVote, setSubmittedVote] = useState<AthleteIdKey[]>([
     "kim-dong-hyun",
     "kim-min-jae",
+    "yun-sung-bin",
+    "jang-eun-sil",
+    "choi-seung-yeon",
+    "kim-hae-jong",
   ]);
 
-  const [submittedMVP, setSubmittedMVP] = useState<AthleteTeams[]>();
+  //const [submittedMVP, setSubmittedMVP] = useState<AthleteTeams[]>();
 
   function handleSubmitSubmissions(submission: AttributeSubmission) {
     setSubmissions((prev) => [...prev, submission]);

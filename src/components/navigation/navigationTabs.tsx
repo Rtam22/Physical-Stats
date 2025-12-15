@@ -10,9 +10,10 @@ type NavigationTabsProps = {
 function NavigationTabs({ active, changeTab, allTabs }: NavigationTabsProps) {
   return (
     <div className="button-container">
-      {allTabs.map((tab) => {
+      {allTabs.map((tab, index) => {
         return (
           <button
+            key={index}
             onClick={() => changeTab(tab)}
             className={`${active === tab ? "active" : ""}`}
           >

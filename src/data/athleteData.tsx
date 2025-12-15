@@ -1,8 +1,4 @@
-import type {
-  AthleteData,
-  AthleteTeams,
-  AttributeSubmission,
-} from "../types/athleteType";
+import type { AthleteData, AttributeSubmission } from "../types/athleteType";
 import adiyasuren from "../assets/athletes/adiyasuren.webp";
 import alexandraMilne from "../assets/athletes/alexandra-milne.webp";
 import aliSofuoglu from "../assets/athletes/ali-sofuoglu.webp";
@@ -100,6 +96,7 @@ import yaseminAdarSm from "../assets/athletes/yasemin-adar-sm.jpg";
 import yoshioItoiSm from "../assets/athletes/yoshio-itoi-sm.jpg";
 import yunSungBinSm from "../assets/athletes/yun-sung-bin-sm.jpg";
 import yushinOkamiSm from "../assets/athletes/yushin-okami-sm.jpg";
+import type { AthleteTeams } from "../types/teamType";
 
 export const initialAttributes = {
   strength: 0,

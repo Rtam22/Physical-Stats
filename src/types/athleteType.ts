@@ -1,3 +1,5 @@
+import type { AthleteTeams } from "./teamType";
+
 type UserId = string;
 
 export type AthleteData = {
@@ -14,16 +16,6 @@ export type AthleteData = {
     backgroundSport: string;
   };
 };
-
-export type AthleteTeams =
-  | "South Korea"
-  | "Japan"
-  | "Turkey"
-  | "Mongolia"
-  | "Australia"
-  | "Philippines"
-  | "Indonesia"
-  | "Thailand";
 
 export type RankKey = "S" | "A" | "B" | "C" | "D";
 

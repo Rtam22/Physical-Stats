@@ -1,4 +1,4 @@
-import { act, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import "./mainPage.css";
 import type {
   AthleteDataWithAttributes,
@@ -22,6 +22,7 @@ import AthleteGridSection from "../components/athletes/athleteGridSection";
 import NavigationTabs from "../components/navigation/navigationTabs";
 import { allTabs, type TabID, type TabsConfig } from "../types/tabTypes";
 import AthleteTeamBuilder from "../components/athletes/athleteTeamBuilder";
+import { useAthleteTeam } from "../hooks/useAthleteTeam";
 
 function MainPage() {
   const [activeTab, setActiveTab] = useState<TabID>("athletes");
@@ -39,10 +40,12 @@ function MainPage() {
   });
   const { filteredAthletes } = useAthleteFilters({ filters, athletes });
   const [username, setUsername] = useState<string>("");
-  const [selectedTeam, setSelectedTeam] = useState<
-    AthleteDataWithAttributes[] | null
-  >(null);
-
+  const { selectedTeam, existingTeams, handleSetSelectedTeam } = useAthleteTeam(
+    {
+      athletes: athletes,
+    }
+  );
+  console.log(existingTeams);
   const filteredTabs: TabID[] = useMemo(() => {
     return allTabs.filter((tab) => {
       const notDoneTeamBuilder = tab === "teamBuilder" && selectedTeam !== null;
@@ -64,6 +67,11 @@ function MainPage() {
     handleCloseModal();
   }
 
+  function handleSetTeam(athletes: AthleteDataWithAttributes[]) {
+    setActiveTab("teams");
+    handleSetSelectedTeam(athletes, username);
+  }
+
   function handleSetModal(athleteId: AthleteIdKey | null, type: ModalType) {
     const athlete = athletes.find((athlete) => athlete.info.id === athleteId);
     if (!athlete) {
@@ -75,11 +83,6 @@ function MainPage() {
 
   function handleCloseModal() {
     setModal(null);
-  }
-
-  function handleSetTeam(athletes: AthleteDataWithAttributes[]) {
-    setActiveTab("teams");
-    setSelectedTeam(athletes);
   }
 
   const tabs: TabsConfig[] = [

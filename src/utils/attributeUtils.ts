@@ -6,6 +6,7 @@ import type {
   AttributeValues,
   RankKey,
 } from "../types/athleteType";
+import type { AthleteTeams } from "../types/teamType";
 import { roundToHalf } from "./mathUtils";
 
 const KEYS: AttributeKey[] = [
@@ -18,10 +19,28 @@ const KEYS: AttributeKey[] = [
   "adaptability",
 ];
 
-function sumAttributes(
+function sumAttributesByAthlete(
   athleteId: string,
   attributeSubmissions: AttributeSubmission[]
 ) {
+  const filtered = attributeSubmissions
+    .filter((athlete) => athlete.athleteId === athleteId)
+    .map((a) => a.values);
+
+  return { totals: sumAttributeValues(filtered), count: filtered.length };
+}
+
+function sumAttributesByTeam(
+  athletes: AthleteDataWithAttributes[],
+  team: AthleteTeams
+) {
+  const values: AttributeValues[] = athletes
+    .filter((athlete) => athlete.info.team === team)
+    .map((athlete) => athlete.attributes);
+  return { totals: sumAttributeValues(values), count: values.length };
+}
+
+export function sumAttributeValues(attributes: AttributeValues[]) {
   let totals: AttributeValues = {
     strength: 0,
     explosiveness: 0,
@@ -31,18 +50,13 @@ function sumAttributes(
     grit: 0,
     adaptability: 0,
   };
-  let count = 0;
 
-  for (const submission of attributeSubmissions) {
-    if (submission.athleteId === athleteId) {
-      for (const key of KEYS) {
-        totals[key] += submission.values[key];
-      }
-      count++;
+  for (const values of attributes) {
+    for (const key of KEYS) {
+      totals[key] += values[key];
     }
   }
-
-  return { totals: totals, count: count };
+  return totals;
 }
 
 function averageAttributes(totals: AttributeValues, count: number) {
@@ -54,11 +68,56 @@ function averageAttributes(totals: AttributeValues, count: number) {
   return result;
 }
 
+function getHighest(count: Record<RankKey, number>): RankKey | null {
+  let highestKey: RankKey | null = "S";
+  let highestValue = -Infinity;
+
+  for (const key of Object.keys(count) as RankKey[]) {
+    if (count[key] > highestValue) {
+      highestValue = count[key];
+      highestKey = key;
+    }
+  }
+  if (Object.values(count).every((v) => v === 0)) {
+    return null;
+  }
+
+  return highestKey;
+}
+
+function getRankingFromSubmission(
+  submissions: AttributeSubmission[],
+  athlete: AthleteDataWithAttributes
+) {
+  let count: Record<RankKey, number> = {
+    S: 0,
+    A: 0,
+    B: 0,
+    C: 0,
+    D: 0,
+  };
+  for (const submission of submissions) {
+    if (submission.ranking && athlete.info.id === submission.athleteId)
+      count[submission.ranking]++;
+  }
+
+  return getHighest(count);
+}
+
+export function getTeamAttributes(
+  athletes: AthleteDataWithAttributes[],
+  team: AthleteTeams
+) {
+  const teamAttributes = sumAttributesByTeam(athletes, team);
+
+  return averageAttributes(teamAttributes.totals, teamAttributes.count);
+}
+
 export function getAthleteAttributes(
   athleteId: string,
   attributeSubmissions: AttributeSubmission[]
 ) {
-  const sAttributes = sumAttributes(athleteId, attributeSubmissions);
+  const sAttributes = sumAttributesByAthlete(athleteId, attributeSubmissions);
   return averageAttributes(sAttributes.totals, sAttributes.count);
 }
 
@@ -133,42 +192,6 @@ export function getAttributesFromSubmissions(
       ranking: ranking,
     };
   });
-}
-
-function getHighest(count: Record<RankKey, number>): RankKey | null {
-  let highestKey: RankKey | null = "S";
-  let highestValue = -Infinity;
-
-  for (const key of Object.keys(count) as RankKey[]) {
-    if (count[key] > highestValue) {
-      highestValue = count[key];
-      highestKey = key;
-    }
-  }
-  if (Object.values(count).every((v) => v === 0)) {
-    return null;
-  }
-
-  return highestKey;
-}
-
-function getRankingFromSubmission(
-  submissions: AttributeSubmission[],
-  athlete: AthleteDataWithAttributes
-) {
-  let count: Record<RankKey, number> = {
-    S: 0,
-    A: 0,
-    B: 0,
-    C: 0,
-    D: 0,
-  };
-  for (const submission of submissions) {
-    if (submission.ranking && athlete.info.id === submission.athleteId)
-      count[submission.ranking]++;
-  }
-
-  return getHighest(count);
 }
 
 export function getValuesForAttributes(athletes: AthleteDataWithAttributes[]) {
