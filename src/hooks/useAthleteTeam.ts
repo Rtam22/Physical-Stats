@@ -19,7 +19,7 @@ export function useAthleteTeam({ athletes }: UseAthleteTeamProps) {
       athletes
     );
     setExistingTeams(teams);
-  }, []);
+  }, [athletes]);
 
   function handleSetSelectedTeam(
     athletes: AthleteDataWithAttributes[],

@@ -4,10 +4,6 @@ export type ModalType = "setAttributes" | "athleteView";
 
 export type ModalState =
   | {
-      type: "setAttributes";
-      athlete: AthleteDataWithAttributes;
+      open: false;
     }
-  | {
-      type: "athleteView";
-      athlete: AthleteDataWithAttributes;
-    };
+  | { open: true; type: ModalType; athlete?: AthleteDataWithAttributes };

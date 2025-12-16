@@ -12,7 +12,7 @@ export type AthleteTeams =
 
 type baseTeam = {
   athletes: AthleteDataWithAttributes[];
-  avgAttributes: AttributeValues;
+  averageAttributes: AttributeValues;
 };
 
 type UserTeamType = baseTeam & {
