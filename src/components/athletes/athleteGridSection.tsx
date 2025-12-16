@@ -9,7 +9,7 @@ import type { ModalType } from "../../types/modalTypes";
 
 type AthleteGridSection = {
   athletes: AthleteDataWithAttributes[];
-  onCardClick: (athleteId: AthleteIdKey | null, type: ModalType) => void;
+  onCardClick: (type: ModalType, athlete: AthleteDataWithAttributes) => void;
   submittedVote: AthleteIdKey[];
 };
 

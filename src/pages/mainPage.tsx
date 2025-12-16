@@ -14,14 +14,12 @@ import { useSubmissions } from "../hooks/useSubmissions";
 import Tabs from "../components/layout/tabs";
 import useAthleteFilters from "../hooks/useAthleteFilters";
 import NavigationTabs from "../components/navigation/navigationTabs";
-import { type TabID } from "../types/tabTypes";
 import { useAthleteTeam } from "../hooks/useAthleteTeam";
 import useModalController from "../hooks/useModalController";
 import useTabs from "../hooks/useTabs";
 import { initialFilters } from "../components/filters/filters";
 
 function MainPage() {
-  const [activeTab, setActiveTab] = useState<TabID>("athletes");
   const submissions = useSubmissions();
   const [filters, setFilters] = useState<FilterValue>(initialFilters);
   const { athletes } = useAthletes({
@@ -53,7 +51,7 @@ function MainPage() {
   }
 
   function handleSetTeam(athletes: AthleteDataWithAttributes[]) {
-    setActiveTab("teams");
+    tabs.setActiveTab("teams");
     team.handleSetSelectedTeam(athletes, username);
   }
 
@@ -78,15 +76,15 @@ function MainPage() {
           </Modal>
         </BackDrop>
       )}
-      {activeTab !== "username" && (
+      {tabs.activeTab !== "username" && (
         <NavigationTabs
-          active={activeTab}
-          changeTab={(e) => setActiveTab(e)}
+          active={tabs.activeTab}
+          changeTab={(e) => tabs.setActiveTab(e)}
           allTabs={tabs.availableTabs}
         />
       )}
 
-      <Tabs activeTab={activeTab} tabs={tabs.tabsConfig} />
+      <Tabs activeTab={tabs.activeTab} tabs={tabs.tabsConfig} />
     </div>
   );
 }

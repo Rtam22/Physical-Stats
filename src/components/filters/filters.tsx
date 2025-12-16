@@ -7,6 +7,13 @@ type FilterProps = {
   setFilter: (newFilters: Partial<FilterValue>) => void;
 };
 
+export const initialFilters: FilterValue = {
+  sort: "none",
+  team: "none",
+  mvp: false,
+  search: "",
+};
+
 function Filters({ filterValues, setFilter }: FilterProps) {
   return (
     <div className="filters">

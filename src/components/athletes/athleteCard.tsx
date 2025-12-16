@@ -1,5 +1,5 @@
 import type {
-  AthleteData,
+  AthleteDataWithAttributes,
   AthleteIdKey,
   AttributeValues,
 } from "../../types/athleteType";
@@ -8,12 +8,12 @@ import "./athleteCard.css";
 import type { ModalType } from "../../types/modalTypes";
 type CardProps = {
   id: AthleteIdKey;
-  athlete: AthleteData;
+  athlete: AthleteDataWithAttributes;
   attributes: AttributeValues;
   favorites: number;
   total: number;
   mvp: boolean;
-  handleClick: (athleteId: AthleteIdKey | null, type: ModalType) => void;
+  handleClick: (type: ModalType, athlete: AthleteDataWithAttributes) => void;
   hasVoted: boolean;
 };
 
@@ -38,8 +38,8 @@ function AthleteCard({
       className="card-container"
       onClick={() => {
         hasAttributes && hasVoted
-          ? handleClick(id, "athleteView")
-          : handleClick(id, "setAttributes");
+          ? handleClick("athleteView", athlete)
+          : handleClick("setAttributes", athlete);
       }}
     >
       <div className="top-container">

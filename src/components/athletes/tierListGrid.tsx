@@ -1,14 +1,11 @@
 import { ranksKey } from "../../data/attributeKey";
-import type {
-  AthleteDataWithAttributes,
-  AthleteIdKey,
-} from "../../types/athleteType";
+import type { AthleteDataWithAttributes } from "../../types/athleteType";
 import type { ModalType } from "../../types/modalTypes";
 import "./tierListGrid.css";
 
 type TierListGridProps = {
   athletes: AthleteDataWithAttributes[];
-  onCardClick: (athleteId: AthleteIdKey, type: ModalType) => void;
+  onCardClick: (type: ModalType, athlete?: AthleteDataWithAttributes) => void;
 };
 
 function TierListGrid({ athletes, onCardClick }: TierListGridProps) {
@@ -24,7 +21,7 @@ function TierListGrid({ athletes, onCardClick }: TierListGridProps) {
               {athletes.map((athlete) => {
                 return athlete.ranking === key.key ? (
                   <div
-                    onClick={() => onCardClick(athlete.info.id, "athleteView")}
+                    onClick={() => onCardClick("athleteView", athlete)}
                     key={athlete.info.id}
                     className="image-container"
                   >

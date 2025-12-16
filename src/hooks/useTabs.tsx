@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import AthleteGridSection from "../components/athletes/athleteGridSection";
 import AthleteTeamBuilder from "../components/athletes/athleteTeamBuilder";
 import TierListGrid from "../components/athletes/tierListGrid";
@@ -38,6 +38,7 @@ function useTabs({
   openModal,
   handleSetTeam,
 }: useTabsProps) {
+  const [activeTab, setActiveTab] = useState<TabID>("athletes");
   const availableTabs: TabID[] = useMemo(() => {
     return allTabs.filter((tab) => {
       const notDoneTeamBuilder =
@@ -101,8 +102,10 @@ function useTabs({
   ];
 
   return {
+    activeTab,
     tabsConfig,
     availableTabs,
+    setActiveTab,
   };
 }
 
