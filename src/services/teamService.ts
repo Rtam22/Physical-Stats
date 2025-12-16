@@ -14,7 +14,7 @@ export function buildExistingTeams(
     const avgAttributes = getTeamAttributes(athletes, team);
     const result: TeamType = {
       athletes: athletesInTeam,
-      avgAttributes: avgAttributes,
+      averageAttributes: avgAttributes,
       team: team,
     };
     return result;

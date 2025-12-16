@@ -30,17 +30,14 @@ function sumAttributesByAthlete(
   return { totals: sumAttributeValues(filtered), count: filtered.length };
 }
 
-function sumAttributesByTeam(
-  athletes: AthleteDataWithAttributes[],
-  team: AthleteTeams
-) {
-  const values: AttributeValues[] = athletes
-    .filter((athlete) => athlete.info.team === team)
-    .map((athlete) => athlete.attributes);
+function sumAttributesByTeam(athletes: AthleteDataWithAttributes[]) {
+  const values: AttributeValues[] = athletes.map(
+    (athlete) => athlete.attributes
+  );
   return { totals: sumAttributeValues(values), count: values.length };
 }
 
-export function sumAttributeValues(attributes: AttributeValues[]) {
+function sumAttributeValues(attributes: AttributeValues[]) {
   let totals: AttributeValues = {
     strength: 0,
     explosiveness: 0,
@@ -106,9 +103,12 @@ function getRankingFromSubmission(
 
 export function getTeamAttributes(
   athletes: AthleteDataWithAttributes[],
-  team: AthleteTeams
+  team?: AthleteTeams
 ) {
-  const teamAttributes = sumAttributesByTeam(athletes, team);
+  const filtered = team
+    ? athletes.filter((athlete) => athlete.info.team === team)
+    : athletes;
+  const teamAttributes = sumAttributesByTeam(filtered);
 
   return averageAttributes(teamAttributes.totals, teamAttributes.count);
 }
@@ -133,12 +133,10 @@ export function getFavoriteCount(
   return count;
 }
 
-export function calculateAttributeTotal(athlete: AthleteDataWithAttributes) {
+export function calculateAttributeTotal(attributes: AttributeValues) {
   let sum = 0;
-  for (const key of Object.keys(
-    athlete.attributes
-  ) as (keyof AttributeValues)[]) {
-    sum += athlete.attributes[key];
+  for (const key of Object.keys(attributes) as (keyof AttributeValues)[]) {
+    sum += attributes[key];
   }
   return sum;
 }
@@ -197,7 +195,7 @@ export function getAttributesFromSubmissions(
 export function getValuesForAttributes(athletes: AthleteDataWithAttributes[]) {
   return athletes.map((athlete) => {
     const mvp = checkIfMVP(athlete, athletes);
-    const total = calculateAttributeTotal(athlete);
+    const total = calculateAttributeTotal(athlete.attributes);
     return { ...athlete, mvp: mvp, total: total };
   });
 }

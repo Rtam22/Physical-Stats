@@ -10,6 +10,8 @@ export type AthleteTeams =
   | "Indonesia"
   | "Thailand";
 
+export type CountryCode = "KR" | "TR" | "MN" | "AU" | "PH" | "ID" | "TH" | "JP";
+
 type baseTeam = {
   athletes: AthleteDataWithAttributes[];
   averageAttributes: AttributeValues;

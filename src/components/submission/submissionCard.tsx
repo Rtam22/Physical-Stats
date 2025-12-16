@@ -7,7 +7,6 @@ type SubmissionCardProps = {
 };
 
 function SubmissionCard({ submission }: SubmissionCardProps) {
-  console.log(submission);
   return (
     <div className="submission-card">
       <div className="flex">

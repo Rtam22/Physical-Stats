@@ -16,7 +16,7 @@ import useAthleteFilters from "../hooks/useAthleteFilters";
 import NavigationTabs from "../components/navigation/navigationTabs";
 import { useAthleteTeam } from "../hooks/useAthleteTeam";
 import useModalController from "../hooks/useModalController";
-import useTabs from "../hooks/useTabs";
+import useMainTabs from "../hooks/useMainTabs";
 import { initialFilters } from "../components/filters/filters";
 
 function MainPage() {
@@ -29,16 +29,16 @@ function MainPage() {
   const [username, setUsername] = useState<string>("eas");
   const team = useAthleteTeam({ athletes: athletes });
   const { modal, openModal, closeModal } = useModalController();
-  const tabs = useTabs({
+  const tabs = useMainTabs({
     athletes: filteredAthletes,
     filters: { filters, setFilters },
     submittedVotes: submissions.submittedVote,
     teams: {
       selectedTeam: team.selectedTeam,
       existingTeams: team.existingTeams,
+      handleSetTeam,
     },
     openModal,
-    handleSetTeam,
   });
 
   useEffect(() => {
@@ -47,7 +47,8 @@ function MainPage() {
 
   function handleSubmitVote(submission: AttributeSubmission) {
     submissions.handleSubmitSubmissions(submission);
-    closeModal;
+    console.log("dsa");
+    closeModal();
   }
 
   function handleSetTeam(athletes: AthleteDataWithAttributes[]) {

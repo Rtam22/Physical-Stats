@@ -27,12 +27,12 @@
   height: auto;
 }
 
-.athlete-card .attribute-container {
+.athlete-card .attributes-container {
   width: 55%;
   height: 100%;
 }
 
-.athlete-card .attribute-container {
+.athlete-card .attributes-container {
   display: flex;
   flex-direction: column;
   justify-content: center;

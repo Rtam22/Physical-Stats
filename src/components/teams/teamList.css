@@ -1,0 +1,22 @@
+.team-list {
+  padding: 30px 5%;
+  width: 100%;
+  height: auto;
+  background-color: rgb(62, 62, 62);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  gap: 50px 30px;
+}
+
+@media (max-width: 1800px) {
+  .team-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 1000px) {
+  .team-list {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

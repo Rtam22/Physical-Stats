@@ -3,7 +3,7 @@ import type { TeamType } from "../types/teamType";
 import { teamService } from "../services/teamService";
 import type { AthleteDataWithAttributes } from "../types/athleteType";
 import { teamList } from "../data/athleteData";
-import { sumAttributeValues } from "../utils/attributeUtils";
+import { getTeamAttributes } from "../utils/attributeUtils";
 
 type UseAthleteTeamProps = {
   athletes: AthleteDataWithAttributes[];
@@ -25,11 +25,10 @@ export function useAthleteTeam({ athletes }: UseAthleteTeamProps) {
     athletes: AthleteDataWithAttributes[],
     user: string
   ) {
-    const attributes = athletes.map((athlete) => athlete.attributes);
     const newTeam: TeamType = {
       user: user,
       athletes: athletes,
-      avgAttributes: sumAttributeValues(attributes),
+      averageAttributes: getTeamAttributes(athletes),
     };
     setSelectedTeam(newTeam);
   }

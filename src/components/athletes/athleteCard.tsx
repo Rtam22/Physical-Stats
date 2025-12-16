@@ -3,9 +3,12 @@ import type {
   AthleteIdKey,
   AttributeValues,
 } from "../../types/athleteType";
-import AttributeBar from "../attributes/attributeBar";
 import "./athleteCard.css";
 import type { ModalType } from "../../types/modalTypes";
+import ReactCountryFlag from "react-country-flag";
+import { getCountryCode } from "../../utils/teamUtils";
+import AttributesList from "../attributes/attributesList";
+
 type CardProps = {
   id: AthleteIdKey;
   athlete: AthleteDataWithAttributes;
@@ -28,7 +31,7 @@ function AthleteCard({
   handleClick,
 }: CardProps) {
   const hasAttributes = checkAttributes(attributes);
-
+  const countryCode = getCountryCode(athlete.info.team);
   function checkAttributes(attributes: AttributeValues) {
     return Object.values(attributes).some((v) => v > 0);
   }
@@ -44,19 +47,19 @@ function AthleteCard({
     >
       <div className="top-container">
         {mvp ? <p className="mvp-container">MVP</p> : null}
-        <p>{athlete.info.name}</p>
+        <div className="flex">
+          {countryCode && <ReactCountryFlag countryCode={countryCode} svg />}
+          <p>{athlete.info.name}</p>
+        </div>
         <p>*{favorites}</p>
       </div>
       <div className="athlete-card" id={id}>
         <div className="image-container">
           <img src={athlete.info.imgSm} alt="" />
         </div>
-        <div className="attribute-container">
+        <div className="attributes-container">
           {hasAttributes && hasVoted ? (
-            Object.entries(attributes).map(([key, value]) => {
-              const title = key.charAt(0).toUpperCase() + key.slice(1);
-              return <AttributeBar key={key} title={title} value={value} />;
-            })
+            <AttributesList attributes={attributes} />
           ) : (
             <div className="attribute-message">
               {hasAttributes

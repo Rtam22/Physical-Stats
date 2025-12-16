@@ -23,20 +23,18 @@ type useTabsProps = {
   teams: {
     selectedTeam: TeamType | null;
     existingTeams: TeamType[];
+    handleSetTeam: (athletes: AthleteDataWithAttributes[]) => void;
   };
   submittedVotes: AthleteIdKey[];
-
   openModal: (type: ModalType, athlete?: AthleteDataWithAttributes) => void;
-  handleSetTeam: (athletes: AthleteDataWithAttributes[]) => void;
 };
 
-function useTabs({
+function useMainTabs({
   athletes,
   filters,
   submittedVotes,
   teams,
   openModal,
-  handleSetTeam,
 }: useTabsProps) {
   const [activeTab, setActiveTab] = useState<TabID>("athletes");
   const availableTabs: TabID[] = useMemo(() => {
@@ -56,7 +54,10 @@ function useTabs({
     {
       id: "teamBuilder",
       content: (
-        <AthleteTeamBuilder athletes={athletes} handleSetTeam={handleSetTeam} />
+        <AthleteTeamBuilder
+          athletes={athletes}
+          handleSetTeam={teams.handleSetTeam}
+        />
       ),
     },
     {
@@ -109,4 +110,4 @@ function useTabs({
   };
 }
 
-export default useTabs;
+export default useMainTabs;
