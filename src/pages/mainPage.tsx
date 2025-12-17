@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./mainPage.css";
 import type {
   AthleteDataWithAttributes,
@@ -18,6 +18,13 @@ import { useAthleteTeam } from "../hooks/useAthleteTeam";
 import useModalController from "../hooks/useModalController";
 import useMainTabs from "../hooks/useMainTabs";
 import { initialFilters } from "../components/filters/filters";
+import type { TabsConfig } from "../types/tabTypes";
+import AthleteTeamBuilder from "../components/athletes/athleteTeamBuilder";
+import TierListGrid from "../components/athletes/tierListGrid";
+import TeamList from "../components/teams/teamList";
+import { filterAthletesBySubmitted } from "../utils/filterUtils";
+import AthletesTab from "../components/tabs/athletesTab";
+import { useUser } from "../hooks/useUser";
 
 function MainPage() {
   const submissions = useSubmissions();
@@ -26,52 +33,81 @@ function MainPage() {
     attributeSubmissions: submissions.submissions,
   });
   const { filteredAthletes } = useAthleteFilters({ filters, athletes });
-  const [username, setUsername] = useState<string>("eas");
+  const { username, userId } = useUser();
   const team = useAthleteTeam({ athletes: athletes });
-  const { modal, openModal, closeModal } = useModalController();
+  const modal = useModalController();
   const tabs = useMainTabs({
-    athletes: filteredAthletes,
-    filters: { filters, setFilters },
-    submittedVotes: submissions.submittedVote,
     teams: {
       selectedTeam: team.selectedTeam,
       existingTeams: team.existingTeams,
       handleSetTeam,
     },
-    openModal,
+    hasUsername: Boolean(username),
   });
-
-  useEffect(() => {
-    //if (!username) setActiveTab("username");
-  }, []);
 
   function handleSubmitVote(submission: AttributeSubmission) {
     submissions.handleSubmitSubmissions(submission);
-    console.log("dsa");
-    closeModal();
+    modal.close();
   }
 
   function handleSetTeam(athletes: AthleteDataWithAttributes[]) {
     tabs.setActiveTab("teams");
     team.handleSetSelectedTeam(athletes, username);
   }
+  const tabsConfig: TabsConfig[] = [
+    {
+      id: "teamBuilder",
+      content: (
+        <AthleteTeamBuilder athletes={athletes} handleSetTeam={handleSetTeam} />
+      ),
+    },
+    {
+      id: "athletes",
+      content: (
+        <AthletesTab
+          filter={{ values: filters, setFilters }}
+          athletes={filteredAthletes}
+          submittedVote={submissions.submittedVoteAccess}
+          onCardClick={modal.open}
+        />
+      ),
+    },
+    {
+      id: "tierList",
+      content: (
+        <TierListGrid
+          athletes={filterAthletesBySubmitted(
+            submissions.submittedVoteAccess,
+            athletes
+          )}
+          onCardClick={modal.open}
+        />
+      ),
+    },
+    {
+      id: "teams",
+      content: (
+        <TeamList teams={team.existingTeams} selectedTeam={team.selectedTeam} />
+      ),
+    },
+  ];
 
   return (
     <div className="main-page">
-      {modal?.open && (
-        <BackDrop onClose={closeModal}>
-          <Modal width="80%" height="90vh" type="middle" onClose={closeModal}>
-            {modal.type === "setAttributes" && modal.athlete && (
+      {modal.state?.open && (
+        <BackDrop onClose={modal.close}>
+          <Modal width="80%" height="90vh" type="middle" onClose={modal.close}>
+            {modal.state.type === "setAttributes" && modal.state.athlete && (
               <SetAttributeForm
-                athlete={modal.athlete}
+                athlete={modal.state.athlete}
                 handleSubmit={handleSubmitVote}
               />
             )}
 
-            {modal.type === "athleteView" && modal.athlete && (
+            {modal.state.type === "athleteView" && modal.state.athlete && (
               <AthleteView
                 submissions={submissions.submissions}
-                athlete={modal.athlete}
+                athlete={modal.state.athlete}
               />
             )}
           </Modal>
@@ -85,7 +121,7 @@ function MainPage() {
         />
       )}
 
-      <Tabs activeTab={tabs.activeTab} tabs={tabs.tabsConfig} />
+      <Tabs activeTab={tabs.activeTab} tabs={tabsConfig} />
     </div>
   );
 }

@@ -3,16 +3,16 @@ import type { ModalState, ModalType } from "../types/modalTypes";
 import type { AthleteDataWithAttributes } from "../types/athleteType";
 
 function useModalController() {
-  const [modal, setModal] = useState<ModalState>();
+  const [state, setState] = useState<ModalState>();
 
-  function openModal(type: ModalType, athlete?: AthleteDataWithAttributes) {
-    setModal({ open: true, type: type, athlete });
+  function open(type: ModalType, athlete?: AthleteDataWithAttributes) {
+    setState({ open: true, type: type, athlete });
   }
 
-  function closeModal() {
-    setModal({ open: false });
+  function close() {
+    setState({ open: false });
   }
-  return { modal, openModal, closeModal };
+  return { state, open, close };
 }
 
 export default useModalController;
