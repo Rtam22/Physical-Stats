@@ -9,6 +9,7 @@ import { initialFormAttributes } from "../../data/athleteData";
 import { capitalize } from "../../utils/textUtils";
 import ToolTip from "../ui/toolTip";
 import { attributeKey, ranksKey } from "../../data/attributeKey";
+import { attributesToolTip, mvpToolTip } from "../../data/toolTipData";
 
 type SetAttributeFormProps = {
   athlete: AthleteDataWithAttributes;
@@ -35,7 +36,6 @@ function SetAttributeForm({ athlete, handleSubmit }: SetAttributeFormProps) {
   return (
     <div className="set-attribute-form">
       <div className="profile-container">
-        {submission.mvp && <p className="mvp-container">MVP</p>}
         <p>{athlete.info.name}</p>
         <div className="image-container">
           <img src={athlete.info.img} alt={`${athlete.info.name} portrait`} />
@@ -48,7 +48,7 @@ function SetAttributeForm({ athlete, handleSubmit }: SetAttributeFormProps) {
               <div className="attributes" key={index}>
                 <label htmlFor={attribute}>
                   <p>{capitalize(attribute)}</p>
-                  <ToolTip information="dsadsd sa dsadssa ds asd asd dsa d a das sa asd da d sa dssasd dasdsadsadsadsad sa dsa dsa das sdsadsadsadsa sd dsa das dss dadasd s ada sasd" />
+                  <ToolTip information={attributesToolTip[attribute]} />
                 </label>
                 <div className="input-container">
                   <input
@@ -120,6 +120,7 @@ function SetAttributeForm({ athlete, handleSubmit }: SetAttributeFormProps) {
                   ranking: e.target.value as RankKey,
                 })
               }
+              required
             >
               <option value={""}></option>
               {ranksKey.map((key) => {
@@ -133,7 +134,8 @@ function SetAttributeForm({ athlete, handleSubmit }: SetAttributeFormProps) {
           </section>
           <section>
             <label htmlFor="mvp" className="mvp">
-              MVP
+              <p>MVP </p>
+              <ToolTip information={mvpToolTip} />
             </label>
             <input
               id="mvp"

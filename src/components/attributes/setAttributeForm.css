@@ -10,6 +10,11 @@
   gap: 1%;
 }
 
+.set-attribute-form label p {
+  display: flex;
+  align-items: center;
+}
+
 .set-attribute-form .profile-container {
   width: 50%;
   padding-left: 50px;

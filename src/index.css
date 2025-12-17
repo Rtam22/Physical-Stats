@@ -61,6 +61,10 @@ button {
   text-align: center;
 }
 
+textarea {
+  resize: none;
+}
+
 button:hover {
   background-color: rgb(41, 41, 41);
 }

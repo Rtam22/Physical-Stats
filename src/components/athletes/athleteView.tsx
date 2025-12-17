@@ -30,7 +30,14 @@ function AthleteView({ submissions, athlete }: AtheleteViewProps) {
           <div className="attribute-container">
             {Object.entries(athlete.attributes).map(([key, value]) => {
               const title = key.charAt(0).toUpperCase() + key.slice(1);
-              return <AttributeBar key={key} title={title} value={value} />;
+              return (
+                <AttributeBar
+                  key={key}
+                  title={title}
+                  value={value}
+                  height="30px"
+                />
+              );
             })}
           </div>
         </div>

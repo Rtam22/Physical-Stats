@@ -8,14 +8,12 @@ type TeamListProps = {
 };
 
 function TeamList({ teams, selectedTeam }: TeamListProps) {
-  console.log(teams);
   return (
     <div className="team-list">
       {selectedTeam && <TeamCard team={selectedTeam} />}
       {teams.map((team) => {
         return <TeamCard key={team.athletes[0].info.team} team={team} />;
       })}
-      <div className="teams-container"></div>
     </div>
   );
 }
