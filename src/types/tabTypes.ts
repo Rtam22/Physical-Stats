@@ -6,6 +6,7 @@ export type TabID =
   | "teamBuilder"
   | "username"
   | "teams";
+
 export const allTabs: TabID[] = [
   "athletes",
   "tierList",
