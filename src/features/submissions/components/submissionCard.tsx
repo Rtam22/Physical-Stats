@@ -1,5 +1,5 @@
-import type { AttributeSubmission } from "../../../../types/athleteType";
-import AttributeBar from "../../../attributes/components/attributeBar";
+import type { AttributeSubmission } from "../../../types/athleteType";
+import AttributeBar from "../../attributes/components/attributeBar";
 import "./submissionCard.css";
 
 type SubmissionCardProps = {
@@ -9,12 +9,12 @@ type SubmissionCardProps = {
 function SubmissionCard({ submission }: SubmissionCardProps) {
   return (
     <div className="submission-card">
+      <div className="user-container">
+        <p className="dim">User:</p>
+        <h4 className="title">{submission.username}</h4>
+      </div>
       <div className="flex">
-        <div className="information-container">
-          <div className="user-container">
-            <p className="dim">User:</p>
-            <h4 className="title">{submission.username}</h4>
-          </div>
+        <div className="comment-container">
           <p className="dim">Comment:</p>
           <div
             className={`comment ${submission.comment === "" ? "grayed" : ""}`}
@@ -25,10 +25,13 @@ function SubmissionCard({ submission }: SubmissionCardProps) {
           </div>
         </div>
         <div className="attribute-container">
-          {Object.entries(submission.values).map(([key, value]) => {
-            const title = key.charAt(0).toUpperCase() + key.slice(1);
-            return <AttributeBar key={key} title={title} value={value} />;
-          })}
+          <p className="dim">Attributes:</p>
+          <div className="attributes">
+            {Object.entries(submission.values).map(([key, value]) => {
+              const title = key.charAt(0).toUpperCase() + key.slice(1);
+              return <AttributeBar key={key} title={title} value={value} />;
+            })}
+          </div>
         </div>
       </div>
     </div>

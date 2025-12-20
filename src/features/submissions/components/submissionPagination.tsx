@@ -1,8 +1,8 @@
 import type {
   AthleteIdKey,
   AttributeSubmission,
-} from "../../../../types/athleteType";
-import PaginationList from "../../../../shared/components/layout/paginationList";
+} from "../../../types/athleteType";
+import PaginationList from "../../../shared/components/layout/paginationList";
 import SubmissionCard from "./submissionCard";
 
 type SubmissionPaginationProps = {
@@ -24,7 +24,7 @@ function SubmissionPagination({
           }),
       ]}
       title="Submission History"
-      itemsAmountOnPage={3}
+      itemsAmountOnPage={2}
     />
   );
 }

@@ -1051,6 +1051,62 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       "Strong veteran presence with a good mix of strength and fight IQ. Not the best gas tank in the roster, but he usually makes smart choices and doesn’t waste effort, which keeps him competitive deep into events.",
   },
 
+  {
+    athleteId: "kim-dong-hyun",
+    id: "user-kimdh-3",
+    username: "southkoreamma",
+    favorite: true,
+    values: {
+      strength: 8.5,
+      explosiveness: 7,
+      speed: 8,
+      endurance: 7,
+      cardio: 6.5,
+      grit: 8,
+      adaptability: 8,
+    },
+    ranking: "B",
+    comment:
+      "Strong veteran presence with a good mix of strength and fight IQ. Not the best gas tank in the roster, but he usually makes smart choices and doesn’t waste effort, which keeps him competitive deep into events.",
+  },
+  {
+    athleteId: "kim-dong-hyun",
+    id: "user-kimdh-2",
+    username: "mmaOldGuard",
+    favorite: false,
+    values: {
+      strength: 7.5,
+      explosiveness: 6,
+      speed: 8,
+      endurance: 7,
+      cardio: 6,
+      grit: 7,
+      adaptability: 7.5,
+    },
+    ranking: "B",
+    mvp: true,
+    comment:
+      "Feels like a classic veteran competitor: good fundamentals, solid base, and not easily rattled. He may not have the same pop as younger athletes, but his anticipation and positioning help close that gap a lot.",
+  },
+  {
+    athleteId: "kim-dong-hyun",
+    id: "user-kimdh-1",
+    username: "stunGun",
+    favorite: false,
+    values: {
+      strength: 8,
+      explosiveness: 6.5,
+      speed: 8,
+      endurance: 6.5,
+      cardio: 6.5,
+      grit: 7.5,
+      adaptability: 8,
+    },
+    ranking: "B",
+    comment:
+      "Very technical and composed, you can see the veteran MMA experience. He’s strong enough to hang with bigger athletes and smart enough to find efficient ways to move, especially in close-contact or grappling-style tasks.",
+  },
+
   // --- Kim Hae-jong (Amotti) ---
   {
     athleteId: "kim-hae-jong",

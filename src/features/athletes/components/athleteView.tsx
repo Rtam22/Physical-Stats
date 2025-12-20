@@ -4,7 +4,7 @@ import type {
 } from "../../../types/athleteType";
 import "./athleteView.css";
 import AttributeBar from "../../attributes/components/attributeBar";
-import SubmissionPagination from "../../submissions/components/submission/submissionPagination";
+import SubmissionPagination from "../../submissions/components/submissionPagination";
 
 type AtheleteViewProps = {
   athlete: AthleteDataWithAttributes;
