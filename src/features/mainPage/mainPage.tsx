@@ -24,7 +24,8 @@ import TierListGrid from "../../shared/components/layout/tierListGrid";
 import TeamList from "../teams/components/teamList";
 import { filterAthletesBySubmitted } from "../../utils/filterUtils";
 import AthletesTab from "../../shared/components/tabs/athletesTab";
-import { useUser } from "../../shared/hooks/useUser";
+import { useUser } from "../user/hooks/useUser";
+import UserForm from "../user/components/userForm";
 
 function MainPage() {
   const submissions = useSubmissions();
@@ -33,7 +34,7 @@ function MainPage() {
     attributeSubmissions: submissions.submissions,
   });
   const { filteredAthletes } = useAthleteFilters({ filters, athletes });
-  const { username, userId } = useUser();
+  const { user } = useUser();
   const team = useAthleteTeam({ athletes: athletes });
   const modal = useModalController();
   const tabs = useMainTabs({
@@ -42,8 +43,9 @@ function MainPage() {
       existingTeams: team.existingTeams,
       handleSetTeam,
     },
-    hasUsername: Boolean(username),
+    hasUsername: Boolean(user.username),
   });
+  const isOnUsernameStep = tabs.activeTab === "username";
 
   function handleSubmitVote(submission: AttributeSubmission) {
     submissions.handleSubmitSubmissions(submission);
@@ -52,7 +54,7 @@ function MainPage() {
 
   function handleSetTeam(athletes: AthleteDataWithAttributes[]) {
     tabs.setActiveTab("teams");
-    team.handleSetSelectedTeam(athletes, username);
+    team.handleSetSelectedTeam(athletes, user.username);
   }
   const tabsConfig: TabsConfig[] = [
     {
@@ -90,6 +92,10 @@ function MainPage() {
         <TeamList teams={team.existingTeams} selectedTeam={team.selectedTeam} />
       ),
     },
+    {
+      id: "username",
+      content: <UserForm />,
+    },
   ];
 
   return (
@@ -113,7 +119,7 @@ function MainPage() {
           </Modal>
         </BackDrop>
       )}
-      {tabs.activeTab !== "username" && (
+      {!isOnUsernameStep && (
         <NavigationTabs
           active={tabs.activeTab}
           changeTab={(e) => tabs.setActiveTab(e)}
