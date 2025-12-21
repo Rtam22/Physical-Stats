@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import type { AthleteDataWithAttributes } from "../../../types/athleteType";
 import { allTabs, type TabID } from "../../../types/tabTypes";
 import type { TeamType } from "../../../types/teamType";
@@ -13,7 +13,9 @@ type useTabsProps = {
 };
 
 function useMainTabs({ teams, hasUsername }: useTabsProps) {
-  const [activeTab, setActiveTab] = useState<TabID>("athletes");
+  const [activeTab, setActiveTab] = useState<TabID>(
+    hasUsername ? "athletes" : "username"
+  );
 
   const availableTabs: TabID[] = useMemo(() => {
     return allTabs.filter((tab) => {
@@ -27,12 +29,6 @@ function useMainTabs({ teams, hasUsername }: useTabsProps) {
       return tab;
     });
   }, [teams.selectedTeam]);
-
-  useEffect(() => {
-    if (!hasUsername) {
-      setActiveTab("username");
-    }
-  }, [hasUsername]);
 
   return {
     activeTab,
