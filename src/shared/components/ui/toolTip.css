@@ -49,6 +49,10 @@
   pointer-events: auto;
 }
 
+.tool-tip p {
+  white-space: pre-line;
+}
+
 @media (max-width: 400px) {
   .information-display {
     width: 200px;

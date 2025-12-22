@@ -8,7 +8,7 @@ function ToolTip({ information }: ToolTipProps) {
   return (
     <div className="tool-tip">
       <div className="icon">?</div>
-      <div className="information-display">{information}</div>
+      <p className="information-display">{information}</p>
     </div>
   );
 }
