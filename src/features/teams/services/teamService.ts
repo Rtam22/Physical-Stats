@@ -17,6 +17,7 @@ export function buildExistingTeams(
       averageAttributes: avgAttributes,
       team: team,
     };
+
     return result;
   });
 

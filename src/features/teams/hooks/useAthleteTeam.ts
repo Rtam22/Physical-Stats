@@ -1,7 +1,10 @@
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 import type { TeamType } from "../../../types/teamType";
 import { teamService } from "../services/teamService";
-import type { AthleteDataWithAttributes } from "../../../types/athleteType";
+import type {
+  AthleteDataWithAttributes,
+  AthleteIdKey,
+} from "../../../types/athleteType";
 import { teamList } from "../../../data/athleteData";
 import { getTeamAttributes } from "../../../utils/attributeUtils";
 
@@ -10,28 +13,36 @@ type UseAthleteTeamProps = {
 };
 
 export function useAthleteTeam({ athletes }: UseAthleteTeamProps) {
-  const [selectedTeam, setSelectedTeam] = useState<TeamType | null>(null);
-  const [existingTeams, setExistingTeams] = useState<TeamType[]>([]);
+  const [selectedTeam, setSelectedTeam] = useState<{
+    user: string;
+    athletes: AthleteIdKey[];
+  } | null>(null);
 
-  useEffect(() => {
-    const teams: TeamType[] = teamService.buildExistingTeams(
-      teamList,
-      athletes
-    );
-    setExistingTeams(teams);
+  const selectedTeamView: TeamType | null = useMemo(() => {
+    if (selectedTeam) {
+      const selectedAthletes = athletes.filter((a) => {
+        return selectedTeam.athletes.includes(a.info.id);
+      });
+      const newTeam: TeamType = {
+        user: selectedTeam.user,
+        athletes: selectedAthletes,
+        averageAttributes: getTeamAttributes(selectedAthletes),
+      };
+      return newTeam;
+    }
+    return null;
+  }, [selectedTeam, athletes]);
+
+  const existingTeams = useMemo(() => {
+    return teamService.buildExistingTeams(teamList, athletes);
   }, [athletes]);
 
   function handleSetSelectedTeam(
-    athletes: AthleteDataWithAttributes[],
+    selectedAthletes: AthleteIdKey[],
     user: string
   ) {
-    const newTeam: TeamType = {
-      user: user,
-      athletes: athletes,
-      averageAttributes: getTeamAttributes(athletes),
-    };
-    setSelectedTeam(newTeam);
+    setSelectedTeam({ user: user, athletes: selectedAthletes });
   }
 
-  return { selectedTeam, existingTeams, handleSetSelectedTeam };
+  return { selectedTeamView, existingTeams, handleSetSelectedTeam };
 }
