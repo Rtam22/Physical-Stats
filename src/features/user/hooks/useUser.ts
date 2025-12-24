@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { UserType } from "../components/userForm";
+import type { UserType } from "../../../types/userTypes";
 
 export function useUser() {
   const [user, setUser] = useState<UserType>({
@@ -8,7 +8,9 @@ export function useUser() {
   });
   const [error, setError] = useState<string | null>(null);
 
-  function submitUser() {}
+  function submitUser(user: UserType) {
+    setUser(user);
+  }
 
   return {
     user,

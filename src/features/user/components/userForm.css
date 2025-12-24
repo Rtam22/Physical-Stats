@@ -1,0 +1,9 @@
+.user-form {
+  min-width: 270px;
+}
+
+.user-form section {
+  display: flex;
+  gap: 2px;
+  flex-direction: column;
+}

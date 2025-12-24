@@ -17,11 +17,11 @@ type baseTeam = {
   averageAttributes: AttributeValues;
 };
 
-type UserTeamType = baseTeam & {
+export type UserTeamType = baseTeam & {
   user: string;
 };
 
-type ExistingTeamType = baseTeam & {
+export type ExistingTeamType = baseTeam & {
   team: AthleteTeams;
 };
 

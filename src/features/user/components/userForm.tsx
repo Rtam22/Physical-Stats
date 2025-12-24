@@ -1,31 +1,37 @@
 import { useState } from "react";
 import "./userForm.css";
+import type { UserDataUpdate, UserType } from "../../../types/userTypes";
 
-export type UserType = {
-  id: string;
-  username: string;
+type UserFormProps = {
+  submitUser: (user: UserType) => void;
 };
 
-function UserForm() {
+function UserForm({ submitUser }: UserFormProps) {
   const [userData, setUserData] = useState<UserType>({
     id: crypto.randomUUID(),
     username: "",
   });
 
-  function handleSubmit() {}
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    const user = { ...userData, username: userData.username.trim() };
+    e.preventDefault();
+    submitUser(user);
+  }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="username" id="username">
-        Username
-      </label>
-      <input
-        type="text"
-        value={userData.username}
-        onChange={(e) => {
-          setUserData((prev) => ({ ...prev, username: e.target.value }));
-        }}
-      />
+    <form className="user-form" onSubmit={handleSubmit}>
+      <section>
+        <label htmlFor="username" id="username">
+          Username
+        </label>
+        <input
+          type="text"
+          value={userData.username}
+          onChange={(e) => {
+            setUserData((prev) => ({ ...prev, username: e.target.value }));
+          }}
+        />
+      </section>
     </form>
   );
 }

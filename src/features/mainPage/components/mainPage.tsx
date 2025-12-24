@@ -3,29 +3,30 @@ import "./mainPage.css";
 import type {
   AthleteDataWithAttributes,
   AttributeSubmission,
-} from "../../types/athleteType";
-import Modal from "../../shared/components/layout/modal";
-import BackDrop from "../../shared/components/layout/backDrop";
-import type { FilterValue } from "../../types/filterTypes";
-import SetAttributeForm from "../attributes/components/setAttributeForm";
-import AthleteView from "../athletes/components/athleteView";
-import { useAthletes } from "../athletes/hooks/useAthletes";
-import { useSubmissions } from "../submissions/hooks/useSubmissions";
-import Tabs from "../../shared/components/layout/tabs";
-import useAthleteFilters from "../athletes/hooks/useAthleteFilters";
-import NavigationTabs from "../../shared/components/navigation/navigationTabs";
-import { useAthleteTeam } from "../teams/hooks/useAthleteTeam";
-import useModalController from "../../shared/hooks/useModalController";
-import useMainTabs from "./hooks/useMainTabs";
-import { initialFilters } from "../../shared/components/filters/filters";
-import type { TabsConfig } from "../../types/tabTypes";
-import AthleteTeamBuilder from "../athletes/components/athleteTeamBuilder";
-import TierListGrid from "../../shared/components/layout/tierListGrid";
-import TeamList from "../teams/components/teamList";
-import { filterAthletesBySubmitted } from "../../utils/filterUtils";
-import AthletesTab from "../../shared/components/tabs/athletesTab";
-import { useUser } from "../user/hooks/useUser";
-import UserForm from "../user/components/userForm";
+} from "../../../types/athleteType";
+import Modal from "../../../shared/components/layout/modal";
+import BackDrop from "../../../shared/components/layout/backDrop";
+import type { FilterValue } from "../../../types/filterTypes";
+import SetAttributeForm from "../../attributes/components/setAttributeForm";
+import AthleteView from "../../athletes/components/athleteView";
+import { useAthletes } from "../../athletes/hooks/useAthletes";
+import { useSubmissions } from "../../submissions/hooks/useSubmissions";
+import Tabs from "../../../shared/components/layout/tabs";
+import useAthleteFilters from "../../athletes/hooks/useAthleteFilters";
+import NavigationTabs from "../../../shared/components/navigation/navigationTabs";
+import { useAthleteTeam } from "../../teams/hooks/useAthleteTeam";
+import useModalController from "../../../shared/hooks/useModalController";
+import useMainTabs from "../hooks/useMainTabs";
+import { initialFilters } from "../../../shared/components/filters/filters";
+import type { TabsConfig } from "../../../types/tabTypes";
+import AthleteTeamBuilder from "../../teams/components/athleteTeamBuilder";
+import TierListGrid from "../../../shared/components/layout/tierListGrid";
+import TeamList from "../../teams/components/teamList";
+import { filterAthletesBySubmitted } from "../../../utils/filterUtils";
+import AthletesTab from "./tabs/athletesTab";
+import { useUser } from "../../user/hooks/useUser";
+import type { UserType } from "../../../types/userTypes";
+import SignupTab from "./tabs/signupTab";
 
 function MainPage() {
   const submissions = useSubmissions();
@@ -34,12 +35,12 @@ function MainPage() {
     attributeSubmissions: submissions.submissions,
   });
   const { filteredAthletes } = useAthleteFilters({ filters, athletes });
-  const { user } = useUser();
+  const { user, submitUser } = useUser();
   const team = useAthleteTeam({ athletes: athletes });
   const modal = useModalController();
   const tabs = useMainTabs({
     teams: {
-      selectedTeam: team.selectedTeam,
+      selectedTeam: team.selectedTeamView,
       existingTeams: team.existingTeams,
       handleSetTeam,
     },
@@ -52,9 +53,15 @@ function MainPage() {
     modal.close();
   }
 
+  function handleSubmiteUser(user: UserType) {
+    tabs.setActiveTab("athletes");
+    submitUser(user);
+  }
+
   function handleSetTeam(athletes: AthleteDataWithAttributes[]) {
+    const athletesId = athletes.map((athlete) => athlete.info.id);
     tabs.setActiveTab("teams");
-    team.handleSetSelectedTeam(athletes, user.username);
+    team.handleSetSelectedTeam(athletesId, user.username);
   }
   const tabsConfig: TabsConfig[] = [
     {
@@ -89,12 +96,15 @@ function MainPage() {
     {
       id: "teams",
       content: (
-        <TeamList teams={team.existingTeams} selectedTeam={team.selectedTeam} />
+        <TeamList
+          teams={team.existingTeams}
+          selectedTeam={team.selectedTeamView}
+        />
       ),
     },
     {
       id: "username",
-      content: <UserForm />,
+      content: <SignupTab submitUser={handleSubmiteUser} />,
     },
   ];
 

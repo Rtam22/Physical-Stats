@@ -34,7 +34,7 @@ function sumAttributesByTeam(athletes: AthleteDataWithAttributes[]) {
   const values: AttributeValues[] = athletes.map(
     (athlete) => athlete.attributes
   );
-  return { totals: sumAttributeValues(values), count: values.length };
+  return { totals: sumAttributeValues(values), count: athletes.length };
 }
 
 function sumAttributeValues(attributes: AttributeValues[]) {
@@ -109,7 +109,6 @@ export function getTeamAttributes(
     ? athletes.filter((athlete) => athlete.info.team === team)
     : athletes;
   const teamAttributes = sumAttributesByTeam(filtered);
-
   return averageAttributes(teamAttributes.totals, teamAttributes.count);
 }
 

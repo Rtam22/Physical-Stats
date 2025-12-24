@@ -1,0 +1,8 @@
+.signup-tab {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  padding: 50px;
+  align-items: center;
+}
