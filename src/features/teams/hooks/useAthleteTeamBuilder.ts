@@ -67,6 +67,7 @@ function useTeamBuilder({ athletes }: useTeamBuilderProps) {
   }
   return {
     availableAthletes,
+    currentGenderSelection,
     maleSelected,
     femaleSelected,
     filters,

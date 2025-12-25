@@ -2,6 +2,7 @@ import type { AthleteDataWithAttributes } from "../../../types/athleteType";
 import "./athleteTeamBuilder.css";
 import { motion } from "framer-motion";
 import useTeamBuilder from "../hooks/useAthleteTeamBuilder";
+import { useEffect } from "react";
 
 type AthleteTeamBuilderProps = {
   athletes: AthleteDataWithAttributes[];
@@ -14,6 +15,7 @@ function AthleteTeamBuilder({
 }: AthleteTeamBuilderProps) {
   const {
     availableAthletes,
+    currentGenderSelection,
     maleSelected,
     femaleSelected,
     filters,
@@ -25,6 +27,10 @@ function AthleteTeamBuilder({
     removeAthlete,
   } = useTeamBuilder({ athletes });
 
+  useEffect(() => {
+    console.log("dsa");
+  }, [currentGenderSelection]);
+
   function handleCompleteTeam() {
     handleSetTeam(selectedAthletes);
   }
@@ -33,6 +39,7 @@ function AthleteTeamBuilder({
     const athletes = gender === "male" ? maleSelected : femaleSelected;
     const athlete = athletes[index];
     const key = athlete ? athlete.info.id : index.toString();
+
     if (!athlete) {
       return <div key={key} className="athlete-container empty-slot" />;
     }
@@ -91,37 +98,45 @@ function AthleteTeamBuilder({
           value={filters.search}
         />
       </div>
-      <div className="athletes-container">
-        {availableAthletes.map((athlete, index) => {
-          const isDisabled = selectedAthletes.some(
-            (selected) => athlete.info.id === selected.info.id
-          );
-          const key = athlete.info.id;
-          const athleteSelected = selectedAthletes.some(
-            (a) => a.info.id === athlete.info.id
-          );
+      <div>
+        <motion.div
+          className="athletes-container"
+          key={currentGenderSelection}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.55, ease: "easeInOut" }}
+        >
+          {availableAthletes.map((athlete, index) => {
+            const isDisabled = selectedAthletes.some(
+              (selected) => athlete.info.id === selected.info.id
+            );
+            const key = athlete.info.id;
+            const athleteSelected = selectedAthletes.some(
+              (a) => a.info.id === athlete.info.id
+            );
 
-          if (athleteSelected)
-            return <div key={index} className="athlete-container"></div>;
+            if (athleteSelected)
+              return <div key={index} className="athlete-container"></div>;
 
-          return (
-            <motion.button
-              key={key}
-              layoutId={athlete.info.id}
-              disabled={isDisabled}
-              className="athlete-container"
-              onClick={() => addAthlete(athlete)}
-              layout
-              transition={{ type: "spring", stiffness: 400, damping: 30 }}
-            >
-              <img
+            return (
+              <motion.button
                 key={key}
-                src={athlete.info.img}
-                alt={`${athlete.info.name}'s image`}
-              />
-            </motion.button>
-          );
-        })}
+                layoutId={athlete.info.id}
+                disabled={isDisabled}
+                className="athlete-container"
+                onClick={() => addAthlete(athlete)}
+                layout
+                transition={{ type: "spring", stiffness: 400, damping: 30 }}
+              >
+                <img
+                  key={key}
+                  src={athlete.info.img}
+                  alt={`${athlete.info.name}'s image`}
+                />
+              </motion.button>
+            );
+          })}
+        </motion.div>
       </div>
     </div>
   );
