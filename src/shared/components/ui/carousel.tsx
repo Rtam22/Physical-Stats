@@ -19,7 +19,7 @@ type BaseCarousel = {
 
 type CarouselProps = BaseCarousel | CarouselWithTabs;
 
-const INTERVAL_TIMER = 8000;
+const INTERVAL_TIMER = 6000;
 
 function Carousel({ type, content }: CarouselProps) {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -73,7 +73,10 @@ function Carousel({ type, content }: CarouselProps) {
                 className={`carousel-tab ${
                   currentImage === item.image ? "active" : ""
                 }`}
-                onClick={() => setCurrentIndex(index)}
+                onClick={() => {
+                  startInterval();
+                  setCurrentIndex(index);
+                }}
               >
                 {capitalize(item.title)}
               </button>

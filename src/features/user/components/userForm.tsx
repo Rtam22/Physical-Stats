@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./userForm.css";
-import type { UserDataUpdate, UserType } from "../../../types/userTypes";
+import type { UserType } from "../../../types/userTypes";
 
 type UserFormProps = {
   submitUser: (user: UserType) => void;

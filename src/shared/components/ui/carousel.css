@@ -68,5 +68,5 @@
 
 .carousel-img {
   opacity: 0;
-  animation: FadeIn 500ms ease-in-out forwards;
+  animation: FadeIn 700ms ease-in-out forwards;
 }
