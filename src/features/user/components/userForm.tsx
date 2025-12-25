@@ -30,6 +30,7 @@ function UserForm({ submitUser }: UserFormProps) {
           onChange={(e) => {
             setUserData((prev) => ({ ...prev, username: e.target.value }));
           }}
+          placeholder="Enter your username"
         />
       </section>
     </form>

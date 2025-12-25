@@ -115,3 +115,9 @@ button.active {
 ::-webkit-scrollbar-thumb:hover {
   background: #999;
 }
+
+@keyframes FadeIn {
+  to {
+    opacity: 1;
+  }
+}

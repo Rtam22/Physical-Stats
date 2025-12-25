@@ -4,6 +4,6 @@
 
 .user-form section {
   display: flex;
-  gap: 2px;
+  gap: 5px;
   flex-direction: column;
 }

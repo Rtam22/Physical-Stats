@@ -1,8 +1,16 @@
 .signup-tab {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 25px;
   width: 100%;
-  padding: 50px;
+  padding: 20px;
   align-items: center;
+}
+
+.signup-tab input {
+  height: 28px;
+}
+
+.red {
+  color: #c20902;
 }

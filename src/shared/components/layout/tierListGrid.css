@@ -22,7 +22,7 @@
 .tierlist-grid .image-container {
   width: 90px;
   height: 100px;
-  background-color: aliceblue;
+
   overflow: hidden;
 }
 
@@ -39,6 +39,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.tierlist-grid .image-container img {
+  opacity: 0;
+  animation: FadeIn 400ms ease-in forwards;
 }
 
 @media (min-width: 400px) {

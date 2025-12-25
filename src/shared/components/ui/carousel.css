@@ -1,0 +1,72 @@
+.carousel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  align-items: center;
+}
+
+.carousel .active {
+  color: rgb(65, 227, 87);
+  background-color: transparent;
+}
+
+.carousel .carousel-tab.active:hover {
+  color: rgb(65, 227, 87);
+}
+
+.carousel .carousel-tab {
+  border: none;
+}
+
+.carousel .carousel-tab:hover {
+  background-color: transparent;
+  color: rgb(213, 213, 213);
+}
+
+.carousel .image-container {
+  width: fit-content;
+  position: relative;
+  overflow: hidden;
+  height: 650px;
+}
+
+.carousel .tab-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.carousel .button-left,
+.carousel .button-right {
+  z-index: 20;
+  position: absolute;
+  top: 0;
+  border: none;
+  color: rgb(228, 228, 228);
+  height: 100%;
+  width: 40px;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  font-size: 40px;
+}
+
+.carousel .button-left:hover,
+.carousel .button-right:hover {
+  background-color: rgba(51, 51, 51, 0.279);
+  color: rgb(255, 255, 255);
+}
+.carousel .button-right {
+  right: 0px;
+}
+
+.carousel .button-left {
+  left: 0px;
+}
+
+.carousel-img {
+  opacity: 0;
+  animation: FadeIn 500ms ease-in-out forwards;
+}

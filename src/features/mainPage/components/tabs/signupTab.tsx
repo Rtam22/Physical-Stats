@@ -1,3 +1,5 @@
+import { teamImages } from "../../../../data/teamImages";
+import Carousel from "../../../../shared/components/ui/carousel";
 import type { UserType } from "../../../../types/userTypes";
 import UserForm from "../../../user/components/userForm";
 import "./signupTab.css";
@@ -8,7 +10,11 @@ type SignupFormProps = {
 function SignupTab({ submitUser }: SignupFormProps) {
   return (
     <div className="signup-tab">
-      <h1>Physical Stats</h1>
+      <span className="flex">
+        <h1>Physical </h1>
+        <h1 className="red"> Stats</h1>
+      </span>
+      <Carousel type="tabs" content={teamImages} />{" "}
       <UserForm submitUser={submitUser} />
     </div>
   );
