@@ -1,4 +1,4 @@
-import type { AttributeKey } from "./athleteType";
+import type { AttributeKey } from "./attributeTypes";
 import type { AthleteTeams } from "./teamType";
 
 export type SortKey = AttributeKey | "favorite" | "total";

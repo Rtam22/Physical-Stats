@@ -1,4 +1,4 @@
-import type { AttributeKey, RankKey } from "../types/athleteType";
+import type { AttributeKey, RankKey } from "../types/attributeTypes";
 
 export const attributeKey: AttributeKey[] = [
   "strength",

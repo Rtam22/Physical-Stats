@@ -1,15 +1,15 @@
 import { useState } from "react";
-import type {
-  AthleteDataWithAttributes,
-  AttributeSubmission,
-  RankKey,
-} from "../../../types/athleteType";
+import type { AthleteDataWithAttributes } from "../../../types/athleteType";
 import "./setAttributeForm.css";
 import { initialFormAttributes } from "../../../data/athleteData";
 import { capitalize } from "../../../utils/textUtils";
 import ToolTip from "../../../shared/components/ui/toolTip";
 import { attributeKey, ranksKey } from "../../../data/attributeKey";
 import { attributesToolTip, mvpToolTip } from "../../../data/toolTipData";
+import type {
+  AttributeSubmission,
+  RankKey,
+} from "../../../types/attributeTypes";
 
 type SetAttributeFormProps = {
   athlete: AthleteDataWithAttributes;
@@ -20,6 +20,7 @@ function SetAttributeForm({ athlete, handleSubmit }: SetAttributeFormProps) {
   const [submission, setSubmission] = useState<AttributeSubmission>({
     athleteId: athlete.info.id,
     id: "dsadas",
+    createdAt: new Date(),
     username: "",
     favorite: false,
     values: initialFormAttributes,

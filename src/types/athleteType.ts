@@ -1,6 +1,7 @@
+import type { RankKey } from "./attributeTypes";
 import type { AthleteTeams } from "./teamType";
 
-type UserId = string;
+export type UserId = string;
 
 export type AthleteData = {
   info: {
@@ -17,8 +18,6 @@ export type AthleteData = {
   };
 };
 
-export type RankKey = "S" | "A" | "B" | "C" | "D";
-
 export type AthleteDataWithAttributes = AthleteData & {
   attributes: AttributeValues;
   favorite: number;
@@ -26,28 +25,6 @@ export type AthleteDataWithAttributes = AthleteData & {
   mvpCount: number;
   total: number;
   ranking: RankKey | null;
-};
-
-export type AttributeKey =
-  | "strength"
-  | "explosiveness"
-  | "speed"
-  | "endurance"
-  | "cardio"
-  | "grit"
-  | "adaptability";
-
-export type AttributeValues = Record<AttributeKey, number>;
-
-export type AttributeSubmission = {
-  athleteId: AthleteIdKey;
-  id: UserId;
-  username: string;
-  favorite: boolean;
-  values: AttributeValues;
-  mvp?: boolean;
-  comment?: string;
-  ranking: RankKey | "";
 };
 
 export type AthleteIdKey =

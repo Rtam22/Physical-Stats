@@ -1,4 +1,5 @@
-import type { AthleteDataWithAttributes, AttributeValues } from "./athleteType";
+import type { AthleteDataWithAttributes } from "./athleteType";
+import type { AttributeValues } from "./attributeTypes";
 
 export type AthleteTeams =
   | "South Korea"

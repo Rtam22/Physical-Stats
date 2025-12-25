@@ -1,11 +1,11 @@
 import { initialAttributes } from "../data/athleteData";
+import type { AthleteDataWithAttributes } from "../types/athleteType";
 import type {
-  AthleteDataWithAttributes,
   AttributeKey,
   AttributeSubmission,
   AttributeValues,
   RankKey,
-} from "../types/athleteType";
+} from "../types/attributeTypes";
 import type { AthleteTeams } from "../types/teamType";
 import { roundToHalf } from "./mathUtils";
 

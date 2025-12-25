@@ -1,10 +1,8 @@
-import type {
-  AthleteDataWithAttributes,
-  AttributeSubmission,
-} from "../../../types/athleteType";
+import type { AthleteDataWithAttributes } from "../../../types/athleteType";
 import "./athleteView.css";
 import AttributeBar from "../../attributes/components/attributeBar";
 import SubmissionPagination from "../../submissions/components/submissionPagination";
+import type { AttributeSubmission } from "../../../types/attributeTypes";
 
 type AtheleteViewProps = {
   athlete: AthleteDataWithAttributes;

@@ -1,32 +1,30 @@
 import { useState } from "react";
 import "./mainPage.css";
-import type {
-  AthleteDataWithAttributes,
-  AttributeSubmission,
-} from "../../../types/athleteType";
-import Modal from "../../../shared/components/layout/modal";
-import BackDrop from "../../../shared/components/layout/backDrop";
-import type { FilterValue } from "../../../types/filterTypes";
-import SetAttributeForm from "../../attributes/components/setAttributeForm";
-import AthleteView from "../../athletes/components/athleteView";
-import { useAthletes } from "../../athletes/hooks/useAthletes";
-import { useSubmissions } from "../../submissions/hooks/useSubmissions";
-import Tabs from "../../../shared/components/layout/tabs";
-import useAthleteFilters from "../../athletes/hooks/useAthleteFilters";
-import NavigationTabs from "../../../shared/components/navigation/navigationTabs";
-import { useAthleteTeam } from "../../teams/hooks/useAthleteTeam";
-import useModalController from "../../../shared/hooks/useModalController";
-import useMainTabs from "../hooks/useMainTabs";
-import { initialFilters } from "../../../shared/components/filters/filters";
-import type { TabsConfig } from "../../../types/tabTypes";
-import AthleteTeamBuilder from "../../teams/components/athleteTeamBuilder";
-import TierListGrid from "../../../shared/components/layout/tierListGrid";
-import TeamList from "../../teams/components/teamList";
-import { filterAthletesBySubmitted } from "../../../utils/filterUtils";
-import AthletesTab from "./tabs/athletesTab";
-import { useUser } from "../../user/hooks/useUser";
-import type { UserType } from "../../../types/userTypes";
-import SignupTab from "./tabs/signupTab";
+import type { AthleteDataWithAttributes } from "../types/athleteType";
+import Modal from "../shared/components/layout/modal";
+import BackDrop from "../shared/components/layout/backDrop";
+import type { FilterValue } from "../types/filterTypes";
+import SetAttributeForm from "../features/attributes/components/setAttributeForm";
+import AthleteView from "../features/athletes/components/athleteView";
+import { useAthletes } from "../features/athletes/hooks/useAthletes";
+import { useSubmissions } from "../features/submissions/hooks/useSubmissions";
+import Tabs from "../shared/components/layout/tabs";
+import useAthleteFilters from "../features/athletes/hooks/useAthleteFilters";
+import NavigationTabs from "../shared/components/navigation/navigationTabs";
+import { useAthleteTeam } from "../features/teams/hooks/useAthleteTeam";
+import useModalController from "../shared/hooks/useModalController";
+import useMainTabs from "../features/mainPage/hooks/useMainTabs";
+import { initialFilters } from "../shared/components/filters/filters";
+import type { TabsConfig } from "../types/tabTypes";
+import AthleteTeamBuilder from "../features/teams/components/athleteTeamBuilder";
+import TierListGrid from "../shared/components/layout/tierListGrid";
+import TeamList from "../features/teams/components/teamList";
+import { filterAthletesBySubmitted } from "../utils/filterUtils";
+import AthletesTab from "../features/mainPage/components/athletesTab";
+import { useUser } from "../features/user/hooks/useUser";
+import type { UserType } from "../types/userTypes";
+import SignupTab from "../features/mainPage/components/signupTab";
+import type { AttributeSubmission } from "../types/attributeTypes";
 
 function MainPage() {
   const submissions = useSubmissions();

@@ -1,4 +1,4 @@
-import type { AthleteData, AttributeSubmission } from "../types/athleteType";
+import type { AthleteData } from "../types/athleteType";
 import adiyasuren from "../assets/athletes/adiyasuren.webp";
 import alexandraMilne from "../assets/athletes/alexandra-milne.webp";
 import aliSofuoglu from "../assets/athletes/ali-sofuoglu.webp";
@@ -97,6 +97,7 @@ import yoshioItoiSm from "../assets/athletes/yoshio-itoi-sm.jpg";
 import yunSungBinSm from "../assets/athletes/yun-sung-bin-sm.jpg";
 import yushinOkamiSm from "../assets/athletes/yushin-okami-sm.jpg";
 import type { AthleteTeams } from "../types/teamType";
+import type { AttributeSubmission } from "../types/attributeTypes";
 
 export const initialAttributes = {
   strength: 0,
@@ -829,6 +830,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     athleteId: "alexandra-milne",
     id: "user-alexandra-1",
     username: "alexFan01",
+    createdAt: new Date(),
     favorite: true,
     values: {
       strength: 6,
@@ -847,6 +849,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     athleteId: "alexandra-milne",
     id: "user-alexandra-2",
     username: "gymrat22",
+    createdAt: new Date(),
     favorite: false,
     values: {
       strength: 5.5,
@@ -865,6 +868,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     athleteId: "alexandra-milne",
     id: "user-alexandra-3",
     username: "powergirl",
+    createdAt: new Date(),
     favorite: true,
     values: {
       strength: 7,
@@ -885,6 +889,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     athleteId: "igedz-executioner",
     id: "user-igedz-1",
     username: "executionerMain",
+    createdAt: new Date(),
     favorite: true,
     values: {
       strength: 9,
@@ -903,6 +908,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     athleteId: "igedz-executioner",
     id: "user-igedz-2",
     username: "hardmode",
+    createdAt: new Date(),
     favorite: false,
     values: {
       strength: 8.5,
@@ -921,6 +927,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     athleteId: "igedz-executioner",
     id: "user-igedz-3",
     username: "clutchtime",
+    createdAt: new Date(),
     favorite: true,
     values: {
       strength: 9.5,
@@ -941,6 +948,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     athleteId: "robert-whittaker",
     id: "user-robbie-1",
     username: "whittakerUltra",
+    createdAt: new Date(),
     favorite: true,
     values: {
       strength: 9,
@@ -959,6 +967,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     athleteId: "robert-whittaker",
     id: "user-robbie-2",
     username: "oceaniamma",
+    createdAt: new Date(),
     favorite: true,
     values: {
       strength: 8.5,
@@ -978,6 +987,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     athleteId: "robert-whittaker",
     id: "user-robbie-3",
     username: "bobbyKnuckles",
+    createdAt: new Date(),
     favorite: false,
     values: {
       strength: 9,
@@ -999,6 +1009,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     athleteId: "kim-dong-hyun",
     id: "user-kimdh-1",
     username: "stunGun",
+    createdAt: new Date(),
     favorite: false,
     values: {
       strength: 8,
@@ -1017,6 +1028,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     athleteId: "kim-dong-hyun",
     id: "user-kimdh-2",
     username: "mmaOldGuard",
+    createdAt: new Date(),
     favorite: false,
     values: {
       strength: 7.5,
@@ -1036,6 +1048,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     athleteId: "kim-dong-hyun",
     id: "user-kimdh-3",
     username: "southkoreamma",
+    createdAt: new Date(),
     favorite: true,
     values: {
       strength: 8.5,
@@ -1055,6 +1068,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     athleteId: "kim-dong-hyun",
     id: "user-kimdh-3",
     username: "southkoreamma",
+    createdAt: new Date(),
     favorite: true,
     values: {
       strength: 8.5,
@@ -1073,6 +1087,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     athleteId: "kim-dong-hyun",
     id: "user-kimdh-2",
     username: "mmaOldGuard",
+    createdAt: new Date(),
     favorite: false,
     values: {
       strength: 7.5,
@@ -1092,6 +1107,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     athleteId: "kim-dong-hyun",
     id: "user-kimdh-1",
     username: "stunGun",
+    createdAt: new Date(),
     favorite: false,
     values: {
       strength: 8,
@@ -1112,6 +1128,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     athleteId: "kim-hae-jong",
     id: "user-amotti-1",
     username: "crossfitAddict",
+    createdAt: new Date(),
     favorite: true,
     values: {
       strength: 8,
@@ -1131,6 +1148,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     athleteId: "kim-hae-jong",
     id: "user-amotti-2",
     username: "wodmachine",
+    createdAt: new Date(),
     favorite: false,
     values: {
       strength: 7.5,
@@ -1150,6 +1168,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     athleteId: "kim-hae-jong",
     id: "user-amotti-3",
     username: "boxOwner",
+    createdAt: new Date(),
     favorite: true,
     values: {
       strength: 8.5,
@@ -1170,6 +1189,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     athleteId: "yun-sung-bin",
     id: "user-yun-1",
     username: "ironmanYun",
+    createdAt: new Date(),
     favorite: true,
     values: {
       strength: 7.5,
@@ -1189,6 +1209,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     athleteId: "yun-sung-bin",
     id: "user-yun-2",
     username: "downhillDemon",
+    createdAt: new Date(),
     favorite: true,
     values: {
       strength: 7,
@@ -1208,6 +1229,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     athleteId: "yun-sung-bin",
     id: "user-yun-3",
     username: "skeletonGold",
+    createdAt: new Date(),
     favorite: true,
     values: {
       strength: 8,
@@ -1229,6 +1251,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     athleteId: "jang-eun-sil",
     id: "user-jang-1",
     username: "wrestleQueen",
+    createdAt: new Date(),
     favorite: true,
     values: {
       strength: 8.5,
@@ -1248,6 +1271,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     athleteId: "jang-eun-sil",
     id: "user-jang-2",
     username: "matboss",
+    createdAt: new Date(),
     favorite: false,
     values: {
       strength: 8,
@@ -1266,6 +1290,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     athleteId: "jang-eun-sil",
     id: "user-jang-3",
     username: "ssireumpro",
+    createdAt: new Date(),
     favorite: true,
     values: {
       strength: 9,
@@ -1286,6 +1311,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     athleteId: "choi-seung-yeon",
     id: "user-choi-1",
     username: "crossfitSeung",
+    createdAt: new Date(),
     favorite: true,
     values: {
       strength: 7.5,
@@ -1304,6 +1330,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     athleteId: "choi-seung-yeon",
     id: "user-choi-2",
     username: "engineRoom",
+    createdAt: new Date(),
     favorite: false,
     values: {
       strength: 7,
@@ -1322,6 +1349,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     athleteId: "choi-seung-yeon",
     id: "user-choi-3",
     username: "highrepQueen",
+    createdAt: new Date(),
     favorite: true,
     values: {
       strength: 8,
@@ -1343,6 +1371,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     athleteId: "kim-min-jae",
     id: "user-minjae-1",
     username: "ssireumChamp",
+    createdAt: new Date(),
     favorite: true,
     values: {
       strength: 9,
@@ -1361,6 +1390,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     athleteId: "kim-min-jae",
     id: "user-minjae-2",
     username: "sandpitKing",
+    createdAt: new Date(),
     favorite: false,
     values: {
       strength: 8.5,
@@ -1379,6 +1409,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     athleteId: "kim-min-jae",
     id: "user-minjae-3",
     username: "koreangrapple",
+    createdAt: new Date(),
     favorite: true,
     values: {
       strength: 9.5,
@@ -1400,6 +1431,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     athleteId: "superbon-singha-mawynn",
     id: "user-superbon-1",
     username: "headkickKO",
+    createdAt: new Date(),
     favorite: true,
     values: {
       strength: 8,
@@ -1419,6 +1451,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     athleteId: "superbon-singha-mawynn",
     id: "user-superbon-2",
     username: "kickboxingKing",
+    createdAt: new Date(),
     favorite: true,
     values: {
       strength: 8.5,
@@ -1438,6 +1471,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     athleteId: "superbon-singha-mawynn",
     id: "user-superbon-3",
     username: "thaiboxingOG",
+    createdAt: new Date(),
     favorite: false,
     values: {
       strength: 8,
@@ -1459,6 +1493,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     athleteId: "sunny-kerdkao",
     id: "user-sunny-1",
     username: "ruckRunner",
+    createdAt: new Date(),
     favorite: false,
     values: {
       strength: 7.5,
@@ -1477,6 +1512,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     athleteId: "sunny-kerdkao",
     id: "user-sunny-2",
     username: "flankbeast",
+    createdAt: new Date(),
     favorite: false,
     values: {
       strength: 7,
@@ -1495,6 +1531,7 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
     athleteId: "sunny-kerdkao",
     id: "user-sunny-3",
     username: "rugbyGrind",
+    createdAt: new Date(),
     favorite: true,
     values: {
       strength: 8,
