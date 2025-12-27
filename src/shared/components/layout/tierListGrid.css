@@ -41,11 +41,6 @@
   object-fit: cover;
 }
 
-.tierlist-grid .image-container img {
-  opacity: 0;
-  animation: FadeIn 400ms ease-in forwards;
-}
-
 @media (min-width: 400px) {
   .tierlist-grid .image-container {
     width: 100px;

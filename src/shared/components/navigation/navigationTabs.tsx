@@ -8,6 +8,9 @@ type NavigationTabsProps = {
 };
 
 function NavigationTabs({ active, changeTab, allTabs }: NavigationTabsProps) {
+  const isOnUsernameStep = active === "username";
+
+  if (isOnUsernameStep) return null;
   return (
     <div className="button-container">
       {allTabs.map((tab, index) => {

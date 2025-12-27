@@ -1,8 +1,6 @@
 import { athleteList, initialAttributes } from "../../../data/athleteData";
-import type {
-  AthleteDataWithAttributes,
-  AttributeSubmission,
-} from "../../../types/athleteType";
+import type { AthleteDataWithAttributes } from "../../../types/athleteType";
+import type { AttributeSubmission } from "../../../types/attributeTypes";
 import {
   getAttributesFromSubmissions,
   getValuesForAttributes,

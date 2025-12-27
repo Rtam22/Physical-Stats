@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
-import type {
-  AthleteDataWithAttributes,
-  AttributeSubmission,
-} from "../../../types/athleteType";
+import type { AthleteDataWithAttributes } from "../../../types/athleteType";
 import { athleteService } from "../services/athleteService";
+import type { AttributeSubmission } from "../../../types/attributeTypes";
 
 type UseAthleteProps = {
   attributeSubmissions: AttributeSubmission[];

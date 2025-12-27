@@ -1,4 +1,4 @@
-import type { AthleteData } from "../types/athleteType";
+import type { AthleteData, AthleteIdKey } from "../types/athleteType";
 import adiyasuren from "../assets/athletes/adiyasuren.webp";
 import alexandraMilne from "../assets/athletes/alexandra-milne.webp";
 import aliSofuoglu from "../assets/athletes/ali-sofuoglu.webp";
@@ -118,6 +118,72 @@ export const initialFormAttributes = {
   grit: 5,
   adaptability: 5,
 };
+
+export const ALL_ATHLETE_IDS = [
+  // 🇰🇷 Team Korea
+  "kim-dong-hyun",
+  "kim-hae-jong",
+  "yun-sung-bin",
+  "jang-eun-sil",
+  "choi-seung-yeon",
+  "kim-min-jae",
+
+  // 🇯🇵 Team Japan
+  "yushin-okami",
+  "kana-watanabe",
+  "nonoka-ozaki",
+  "soichi-hashimoto",
+  "katsumi-nakamura",
+  "yoshio-itoi",
+
+  // 🇹🇭 Team Thailand
+  "superbon-singha-mawynn",
+  "james-rusameekae",
+  "sunny-kerdkao",
+  "jar-uracha",
+  "anucha-yospanya",
+  "ploy-nuannaree",
+
+  // 🇲🇳 Team Mongolia
+  "orkhonbayar",
+  "adiyasuren",
+  "dulguun",
+  "enkh-orgil",
+  "khandsuren",
+  "lfkhagva-ochir",
+
+  // 🇹🇷 Team Turkey
+  "recep-kara",
+  "ali-sofuoglu",
+  "anil-berk-baki",
+  "nefise-karatay",
+  "ogeday-girisken",
+  "yasemin-adar",
+
+  // 🇦🇺 Team Australia
+  "robert-whittaker",
+  "alexandra-milne",
+  "dom-tomato",
+  "eddie-williams",
+  "eloni-vunakece",
+  "katelin-van-zyl",
+
+  // 🇵🇭 Team Philippines
+  "manny-pacquiao",
+  "lara-lorraine",
+  "mark-mugen",
+  "justin-coveney",
+  "ray-jefferson",
+  "robyn-lauren",
+
+  // 🇮🇩 Team Indonesia
+  "igedz-executioner",
+  "maria-selena",
+  "marcus-gideon",
+  "glenn-victor",
+  "fina-philippe",
+  "jeremiah-lakhwani",
+] as AthleteIdKey[];
 
 export const teamList: AthleteTeams[] = [
   "South Korea",

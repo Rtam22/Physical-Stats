@@ -5,11 +5,11 @@ import type {
 } from "../../../types/athleteType";
 import Card from "./athleteCard";
 import Grid from "../../../shared/components/layout/grid";
-import type { ModalType } from "../../../types/modalTypes";
+import type { ModalOpenState } from "../../../types/modalTypes";
 
 type AthleteGridSection = {
   athletes: AthleteDataWithAttributes[];
-  onCardClick: (type: ModalType, athlete: AthleteDataWithAttributes) => void;
+  onCardClick: (next: ModalOpenState) => void;
   submittedVote: AthleteIdKey[];
 };
 

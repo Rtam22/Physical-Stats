@@ -1,12 +1,11 @@
 import { useState } from "react";
-import type { ModalState, ModalType } from "../../types/modalTypes";
-import type { AthleteDataWithAttributes } from "../../types/athleteType";
+import type { ModalOpenState, ModalState } from "../../types/modalTypes";
 
 function useModalController() {
-  const [state, setState] = useState<ModalState>();
+  const [state, setState] = useState<ModalState>({ open: false });
 
-  function open(type: ModalType, athlete?: AthleteDataWithAttributes) {
-    setState({ open: true, type: type, athlete });
+  function open(next: ModalOpenState) {
+    setState(next);
   }
 
   function close() {

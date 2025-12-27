@@ -3,7 +3,7 @@ import type {
   AthleteIdKey,
 } from "../../../types/athleteType";
 import type { FilterValue } from "../../../types/filterTypes";
-import type { ModalType } from "../../../types/modalTypes";
+import type { ModalOpenState } from "../../../types/modalTypes";
 import AthleteGridSection from "../../athletes/components/athleteGridSection";
 import Filters from "../../../shared/components/filters/filters";
 
@@ -14,7 +14,8 @@ type AthletesTabProps = {
   };
   athletes: AthleteDataWithAttributes[];
   submittedVote: AthleteIdKey[];
-  onCardClick: (type: ModalType, athlete: AthleteDataWithAttributes) => void;
+  onCardClick: (next: ModalOpenState) => void;
+  onRevealAll: () => void;
 };
 
 function AthletesTab({
@@ -22,6 +23,7 @@ function AthletesTab({
   athletes,
   submittedVote,
   onCardClick,
+  onRevealAll,
 }: AthletesTabProps) {
   return (
     <>

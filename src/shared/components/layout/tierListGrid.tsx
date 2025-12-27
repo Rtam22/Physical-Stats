@@ -1,11 +1,12 @@
+import { motion } from "framer-motion";
 import { ranksKey } from "../../../data/attributeKey";
 import type { AthleteDataWithAttributes } from "../../../types/athleteType";
-import type { ModalType } from "../../../types/modalTypes";
+import type { ModalOpenState } from "../../../types/modalTypes";
 import "./tierListGrid.css";
 
 type TierListGridProps = {
   athletes: AthleteDataWithAttributes[];
-  onCardClick: (type: ModalType, athlete?: AthleteDataWithAttributes) => void;
+  onCardClick: (next: ModalOpenState) => void;
 };
 
 function TierListGrid({ athletes, onCardClick }: TierListGridProps) {
@@ -17,19 +18,36 @@ function TierListGrid({ athletes, onCardClick }: TierListGridProps) {
             <div className="key-cell" style={{ backgroundColor: key.color }}>
               {key.key}
             </div>
-            <div className="athletes-cell">
+            <motion.div
+              className="athletes-cell"
+              initial="hidden"
+              animate="visible"
+              variants={{
+                visible: {
+                  transition: {
+                    staggerChildren: 0.05,
+                  },
+                },
+              }}
+            >
               {athletes.map((athlete) => {
                 return athlete.ranking === key.key ? (
-                  <div
-                    onClick={() => onCardClick("athleteView", athlete)}
+                  <motion.div
+                    onClick={() =>
+                      onCardClick({ open: true, type: "athleteView", athlete })
+                    }
                     key={athlete.info.id}
                     className="image-container"
+                    variants={{
+                      hidden: { opacity: 0, y: 10 },
+                      visible: { opacity: 1, y: 0 },
+                    }}
                   >
                     <img src={athlete.info.img} />
-                  </div>
+                  </motion.div>
                 ) : null;
               })}
-            </div>
+            </motion.div>
           </div>
         );
       })}

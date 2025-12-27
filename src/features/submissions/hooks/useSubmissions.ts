@@ -1,11 +1,9 @@
 import { useMemo, useState } from "react";
-import type {
-  AthleteIdKey,
-  AttributeSubmission,
-} from "../../../types/athleteType";
+import type { AthleteIdKey } from "../../../types/athleteType";
 import { submissionService } from "../services/submissionService";
 import type { AthleteTeams } from "../../../types/teamType";
-import { athleteList } from "../../../data/athleteData";
+import { ALL_ATHLETE_IDS, athleteList } from "../../../data/athleteData";
+import type { AttributeSubmission } from "../../../types/attributeTypes";
 
 export function useSubmissions() {
   const [submissions, setSubmissions] = useState<AttributeSubmission[]>(
@@ -34,6 +32,10 @@ export function useSubmissions() {
     return [...teams];
   }, [submissions]);
 
+  function handleRevealAll() {
+    setsubmittedVoteAccess(ALL_ATHLETE_IDS);
+  }
+
   function handleSubmitSubmissions(submission: AttributeSubmission) {
     setSubmissions((prev) => [...prev, submission]);
     setsubmittedVoteAccess((prev) => [...prev, submission.athleteId]);
@@ -44,5 +46,6 @@ export function useSubmissions() {
     submittedVoteAccess,
     submittedMVPRestriction,
     handleSubmitSubmissions,
+    handleRevealAll,
   };
 }

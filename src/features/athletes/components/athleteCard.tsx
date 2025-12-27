@@ -1,13 +1,13 @@
 import type {
   AthleteDataWithAttributes,
   AthleteIdKey,
-  AttributeValues,
 } from "../../../types/athleteType";
 import "./athleteCard.css";
-import type { ModalType } from "../../../types/modalTypes";
+import type { ModalOpenState } from "../../../types/modalTypes";
 import ReactCountryFlag from "react-country-flag";
 import { getCountryCode } from "../../../utils/teamUtils";
 import AttributesList from "../../attributes/components/attributesList";
+import type { AttributeValues } from "../../../types/attributeTypes";
 
 type CardProps = {
   id: AthleteIdKey;
@@ -16,7 +16,7 @@ type CardProps = {
   favorites: number;
   total: number;
   mvp: boolean;
-  handleClick: (type: ModalType, athlete: AthleteDataWithAttributes) => void;
+  handleClick: (next: ModalOpenState) => void;
   hasVoted: boolean;
 };
 
@@ -41,8 +41,8 @@ function AthleteCard({
       className="card-container"
       onClick={() => {
         hasAttributes && hasVoted
-          ? handleClick("athleteView", athlete)
-          : handleClick("setAttributes", athlete);
+          ? handleClick({ open: true, type: "athleteView", athlete })
+          : handleClick({ open: true, type: "setAttributes", athlete });
       }}
     >
       <div className="top-container">

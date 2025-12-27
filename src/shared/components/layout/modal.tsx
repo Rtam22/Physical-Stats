@@ -1,7 +1,7 @@
 import "./modal.css";
 
 type ModalProps = {
-  type: "middle";
+  type: "middle" | "confirmation";
   children?: React.ReactNode;
   width?: string;
   height?: string;

@@ -1,4 +1,4 @@
-import type { AttributeValues } from "../../../types/athleteType";
+import type { AttributeValues } from "../../../types/attributeTypes";
 import AttributeBar from "./attributeBar";
 import "./AttributesList.css";
 
