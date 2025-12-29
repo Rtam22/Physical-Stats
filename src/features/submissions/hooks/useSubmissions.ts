@@ -34,7 +34,10 @@ export function useSubmissions() {
 
   function handleSubmitSubmissions(submission: AttributeSubmission) {
     setSubmissions((prev) => [...prev, submission]);
-    setsubmittedVoteAccess((prev) => [...prev, submission.athleteId]);
+    setsubmittedVoteAccess((prev) => {
+      if (prev.includes(submission.athleteId)) return prev;
+      return [...prev, submission.athleteId];
+    });
   }
 
   return {
