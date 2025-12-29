@@ -141,21 +141,23 @@ function SetAttributeForm({
               })}
             </select>
           </section>
-          <section>
-            <label htmlFor="mvp" className="mvp">
-              <p>MVP </p>
-              <ToolTip information={mvpToolTip} />
-            </label>
-            <input
-              id="mvp"
-              type="checkbox"
-              disabled={hasMVPCountries.includes(athlete.info.team)}
-              checked={submission.mvp}
-              onChange={() =>
-                setSubmission({ ...submission, mvp: !submission.mvp })
-              }
-            />
-          </section>
+          {!hasMVPCountries.includes(athlete.info.team) && (
+            <section>
+              <label htmlFor="mvp" className="mvp">
+                <p>MVP </p>
+                <ToolTip information={mvpToolTip} />
+              </label>
+              <input
+                id="mvp"
+                type="checkbox"
+                checked={submission.mvp}
+                onChange={() =>
+                  setSubmission({ ...submission, mvp: !submission.mvp })
+                }
+              />
+            </section>
+          )}
+
           <section>
             <label htmlFor="mvp" className="favorite">
               Favorite

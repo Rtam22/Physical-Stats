@@ -1,5 +1,7 @@
 import { teamList } from "../../../data/athleteData";
+import { attributeKey } from "../../../data/attributeKey";
 import type { FilterValue } from "../../../types/filterTypes";
+import { capitalize } from "../../../utils/textUtils";
 import "./filters.css";
 
 type FilterProps = {
@@ -62,13 +64,9 @@ function Filters({ filterValues, setFilter }: FilterProps) {
           <option value="none">None</option>
           <option value="total">Total score</option>
           <option value="favorite">Favorite</option>
-          <option value="strength">Strength</option>
-          <option value="explosiveness">Explosiveness</option>
-          <option value="speed">Speed</option>
-          <option value="endurance">Endurance</option>
-          <option value="cardio">Cardio</option>
-          <option value="grit">Grit</option>
-          <option value="leadership">Leadership</option>
+          {attributeKey.map((attribute) => {
+            return <option value={attribute}>{capitalize(attribute)}</option>;
+          })}
         </select>
       </section>
     </div>
