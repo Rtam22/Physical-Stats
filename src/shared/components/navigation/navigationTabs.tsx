@@ -1,10 +1,17 @@
 import type { TabID } from "../../../types/tabTypes";
-import { capitalize } from "../../../utils/textUtils";
 
 type NavigationTabsProps = {
   active: TabID;
   changeTab: (tab: TabID) => void;
   allTabs: TabID[];
+};
+
+export const TAB_LABELS: Record<TabID, string> = {
+  athletes: "Athletes",
+  tierList: "Tier List",
+  teamBuilder: "Team Builder",
+  username: "Username",
+  teams: "Teams",
 };
 
 function NavigationTabs({ active, changeTab, allTabs }: NavigationTabsProps) {
@@ -20,7 +27,7 @@ function NavigationTabs({ active, changeTab, allTabs }: NavigationTabsProps) {
             onClick={() => changeTab(tab)}
             className={`${active === tab ? "active" : ""}`}
           >
-            {capitalize(tab)}
+            {TAB_LABELS[tab]}
           </button>
         );
       })}
