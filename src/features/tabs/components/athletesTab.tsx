@@ -6,7 +6,7 @@ import type { FilterValue } from "../../../types/filterTypes";
 import type { ModalOpenState } from "../../../types/modalTypes";
 import AthleteGridSection from "../../athletes/components/athleteGridSection";
 import Filters from "../../../shared/components/filters/filters";
-
+import "./athletesTab.css";
 type AthletesTabProps = {
   filter: {
     values: FilterValue;
@@ -26,19 +26,23 @@ function AthletesTab({
   onRevealAll,
 }: AthletesTabProps) {
   return (
-    <>
+    <div className="athletes-tab">
       <Filters
         filterValues={filter.values}
         setFilter={(newFilters) =>
           filter.setFilters((prev) => ({ ...prev, ...newFilters }))
         }
       />
+
+      <div className="athletes-button-container">
+        <button onClick={onRevealAll}>Reveal all stats</button>
+      </div>
       <AthleteGridSection
         athletes={athletes}
         submittedVote={submittedVote}
         onCardClick={onCardClick}
       />
-    </>
+    </div>
   );
 }
 

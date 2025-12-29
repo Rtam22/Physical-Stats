@@ -26,6 +26,7 @@ import SignupTab from "../features/tabs/components/signupTab";
 import type { AttributeSubmission } from "../types/attributeTypes";
 import type { ModalConfig } from "../types/modalTypes";
 import ModalController from "../shared/components/layout/modalController";
+import ConfirmationModal from "../shared/components/ui/confirmationModal";
 
 function MainPage() {
   const submissions = useSubmissions();
@@ -45,20 +46,6 @@ function MainPage() {
     },
     hasUsername: Boolean(user.username),
   });
-
-  function handleSubmitVote(submission: AttributeSubmission) {
-    submissions.handleSubmitSubmissions(submission);
-    modal.close();
-  }
-
-  function handleSubmiteUser(user: UserType) {
-    tabs.setActiveTab("athletes");
-    submitUser(user);
-  }
-
-  function handleRevealAllStats() {
-    modal.open({ open: true, type: "confirmation" });
-  }
 
   function handleSetTeam(athletes: AthleteDataWithAttributes[]) {
     const athletesId = athletes.map((athlete) => athlete.info.id);
@@ -80,7 +67,7 @@ function MainPage() {
           athletes={filteredAthletes}
           submittedVote={submissions.submittedVoteAccess}
           onCardClick={modal.open}
-          onRevealAll={handleRevealAllStats}
+          onRevealAll={() => modal.open({ open: true, type: "confirmation" })}
         />
       ),
     },
@@ -107,11 +94,18 @@ function MainPage() {
     },
     {
       id: "username",
-      content: <SignupTab submitUser={handleSubmiteUser} />,
+      content: (
+        <SignupTab
+          submitUser={(user: UserType) => {
+            tabs.setActiveTab("athletes");
+            submitUser(user);
+          }}
+        />
+      ),
     },
   ];
 
-  const modalConfigs: ModalConfig[] = [
+  const modalsConfig: ModalConfig[] = [
     {
       id: "setAttributes",
       backDrop: true,
@@ -122,7 +116,10 @@ function MainPage() {
           <Modal width="80%" height="90vh" type="middle" onClose={modal.close}>
             <SetAttributeForm
               athlete={modal.state.athlete}
-              handleSubmit={handleSubmitVote}
+              handleSubmit={(submission: AttributeSubmission) => {
+                submissions.handleSubmitSubmissions(submission);
+                modal.close();
+              }}
             />
           </Modal>
         );
@@ -144,13 +141,29 @@ function MainPage() {
         );
       },
     },
+    {
+      id: "confirmation",
+      backDrop: true,
+      render: () => {
+        return (
+          <ConfirmationModal
+            message="dsajds ads dsa ds ds a"
+            onClose={modal.close}
+            onConfirm={() => {
+              submissions.handleRevealAll();
+              modal.close();
+            }}
+          />
+        );
+      },
+    },
   ];
 
   return (
     <div className="main-page">
       <ModalController
         state={modal.state}
-        modals={modalConfigs}
+        modals={modalsConfig}
         onClose={modal.close}
       />
 
@@ -159,7 +172,6 @@ function MainPage() {
         changeTab={(e) => tabs.setActiveTab(e)}
         allTabs={tabs.availableTabs}
       />
-
       <Tabs activeTab={tabs.activeTab} tabs={tabsConfig} />
     </div>
   );

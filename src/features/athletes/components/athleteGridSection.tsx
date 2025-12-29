@@ -31,7 +31,7 @@ function AthleteGridSection({
         hasVoted={submittedVote.includes(athlete.info.id as AthleteIdKey)}
       />
     ));
-  }, [athletes]);
+  }, [athletes, submittedVote, onCardClick]);
 
   return (
     <Grid

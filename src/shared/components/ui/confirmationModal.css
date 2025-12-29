@@ -1,0 +1,29 @@
+.modal.confirmation {
+  min-width: 400px;
+  width: auto;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 40px 50px;
+}
+
+.modal.confirmation .modal-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.confirmation .button-container {
+  display: flex;
+  gap: 50px;
+}
+
+.modal.confirmation .modal-content p {
+  white-space: pre-line;
+  font-size: 16px;
+}

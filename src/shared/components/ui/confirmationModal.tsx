@@ -1,6 +1,6 @@
 import BackDrop from "../layout/backDrop";
 import Modal from "../layout/modal";
-
+import "./confirmationModal.css";
 type ConfirmationModalProps = {
   message: string;
   confirmText?: string;

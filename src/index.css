@@ -88,6 +88,11 @@ button.active {
   color: rgb(138, 138, 138);
 }
 
+.button-plain:hover {
+  background-color: transparent;
+  text-decoration: underline;
+}
+
 .flex {
   display: flex;
   gap: 5px;

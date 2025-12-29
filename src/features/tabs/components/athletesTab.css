@@ -1,0 +1,17 @@
+.athletes-button-container {
+  width: 75%;
+  display: flex;
+  justify-content: center;
+}
+
+.athletes-tab {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.athletes-tab .grid {
+  padding-top: 0px;
+}
