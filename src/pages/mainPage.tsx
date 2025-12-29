@@ -68,6 +68,7 @@ function MainPage() {
           submittedVote={submissions.submittedVoteAccess}
           onCardClick={modal.open}
           onRevealAll={() => modal.open({ open: true, type: "confirmation" })}
+          hasRevealedAll={submissions.hasRevealedAll}
         />
       ),
     },
@@ -147,7 +148,8 @@ function MainPage() {
       render: () => {
         return (
           <ConfirmationModal
-            message="dsajds ads dsa ds ds a"
+            title="Reveal all stats?"
+            message="You will not be able to vote after revealing stats."
             onClose={modal.close}
             onConfirm={() => {
               submissions.handleRevealAll();

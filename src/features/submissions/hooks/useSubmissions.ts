@@ -14,6 +14,10 @@ export function useSubmissions() {
     AthleteIdKey[]
   >(["choi-seung-yeon", "jang-eun-sil", "kim-dong-hyun", "yun-sung-bin"]);
 
+  const hasRevealedAll = useMemo(() => {
+    return ALL_ATHLETE_IDS.every((id) => submittedVoteAccess.includes(id));
+  }, [submittedVoteAccess]);
+
   const submittedMVPRestriction = useMemo(() => {
     const teams = new Set<AthleteTeams>();
     for (const submission of submissions) {
@@ -44,6 +48,7 @@ export function useSubmissions() {
     submissions,
     submittedVoteAccess,
     submittedMVPRestriction,
+    hasRevealedAll,
     handleSubmitSubmissions,
     handleRevealAll,
   };

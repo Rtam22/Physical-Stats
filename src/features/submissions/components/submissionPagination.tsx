@@ -1,9 +1,7 @@
-import type {
-  AthleteIdKey,
-  AttributeSubmission,
-} from "../../../types/athleteType";
+import type { AthleteIdKey } from "../../../types/athleteType";
 import PaginationList from "../../../shared/components/layout/paginationList";
 import SubmissionCard from "./submissionCard";
+import type { AttributeSubmission } from "../../../types/attributeTypes";
 
 type SubmissionPaginationProps = {
   athlete: AthleteIdKey;
@@ -22,7 +20,7 @@ function SubmissionPagination({
           .map((submission) => {
             return <SubmissionCard submission={submission} />;
           }),
-      ]}
+      ].reverse()}
       title="Submission History"
       itemsAmountOnPage={2}
     />

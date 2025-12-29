@@ -14,6 +14,7 @@ type AthletesTabProps = {
   };
   athletes: AthleteDataWithAttributes[];
   submittedVote: AthleteIdKey[];
+  hasRevealedAll: boolean;
   onCardClick: (next: ModalOpenState) => void;
   onRevealAll: () => void;
 };
@@ -22,6 +23,7 @@ function AthletesTab({
   filter,
   athletes,
   submittedVote,
+  hasRevealedAll,
   onCardClick,
   onRevealAll,
 }: AthletesTabProps) {
@@ -33,10 +35,12 @@ function AthletesTab({
           filter.setFilters((prev) => ({ ...prev, ...newFilters }))
         }
       />
+      {!hasRevealedAll && (
+        <div className="athletes-button-container">
+          <button onClick={onRevealAll}>Reveal all stats</button>
+        </div>
+      )}
 
-      <div className="athletes-button-container">
-        <button onClick={onRevealAll}>Reveal all stats</button>
-      </div>
       <AthleteGridSection
         athletes={athletes}
         submittedVote={submittedVote}
