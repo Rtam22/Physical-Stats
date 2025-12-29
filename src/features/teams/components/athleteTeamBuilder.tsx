@@ -27,9 +27,7 @@ function AthleteTeamBuilder({
     removeAthlete,
   } = useTeamBuilder({ athletes });
 
-  useEffect(() => {
-    console.log("dsa");
-  }, [currentGenderSelection]);
+  useEffect(() => {}, [currentGenderSelection]);
 
   function handleCompleteTeam() {
     handleSetTeam(selectedAthletes);

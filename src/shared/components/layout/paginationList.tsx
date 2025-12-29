@@ -51,8 +51,6 @@ function PaginationList({
     }
     return pages;
   }
-
-  console.log(arrayIndex);
   return (
     <div className="pagination-list">
       <h3>{title}</h3>
@@ -87,9 +85,10 @@ function PaginationList({
             >
               {"<"}
             </button>
-            {numberOfPages.map((page) => {
+            {numberOfPages.map((page, index) => {
               return (
                 <button
+                  key={index}
                   className={`${page === currentPage ? "active" : ""}`}
                   onClick={() => {
                     setCurrentPage(page);

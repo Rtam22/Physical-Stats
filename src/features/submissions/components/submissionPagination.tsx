@@ -18,7 +18,12 @@ function SubmissionPagination({
         ...submissions
           .filter((submission) => submission.athleteId === athlete)
           .map((submission) => {
-            return <SubmissionCard submission={submission} />;
+            return (
+              <SubmissionCard
+                key={submission.submissionId}
+                submission={submission}
+              />
+            );
           }),
       ].reverse()}
       title="Submission History"

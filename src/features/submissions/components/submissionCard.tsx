@@ -1,4 +1,4 @@
-import type { AttributeSubmission } from "../../../types/athleteType";
+import type { AttributeSubmission } from "../../../types/attributeTypes";
 import AttributeBar from "../../attributes/components/attributeBar";
 import "./submissionCard.css";
 
@@ -11,7 +11,7 @@ function SubmissionCard({ submission }: SubmissionCardProps) {
     <div className="submission-card">
       <div className="user-container">
         <p className="dim">User:</p>
-        <h4 className="title">{submission.username}</h4>
+        <h4 className="title">{submission.user.name}</h4>
       </div>
       <div className="flex">
         <div className="comment-container">

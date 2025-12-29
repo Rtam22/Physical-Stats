@@ -119,7 +119,7 @@ function MainPage() {
             <SetAttributeForm
               hasMVPCountries={submissions.hasMVPCountries}
               athlete={modal.state.athlete}
-              userID={user.id}
+              user={{ id: user.id, name: user.username }}
               handleSubmit={(submission: AttributeSubmission) => {
                 submissions.handleSubmitSubmissions(submission);
                 modal.close();

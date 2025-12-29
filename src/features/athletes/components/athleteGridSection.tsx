@@ -21,12 +21,9 @@ function AthleteGridSection({
   const gridItems = useMemo(() => {
     return athletes.map((athlete) => (
       <Card
-        id={athlete.info.id}
+        key={athlete.info.id || athlete.info.name}
+        type="card"
         athlete={athlete}
-        attributes={athlete.attributes}
-        favorites={athlete.favorite}
-        mvp={athlete.mvp}
-        total={athlete.total}
         handleClick={onCardClick}
         hasVoted={submittedVote.includes(athlete.info.id as AthleteIdKey)}
       />

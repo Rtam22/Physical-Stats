@@ -65,7 +65,11 @@ function Filters({ filterValues, setFilter }: FilterProps) {
           <option value="total">Total score</option>
           <option value="favorite">Favorite</option>
           {attributeKey.map((attribute) => {
-            return <option value={attribute}>{capitalize(attribute)}</option>;
+            return (
+              <option key={attribute} value={attribute}>
+                {capitalize(attribute)}
+              </option>
+            );
           })}
         </select>
       </section>

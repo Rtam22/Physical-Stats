@@ -890,12 +890,17 @@ export const athleteList: AthleteData[] = [
   },
 ];
 
+const makeUser = (name: string) => ({
+  id: `user-${name}` as const,
+  name,
+});
+
 export const attributeSubmissionsTest: AttributeSubmission[] = [
   // --- Alexandra Milne ---
   {
     athleteId: "alexandra-milne",
-    id: "user-alexandra-1",
-    username: "alexFan01",
+    submissionId: "sub-alexandra-milne-alexFan01-1",
+    user: makeUser("alexFan01"),
     createdAt: new Date(),
     favorite: true,
     values: {
@@ -913,8 +918,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
   },
   {
     athleteId: "alexandra-milne",
-    id: "user-alexandra-2",
-    username: "gymrat22",
+    submissionId: "sub-alexandra-milne-gymrat22-2",
+    user: makeUser("gymrat22"),
     createdAt: new Date(),
     favorite: false,
     values: {
@@ -932,8 +937,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
   },
   {
     athleteId: "alexandra-milne",
-    id: "user-alexandra-3",
-    username: "powergirl",
+    submissionId: "sub-alexandra-milne-powergirl-3",
+    user: makeUser("powergirl"),
     createdAt: new Date(),
     favorite: true,
     values: {
@@ -953,8 +958,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
   // --- Igedz Executioner ---
   {
     athleteId: "igedz-executioner",
-    id: "user-igedz-1",
-    username: "executionerMain",
+    submissionId: "sub-igedz-executioner-executionerMain-1",
+    user: makeUser("executionerMain"),
     createdAt: new Date(),
     favorite: true,
     values: {
@@ -972,8 +977,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
   },
   {
     athleteId: "igedz-executioner",
-    id: "user-igedz-2",
-    username: "hardmode",
+    submissionId: "sub-igedz-executioner-hardmode-2",
+    user: makeUser("hardmode"),
     createdAt: new Date(),
     favorite: false,
     values: {
@@ -991,8 +996,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
   },
   {
     athleteId: "igedz-executioner",
-    id: "user-igedz-3",
-    username: "clutchtime",
+    submissionId: "sub-igedz-executioner-clutchtime-3",
+    user: makeUser("clutchtime"),
     createdAt: new Date(),
     favorite: true,
     values: {
@@ -1012,8 +1017,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
   // --- Robert Whittaker ---
   {
     athleteId: "robert-whittaker",
-    id: "user-robbie-1",
-    username: "whittakerUltra",
+    submissionId: "sub-robert-whittaker-whittakerUltra-1",
+    user: makeUser("whittakerUltra"),
     createdAt: new Date(),
     favorite: true,
     values: {
@@ -1031,8 +1036,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
   },
   {
     athleteId: "robert-whittaker",
-    id: "user-robbie-2",
-    username: "oceaniamma",
+    submissionId: "sub-robert-whittaker-oceaniamma-2",
+    user: makeUser("oceaniamma"),
     createdAt: new Date(),
     favorite: true,
     values: {
@@ -1051,8 +1056,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
   },
   {
     athleteId: "robert-whittaker",
-    id: "user-robbie-3",
-    username: "bobbyKnuckles",
+    submissionId: "sub-robert-whittaker-bobbyKnuckles-3",
+    user: makeUser("bobbyKnuckles"),
     createdAt: new Date(),
     favorite: false,
     values: {
@@ -1073,8 +1078,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
   // --- Kim Dong-hyun ---
   {
     athleteId: "kim-dong-hyun",
-    id: "user-kimdh-1",
-    username: "stunGun",
+    submissionId: "sub-kim-dong-hyun-stunGun-1",
+    user: makeUser("stunGun"),
     createdAt: new Date(),
     favorite: false,
     values: {
@@ -1092,8 +1097,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
   },
   {
     athleteId: "kim-dong-hyun",
-    id: "user-kimdh-2",
-    username: "mmaOldGuard",
+    submissionId: "sub-kim-dong-hyun-mmaOldGuard-2",
+    user: makeUser("mmaOldGuard"),
     createdAt: new Date(),
     favorite: false,
     values: {
@@ -1112,8 +1117,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
   },
   {
     athleteId: "kim-dong-hyun",
-    id: "user-kimdh-3",
-    username: "southkoreamma",
+    submissionId: "sub-kim-dong-hyun-southkoreamma-3",
+    user: makeUser("southkoreamma"),
     createdAt: new Date(),
     favorite: true,
     values: {
@@ -1130,10 +1135,11 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
       "Strong veteran presence with a good mix of strength and fight IQ. Not the best gas tank in the roster, but he usually makes smart choices and doesn’t waste effort, which keeps him competitive deep into events.",
   },
 
+  // Duplicates you had in your list — kept, but with unique submissionId
   {
     athleteId: "kim-dong-hyun",
-    id: "user-kimdh-3",
-    username: "southkoreamma",
+    submissionId: "sub-kim-dong-hyun-southkoreamma-3-dup",
+    user: makeUser("southkoreamma"),
     createdAt: new Date(),
     favorite: true,
     values: {
@@ -1151,8 +1157,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
   },
   {
     athleteId: "kim-dong-hyun",
-    id: "user-kimdh-2",
-    username: "mmaOldGuard",
+    submissionId: "sub-kim-dong-hyun-mmaOldGuard-2-dup",
+    user: makeUser("mmaOldGuard"),
     createdAt: new Date(),
     favorite: false,
     values: {
@@ -1171,8 +1177,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
   },
   {
     athleteId: "kim-dong-hyun",
-    id: "user-kimdh-1",
-    username: "stunGun",
+    submissionId: "sub-kim-dong-hyun-stunGun-1-dup",
+    user: makeUser("stunGun"),
     createdAt: new Date(),
     favorite: false,
     values: {
@@ -1192,8 +1198,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
   // --- Kim Hae-jong (Amotti) ---
   {
     athleteId: "kim-hae-jong",
-    id: "user-amotti-1",
-    username: "crossfitAddict",
+    submissionId: "sub-kim-hae-jong-crossfitAddict-1",
+    user: makeUser("crossfitAddict"),
     createdAt: new Date(),
     favorite: true,
     values: {
@@ -1212,8 +1218,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
   },
   {
     athleteId: "kim-hae-jong",
-    id: "user-amotti-2",
-    username: "wodmachine",
+    submissionId: "sub-kim-hae-jong-wodmachine-2",
+    user: makeUser("wodmachine"),
     createdAt: new Date(),
     favorite: false,
     values: {
@@ -1232,8 +1238,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
   },
   {
     athleteId: "kim-hae-jong",
-    id: "user-amotti-3",
-    username: "boxOwner",
+    submissionId: "sub-kim-hae-jong-boxOwner-3",
+    user: makeUser("boxOwner"),
     createdAt: new Date(),
     favorite: true,
     values: {
@@ -1253,8 +1259,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
   // --- Yun Sung-bin ---
   {
     athleteId: "yun-sung-bin",
-    id: "user-yun-1",
-    username: "ironmanYun",
+    submissionId: "sub-yun-sung-bin-ironmanYun-1",
+    user: makeUser("ironmanYun"),
     createdAt: new Date(),
     favorite: true,
     values: {
@@ -1273,8 +1279,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
   },
   {
     athleteId: "yun-sung-bin",
-    id: "user-yun-2",
-    username: "downhillDemon",
+    submissionId: "sub-yun-sung-bin-downhillDemon-2",
+    user: makeUser("downhillDemon"),
     createdAt: new Date(),
     favorite: true,
     values: {
@@ -1293,8 +1299,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
   },
   {
     athleteId: "yun-sung-bin",
-    id: "user-yun-3",
-    username: "skeletonGold",
+    submissionId: "sub-yun-sung-bin-skeletonGold-3",
+    user: makeUser("skeletonGold"),
     createdAt: new Date(),
     favorite: true,
     values: {
@@ -1315,8 +1321,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
   // --- Jang Eun-sil ---
   {
     athleteId: "jang-eun-sil",
-    id: "user-jang-1",
-    username: "wrestleQueen",
+    submissionId: "sub-jang-eun-sil-wrestleQueen-1",
+    user: makeUser("wrestleQueen"),
     createdAt: new Date(),
     favorite: true,
     values: {
@@ -1335,8 +1341,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
   },
   {
     athleteId: "jang-eun-sil",
-    id: "user-jang-2",
-    username: "matboss",
+    submissionId: "sub-jang-eun-sil-matboss-2",
+    user: makeUser("matboss"),
     createdAt: new Date(),
     favorite: false,
     values: {
@@ -1354,8 +1360,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
   },
   {
     athleteId: "jang-eun-sil",
-    id: "user-jang-3",
-    username: "ssireumpro",
+    submissionId: "sub-jang-eun-sil-ssireumpro-3",
+    user: makeUser("ssireumpro"),
     createdAt: new Date(),
     favorite: true,
     values: {
@@ -1375,8 +1381,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
   // --- Choi Seung-yeon ---
   {
     athleteId: "choi-seung-yeon",
-    id: "user-choi-1",
-    username: "crossfitSeung",
+    submissionId: "sub-choi-seung-yeon-crossfitSeung-1",
+    user: makeUser("crossfitSeung"),
     createdAt: new Date(),
     favorite: true,
     values: {
@@ -1394,8 +1400,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
   },
   {
     athleteId: "choi-seung-yeon",
-    id: "user-choi-2",
-    username: "engineRoom",
+    submissionId: "sub-choi-seung-yeon-engineRoom-2",
+    user: makeUser("engineRoom"),
     createdAt: new Date(),
     favorite: false,
     values: {
@@ -1413,8 +1419,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
   },
   {
     athleteId: "choi-seung-yeon",
-    id: "user-choi-3",
-    username: "highrepQueen",
+    submissionId: "sub-choi-seung-yeon-highrepQueen-3",
+    user: makeUser("highrepQueen"),
     createdAt: new Date(),
     favorite: true,
     values: {
@@ -1435,8 +1441,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
   // --- Kim Min-jae ---
   {
     athleteId: "kim-min-jae",
-    id: "user-minjae-1",
-    username: "ssireumChamp",
+    submissionId: "sub-kim-min-jae-ssireumChamp-1",
+    user: makeUser("ssireumChamp"),
     createdAt: new Date(),
     favorite: true,
     values: {
@@ -1454,8 +1460,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
   },
   {
     athleteId: "kim-min-jae",
-    id: "user-minjae-2",
-    username: "sandpitKing",
+    submissionId: "sub-kim-min-jae-sandpitKing-2",
+    user: makeUser("sandpitKing"),
     createdAt: new Date(),
     favorite: false,
     values: {
@@ -1473,8 +1479,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
   },
   {
     athleteId: "kim-min-jae",
-    id: "user-minjae-3",
-    username: "koreangrapple",
+    submissionId: "sub-kim-min-jae-koreangrapple-3",
+    user: makeUser("koreangrapple"),
     createdAt: new Date(),
     favorite: true,
     values: {
@@ -1495,8 +1501,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
   // --- Superbon Singha Mawynn ---
   {
     athleteId: "superbon-singha-mawynn",
-    id: "user-superbon-1",
-    username: "headkickKO",
+    submissionId: "sub-superbon-singha-mawynn-headkickKO-1",
+    user: makeUser("headkickKO"),
     createdAt: new Date(),
     favorite: true,
     values: {
@@ -1515,8 +1521,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
   },
   {
     athleteId: "superbon-singha-mawynn",
-    id: "user-superbon-2",
-    username: "kickboxingKing",
+    submissionId: "sub-superbon-singha-mawynn-kickboxingKing-2",
+    user: makeUser("kickboxingKing"),
     createdAt: new Date(),
     favorite: true,
     values: {
@@ -1535,8 +1541,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
   },
   {
     athleteId: "superbon-singha-mawynn",
-    id: "user-superbon-3",
-    username: "thaiboxingOG",
+    submissionId: "sub-superbon-singha-mawynn-thaiboxingOG-3",
+    user: makeUser("thaiboxingOG"),
     createdAt: new Date(),
     favorite: false,
     values: {
@@ -1557,8 +1563,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
   // --- Sunny Kerdkao Wechokittikorn ---
   {
     athleteId: "sunny-kerdkao",
-    id: "user-sunny-1",
-    username: "ruckRunner",
+    submissionId: "sub-sunny-kerdkao-ruckRunner-1",
+    user: makeUser("ruckRunner"),
     createdAt: new Date(),
     favorite: false,
     values: {
@@ -1576,8 +1582,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
   },
   {
     athleteId: "sunny-kerdkao",
-    id: "user-sunny-2",
-    username: "flankbeast",
+    submissionId: "sub-sunny-kerdkao-flankbeast-2",
+    user: makeUser("flankbeast"),
     createdAt: new Date(),
     favorite: false,
     values: {
@@ -1595,8 +1601,8 @@ export const attributeSubmissionsTest: AttributeSubmission[] = [
   },
   {
     athleteId: "sunny-kerdkao",
-    id: "user-sunny-3",
-    username: "rugbyGrind",
+    submissionId: "sub-sunny-kerdkao-rugbyGrind-3",
+    user: makeUser("rugbyGrind"),
     createdAt: new Date(),
     favorite: true,
     values: {

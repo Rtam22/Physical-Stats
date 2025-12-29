@@ -25,7 +25,7 @@ export function useSubmissions({ userId }: UseSubmissionProps) {
 
   const hasMVPCountries: AthleteTeams[] = useMemo(() => {
     const userSubmissions = submissions.filter(
-      (submission) => userId === submission.id
+      (submission) => userId === submission.user.id
     );
     const teams = new Set<AthleteTeams>();
     for (const submission of userSubmissions) {

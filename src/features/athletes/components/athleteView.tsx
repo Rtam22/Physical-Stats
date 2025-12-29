@@ -1,8 +1,8 @@
 import type { AthleteDataWithAttributes } from "../../../types/athleteType";
 import "./athleteView.css";
-import AttributeBar from "../../attributes/components/attributeBar";
 import SubmissionPagination from "../../submissions/components/submissionPagination";
 import type { AttributeSubmission } from "../../../types/attributeTypes";
+import AthleteCard from "./athleteCard";
 
 type AtheleteViewProps = {
   athlete: AthleteDataWithAttributes;
@@ -12,34 +12,7 @@ type AtheleteViewProps = {
 function AthleteView({ submissions, athlete }: AtheleteViewProps) {
   return (
     <div className="athlete-view">
-      <div className="athlete-info">
-        <div className="image-container">
-          <img
-            src={athlete.info.img}
-            alt={`Portrait of ${athlete.info.name}`}
-          />
-        </div>
-        <div className="information-container">
-          <span>
-            <h2>{athlete.info.name}</h2>
-            <h2>*{athlete.favorite}</h2>{" "}
-          </span>
-          <p></p>
-          <div className="attribute-container">
-            {Object.entries(athlete.attributes).map(([key, value]) => {
-              const title = key.charAt(0).toUpperCase() + key.slice(1);
-              return (
-                <AttributeBar
-                  key={key}
-                  title={title}
-                  value={value}
-                  height="30px"
-                />
-              );
-            })}
-          </div>
-        </div>
-      </div>
+      <AthleteCard type="view" athlete={athlete} />
       <SubmissionPagination
         submissions={submissions}
         athlete={athlete.info.id}

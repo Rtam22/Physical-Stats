@@ -14,7 +14,8 @@ import type { AthleteTeams } from "../../../types/teamType";
 
 type SetAttributeFormProps = {
   athlete: AthleteDataWithAttributes;
-  userID: string;
+  user: { id: string; name: string };
+
   hasMVPCountries: AthleteTeams[];
   handleSubmit: (submission: AttributeSubmission) => void;
 };
@@ -22,14 +23,14 @@ type SetAttributeFormProps = {
 function SetAttributeForm({
   athlete,
   handleSubmit,
-  userID,
+  user,
   hasMVPCountries,
 }: SetAttributeFormProps) {
   const [submission, setSubmission] = useState<AttributeSubmission>({
     athleteId: athlete.info.id,
-    id: userID,
+    user: { id: user.id, name: user.name },
+    submissionId: crypto.randomUUID(),
     createdAt: new Date(),
-    username: "",
     favorite: false,
     values: initialFormAttributes,
     mvp: false,

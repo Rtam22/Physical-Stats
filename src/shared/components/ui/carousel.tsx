@@ -70,6 +70,7 @@ function Carousel({ type, content }: CarouselProps) {
           {content.map((item, index) => {
             return (
               <button
+                key={index}
                 className={`carousel-tab ${
                   currentImage === item.image ? "active" : ""
                 }`}

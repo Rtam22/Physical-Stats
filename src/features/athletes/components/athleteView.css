@@ -41,3 +41,8 @@
   display: flex;
   gap: 20px;
 }
+
+.athlete-view .athlete-card:hover {
+  border: 1px solid white;
+  cursor: default;
+}

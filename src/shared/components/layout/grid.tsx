@@ -31,10 +31,9 @@ function Grid({
     >
       <AnimatePresence>
         {items.map((item) => {
-          const id = item.props.id;
           return (
             <motion.div
-              key={id}
+              key={item.key}
               layout
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}

@@ -16,8 +16,8 @@ export type AttributeValues = Record<AttributeKey, number>;
 export type AttributeSubmission = {
   athleteId: AthleteIdKey;
   createdAt: Date;
-  id: UserId;
-  username: string;
+  user: { id: UserId; name: string };
+  submissionId: string;
   favorite: boolean;
   values: AttributeValues;
   mvp?: boolean;

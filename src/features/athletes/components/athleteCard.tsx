@@ -1,7 +1,4 @@
-import type {
-  AthleteDataWithAttributes,
-  AthleteIdKey,
-} from "../../../types/athleteType";
+import type { AthleteDataWithAttributes } from "../../../types/athleteType";
 import "./athleteCard.css";
 import type { ModalOpenState } from "../../../types/modalTypes";
 import ReactCountryFlag from "react-country-flag";
@@ -9,57 +6,66 @@ import { getCountryCode } from "../../../utils/teamUtils";
 import AttributesList from "../../attributes/components/attributesList";
 import type { AttributeValues } from "../../../types/attributeTypes";
 
-type CardProps = {
-  id: AthleteIdKey;
+type AthleteCard = {
+  type: "card";
   athlete: AthleteDataWithAttributes;
-  attributes: AttributeValues;
-  favorites: number;
-  total: number;
-  mvp: boolean;
   handleClick: (next: ModalOpenState) => void;
   hasVoted: boolean;
 };
 
-function AthleteCard({
-  athlete,
-  id,
-  attributes,
-  favorites,
-  mvp,
-  total,
-  hasVoted,
-  handleClick,
-}: CardProps) {
-  const hasAttributes = checkAttributes(attributes);
-  const countryCode = getCountryCode(athlete.info.team);
+type AthleteViewCard = {
+  type: "view";
+  athlete: AthleteDataWithAttributes;
+};
+
+type CardProps = AthleteCard | AthleteViewCard;
+
+function AthleteCard(props: CardProps) {
+  const { athlete } = props;
+  const hasAttributes = checkAttributes(props.athlete.attributes);
+  const countryCode = getCountryCode(props.athlete.info.team);
   function checkAttributes(attributes: AttributeValues) {
     return Object.values(attributes).some((v) => v > 0);
   }
+  const revealAttributes =
+    (hasAttributes && props.type === "card" && props.hasVoted) ||
+    props.type === "view";
+  const revealTotal = hasAttributes && props.type === "card" && props.hasVoted;
+
+  const onClick =
+    props.type === "card"
+      ? () => {
+          hasAttributes && props.hasVoted
+            ? props.handleClick({
+                open: true,
+                type: "athleteView",
+                athlete,
+              })
+            : props.handleClick({
+                open: true,
+                type: "setAttributes",
+                athlete,
+              });
+        }
+      : undefined;
 
   return (
-    <div
-      className="card-container"
-      onClick={() => {
-        hasAttributes && hasVoted
-          ? handleClick({ open: true, type: "athleteView", athlete })
-          : handleClick({ open: true, type: "setAttributes", athlete });
-      }}
-    >
+    <div className="card-container" onClick={onClick}>
       <div className="top-container">
-        {mvp ? <p className="mvp-container">MVP</p> : null}
+        {athlete.mvp ? <p className="mvp-container">MVP</p> : null}
         <div className="flex">
           {countryCode && <ReactCountryFlag countryCode={countryCode} svg />}
           <p>{athlete.info.name}</p>
         </div>
-        <p>*{favorites}</p>
+        <p>⭐{athlete.favorite}</p>
       </div>
-      <div className="athlete-card" id={id}>
+      <div className="athlete-card" id={athlete.info.id}>
         <div className="image-container">
           <img src={athlete.info.imgSm} alt="" />
         </div>
         <div className="attributes-container">
-          {hasAttributes && hasVoted ? (
-            <AttributesList attributes={attributes} />
+          {revealAttributes ? (
+            <AttributesList attributes={athlete.attributes} />
           ) : (
             <div className="attribute-message">
               {hasAttributes
@@ -70,7 +76,7 @@ function AthleteCard({
         </div>
       </div>
       <div className="bottom-container">
-        {hasAttributes && hasVoted && <p>Total: {total}</p>}
+        {revealTotal && <p>Total: {athlete.total}</p>}
       </div>
     </div>
   );
