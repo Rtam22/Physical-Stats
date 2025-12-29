@@ -2,10 +2,15 @@ import { useMemo, useState } from "react";
 import type { AthleteIdKey } from "../../../types/athleteType";
 import { submissionService } from "../services/submissionService";
 import type { AthleteTeams } from "../../../types/teamType";
-import { ALL_ATHLETE_IDS, athleteList } from "../../../data/athleteData";
+import { ALL_ATHLETE_IDS } from "../../../data/athleteData";
 import type { AttributeSubmission } from "../../../types/attributeTypes";
+import { athleteList } from "../../../data/athleteData";
 
-export function useSubmissions() {
+type UseSubmissionProps = {
+  userId: string;
+};
+
+export function useSubmissions({ userId }: UseSubmissionProps) {
   const [submissions, setSubmissions] = useState<AttributeSubmission[]>(
     submissionService.fetchSubmissions
   );
@@ -14,9 +19,27 @@ export function useSubmissions() {
     AthleteIdKey[]
   >(["choi-seung-yeon", "jang-eun-sil", "kim-dong-hyun", "yun-sung-bin"]);
 
-  const hasRevealedAll = useMemo(() => {
+  const hasRevealedAll: boolean = useMemo(() => {
     return ALL_ATHLETE_IDS.every((id) => submittedVoteAccess.includes(id));
   }, [submittedVoteAccess]);
+
+  const hasMVPCountries: AthleteTeams[] = useMemo(() => {
+    const userSubmissions = submissions.filter(
+      (submission) => userId === submission.id
+    );
+    const teams = new Set<AthleteTeams>();
+    for (const submission of userSubmissions) {
+      if (!submission.mvp) continue;
+
+      const athlete = athleteList.find(
+        (athlete) => athlete.info.id === submission.athleteId
+      );
+      if (!athlete) continue;
+      teams.add(athlete?.info.team);
+    }
+
+    return Array.from(teams);
+  }, [submissions]);
 
   const submittedMVPRestriction = useMemo(() => {
     const teams = new Set<AthleteTeams>();
@@ -49,6 +72,7 @@ export function useSubmissions() {
     submittedVoteAccess,
     submittedMVPRestriction,
     hasRevealedAll,
+    hasMVPCountries,
     handleSubmitSubmissions,
     handleRevealAll,
   };

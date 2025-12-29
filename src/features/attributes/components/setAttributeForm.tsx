@@ -10,16 +10,24 @@ import type {
   AttributeSubmission,
   RankKey,
 } from "../../../types/attributeTypes";
+import type { AthleteTeams } from "../../../types/teamType";
 
 type SetAttributeFormProps = {
   athlete: AthleteDataWithAttributes;
+  userID: string;
+  hasMVPCountries: AthleteTeams[];
   handleSubmit: (submission: AttributeSubmission) => void;
 };
 
-function SetAttributeForm({ athlete, handleSubmit }: SetAttributeFormProps) {
+function SetAttributeForm({
+  athlete,
+  handleSubmit,
+  userID,
+  hasMVPCountries,
+}: SetAttributeFormProps) {
   const [submission, setSubmission] = useState<AttributeSubmission>({
     athleteId: athlete.info.id,
-    id: "dsadas",
+    id: userID,
     createdAt: new Date(),
     username: "",
     favorite: false,
@@ -141,6 +149,7 @@ function SetAttributeForm({ athlete, handleSubmit }: SetAttributeFormProps) {
             <input
               id="mvp"
               type="checkbox"
+              disabled={hasMVPCountries.includes(athlete.info.team)}
               checked={submission.mvp}
               onChange={() =>
                 setSubmission({ ...submission, mvp: !submission.mvp })

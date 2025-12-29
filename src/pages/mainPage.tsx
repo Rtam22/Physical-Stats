@@ -29,13 +29,14 @@ import ModalController from "../shared/components/layout/modalController";
 import ConfirmationModal from "../shared/components/ui/confirmationModal";
 
 function MainPage() {
-  const submissions = useSubmissions();
   const [filters, setFilters] = useState<FilterValue>(initialFilters);
+  const { user, submitUser } = useUser();
+  const submissions = useSubmissions({ userId: user.id });
   const { athletes } = useAthletes({
     attributeSubmissions: submissions.submissions,
   });
   const { filteredAthletes } = useAthleteFilters({ filters, athletes });
-  const { user, submitUser } = useUser();
+
   const team = useAthleteTeam({ athletes: athletes });
   const modal = useModalController();
   const tabs = useMainTabs({
@@ -116,7 +117,9 @@ function MainPage() {
         return (
           <Modal width="80%" height="90vh" type="middle" onClose={modal.close}>
             <SetAttributeForm
+              hasMVPCountries={submissions.hasMVPCountries}
               athlete={modal.state.athlete}
+              userID={user.id}
               handleSubmit={(submission: AttributeSubmission) => {
                 submissions.handleSubmitSubmissions(submission);
                 modal.close();
