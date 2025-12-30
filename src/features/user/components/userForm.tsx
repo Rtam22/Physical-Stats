@@ -26,12 +26,14 @@ function UserForm({ submitUser }: UserFormProps) {
         </label>
         <input
           type="text"
+          required
           value={userData.username}
           onChange={(e) => {
             setUserData((prev) => ({ ...prev, username: e.target.value }));
           }}
           placeholder="Enter your username"
         />
+        <button>Enter</button>
       </section>
     </form>
   );
