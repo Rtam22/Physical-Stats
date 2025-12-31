@@ -1,7 +1,7 @@
-import { teamImages } from "../../../data/teamImages";
-import Carousel from "../../../shared/components/ui/carousel";
-import type { UserType } from "../../../types/userTypes";
-import UserForm from "../../user/components/userForm";
+import { teamImages } from "../../../../data/teamImages";
+import Carousel from "../../../../shared/components/ui/carousel";
+import type { UserType } from "../../../../types/userTypes";
+import UserForm from "../../../user/components/userForm";
 import "./signupTab.css";
 type SignupFormProps = {
   submitUser: (user: UserType) => void;

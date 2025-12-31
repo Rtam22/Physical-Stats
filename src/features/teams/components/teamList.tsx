@@ -1,5 +1,5 @@
 import type { TeamType } from "../../../types/teamType";
-import TeamCard from "./teamCard";
+import TeamCountryCard from "./teamCountryCard";
 import "./teamList.css";
 
 type TeamListProps = {
@@ -10,9 +10,9 @@ type TeamListProps = {
 function TeamList({ teams, selectedTeam }: TeamListProps) {
   return (
     <div className="team-list">
-      {selectedTeam && <TeamCard team={selectedTeam} />}
+      {selectedTeam && <TeamCountryCard team={selectedTeam} />}
       {teams.map((team) => {
-        return <TeamCard key={team.athletes[0].info.team} team={team} />;
+        return <TeamCountryCard key={team.athletes[0].info.team} team={team} />;
       })}
     </div>
   );

@@ -12,6 +12,7 @@ export const TAB_LABELS: Record<TabID, string> = {
   teamBuilder: "Team Builder",
   username: "Username",
   teams: "Teams",
+  allstarTeam: "All-star Teams",
 };
 
 function NavigationTabs({ active, changeTab, allTabs }: NavigationTabsProps) {

@@ -19,14 +19,13 @@ function useMainTabs({ teams, hasUsername }: useTabsProps) {
 
   const availableTabs: TabID[] = useMemo(() => {
     return allTabs.filter((tab) => {
-      const notDoneTeamBuilder =
+      const shouldHideTeamBuilder =
         tab === "teamBuilder" && teams.selectedTeam !== null;
-      const hasDoneTeamBuilder = tab === "teams" && teams.selectedTeam === null;
+      const shouldHideResultTabs =
+        (tab === "teams" || tab === "allstarTeam") &&
+        teams.selectedTeam === null;
       const isUsername = tab === "username";
-      if (notDoneTeamBuilder || hasDoneTeamBuilder || isUsername) {
-        return;
-      }
-      return tab;
+      return !(isUsername || shouldHideTeamBuilder || shouldHideResultTabs);
     });
   }, [teams.selectedTeam]);
 

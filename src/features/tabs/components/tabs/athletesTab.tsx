@@ -1,11 +1,11 @@
 import type {
   AthleteDataWithAttributes,
   AthleteIdKey,
-} from "../../../types/athleteType";
-import type { FilterValue } from "../../../types/filterTypes";
-import type { ModalOpenState } from "../../../types/modalTypes";
-import AthleteGridSection from "../../athletes/components/athleteGridSection";
-import Filters from "../../../shared/components/filters/filters";
+} from "../../../../types/athleteType";
+import type { FilterValue } from "../../../../types/filterTypes";
+import type { ModalOpenState } from "../../../../types/modalTypes";
+import AthleteGridSection from "../../../athletes/components/athleteGridSection";
+import Filters from "../../../../shared/components/filters/filters";
 import "./athletesTab.css";
 type AthletesTabProps = {
   filter: {

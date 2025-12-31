@@ -7,16 +7,20 @@ import type {
 } from "../../../types/athleteType";
 import { teamList } from "../../../data/athleteData";
 import { getTeamAttributes } from "../../../utils/attributeUtils";
+import type { UserType } from "../../../types/userTypes";
 
 type UseAthleteTeamProps = {
   athletes: AthleteDataWithAttributes[];
 };
 
+type BuildTeamType = {
+  id: string;
+  user: UserType;
+  athletes: AthleteIdKey[];
+};
+
 export function useAthleteTeam({ athletes }: UseAthleteTeamProps) {
-  const [selectedTeam, setSelectedTeam] = useState<{
-    user: string;
-    athletes: AthleteIdKey[];
-  } | null>(null);
+  const [selectedTeam, setSelectedTeam] = useState<BuildTeamType | null>(null);
 
   const selectedTeamView: TeamType | null = useMemo(() => {
     if (selectedTeam) {
@@ -24,7 +28,7 @@ export function useAthleteTeam({ athletes }: UseAthleteTeamProps) {
         return selectedTeam.athletes.includes(a.info.id);
       });
       const newTeam: TeamType = {
-        user: selectedTeam.user,
+        user: { id: selectedTeam.user.id, name: selectedTeam.user.name },
         athletes: selectedAthletes,
         averageAttributes: getTeamAttributes(selectedAthletes),
       };
@@ -39,9 +43,13 @@ export function useAthleteTeam({ athletes }: UseAthleteTeamProps) {
 
   function handleSetSelectedTeam(
     selectedAthletes: AthleteIdKey[],
-    user: string
+    user: { id: string; name: string }
   ) {
-    setSelectedTeam({ user: user, athletes: selectedAthletes });
+    setSelectedTeam({
+      id: crypto.randomUUID(),
+      user: { id: user.id, name: user.name },
+      athletes: selectedAthletes,
+    });
   }
 
   return { selectedTeamView, existingTeams, handleSetSelectedTeam };

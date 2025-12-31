@@ -5,7 +5,8 @@ export type TabID =
   | "tierList"
   | "teamBuilder"
   | "username"
-  | "teams";
+  | "teams"
+  | "allstarTeam";
 
 export const allTabs: TabID[] = [
   "athletes",
@@ -13,6 +14,7 @@ export const allTabs: TabID[] = [
   "teamBuilder",
   "username",
   "teams",
+  "allstarTeam",
 ];
 export type TabsConfig = {
   id: TabID;

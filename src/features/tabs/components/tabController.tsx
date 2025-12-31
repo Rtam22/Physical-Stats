@@ -1,14 +1,14 @@
-import "./tabs.css";
+import "./TabController.css";
 import type { TabID, TabsConfig } from "../../../types/tabTypes";
 
-type TabsProps = {
+type TabControllerProps = {
   activeTab: TabID;
   tabs: TabsConfig[];
 };
 
-function Tabs({ activeTab, tabs }: TabsProps) {
+function TabController({ activeTab, tabs }: TabControllerProps) {
   const active = tabs.find((tab) => tab.id === activeTab);
   return <div className="tabs">{active?.content}</div>;
 }
 
-export default Tabs;
+export default TabController;

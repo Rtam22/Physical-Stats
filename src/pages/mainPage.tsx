@@ -7,9 +7,8 @@ import SetAttributeForm from "../features/attributes/components/setAttributeForm
 import AthleteView from "../features/athletes/components/athleteView";
 import { useAthletes } from "../features/athletes/hooks/useAthletes";
 import { useSubmissions } from "../features/submissions/hooks/useSubmissions";
-import Tabs from "../shared/components/layout/tabs";
 import useAthleteFilters from "../features/athletes/hooks/useAthleteFilters";
-import NavigationTabs from "../shared/components/navigation/navigationTabs";
+import NavigationTabs from "../features/tabs/components/navigationTabs";
 import { useAthleteTeam } from "../features/teams/hooks/useAthleteTeam";
 import useModalController from "../shared/hooks/useModalController";
 import useMainTabs from "../features/tabs/hooks/useMainTabs";
@@ -19,14 +18,16 @@ import AthleteTeamBuilder from "../features/teams/components/athleteTeamBuilder"
 import TierListGrid from "../shared/components/layout/tierListGrid";
 import TeamList from "../features/teams/components/teamList";
 import { filterAthletesBySubmitted } from "../utils/filterUtils";
-import AthletesTab from "../features/tabs/components/athletesTab";
+import AthletesTab from "../features/tabs/components/tabs/athletesTab";
 import { useUser } from "../features/user/hooks/useUser";
 import type { UserType } from "../types/userTypes";
-import SignupTab from "../features/tabs/components/signupTab";
+import SignupTab from "../features/tabs/components/tabs/signupTab";
 import type { AttributeSubmission } from "../types/attributeTypes";
 import type { ModalConfig } from "../types/modalTypes";
 import ModalController from "../shared/components/layout/modalController";
 import ConfirmationModal from "../shared/components/ui/confirmationModal";
+import AllstarTeamTab from "../features/tabs/components/tabs/allstarTeamTab";
+import TabController from "../features/tabs/components/tabController";
 
 function MainPage() {
   const [filters, setFilters] = useState<FilterValue>(initialFilters);
@@ -105,6 +106,10 @@ function MainPage() {
         />
       ),
     },
+    {
+      id: "allstarTeam",
+      content: <AllstarTeamTab />,
+    },
   ];
 
   const modalsConfig: ModalConfig[] = [
@@ -177,7 +182,7 @@ function MainPage() {
         changeTab={(e) => tabs.setActiveTab(e)}
         allTabs={tabs.availableTabs}
       />
-      <Tabs activeTab={tabs.activeTab} tabs={tabsConfig} />
+      <TabController activeTab={tabs.activeTab} tabs={tabsConfig} />
     </div>
   );
 }

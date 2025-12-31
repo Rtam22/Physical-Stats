@@ -1,5 +1,6 @@
 import type { AthleteDataWithAttributes } from "./athleteType";
 import type { AttributeValues } from "./attributeTypes";
+import type { UserType } from "./userTypes";
 
 export type AthleteTeams =
   | "South Korea"
@@ -19,7 +20,7 @@ type baseTeam = {
 };
 
 export type UserTeamType = baseTeam & {
-  user: string;
+  user: UserType;
 };
 
 export type ExistingTeamType = baseTeam & {

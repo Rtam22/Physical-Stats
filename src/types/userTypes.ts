@@ -2,7 +2,7 @@ import type { AthleteDataWithAttributes } from "./athleteType";
 
 export type UserType = {
   id: string;
-  username: string;
+  name: string;
 };
 
 export type UserData = {

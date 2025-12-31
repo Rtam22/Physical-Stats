@@ -4,7 +4,7 @@ import type { UserType } from "../../../types/userTypes";
 export function useUser() {
   const [user, setUser] = useState<UserType>({
     id: crypto.randomUUID(),
-    username: "",
+    name: "",
   });
   const [error, setError] = useState<string | null>(null);
 
