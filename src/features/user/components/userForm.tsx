@@ -9,11 +9,11 @@ type UserFormProps = {
 function UserForm({ submitUser }: UserFormProps) {
   const [userData, setUserData] = useState<UserType>({
     id: crypto.randomUUID(),
-    username: "",
+    name: "",
   });
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    const user = { ...userData, username: userData.username.trim() };
+    const user = { ...userData, username: userData.name.trim() };
     e.preventDefault();
     submitUser(user);
   }
@@ -27,7 +27,7 @@ function UserForm({ submitUser }: UserFormProps) {
         <input
           type="text"
           required
-          value={userData.username}
+          value={userData.name}
           onChange={(e) => {
             setUserData((prev) => ({ ...prev, username: e.target.value }));
           }}

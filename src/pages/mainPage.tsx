@@ -45,13 +45,13 @@ function MainPage() {
       existingTeams: team.existingTeams,
       handleSetTeam,
     },
-    hasUsername: Boolean(user.username),
+    hasUsername: Boolean(user.name),
   });
 
   function handleSetTeam(athletes: AthleteDataWithAttributes[]) {
     const athletesId = athletes.map((athlete) => athlete.info.id);
     tabs.setActiveTab("teams");
-    team.handleSetSelectedTeam(athletesId, user.username);
+    team.handleSetSelectedTeam(athletesId, user);
   }
   const tabsConfig: TabsConfig[] = [
     {
@@ -119,7 +119,7 @@ function MainPage() {
             <SetAttributeForm
               hasMVPCountries={submissions.hasMVPCountries}
               athlete={modal.state.athlete}
-              user={{ id: user.id, name: user.username }}
+              user={{ id: user.id, name: user.name }}
               handleSubmit={(submission: AttributeSubmission) => {
                 submissions.handleSubmitSubmissions(submission);
                 modal.close();
