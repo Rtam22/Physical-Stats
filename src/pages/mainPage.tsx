@@ -90,6 +90,7 @@ function MainPage() {
       id: "teams",
       content: (
         <TeamList
+          type="teams"
           teams={team.existingTeams}
           selectedTeam={team.selectedTeamView}
         />

@@ -25,7 +25,6 @@ function AttributesList({
             />
           );
         })}
-        <div className="total-container"></div>
       </div>
     </div>
   );

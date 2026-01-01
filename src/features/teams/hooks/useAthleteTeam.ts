@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import type { TeamType } from "../../../types/teamType";
+import type { BuildTeamType, TeamType } from "../../../types/teamType";
 import { teamService } from "../services/teamService";
 import type {
   AthleteDataWithAttributes,
@@ -7,39 +7,42 @@ import type {
 } from "../../../types/athleteType";
 import { teamList } from "../../../data/athleteData";
 import { getTeamAttributes } from "../../../utils/attributeUtils";
-import type { UserType } from "../../../types/userTypes";
+import { buildTeamsTestData } from "../../../data/teamData";
 
 type UseAthleteTeamProps = {
   athletes: AthleteDataWithAttributes[];
 };
 
-type BuildTeamType = {
-  id: string;
-  user: UserType;
-  athletes: AthleteIdKey[];
-};
-
 export function useAthleteTeam({ athletes }: UseAthleteTeamProps) {
   const [selectedTeam, setSelectedTeam] = useState<BuildTeamType | null>(null);
+  const [userSubmittedTeams, setUserSubmittedTeams] =
+    useState<BuildTeamType[]>(buildTeamsTestData);
 
   const selectedTeamView: TeamType | null = useMemo(() => {
-    if (selectedTeam) {
-      const selectedAthletes = athletes.filter((a) => {
-        return selectedTeam.athletes.includes(a.info.id);
-      });
-      const newTeam: TeamType = {
-        user: { id: selectedTeam.user.id, name: selectedTeam.user.name },
-        athletes: selectedAthletes,
-        averageAttributes: getTeamAttributes(selectedAthletes),
-      };
-      return newTeam;
-    }
-    return null;
+    if (!selectedTeam) return null;
+    return buildTeamView(selectedTeam);
   }, [selectedTeam, athletes]);
+
+  const userSubmittedTeamsView: TeamType[] | null = useMemo(() => {
+    if (!userSubmittedTeams) return null;
+    return userSubmittedTeams.map((team) => buildTeamView(team));
+  }, [userSubmittedTeams, athletes]);
 
   const existingTeams = useMemo(() => {
     return teamService.buildExistingTeams(teamList, athletes);
   }, [athletes]);
+
+  function buildTeamView(team: BuildTeamType) {
+    const selectedAthletes = athletes.filter((a) => {
+      return team.athletes.includes(a.info.id);
+    });
+    const newTeam: TeamType = {
+      user: { id: team.user.id, name: team.user.name },
+      athletes: selectedAthletes,
+      averageAttributes: getTeamAttributes(selectedAthletes),
+    };
+    return newTeam;
+  }
 
   function handleSetSelectedTeam(
     selectedAthletes: AthleteIdKey[],
@@ -52,5 +55,10 @@ export function useAthleteTeam({ athletes }: UseAthleteTeamProps) {
     });
   }
 
-  return { selectedTeamView, existingTeams, handleSetSelectedTeam };
+  return {
+    selectedTeamView,
+    existingTeams,
+    userSubmittedTeamsView,
+    handleSetSelectedTeam,
+  };
 }

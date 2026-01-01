@@ -1,0 +1,148 @@
+import type { BuildTeamType } from "../types/teamType";
+
+export const buildTeamsTestData: BuildTeamType[] = [
+  {
+    id: "team-006",
+    user: { id: "user-006", name: "MetaBuilder" },
+    athletes: [
+      "yun-sung-bin",
+      "kim-hae-jong",
+      "robert-whittaker",
+      "sunny-kerdkao",
+      "choi-seung-yeon",
+      "katelin-van-zyl",
+    ],
+  },
+  {
+    id: "team-007",
+    user: { id: "user-007", name: "PowerCore" },
+    athletes: [
+      "eddie-williams",
+      "recep-kara",
+      "kim-min-jae",
+      "orkhonbayar",
+      "yasemin-adar",
+      "jang-eun-sil",
+    ],
+  },
+  {
+    id: "team-008",
+    user: { id: "user-008", name: "EnduranceMax" },
+    athletes: [
+      "kim-hae-jong",
+      "sunny-kerdkao",
+      "dom-tomato",
+      "manny-pacquiao",
+      "katelin-van-zyl",
+      "robyn-lauren",
+    ],
+  },
+  {
+    id: "team-009",
+    user: { id: "user-009", name: "CombatMeta" },
+    athletes: [
+      "kim-dong-hyun",
+      "yushin-okami",
+      "robert-whittaker",
+      "manny-pacquiao",
+      "kana-watanabe",
+      "nefise-karatay",
+    ],
+  },
+  {
+    id: "team-010",
+    user: { id: "user-010", name: "HybridDraft" },
+    athletes: [
+      "yun-sung-bin",
+      "kim-min-jae",
+      "sunny-kerdkao",
+      "anucha-yospanya",
+      "choi-seung-yeon",
+      "yasemin-adar",
+    ],
+  },
+  {
+    id: "team-011",
+    user: { id: "user-011", name: "SpeedBias" },
+    athletes: [
+      "dom-tomato",
+      "yun-sung-bin",
+      "sunny-kerdkao",
+      "glenn-victor",
+      "katelin-van-zyl",
+      "nefise-karatay",
+    ],
+  },
+  {
+    id: "team-012",
+    user: { id: "user-012", name: "CrowdPick" },
+    athletes: [
+      "eddie-williams",
+      "yun-sung-bin",
+      "kim-dong-hyun",
+      "robert-whittaker",
+      "alexandra-milne",
+      "choi-seung-yeon",
+    ],
+  },
+  {
+    id: "team-013",
+    user: { id: "user-013", name: "AsiaCore" },
+    athletes: [
+      "kim-hae-jong",
+      "yun-sung-bin",
+      "yushin-okami",
+      "sunny-kerdkao",
+      "kana-watanabe",
+      "nonoka-ozaki",
+    ],
+  },
+  {
+    id: "team-014",
+    user: { id: "user-014", name: "WrestleStack" },
+    athletes: [
+      "kim-min-jae",
+      "recep-kara",
+      "orkhonbayar",
+      "anucha-yospanya",
+      "yasemin-adar",
+      "jang-eun-sil",
+    ],
+  },
+  {
+    id: "team-015",
+    user: { id: "user-015", name: "BalancedMeta" },
+    athletes: [
+      "kim-dong-hyun",
+      "robert-whittaker",
+      "sunny-kerdkao",
+      "dom-tomato",
+      "alexandra-milne",
+      "katelin-van-zyl",
+    ],
+  },
+  {
+    id: "team-016",
+    user: { id: "user-016", name: "AllStarFan" },
+    athletes: [
+      "yun-sung-bin",
+      "eddie-williams",
+      "kim-hae-jong",
+      "manny-pacquiao",
+      "choi-seung-yeon",
+      "robyn-lauren",
+    ],
+  },
+  {
+    id: "team-017",
+    user: { id: "user-017", name: "DraftOptimizer" },
+    athletes: [
+      "kim-min-jae",
+      "robert-whittaker",
+      "sunny-kerdkao",
+      "glenn-victor",
+      "nefise-karatay",
+      "katelin-van-zyl",
+    ],
+  },
+];

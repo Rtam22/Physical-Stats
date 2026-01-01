@@ -1,4 +1,8 @@
-import type { AthleteDataWithAttributes } from "./athleteType";
+import type {
+  AthleteData,
+  AthleteDataWithAttributes,
+  AthleteIdKey,
+} from "./athleteType";
 import type { AttributeValues } from "./attributeTypes";
 import type { UserType } from "./userTypes";
 
@@ -15,7 +19,8 @@ export type AthleteTeams =
 export type CountryCode = "KR" | "TR" | "MN" | "AU" | "PH" | "ID" | "TH" | "JP";
 
 type baseTeam = {
-  athletes: AthleteDataWithAttributes[];
+  // athletes: AthleteDataWithAttributes[];
+  athletes: AthleteData[];
   averageAttributes: AttributeValues;
 };
 
@@ -28,3 +33,9 @@ export type ExistingTeamType = baseTeam & {
 };
 
 export type TeamType = UserTeamType | ExistingTeamType;
+
+export type BuildTeamType = {
+  id: string;
+  user: UserType;
+  athletes: AthleteIdKey[];
+};
