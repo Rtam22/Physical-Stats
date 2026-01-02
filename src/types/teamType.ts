@@ -1,8 +1,4 @@
-import type {
-  AthleteData,
-  AthleteDataWithAttributes,
-  AthleteIdKey,
-} from "./athleteType";
+import type { AthleteData, AthleteIdKey } from "./athleteType";
 import type { AttributeValues } from "./attributeTypes";
 import type { UserType } from "./userTypes";
 

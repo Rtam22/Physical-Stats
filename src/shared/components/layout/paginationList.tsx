@@ -6,12 +6,16 @@ type PaginationListProps = {
   items: React.ReactNode[];
   itemsAmountOnPage?: number;
   title?: string;
+  gap?: string;
+  styles?: React.CSSProperties;
 };
 
 function PaginationList({
   items = [],
   itemsAmountOnPage = 5,
   title,
+  gap,
+  styles,
 }: PaginationListProps) {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const pagesStart = 1;
@@ -54,7 +58,7 @@ function PaginationList({
   return (
     <div className="pagination-list">
       <h3>{title}</h3>
-      <div className="pagination-display">
+      <div className="pagination-display" style={{ gap, ...styles }}>
         {items.length < 1 ? (
           <p>No items to display</p>
         ) : (

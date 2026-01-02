@@ -109,7 +109,7 @@ function MainPage() {
     },
     {
       id: "allstarTeam",
-      content: <AllstarTeamTab />,
+      content: <AllstarTeamTab teams={team.userSubmittedTeamsView} />,
     },
   ];
 
