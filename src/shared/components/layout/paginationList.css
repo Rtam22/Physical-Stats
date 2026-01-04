@@ -18,7 +18,7 @@
   align-items: center;
   gap: 40px;
   border-radius: 5px;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .pagination-list .button-container {

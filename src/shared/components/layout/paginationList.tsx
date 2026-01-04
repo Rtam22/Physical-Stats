@@ -1,6 +1,6 @@
 import type React from "react";
 import "./paginationList.css";
-import { useMemo, useState } from "react";
+import { useLayoutEffect, useMemo, useRef, useState } from "react";
 
 type PaginationListProps = {
   items: React.ReactNode[];
@@ -24,12 +24,20 @@ function PaginationList({
   const numberOfPages = useMemo(() => {
     return getPageNumbers();
   }, [currentPage]);
-
+  const itemRef = useRef<HTMLDivElement>(null);
   const arrayIndex = useMemo(() => {
     const firstIndex = itemsAmountOnPage * currentPage - itemsAmountOnPage;
     const lastIndex = firstIndex + (itemsAmountOnPage - 1);
     return { firstIndex: firstIndex, lastIndex: lastIndex };
   }, [currentPage]);
+  const [itemHeight, setItemHeight] = useState(0);
+  const padding = 80;
+  const itemGap = 20;
+
+  useLayoutEffect(() => {
+    if (!itemRef.current) return;
+    setItemHeight(itemRef.current.getBoundingClientRect().height);
+  }, []);
 
   function getPageNumbers() {
     const half = Math.floor(pageRange / 2);
@@ -58,7 +66,18 @@ function PaginationList({
   return (
     <div className="pagination-list">
       <h3>{title}</h3>
-      <div className="pagination-display" style={{ gap, ...styles }}>
+      <div
+        className="pagination-display"
+        style={{
+          gap,
+          ...styles,
+          height: `${
+            itemHeight * itemsAmountOnPage +
+            padding +
+            itemGap * (itemsAmountOnPage - 1)
+          }px`,
+        }}
+      >
         {items.length < 1 ? (
           <p>No items to display</p>
         ) : (
@@ -67,7 +86,11 @@ function PaginationList({
               index >= arrayIndex.firstIndex &&
               index <= arrayIndex.lastIndex
             ) {
-              return item;
+              return (
+                <div className="item-container" ref={itemRef}>
+                  {item}
+                </div>
+              );
             }
           })
         )}

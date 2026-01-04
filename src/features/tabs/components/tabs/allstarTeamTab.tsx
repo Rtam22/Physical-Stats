@@ -1,6 +1,7 @@
 import PaginationList from "../../../../shared/components/layout/paginationList";
 import type { AllStarTeam, BuildTeamType } from "../../../../types/teamType";
 import type { UserType } from "../../../../types/userTypes";
+import { sortByGender, sortByVotes } from "../../../../utils/teamUtils";
 
 import TeamRow from "../../../teams/components/teamRow";
 import "./allstarTeamTab.css";
@@ -15,28 +16,19 @@ function AllstarTeamTab({
   allstarTeams,
   user,
 }: AllstarTeamTabProps) {
-  const sortedByVotes = [...allstarTeams].sort(
-    (a, b) => b.users.length - a.users.length
-  );
+  const sorted = sortByGender(sortByVotes(allstarTeams));
 
-  const sortedByGender = sortedByVotes.map((team) => ({
-    ...team,
-    team: [...team.team].sort((a, b) =>
-      a.info.gender === b.info.gender ? 0 : a.info.gender === "male" ? -1 : 1
-    ),
-  }));
-
-  const userAllstarIndex = sortedByGender.findIndex((allstar) =>
+  const userAllstarIndex = sorted.findIndex((allstar) =>
     allstar.users.some((u) => u.id === user.id)
   );
 
-  const userAllstarTeam = sortedByGender.find((allstar) =>
+  const userAllstarTeam = sorted.find((allstar) =>
     allstar.users.some((u) => u.id === user.id)
   );
 
   const items =
-    sortedByGender &&
-    sortedByGender.map((team, index) => (
+    sorted &&
+    sorted.map((team, index) => (
       <TeamRow
         key={index}
         allstarTeam={team}

@@ -68,3 +68,16 @@ export function compileUserTeams(
   }
   return allstarTeamsDraft;
 }
+
+export function sortByVotes(allstarTeams: AllStarTeam[]) {
+  return [...allstarTeams].sort((a, b) => b.users.length - a.users.length);
+}
+
+export function sortByGender(allstarTeams: AllStarTeam[]) {
+  return allstarTeams.map((team) => ({
+    ...team,
+    team: [...team.team].sort((a, b) =>
+      a.info.gender === b.info.gender ? 0 : a.info.gender === "male" ? -1 : 1
+    ),
+  }));
+}
