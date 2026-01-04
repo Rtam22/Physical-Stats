@@ -28,6 +28,7 @@ function SubmissionPagination({
       ].reverse()}
       title="Submission History"
       itemsAmountOnPage={2}
+      gap="40px"
     />
   );
 }

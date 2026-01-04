@@ -14,7 +14,7 @@ function PaginationList({
   items = [],
   itemsAmountOnPage = 5,
   title,
-  gap,
+  gap = "20px",
   styles,
 }: PaginationListProps) {
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -32,7 +32,7 @@ function PaginationList({
   }, [currentPage]);
   const [itemHeight, setItemHeight] = useState(0);
   const padding = 80;
-  const itemGap = 20;
+  const itemGap = parseFloat(gap);
 
   useLayoutEffect(() => {
     if (!itemRef.current) return;
