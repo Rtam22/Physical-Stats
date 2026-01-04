@@ -14,6 +14,42 @@ export const buildTeamsTestData: BuildTeamType[] = [
     ],
   },
   {
+    id: "team-0sa06",
+    user: { id: "user-0036", name: "MetaBuildsaer" },
+    athletes: [
+      "yun-sung-bin",
+      "kim-hae-jong",
+      "robert-whittaker",
+      "sunny-kerdkao",
+      "choi-seung-yeon",
+      "katelin-van-zyl",
+    ],
+  },
+  {
+    id: "team-0dsa06",
+    user: { id: "user-02206", name: "MetaBuasseilder" },
+    athletes: [
+      "yun-sung-bin",
+      "kim-hae-jong",
+      "robert-whittaker",
+      "sunny-kerdkao",
+      "choi-seung-yeon",
+      "katelin-van-zyl",
+    ],
+  },
+  {
+    id: "team-0dsadas06",
+    user: { id: "user-0026", name: "MetaBuildaaaaaaaer" },
+    athletes: [
+      "yun-sung-bin",
+      "kim-hae-jong",
+      "robert-whittaker",
+      "sunny-kerdkao",
+      "choi-seung-yeon",
+      "katelin-van-zyl",
+    ],
+  },
+  {
     id: "team-007",
     user: { id: "user-007", name: "PowerCore" },
     athletes: [
@@ -38,8 +74,32 @@ export const buildTeamsTestData: BuildTeamType[] = [
     ],
   },
   {
-    id: "team-009",
-    user: { id: "user-009", name: "CombatMeta" },
+    id: "team-0fasfsa08",
+    user: { id: "user-0daa08", name: "EnduranceMaaaasdax" },
+    athletes: [
+      "kim-hae-jong",
+      "sunny-kerdkao",
+      "dom-tomato",
+      "manny-pacquiao",
+      "katelin-van-zyl",
+      "robyn-lauren",
+    ],
+  },
+  {
+    id: "team-0fsafsa08",
+    user: { id: "user-008dsad", name: "EnduraasdsdanceMax" },
+    athletes: [
+      "kim-hae-jong",
+      "sunny-kerdkao",
+      "dom-tomato",
+      "manny-pacquiao",
+      "katelin-van-zyl",
+      "robyn-lauren",
+    ],
+  },
+  {
+    id: "team-fsafas009",
+    user: { id: "user-0das09", name: "CombdasdsaatMeta" },
     athletes: [
       "kim-dong-hyun",
       "yushin-okami",
@@ -98,6 +158,18 @@ export const buildTeamsTestData: BuildTeamType[] = [
     ],
   },
   {
+    id: "team-0gsaga13",
+    user: { id: "usedsar-013", name: "AsiaCordsae" },
+    athletes: [
+      "kim-hae-jong",
+      "yun-sung-bin",
+      "yushin-okami",
+      "sunny-kerdkao",
+      "kana-watanabe",
+      "nonoka-ozaki",
+    ],
+  },
+  {
     id: "team-014",
     user: { id: "user-014", name: "WrestleStack" },
     athletes: [
@@ -143,6 +215,30 @@ export const buildTeamsTestData: BuildTeamType[] = [
       "glenn-victor",
       "nefise-karatay",
       "katelin-van-zyl",
+    ],
+  },
+  {
+    id: "teamdsa0fsa17",
+    user: { id: "usedsar-017", name: "DraftOptsaimizer" },
+    athletes: [
+      "kim-min-jae",
+      "robert-whittaker",
+      "sunny-kerdkao",
+      "glenn-victor",
+      "nefise-karatay",
+      "katelin-van-zyl",
+    ],
+  },
+  {
+    id: "teamddsasa0fsa17",
+    user: { id: "usedsardsa-017", name: "DraftOptdsasaimizer" },
+    athletes: [
+      "kim-dong-hyun",
+      "kim-hae-jong",
+      "yun-sung-bin",
+      "jang-eun-sil",
+      "kim-min-jae",
+      "choi-seung-yeon",
     ],
   },
 ];

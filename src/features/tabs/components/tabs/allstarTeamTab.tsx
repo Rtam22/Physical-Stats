@@ -1,32 +1,46 @@
 import PaginationList from "../../../../shared/components/layout/paginationList";
-import type { AthleteData } from "../../../../types/athleteType";
-import type { TeamType, UserTeamType } from "../../../../types/teamType";
+import type { AllStarTeam, BuildTeamType } from "../../../../types/teamType";
 import type { UserType } from "../../../../types/userTypes";
+
 import TeamRow from "../../../teams/components/teamRow";
 import "./allstarTeamTab.css";
 type AllstarTeamTabProps = {
-  teams: TeamType[] | null;
+  allstarTeams: AllStarTeam[];
+  selectedTeam: BuildTeamType | null;
+  user: UserType;
 };
 
-export type AllStarTeam = {
-  users: UserType[];
-  team: AthleteData[];
-};
+function AllstarTeamTab({
+  selectedTeam,
+  allstarTeams,
+  user,
+}: AllstarTeamTabProps) {
+  const sortedByVotes = [...allstarTeams].sort(
+    (a, b) => b.users.length - a.users.length
+  );
 
-function AllstarTeamTab({ teams }: AllstarTeamTabProps) {
-  const allStarTeams: AllStarTeam[] = (teams ?? [])
-    .filter((team): team is UserTeamType => "user" in team)
-    .map((team) => ({
-      users: [team.user],
-      team: team.athletes,
-    }));
+  const sortedByGender = sortedByVotes.map((team) => ({
+    ...team,
+    team: [...team.team].sort((a, b) =>
+      a.info.gender === b.info.gender ? 0 : a.info.gender === "male" ? -1 : 1
+    ),
+  }));
+
+  const userAllstarIndex = sortedByGender.findIndex((allstar) =>
+    allstar.users.some((u) => u.id === user.id)
+  );
+
+  const userAllstarTeam = sortedByGender.find((allstar) =>
+    allstar.users.some((u) => u.id === user.id)
+  );
 
   const items =
-    allStarTeams &&
-    allStarTeams.map((team, index) => (
+    sortedByGender &&
+    sortedByGender.map((team, index) => (
       <TeamRow
         key={index}
         allstarTeam={team}
+        selectedTeam={selectedTeam}
         placement={(index + 1).toString()}
       />
     ));
@@ -35,10 +49,19 @@ function AllstarTeamTab({ teams }: AllstarTeamTabProps) {
 
   return (
     <div className="allstar-team-tab">
+      <div className="user-team-container">
+        <p>Your Team</p>
+        <TeamRow
+          noHighlight={true}
+          allstarTeam={userAllstarTeam}
+          selectedTeam={selectedTeam}
+          placement={(userAllstarIndex + 1).toString()}
+        />
+      </div>
       <PaginationList
         items={items}
         gap="20px"
-        itemsAmountOnPage={8}
+        itemsAmountOnPage={5}
         styles={{ maxWidth: "1500px" }}
       />
     </div>

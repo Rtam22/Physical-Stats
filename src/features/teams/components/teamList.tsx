@@ -4,17 +4,17 @@ import "./teamList.css";
 
 type TeamListProps = {
   type: "teams" | "allstarTeams";
-  teams: TeamType[];
+  countryTeams: TeamType[];
   selectedTeam: TeamType | null;
 };
 
-function TeamList({ teams, selectedTeam, type }: TeamListProps) {
+function TeamList({ countryTeams, selectedTeam, type }: TeamListProps) {
   return (
     <div className="team-list">
       {type === "teams" && (
         <>
           {selectedTeam && <TeamCard type={type} team={selectedTeam} />}
-          {teams.map((team) => {
+          {countryTeams.map((team) => {
             return (
               <TeamCard
                 type={type}

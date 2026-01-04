@@ -35,3 +35,8 @@ export type BuildTeamType = {
   user: UserType;
   athletes: AthleteIdKey[];
 };
+
+export type AllStarTeam = {
+  users: UserType[];
+  team: AthleteData[];
+};

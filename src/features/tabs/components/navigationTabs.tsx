@@ -11,7 +11,7 @@ export const TAB_LABELS: Record<TabID, string> = {
   tierList: "Tier List",
   teamBuilder: "Team Builder",
   username: "Username",
-  teams: "Teams",
+  asiaTeams: "Asia Teams",
   allstarTeam: "All-star Teams",
 };
 

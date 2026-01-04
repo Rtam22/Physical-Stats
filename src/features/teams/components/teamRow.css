@@ -8,6 +8,9 @@
   display: grid;
   grid-template-columns: 20% 55% 25%;
 }
+.team-row.highlight {
+  border: 1px solid rgb(85, 244, 76);
+}
 
 .team-row .placement-container,
 .team-row .athlete-container,
@@ -26,6 +29,7 @@
 
 .team-row p {
   text-align: center;
+  font-size: 14px;
 }
 
 .team-row .image-container {
@@ -36,4 +40,8 @@
 .team-row .image-container img {
   width: 100%;
   height: 100%;
+}
+
+.team-row .medal {
+  font-size: 22px;
 }

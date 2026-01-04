@@ -6,7 +6,7 @@ import type { TeamType } from "../../../types/teamType";
 type useTabsProps = {
   teams: {
     selectedTeam: TeamType | null;
-    existingTeams: TeamType[];
+    countryTeams: TeamType[];
     handleSetTeam: (athletes: AthleteDataWithAttributes[]) => void;
   };
   hasUsername: boolean;
@@ -22,7 +22,7 @@ function useMainTabs({ teams, hasUsername }: useTabsProps) {
       const shouldHideTeamBuilder =
         tab === "teamBuilder" && teams.selectedTeam !== null;
       const shouldHideResultTabs =
-        (tab === "teams" || tab === "allstarTeam") &&
+        (tab === "asiaTeams" || tab === "allstarTeam") &&
         teams.selectedTeam === null;
       const isUsername = tab === "username";
       return !(isUsername || shouldHideTeamBuilder || shouldHideResultTabs);

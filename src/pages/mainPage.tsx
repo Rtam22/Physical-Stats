@@ -43,7 +43,7 @@ function MainPage() {
   const tabs = useMainTabs({
     teams: {
       selectedTeam: team.selectedTeamView,
-      existingTeams: team.existingTeams,
+      countryTeams: team.countryTeams,
       handleSetTeam,
     },
     hasUsername: Boolean(user.name),
@@ -51,7 +51,7 @@ function MainPage() {
 
   function handleSetTeam(athletes: AthleteDataWithAttributes[]) {
     const athletesId = athletes.map((athlete) => athlete.info.id);
-    tabs.setActiveTab("teams");
+    tabs.setActiveTab("asiaTeams");
     team.handleSetSelectedTeam(athletesId, user);
   }
   const tabsConfig: TabsConfig[] = [
@@ -87,11 +87,11 @@ function MainPage() {
       ),
     },
     {
-      id: "teams",
+      id: "asiaTeams",
       content: (
         <TeamList
           type="teams"
-          teams={team.existingTeams}
+          countryTeams={team.countryTeams}
           selectedTeam={team.selectedTeamView}
         />
       ),
@@ -109,7 +109,13 @@ function MainPage() {
     },
     {
       id: "allstarTeam",
-      content: <AllstarTeamTab teams={team.userSubmittedTeamsView} />,
+      content: (
+        <AllstarTeamTab
+          user={user}
+          allstarTeams={team.allstarTeams}
+          selectedTeam={team.selectedTeam}
+        />
+      ),
     },
   ];
 

@@ -5,9 +5,9 @@ import type {
   AthleteDataWithAttributes,
   AthleteIdKey,
 } from "../../../types/athleteType";
-import { teamList } from "../../../data/athleteData";
-import { getTeamAttributes } from "../../../utils/attributeUtils";
+import { athleteList, teamList } from "../../../data/athleteData";
 import { buildTeamsTestData } from "../../../data/teamData";
+import { buildTeamView, compileUserTeams } from "../../../utils/teamUtils";
 
 type UseAthleteTeamProps = {
   athletes: AthleteDataWithAttributes[];
@@ -20,45 +20,41 @@ export function useAthleteTeam({ athletes }: UseAthleteTeamProps) {
 
   const selectedTeamView: TeamType | null = useMemo(() => {
     if (!selectedTeam) return null;
-    return buildTeamView(selectedTeam);
+    return buildTeamView(selectedTeam, athletes);
   }, [selectedTeam, athletes]);
 
   const userSubmittedTeamsView: TeamType[] | null = useMemo(() => {
     if (!userSubmittedTeams) return null;
-    return userSubmittedTeams.map((team) => buildTeamView(team));
+    return userSubmittedTeams.map((team) => buildTeamView(team, athletes));
   }, [userSubmittedTeams, athletes]);
 
-  const existingTeams = useMemo(() => {
+  const allstarTeams = useMemo(() => {
+    return compileUserTeams(userSubmittedTeams, athleteList);
+  }, [userSubmittedTeams]);
+
+  const countryTeams = useMemo(() => {
     return teamService.buildExistingTeams(teamList, athletes);
   }, [athletes]);
-
-  function buildTeamView(team: BuildTeamType) {
-    const selectedAthletes = athletes.filter((a) => {
-      return team.athletes.includes(a.info.id);
-    });
-    const newTeam: TeamType = {
-      user: { id: team.user.id, name: team.user.name },
-      athletes: selectedAthletes,
-      averageAttributes: getTeamAttributes(selectedAthletes),
-    };
-    return newTeam;
-  }
 
   function handleSetSelectedTeam(
     selectedAthletes: AthleteIdKey[],
     user: { id: string; name: string }
   ) {
-    setSelectedTeam({
+    const newTeam = {
       id: crypto.randomUUID(),
       user: { id: user.id, name: user.name },
       athletes: selectedAthletes,
-    });
+    };
+    setSelectedTeam(newTeam);
+    setUserSubmittedTeams((prev) => [...prev, newTeam]);
   }
 
   return {
     selectedTeamView,
-    existingTeams,
+    allstarTeams,
+    countryTeams,
     userSubmittedTeamsView,
+    selectedTeam,
     handleSetSelectedTeam,
   };
 }
