@@ -42,7 +42,7 @@ function AllstarTeamTab({
   return (
     <div className="allstar-team-tab">
       <div className="user-team-container">
-        <p>Your Team</p>
+        <h3>Your Team</h3>
         <TeamRow
           noHighlight={true}
           allstarTeam={userAllstarTeam}
@@ -51,6 +51,7 @@ function AllstarTeamTab({
         />
       </div>
       <PaginationList
+        title="Allstar Teams"
         items={items}
         gap="20px"
         itemsAmountOnPage={5}
