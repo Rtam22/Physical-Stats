@@ -16,19 +16,31 @@
 
 @media (max-width: 860px) {
   .filters {
-    width: 95%;
+    width: 90%;
   }
 }
 
 @media (max-width: 700px) {
   .filters {
     flex-wrap: wrap;
+    padding: 20px;
   }
 }
 
 @media (max-width: 400px) {
   .filters {
-    padding: 10px;
-    justify-content: flex-start;
+    flex-direction: column;
+  }
+
+  .filters label {
+    min-width: 50px;
+  }
+
+  .filters input {
+    width: 100%;
+  }
+
+  #mvp {
+    width: auto;
   }
 }

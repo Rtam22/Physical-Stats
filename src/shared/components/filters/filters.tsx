@@ -20,17 +20,21 @@ function Filters({ filterValues, setFilter }: FilterProps) {
   return (
     <div className="filters">
       <section>
-        <label htmlFor="">MVP</label>
+        <label htmlFor="mvp">MVP</label>
         <input
+          id="mvp"
+          name="mvp"
           type="checkbox"
           checked={filterValues.mvp}
           onChange={() => setFilter({ mvp: !filterValues.mvp })}
         />
       </section>
       <section>
-        <label htmlFor="">Search</label>
+        <label htmlFor="search">Search</label>
         <input
           type="text"
+          id="search"
+          name="search"
           value={filterValues.search}
           onChange={(e) => setFilter({ search: e.target.value })}
         />
@@ -39,6 +43,7 @@ function Filters({ filterValues, setFilter }: FilterProps) {
         <label htmlFor="">Team</label>
         <select
           id="team"
+          name="team"
           value={filterValues.team}
           onChange={(e) =>
             setFilter({ team: e.target.value as FilterValue["team"] })
