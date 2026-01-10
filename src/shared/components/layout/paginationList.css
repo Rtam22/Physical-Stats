@@ -27,6 +27,7 @@
   width: 100%;
   justify-content: center;
   gap: 5px;
+  flex-wrap: wrap;
 }
 
 .pagination-list .item-container {
@@ -34,4 +35,16 @@
   height: auto;
   display: flex;
   justify-content: center;
+}
+
+@media (max-width: 650px) {
+  .pagination-display {
+    width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  .pagination-display {
+    padding: 20px 10px;
+  }
 }
