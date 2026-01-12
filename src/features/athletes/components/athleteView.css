@@ -46,3 +46,9 @@
   border: 1px solid white;
   cursor: default;
 }
+
+@media (max-width: 550px) {
+  .athlete-view {
+    padding: 0 8px;
+  }
+}

@@ -62,8 +62,7 @@ function AthleteTeamBuilder({
 
   return (
     <div className="team-builder">
-      <div>
-        {" "}
+      <div className="selected">
         <div className="button-container">
           <button
             className="button-focus main"

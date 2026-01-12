@@ -77,3 +77,9 @@
   transform: translate(-22px, -17px) rotate(-10deg);
   color: rgb(229, 255, 0);
 }
+
+@media (max-width: 550px) {
+  .mvp-container {
+    transform: translate(-15px, -17px) rotate(-10deg);
+  }
+}
