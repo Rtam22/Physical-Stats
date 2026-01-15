@@ -32,7 +32,7 @@ function AthleteGridSection({
 
   return (
     <Grid
-      cellMinWidth="250px"
+      cellMinWidth="220px"
       cellMaxWidth="460px"
       width="80%"
       items={gridItems}

@@ -7,3 +7,9 @@
   gap: 5px;
   flex-direction: column;
 }
+
+@media (max-width: 300px) {
+  .user-form {
+    min-width: 100%;
+  }
+}

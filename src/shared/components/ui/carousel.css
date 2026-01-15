@@ -70,3 +70,19 @@
   opacity: 0;
   animation: FadeIn 700ms ease-in-out forwards;
 }
+
+@media (max-width: 700px) {
+  .carousel .image-container {
+    height: 500px;
+  }
+}
+
+@media (max-width: 500px) {
+  .carousel .tab-container {
+    display: none;
+  }
+
+  .carousel .image-container {
+    height: 350px;
+  }
+}

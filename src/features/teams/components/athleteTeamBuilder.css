@@ -73,7 +73,8 @@
 }
 
 .team-builder .athlete-container {
-  width: 95px;
+  width: clamp(65px, 20vw, 95px);
+  aspect-ratio: 95 / 130;
   height: 130px;
   border: 1px solid rgb(192, 192, 192);
   border-radius: 5px;
@@ -91,7 +92,7 @@
   pointer-events: none;
 }
 
-.team-builder .athlete-container:not(:disabled) :hover {
+.team-builder .athlete-container:not(:disabled):hover {
   cursor: pointer;
   border: 1px solid rgb(77, 189, 67);
 }
@@ -112,4 +113,41 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+@media (max-width: 720px) {
+  .team-builder .selected-team-container {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 450px) {
+  .team-builder .athletes-container {
+    padding: 20px 5px;
+    gap: 10px;
+  }
+
+  .team-builder {
+    width: 98%;
+  }
+
+  .team-builder .selected-team-container {
+    gap: 20px;
+    padding: 10px 5px;
+    width: 100%;
+  }
+  .team-builder .male-section,
+  .team-builder .female-section {
+    gap: 2px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .team-builder .selected {
+    width: 100%;
+  }
+
+  .team-builder .selected .button-container {
+    padding: 0px 8px;
+  }
 }

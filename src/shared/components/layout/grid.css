@@ -5,9 +5,16 @@
   justify-content: center;
 }
 
+@media (max-width: 800px) {
+  .grid {
+    width: 100% !important;
+  }
+}
+
 @media (max-width: 400px) {
   .grid {
     padding: 2px;
     gap: 20px !important;
+    width: 95% !important;
   }
 }

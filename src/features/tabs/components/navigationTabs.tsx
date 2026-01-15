@@ -1,4 +1,5 @@
 import type { TabID } from "../../../types/tabTypes";
+import "./navigationTabs.css";
 
 type NavigationTabsProps = {
   active: TabID;
@@ -20,7 +21,7 @@ function NavigationTabs({ active, changeTab, allTabs }: NavigationTabsProps) {
 
   if (isOnUsernameStep) return null;
   return (
-    <div className="button-container">
+    <div className="navigation-container">
       {allTabs.map((tab, index) => {
         return (
           <button

@@ -14,3 +14,9 @@
   margin: 0 auto;
   gap: 10px;
 }
+
+@media (max-width: 400px) {
+  .allstar-team-tab .user-team-container {
+    width: 95%;
+  }
+}

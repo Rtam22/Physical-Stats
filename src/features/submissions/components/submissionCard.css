@@ -71,3 +71,20 @@
   flex-direction: column;
   width: 50%;
 }
+
+@media (max-width: 650px) {
+  .submission-card {
+    width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  .submission-card .flex {
+    flex-direction: column;
+  }
+
+  .submission-card .attribute-container,
+  .submission-card .comment-container {
+    width: 100%;
+  }
+}
