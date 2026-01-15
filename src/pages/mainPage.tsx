@@ -28,6 +28,7 @@ import ModalController from "../shared/components/layout/modalController";
 import ConfirmationModal from "../shared/components/ui/confirmationModal";
 import AllstarTeamTab from "../features/tabs/components/tabs/allstarTeamTab";
 import TabController from "../features/tabs/components/tabController";
+import { AnimatePresence } from "framer-motion";
 
 function MainPage() {
   const [filters, setFilters] = useState<FilterValue>(initialFilters);
@@ -178,12 +179,14 @@ function MainPage() {
 
   return (
     <div className="main-page">
-      <ModalController
-        state={modal.state}
-        modals={modalsConfig}
-        onClose={modal.close}
-      />
-
+      <AnimatePresence mode="wait">
+        <ModalController
+          key={modal.state.open ? modal.state.type : "closed"}
+          state={modal.state}
+          modals={modalsConfig}
+          onClose={modal.close}
+        />
+      </AnimatePresence>
       <NavigationTabs
         active={tabs.activeTab}
         changeTab={(e) => tabs.setActiveTab(e)}

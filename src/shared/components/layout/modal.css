@@ -7,6 +7,15 @@
   overflow-y: scroll;
   gap: 10px;
   position: relative;
+  cursor: default;
+}
+
+.modal-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
 }
 
 .close-container {
@@ -22,9 +31,7 @@
 
 .modal.middle {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+
   display: flex;
 }
 

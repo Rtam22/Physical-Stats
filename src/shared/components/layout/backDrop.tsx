@@ -1,4 +1,5 @@
 import "./backDrop.css";
+import { motion } from "framer-motion";
 
 type BackDropProps = {
   children: React.ReactNode;
@@ -7,9 +8,16 @@ type BackDropProps = {
 
 function BackDrop({ onClose, children }: BackDropProps) {
   return (
-    <div className="back-drop" onClick={onClose}>
+    <motion.div
+      className="back-drop"
+      onClick={onClose}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.15, ease: "easeOut" }}
+    >
       {children}
-    </div>
+    </motion.div>
   );
 }
 

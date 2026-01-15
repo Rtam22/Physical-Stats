@@ -1,10 +1,7 @@
 .modal.confirmation {
   min-width: 400px;
   width: auto;
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+
   padding: 40px 50px;
 }
 
