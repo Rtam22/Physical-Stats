@@ -45,3 +45,28 @@
 .team-row .medal {
   font-size: 22px;
 }
+
+@media (max-width: 400px) {
+  .team-row {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .team-row .image-container {
+    height: 80px;
+  }
+
+  .team-row .placement-container,
+  .team-row .info-container {
+    padding: 15px 0;
+  }
+
+  .team-row .info-container {
+    flex-direction: row;
+    gap: 5px;
+  }
+  .team-row .user-team-container {
+    width: 95%;
+  }
+}

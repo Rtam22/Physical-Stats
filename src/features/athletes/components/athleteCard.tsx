@@ -50,7 +50,7 @@ function AthleteCard(props: CardProps) {
       : undefined;
 
   return (
-    <div className="card-container" onClick={onClick}>
+    <div className="card-container">
       <div className="top-container">
         {athlete.mvp ? <p className="mvp-container">MVP</p> : null}
         <div className="flex">
@@ -59,7 +59,7 @@ function AthleteCard(props: CardProps) {
         </div>
         <p>⭐{athlete.favorite}</p>
       </div>
-      <div className="athlete-card" id={athlete.info.id}>
+      <div className="athlete-card" id={athlete.info.id} onClick={onClick}>
         <div className="image-container">
           <img src={athlete.info.imgSm} alt="" />
         </div>
