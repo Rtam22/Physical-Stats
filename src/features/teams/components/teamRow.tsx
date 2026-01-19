@@ -1,5 +1,4 @@
 import type { AllStarTeam, BuildTeamType } from "../../../types/teamType";
-
 import "./teamRow.css";
 type TeamRowProps = {
   allstarTeam: AllStarTeam | undefined;

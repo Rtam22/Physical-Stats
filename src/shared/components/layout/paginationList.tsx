@@ -1,7 +1,7 @@
 import type React from "react";
 import "./paginationList.css";
 import { useLayoutEffect, useMemo, useRef, useState } from "react";
-
+import { motion } from "framer-motion";
 type PaginationListProps = {
   items: React.ReactNode[];
   itemsAmountOnPage?: number;
@@ -33,7 +33,7 @@ function PaginationList({
   const [itemHeight, setItemHeight] = useState(0);
   const padding = 80;
   const itemGap = parseFloat(gap);
-
+  const onLoadAnimationRef = useRef(false);
   useLayoutEffect(() => {
     if (!itemRef.current) return;
     setItemHeight(itemRef.current.offsetHeight);
@@ -63,10 +63,11 @@ function PaginationList({
     }
     return pages;
   }
+
   return (
     <div className="pagination-list">
       <h3>{title}</h3>
-      <div
+      <motion.div
         className="pagination-display"
         style={{
           gap,
@@ -77,6 +78,17 @@ function PaginationList({
             itemGap * (itemsAmountOnPage - 1)
           }px`,
         }}
+        variants={{
+          hidden: {},
+          show: {
+            transition: {
+              staggerChildren: 0.05,
+            },
+          },
+        }}
+        initial={onLoadAnimationRef.current ? false : "hidden"}
+        animate="show"
+        onAnimationComplete={() => (onLoadAnimationRef.current = true)}
       >
         {items.length < 1 ? (
           <p>No items to display</p>
@@ -87,14 +99,25 @@ function PaginationList({
               index <= arrayIndex.lastIndex
             ) {
               return (
-                <div className="item-container" ref={itemRef}>
+                <motion.div
+                  key={index}
+                  className="item-container"
+                  ref={itemRef}
+                  variants={{
+                    hidden: { x: -10, opacity: 0 },
+                    show: { x: 0, opacity: 1 },
+                  }}
+                  initial={{ translateX: -10, opacity: 0 }}
+                  animate={{ translateX: 0, opacity: 1 }}
+                  exit={{ translateX: -10, opacity: 0 }}
+                >
                   {item}
-                </div>
+                </motion.div>
               );
             }
           })
         )}
-      </div>
+      </motion.div>
       <div className="button-container">
         {pagesTotal > 1 && (
           <>
