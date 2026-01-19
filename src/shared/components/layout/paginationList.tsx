@@ -36,7 +36,7 @@ function PaginationList({
 
   useLayoutEffect(() => {
     if (!itemRef.current) return;
-    setItemHeight(itemRef.current.getBoundingClientRect().height);
+    setItemHeight(itemRef.current.offsetHeight);
   }, []);
 
   function getPageNumbers() {
