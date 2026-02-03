@@ -4,11 +4,11 @@ import { getTeamAttributes } from "../../../utils/attributeUtils";
 
 export function buildExistingTeams(
   teams: AthleteTeams[],
-  athletes: AthleteDataWithAttributes[]
+  athletes: AthleteDataWithAttributes[],
 ) {
   const builtTeams: TeamType[] = teams.map((team) => {
     const athletesInTeam = athletes.filter(
-      (athlete) => athlete.info.team === team
+      (athlete) => athlete.info.team === team,
     );
 
     const avgAttributes = getTeamAttributes(athletes, team);
