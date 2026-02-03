@@ -1,0 +1,18 @@
+import express from "express";
+import { prisma } from "./database/prisma.js";
+import { errorHandler } from "./middlewares/errorHandler.js";
+
+const app = express();
+
+app.use(express.json());
+app.listen(3000, () => {
+  console.log("Server running on port 3000");
+});
+
+app.get("/health", (_req, res) => res.json({ ok: true }));
+app.get("/db-test", async (_req, res) => {
+  const count = await prisma.user.count();
+  res.json({ users: count });
+});
+
+app.use(errorHandler);
