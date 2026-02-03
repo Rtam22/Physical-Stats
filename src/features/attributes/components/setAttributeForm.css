@@ -18,6 +18,9 @@
   width: 50%;
   padding-left: 50px;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .set-attribute-form .image-container {
@@ -60,7 +63,7 @@
 }
 
 .set-attribute-form .profile-container p {
-  font-size: 24px;
+  font-size: 22px;
   margin-bottom: 5px;
   text-align: center;
   width: 90%;
@@ -255,5 +258,9 @@
 
   .set-attribute-form label {
     justify-content: center;
+  }
+
+  .set-attribute-form .profile-container p {
+    font-size: 20px;
   }
 }
