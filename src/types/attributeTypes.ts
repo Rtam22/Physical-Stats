@@ -14,10 +14,10 @@ export type AttributeKey =
 export type AttributeValues = Record<AttributeKey, number>;
 
 export type AttributeSubmission = {
+  id: string;
   athleteId: AthleteIdKey;
   createdAt: Date;
   user: { id: UserId; name: string };
-  submissionId: string;
   favorite: boolean;
   values: AttributeValues;
   mvp?: boolean;
