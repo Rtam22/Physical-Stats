@@ -8,7 +8,7 @@ export const createBuildTeamSchema = z.object({
     .refine((ids) => new Set(ids).size === ids.length),
 });
 
-export const buildTeamSchema = z.object({
+export const teamSchema = z.object({
   id: z.string(),
   createdAt: z.coerce.date(),
   user: userSchema,
