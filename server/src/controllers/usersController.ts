@@ -5,7 +5,7 @@ import z from "zod";
 
 type CreateUserSchema = z.infer<typeof createUserSchema>;
 
-export async function createUser(res: Response, req: Request) {
+export async function createUser(req: Request, res: Response) {
   const body = req.validatedBody as CreateUserSchema;
 
   try {

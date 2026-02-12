@@ -19,8 +19,10 @@ export async function createBuildTeams(req: Request, res: Response) {
         user: { select: { id: true, name: true } },
       },
     });
+
     return res.status(204).json(buildTeam);
   } catch (err) {
+    console.log(err);
     return res.status(500).json({
       error: "Internal server error",
     });
