@@ -10,11 +10,15 @@ export function useUser() {
   const [error, setError] = useState<string | null>(null);
 
   async function submitUser(user: UserType) {
+    setError(null);
     try {
       const data = await userService.postUser(user.name);
       setUser(data);
+      return { ok: true };
     } catch (err) {
+      console.log(err);
       setError((err as Error).message);
+      return { ok: false };
     }
   }
 

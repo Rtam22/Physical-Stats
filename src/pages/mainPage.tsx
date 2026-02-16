@@ -32,7 +32,7 @@ import { AnimatePresence } from "framer-motion";
 
 function MainPage() {
   const [filters, setFilters] = useState<FilterValue>(initialFilters);
-  const { user, submitUser } = useUser();
+  const { user, submitUser, error: userError } = useUser();
   const submissions = useSubmissions({ userId: user.id });
   const { athletes } = useAthletes({
     attributeSubmissions: submissions.submissions,
@@ -81,7 +81,7 @@ function MainPage() {
         <TierListGrid
           athletes={filterAthletesBySubmitted(
             submissions.submittedVoteAccess,
-            athletes
+            athletes,
           )}
           onCardClick={modal.open}
         />
@@ -101,9 +101,12 @@ function MainPage() {
       id: "username",
       content: (
         <SignupTab
-          submitUser={(user: UserType) => {
-            tabs.setActiveTab("athletes");
-            submitUser(user);
+          error={userError}
+          submitUser={async (user: UserType) => {
+            const result = await submitUser(user);
+            if (result.ok) {
+              tabs.setActiveTab("athletes");
+            }
           }}
         />
       ),

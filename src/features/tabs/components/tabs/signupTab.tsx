@@ -5,9 +5,10 @@ import UserForm from "../../../user/components/userForm";
 import "./signupTab.css";
 type SignupFormProps = {
   submitUser: (user: UserType) => void;
+  error: string | null;
 };
 
-function SignupTab({ submitUser }: SignupFormProps) {
+function SignupTab({ submitUser, error }: SignupFormProps) {
   return (
     <div className="signup-tab">
       <span className="flex">
@@ -16,6 +17,7 @@ function SignupTab({ submitUser }: SignupFormProps) {
       </span>
       <Carousel type="tabs" content={teamImages} />{" "}
       <UserForm submitUser={submitUser} />
+      {error && <span className="error-container">{error}</span>}
     </div>
   );
 }

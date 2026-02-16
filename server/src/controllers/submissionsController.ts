@@ -26,7 +26,12 @@ export async function createSubmission(req: Request, res: Response) {
       },
     });
 
-    return res.status(201).json(submission);
+    const ordered = {
+      ...submission,
+      values: orderValues(submission.values as Record<string, unknown>),
+    };
+
+    return res.status(201).json(ordered);
   } catch (err) {
     console.error(err);
     return res.status(500).json({ error: "Internal server error" });

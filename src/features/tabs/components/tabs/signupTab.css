@@ -15,6 +15,15 @@
   color: #c20902;
 }
 
+.signup-tab .error-container {
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  padding: 10px 20px;
+}
+
 @media (max-width: 400px) {
   .signup-tab {
     padding: 10px 10px;

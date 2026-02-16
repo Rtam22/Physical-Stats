@@ -9,11 +9,12 @@ export async function fetchApi<T>(endPoint: string, options: RequestInit = {}) {
     },
     ...rest,
   });
-
+  const data = await res.json().catch(() => null);
   if (!res.ok) {
-    const errorText = await res.text();
-    throw new Error(errorText || "API Error");
+    const message =
+      data && typeof data.error === "string" ? data.error : "API Error";
+    throw new Error(message);
   }
 
-  return res.json() as Promise<T>;
+  return data as Promise<T>;
 }
