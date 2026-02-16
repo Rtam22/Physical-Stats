@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { UserType } from "../../../types/userTypes";
+import { userService } from "../service/userService";
 
 export function useUser() {
   const [user, setUser] = useState<UserType>({
@@ -8,8 +9,13 @@ export function useUser() {
   });
   const [error, setError] = useState<string | null>(null);
 
-  function submitUser(user: UserType) {
-    setUser(user);
+  async function submitUser(user: UserType) {
+    try {
+      const data = await userService.postUser(user.name);
+      setUser(data);
+    } catch (err) {
+      setError((err as Error).message);
+    }
   }
 
   return {

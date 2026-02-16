@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { AthleteIdKey } from "../../../types/athleteType";
 import { submissionService } from "../services/submissionService";
 import type { AthleteTeams } from "../../../types/teamType";
@@ -11,13 +11,10 @@ type UseSubmissionProps = {
 };
 
 export function useSubmissions({ userId }: UseSubmissionProps) {
-  const [submissions, setSubmissions] = useState<AttributeSubmission[]>(
-    submissionService.fetchSubmissions
-  );
-
+  const [submissions, setSubmissions] = useState<AttributeSubmission[]>([]);
   const [submittedVoteAccess, setsubmittedVoteAccess] = useState<
     AthleteIdKey[]
-  >(["choi-seung-yeon", "jang-eun-sil", "kim-dong-hyun", "yun-sung-bin"]);
+  >(["kim-dong-hyun"]);
 
   const hasRevealedAll: boolean = useMemo(() => {
     return ALL_ATHLETE_IDS.every((id) => submittedVoteAccess.includes(id));
@@ -25,14 +22,14 @@ export function useSubmissions({ userId }: UseSubmissionProps) {
 
   const hasMVPCountries: AthleteTeams[] = useMemo(() => {
     const userSubmissions = submissions.filter(
-      (submission) => userId === submission.user.id
+      (submission) => userId === submission.user.id,
     );
     const teams = new Set<AthleteTeams>();
     for (const submission of userSubmissions) {
       if (!submission.mvp) continue;
 
       const athlete = athleteList.find(
-        (athlete) => athlete.info.id === submission.athleteId
+        (athlete) => athlete.info.id === submission.athleteId,
       );
       if (!athlete) continue;
       teams.add(athlete?.info.team);
@@ -46,7 +43,7 @@ export function useSubmissions({ userId }: UseSubmissionProps) {
     for (const submission of submissions) {
       if (!submission.mvp) continue;
       const athlete = athleteList.find(
-        (a) => a.info.id === submission.athleteId
+        (a) => a.info.id === submission.athleteId,
       );
 
       if (!athlete) continue;
@@ -55,12 +52,25 @@ export function useSubmissions({ userId }: UseSubmissionProps) {
     return [...teams];
   }, [submissions]);
 
+  useEffect(() => {
+    async function loadData() {
+      const data = await submissionService.fetchSubmissions();
+      setSubmissions(data);
+    }
+    loadData();
+  }, []);
+
   function handleRevealAll() {
     setsubmittedVoteAccess([...ALL_ATHLETE_IDS]);
   }
 
-  function handleSubmitSubmissions(submission: AttributeSubmission) {
-    setSubmissions((prev) => [...prev, submission]);
+  async function handleSubmitSubmissions(submission: AttributeSubmission) {
+    const res: AttributeSubmission = await submissionService.postSubmission(
+      userId,
+      submission,
+    );
+    console.log(submission.values);
+    setSubmissions((prev) => [...prev, res]);
     setsubmittedVoteAccess((prev) => {
       if (prev.includes(submission.athleteId)) return prev;
       return [...prev, submission.athleteId];

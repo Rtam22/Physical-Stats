@@ -32,3 +32,50 @@ export async function createSubmission(req: Request, res: Response) {
     return res.status(500).json({ error: "Internal server error" });
   }
 }
+
+export async function fetchSubmissions(req: Request, res: Response) {
+  try {
+    const data = await prisma.attributeSubmission.findMany({
+      select: {
+        id: true,
+        athleteId: true,
+        createdAt: true,
+        favorite: true,
+        mvp: true,
+        ranking: true,
+        values: true,
+        user: {
+          select: {
+            id: true,
+            name: true,
+          },
+        },
+      },
+    });
+
+    const ordered = data.map((item) => ({
+      ...item,
+      values: orderValues(item.values as Record<string, unknown>),
+    }));
+    return res.json(ordered);
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+}
+
+const VALUE_ORDER = [
+  "strength",
+  "explosiveness",
+  "speed",
+  "endurance",
+  "cardio",
+  "grit",
+  "adaptability",
+] as const;
+
+function orderValues(values: Record<string, unknown>) {
+  return Object.fromEntries(
+    VALUE_ORDER.filter((k) => k in values).map((k) => [k, values[k]]),
+  );
+}
