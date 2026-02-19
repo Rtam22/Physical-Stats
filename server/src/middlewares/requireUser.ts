@@ -2,7 +2,7 @@ import type { NextFunction, Request, Response } from "express";
 
 export function requireUser(req: Request, res: Response, next: NextFunction) {
   const userIdHeader = req.headers["user-id"];
-  if (typeof userIdHeader !== "string") {
+  if (typeof userIdHeader !== "string" || !userIdHeader) {
     return res.status(400).json({
       error: "Missing user-id header",
     });

@@ -24,3 +24,8 @@ export type AttributeSubmission = {
   comment?: string;
   ranking: RankKey | "";
 };
+
+export type SubmissionResponseType = {
+  submission: AttributeSubmission;
+  voteAccess: AthleteIdKey[];
+};

@@ -3,7 +3,10 @@ import type { AthleteIdKey } from "../../../types/athleteType";
 import { submissionService } from "../services/submissionService";
 import type { AthleteTeams } from "../../../types/teamType";
 import { ALL_ATHLETE_IDS } from "../../../data/athleteData";
-import type { AttributeSubmission } from "../../../types/attributeTypes";
+import type {
+  AttributeSubmission,
+  SubmissionResponseType,
+} from "../../../types/attributeTypes";
 import { athleteList } from "../../../data/athleteData";
 
 type UseSubmissionProps = {
@@ -14,8 +17,8 @@ export function useSubmissions({ userId }: UseSubmissionProps) {
   const [submissions, setSubmissions] = useState<AttributeSubmission[]>([]);
   const [submittedVoteAccess, setsubmittedVoteAccess] = useState<
     AthleteIdKey[]
-  >(["kim-dong-hyun"]);
-
+  >([]);
+  console.log(submittedVoteAccess);
   const hasRevealedAll: boolean = useMemo(() => {
     return ALL_ATHLETE_IDS.every((id) => submittedVoteAccess.includes(id));
   }, [submittedVoteAccess]);
@@ -54,27 +57,28 @@ export function useSubmissions({ userId }: UseSubmissionProps) {
 
   useEffect(() => {
     async function loadData() {
-      const data = await submissionService.fetchSubmissions();
-      setSubmissions(data);
+      console.log(userId);
+      if (!userId) return;
+      const submissionData = await submissionService.fetchSubmissions();
+      const submittedVoteAccessData =
+        await submissionService.fetchSubmittedVoteAccess(userId);
+      setSubmissions(submissionData);
+      setsubmittedVoteAccess(submittedVoteAccessData);
     }
     loadData();
-  }, []);
+  }, [userId]);
 
   function handleRevealAll() {
     setsubmittedVoteAccess([...ALL_ATHLETE_IDS]);
   }
 
   async function handleSubmitSubmissions(submission: AttributeSubmission) {
-    const res: AttributeSubmission = await submissionService.postSubmission(
+    const res: SubmissionResponseType = await submissionService.postSubmission(
       userId,
       submission,
     );
-    console.log(submission.values);
-    setSubmissions((prev) => [...prev, res]);
-    setsubmittedVoteAccess((prev) => {
-      if (prev.includes(submission.athleteId)) return prev;
-      return [...prev, submission.athleteId];
-    });
+    setSubmissions((prev) => [...prev, res.submission]);
+    setsubmittedVoteAccess([...res.voteAccess]);
   }
 
   return {

@@ -19,6 +19,7 @@ model User {
   
   submissions AttributeSubmission[]
   teams       BuildTeam[]
+  unlockAthletes UnlockedAthletes[]
 
 }
 
@@ -54,3 +55,11 @@ model BuildTeam {
   @@index([userId])
 }
 
+
+
+model UnlockedAthletes { 
+  userId      String @id
+  user        User     @relation(fields: [userId], references: [id])
+  
+  athleteIds  String[]  
+}

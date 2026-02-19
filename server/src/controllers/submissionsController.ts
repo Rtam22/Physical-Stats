@@ -26,12 +26,33 @@ export async function createSubmission(req: Request, res: Response) {
       },
     });
 
+    const existingUser = await prisma.unlockedAthletes.findUnique({
+      where: { userId },
+      select: { athleteIds: true },
+    });
+    const newAthleteIdArray = Array.from(
+      new Set([...(existingUser?.athleteIds ?? []), body.athleteId]),
+    );
+
+    const unlocked = await prisma.unlockedAthletes.upsert({
+      where: { userId },
+      create: {
+        userId,
+        athleteIds: [body.athleteId],
+      },
+      update: {
+        athleteIds: newAthleteIdArray,
+      },
+      select: { athleteIds: true },
+    });
+
     const ordered = {
       ...submission,
       values: orderValues(submission.values as Record<string, unknown>),
     };
-
-    return res.status(201).json(ordered);
+    return res
+      .status(201)
+      .json({ submission: ordered, voteAccess: unlocked.athleteIds });
   } catch (err) {
     console.error(err);
     return res.status(500).json({ error: "Internal server error" });

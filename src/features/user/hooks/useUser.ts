@@ -4,7 +4,7 @@ import { userService } from "../service/userService";
 
 export function useUser() {
   const [user, setUser] = useState<UserType>({
-    id: crypto.randomUUID(),
+    id: "",
     name: "",
   });
   const [error, setError] = useState<string | null>(null);

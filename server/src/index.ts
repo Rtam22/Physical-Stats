@@ -5,6 +5,7 @@ import submissionsRoutes from "./routes/submissionsRoutes.js";
 import buildTeamsRoutes from "./routes/buildTeamsRoutes.js";
 import usersRoutes from "./routes/usersRoutes.js";
 import cors from "cors";
+import unlockAthletesRoutes from "./routes/unlockAthletesRoutes.js";
 const app = express();
 
 app.use(express.json());
@@ -27,5 +28,6 @@ app.get("/db-test", async (_req, res) => {
 app.use("/submissions", submissionsRoutes);
 app.use("/buildTeams", buildTeamsRoutes);
 app.use("/users", usersRoutes);
+app.use("/unlockedAthletes", unlockAthletesRoutes);
 
 app.use(errorHandler);
