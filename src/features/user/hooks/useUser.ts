@@ -1,9 +1,10 @@
 import { useState } from "react";
 import type { UserType } from "../../../types/userTypes";
 import { userService } from "../service/userService";
+import { useLocalStorage } from "../../../hooks/useLocalStorage";
 
 export function useUser() {
-  const [user, setUser] = useState<UserType>({
+  const [user, setUser] = useLocalStorage<UserType>("user", {
     id: "",
     name: "",
   });

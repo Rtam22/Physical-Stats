@@ -9,11 +9,11 @@ export async function fetchUnlockAthletes(req: Request, res: Response) {
   }
 
   try {
-    const unlockedAthletes = await prisma.unlockedAthletes.findMany({
+    const unlockedAthletes = await prisma.unlockedAthletes.findUnique({
       where: { userId },
-      select: { userId: true, athleteIds: true },
+      select: { athleteIds: true },
     });
-    return res.status(200).json(unlockedAthletes);
+    return res.status(200).json(unlockedAthletes?.athleteIds ?? []);
   } catch (err) {
     res.status(500).json({ error: "Internal server error" });
   }

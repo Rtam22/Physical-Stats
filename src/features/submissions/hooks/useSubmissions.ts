@@ -5,7 +5,7 @@ import type { AthleteTeams } from "../../../types/teamType";
 import { ALL_ATHLETE_IDS } from "../../../data/athleteData";
 import type {
   AttributeSubmission,
-  SubmissionResponseType,
+  SubmissionAPIType,
 } from "../../../types/attributeTypes";
 import { athleteList } from "../../../data/athleteData";
 
@@ -18,7 +18,6 @@ export function useSubmissions({ userId }: UseSubmissionProps) {
   const [submittedVoteAccess, setsubmittedVoteAccess] = useState<
     AthleteIdKey[]
   >([]);
-  console.log(submittedVoteAccess);
   const hasRevealedAll: boolean = useMemo(() => {
     return ALL_ATHLETE_IDS.every((id) => submittedVoteAccess.includes(id));
   }, [submittedVoteAccess]);
@@ -57,10 +56,9 @@ export function useSubmissions({ userId }: UseSubmissionProps) {
 
   useEffect(() => {
     async function loadData() {
-      console.log(userId);
       if (!userId) return;
       const submissionData = await submissionService.fetchSubmissions();
-      const submittedVoteAccessData =
+      const submittedVoteAccessData: AthleteIdKey[] =
         await submissionService.fetchSubmittedVoteAccess(userId);
       setSubmissions(submissionData);
       setsubmittedVoteAccess(submittedVoteAccessData);
@@ -73,7 +71,7 @@ export function useSubmissions({ userId }: UseSubmissionProps) {
   }
 
   async function handleSubmitSubmissions(submission: AttributeSubmission) {
-    const res: SubmissionResponseType = await submissionService.postSubmission(
+    const res: SubmissionAPIType = await submissionService.postSubmission(
       userId,
       submission,
     );

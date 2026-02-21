@@ -25,7 +25,12 @@ export type AttributeSubmission = {
   ranking: RankKey | "";
 };
 
-export type SubmissionResponseType = {
+export type SubmissionAPIType = {
   submission: AttributeSubmission;
   voteAccess: AthleteIdKey[];
+};
+
+export type SubmittedVoteAccessAPIType = {
+  userId: string;
+  AthleteIdKey: AthleteIdKey[];
 };
