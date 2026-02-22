@@ -1,22 +1,23 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { BuildTeamType, TeamType } from "../../../types/teamType";
-import { teamService } from "../services/teamService";
+import { postAllstarTeam, teamService } from "../services/teamService";
 import type {
   AthleteDataWithAttributes,
   AthleteIdKey,
 } from "../../../types/athleteType";
 import { athleteList, teamList } from "../../../data/athleteData";
-import { buildTeamsTestData } from "../../../data/teamData";
 import { buildTeamView, compileUserTeams } from "../../../utils/teamUtils";
 
 type UseAthleteTeamProps = {
   athletes: AthleteDataWithAttributes[];
+  userId: string;
 };
 
-export function useAthleteTeam({ athletes }: UseAthleteTeamProps) {
+export function useAthleteTeam({ athletes, userId }: UseAthleteTeamProps) {
   const [selectedTeam, setSelectedTeam] = useState<BuildTeamType | null>(null);
-  const [userSubmittedTeams, setUserSubmittedTeams] =
-    useState<BuildTeamType[]>(buildTeamsTestData);
+  const [userSubmittedTeams, setUserSubmittedTeams] = useState<BuildTeamType[]>(
+    [],
+  );
 
   const selectedTeamView: TeamType | null = useMemo(() => {
     if (!selectedTeam) return null;
@@ -36,17 +37,43 @@ export function useAthleteTeam({ athletes }: UseAthleteTeamProps) {
     return teamService.buildExistingTeams(teamList, athletes);
   }, [athletes]);
 
-  function handleSetSelectedTeam(
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const data = await teamService.fetchAllstarTeams();
+        setUserSubmittedTeams(data);
+        if (userId) {
+          const userTeam = data.find((teams) => teams.user.id === userId);
+          if (userTeam) setSelectedTeam(userTeam);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    loadData();
+  }, []);
+
+  async function handleSetSelectedTeam(
     selectedAthletes: AthleteIdKey[],
-    user: { id: string; name: string }
+    user: { id: string; name: string },
   ) {
     const newTeam = {
-      id: crypto.randomUUID(),
+      id: "",
       user: { id: user.id, name: user.name },
-      athletes: selectedAthletes,
+      athleteIds: selectedAthletes,
     };
-    setSelectedTeam(newTeam);
-    setUserSubmittedTeams((prev) => [...prev, newTeam]);
+
+    try {
+      const res = await postAllstarTeam(newTeam);
+      console.log(res);
+      setSelectedTeam(res);
+      setUserSubmittedTeams((prev) => [...prev, res]);
+
+      return { ok: true };
+    } catch (err) {
+      console.log(err);
+      return { ok: false };
+    }
   }
 
   return {

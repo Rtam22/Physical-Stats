@@ -39,7 +39,7 @@ function MainPage() {
   });
   const { filteredAthletes } = useAthleteFilters({ filters, athletes });
 
-  const team = useAthleteTeam({ athletes: athletes });
+  const team = useAthleteTeam({ athletes: athletes, userId: user.id });
   const modal = useModalController();
   const tabs = useMainTabs({
     teams: {
@@ -50,10 +50,10 @@ function MainPage() {
     hasUsername: Boolean(user.name),
   });
 
-  function handleSetTeam(athletes: AthleteDataWithAttributes[]) {
+  async function handleSetTeam(athletes: AthleteDataWithAttributes[]) {
     const athletesId = athletes.map((athlete) => athlete.info.id);
-    tabs.setActiveTab("asiaTeams");
-    team.handleSetSelectedTeam(athletesId, user);
+    const res = await team.handleSetSelectedTeam(athletesId, user);
+    if (res.ok) tabs.setActiveTab("asiaTeams");
   }
   const tabsConfig: TabsConfig[] = [
     {

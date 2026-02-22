@@ -105,11 +105,11 @@ function AthleteTeamBuilder({
         >
           {availableAthletes.map((athlete, index) => {
             const isDisabled = selectedAthletes.some(
-              (selected) => athlete.info.id === selected.info.id
+              (selected) => athlete.info.id === selected.info.id,
             );
             const key = athlete.info.id;
             const athleteSelected = selectedAthletes.some(
-              (a) => a.info.id === athlete.info.id
+              (a) => a.info.id === athlete.info.id,
             );
 
             if (athleteSelected)

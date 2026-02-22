@@ -29,10 +29,10 @@ export function getCountryCode(country: AthleteTeams): CountryCode | undefined {
 
 export function buildTeamView(
   team: BuildTeamType,
-  athletes: AthleteDataWithAttributes[]
+  athletes: AthleteDataWithAttributes[],
 ) {
   const selectedAthletes = athletes.filter((a) => {
-    return team.athletes.includes(a.info.id);
+    return team.athleteIds.includes(a.info.id);
   });
   const newTeam: TeamType = {
     user: { id: team.user.id, name: team.user.name },
@@ -44,14 +44,14 @@ export function buildTeamView(
 
 export function compileUserTeams(
   userSubmittedTeams: BuildTeamType[],
-  athletes: AthleteData[]
+  athletes: AthleteData[],
 ) {
   let allstarTeamsDraft: AllStarTeam[] = [];
   for (const userTeam of userSubmittedTeams) {
     const user = userTeam.user as UserType;
-    const athleteIdSet = new Set(userTeam.athletes);
+    const athleteIdSet = new Set(userTeam.athleteIds);
     const team: AthleteData[] = athletes.filter((athlete) =>
-      athleteIdSet.has(athlete.info.id)
+      athleteIdSet.has(athlete.info.id),
     );
     const index = allstarTeamsDraft.findIndex((team) => {
       return team.team.every((t) => athleteIdSet.has(t.info.id));
@@ -77,7 +77,7 @@ export function sortByGender(allstarTeams: AllStarTeam[]) {
   return allstarTeams.map((team) => ({
     ...team,
     team: [...team.team].sort((a, b) =>
-      a.info.gender === b.info.gender ? 0 : a.info.gender === "male" ? -1 : 1
+      a.info.gender === b.info.gender ? 0 : a.info.gender === "male" ? -1 : 1,
     ),
   }));
 }

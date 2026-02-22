@@ -2,7 +2,7 @@ import express from "express";
 import { prisma } from "./database/prisma.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
 import submissionsRoutes from "./routes/submissionsRoutes.js";
-import buildTeamsRoutes from "./routes/buildTeamsRoutes.js";
+import allstarTeamsRoutes from "./routes/allstarTeamsRoutes.js";
 import usersRoutes from "./routes/usersRoutes.js";
 import cors from "cors";
 import unlockAthletesRoutes from "./routes/unlockAthletesRoutes.js";
@@ -26,7 +26,7 @@ app.get("/db-test", async (_req, res) => {
 });
 
 app.use("/submissions", submissionsRoutes);
-app.use("/buildTeams", buildTeamsRoutes);
+app.use("/allstarTeams", allstarTeamsRoutes);
 app.use("/users", usersRoutes);
 app.use("/unlockedAthletes", unlockAthletesRoutes);
 

@@ -18,7 +18,7 @@ model User {
   createdAt   DateTime @default(now())
   
   submissions AttributeSubmission[]
-  teams       BuildTeam[]
+  teams       AllstarTeam[]
   unlockAthletes UnlockedAthletes[]
 
 }
@@ -43,7 +43,7 @@ model AttributeSubmission {
   @@unique([userId, athleteId])
 }
 
-model BuildTeam {
+model AllstarTeam {
   id          String   @id @default(uuid())
 
   userId      String

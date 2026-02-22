@@ -1,4 +1,4 @@
-import type { BuildTeamType } from "../types/teamType";
+/* import type { BuildTeamType } from "../types/teamType";
 
 export const buildTeamsTestData: BuildTeamType[] = [
   {
@@ -242,3 +242,4 @@ export const buildTeamsTestData: BuildTeamType[] = [
     ],
   },
 ];
+ */

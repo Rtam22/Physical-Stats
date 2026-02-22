@@ -14,17 +14,16 @@ export type AthleteTeams =
 
 export type CountryCode = "KR" | "TR" | "MN" | "AU" | "PH" | "ID" | "TH" | "JP";
 
-type baseTeam = {
-  // athletes: AthleteDataWithAttributes[];
+type BaseTeam = {
   athletes: AthleteData[];
   averageAttributes: AttributeValues;
 };
 
-export type UserTeamType = baseTeam & {
+export type UserTeamType = BaseTeam & {
   user: UserType;
 };
 
-export type ExistingTeamType = baseTeam & {
+export type ExistingTeamType = BaseTeam & {
   team: AthleteTeams;
 };
 
@@ -33,7 +32,7 @@ export type TeamType = UserTeamType | ExistingTeamType;
 export type BuildTeamType = {
   id: string;
   user: UserType;
-  athletes: AthleteIdKey[];
+  athleteIds: AthleteIdKey[];
 };
 
 export type AllStarTeam = {

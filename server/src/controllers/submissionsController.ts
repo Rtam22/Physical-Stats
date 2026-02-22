@@ -68,6 +68,7 @@ export async function fetchSubmissions(req: Request, res: Response) {
         createdAt: true,
         favorite: true,
         mvp: true,
+        comment: true,
         ranking: true,
         values: true,
         user: {

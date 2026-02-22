@@ -60,6 +60,7 @@ export function useSubmissions({ userId }: UseSubmissionProps) {
       const submissionData = await submissionService.fetchSubmissions();
       const submittedVoteAccessData: AthleteIdKey[] =
         await submissionService.fetchSubmittedVoteAccess(userId);
+      console.log(submissionData[0]);
       setSubmissions(submissionData);
       setsubmittedVoteAccess(submittedVoteAccessData);
     }

@@ -1,6 +1,26 @@
+import { fetchApi } from "../../../services/api/api";
 import type { AthleteDataWithAttributes } from "../../../types/athleteType";
-import type { AthleteTeams, TeamType } from "../../../types/teamType";
+import type {
+  AthleteTeams,
+  BuildTeamType,
+  TeamType,
+} from "../../../types/teamType";
 import { getTeamAttributes } from "../../../utils/attributeUtils";
+
+export async function postAllstarTeam(team: BuildTeamType) {
+  const res = await fetchApi<BuildTeamType>("/allstarTeams", {
+    method: "POST",
+    headers: { "user-id": team.user.id },
+    body: JSON.stringify(team),
+  });
+
+  return res;
+}
+
+export async function fetchAllstarTeams() {
+  const data = await fetchApi<BuildTeamType[]>("/allstarTeams");
+  return data;
+}
 
 export function buildExistingTeams(
   teams: AthleteTeams[],
@@ -24,4 +44,4 @@ export function buildExistingTeams(
   return builtTeams;
 }
 
-export const teamService = { buildExistingTeams };
+export const teamService = { buildExistingTeams, fetchAllstarTeams };
