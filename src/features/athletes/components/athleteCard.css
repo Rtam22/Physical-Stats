@@ -6,6 +6,10 @@
   font-size: 16px;
 }
 
+.card-container .bottom-container p {
+  height: 18px;
+}
+
 .athlete-card {
   height: auto;
   width: 100%;

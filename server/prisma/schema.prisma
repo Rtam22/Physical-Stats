@@ -60,6 +60,6 @@ model AllstarTeam {
 model UnlockedAthletes { 
   userId      String @id
   user        User     @relation(fields: [userId], references: [id])
-  
+
   athleteIds  String[]  
 }

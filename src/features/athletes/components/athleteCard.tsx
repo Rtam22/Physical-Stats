@@ -11,6 +11,7 @@ type AthleteCard = {
   athlete: AthleteDataWithAttributes;
   handleClick: (next: ModalOpenState) => void;
   hasVoted: boolean;
+  loading?: string | null;
 };
 
 type AthleteViewCard = {
@@ -23,13 +24,14 @@ type CardProps = AthleteCard | AthleteViewCard;
 function AthleteCard(props: CardProps) {
   const { athlete } = props;
   const hasAttributes = checkAttributes(props.athlete.attributes);
+  console.log(hasAttributes);
   const countryCode = getCountryCode(props.athlete.info.team);
   function checkAttributes(attributes: AttributeValues) {
     return Object.values(attributes).some((v) => v > 0);
   }
+
   const revealAttributes =
-    (hasAttributes && props.type === "card" && props.hasVoted) ||
-    props.type === "view";
+    (props.type === "card" && props.hasVoted) || props.type === "view";
   const revealTotal = hasAttributes && props.type === "card" && props.hasVoted;
 
   const onClick =
@@ -61,22 +63,22 @@ function AthleteCard(props: CardProps) {
       </div>
       <div className="athlete-card" id={athlete.info.id} onClick={onClick}>
         <div className="image-container">
-          <img src={athlete.info.imgSm} alt="" />
+          <img src={athlete.info.imgSm} alt="Athlete profile picture" />
         </div>
         <div className="attributes-container">
-          {revealAttributes ? (
+          {props.type === "card" && props.loading === props.athlete.info.id ? (
+            <div className="loading-container">loading</div>
+          ) : revealAttributes ? (
             <AttributesList attributes={athlete.attributes} />
           ) : (
             <div className="attribute-message">
-              {hasAttributes
-                ? "Submit your scores to see how others rated them!"
-                : "No stats yet. Click to submit yours!"}
+              "Submit your scores to see how others rated them!"
             </div>
           )}
         </div>
       </div>
       <div className="bottom-container">
-        {revealTotal && <p>Total: {athlete.total}</p>}
+        <p>{revealTotal && `Total: ${athlete.total}`}</p>
       </div>
     </div>
   );

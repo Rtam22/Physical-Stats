@@ -5,6 +5,7 @@ type NavigationTabsProps = {
   active: TabID;
   changeTab: (tab: TabID) => void;
   allTabs: TabID[];
+  initialized: boolean;
 };
 
 export const TAB_LABELS: Record<TabID, string> = {
@@ -16,10 +17,18 @@ export const TAB_LABELS: Record<TabID, string> = {
   allstarTeam: "All-star Teams",
 };
 
-function NavigationTabs({ active, changeTab, allTabs }: NavigationTabsProps) {
+function NavigationTabs({
+  active,
+  changeTab,
+  allTabs,
+  initialized,
+}: NavigationTabsProps) {
   const isOnUsernameStep = active === "username";
 
   if (isOnUsernameStep) return null;
+
+  if (!initialized) return <div className="navigation-loader">loading...</div>;
+
   return (
     <div className="navigation-container">
       {allTabs.map((tab, index) => {

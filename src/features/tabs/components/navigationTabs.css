@@ -4,3 +4,7 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.navigation-loader {
+  min-height: 28px;
+}

@@ -68,10 +68,9 @@ function MainPage() {
         <AthletesTab
           filter={{ values: filters, setFilters }}
           athletes={filteredAthletes}
-          submittedVote={submissions.submittedVoteAccess}
           onCardClick={modal.open}
           onRevealAll={() => modal.open({ open: true, type: "confirmation" })}
-          hasRevealedAll={submissions.hasRevealedAll}
+          submissions={submissions}
         />
       ),
     },
@@ -194,6 +193,7 @@ function MainPage() {
         active={tabs.activeTab}
         changeTab={(e) => tabs.setActiveTab(e)}
         allTabs={tabs.availableTabs}
+        initialized={submissions.initialized}
       />
       <TabController activeTab={tabs.activeTab} tabs={tabsConfig} />
     </div>

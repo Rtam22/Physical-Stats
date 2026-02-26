@@ -8,6 +8,7 @@ import type {
   SubmissionAPIType,
 } from "../../../types/attributeTypes";
 import { athleteList } from "../../../data/athleteData";
+import { getErrorMessage } from "../../../utils/errorUtils";
 
 type UseSubmissionProps = {
   userId: string;
@@ -18,6 +19,11 @@ export function useSubmissions({ userId }: UseSubmissionProps) {
   const [submittedVoteAccess, setsubmittedVoteAccess] = useState<
     AthleteIdKey[]
   >([]);
+  const [initialized, setInitialized] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const [cardLoadingId, setCardLoadingId] = useState<string | null>(null);
+
   const hasRevealedAll: boolean = useMemo(() => {
     return ALL_ATHLETE_IDS.every((id) => submittedVoteAccess.includes(id));
   }, [submittedVoteAccess]);
@@ -57,12 +63,19 @@ export function useSubmissions({ userId }: UseSubmissionProps) {
   useEffect(() => {
     async function loadData() {
       if (!userId) return;
-      const submissionData = await submissionService.fetchSubmissions();
-      const submittedVoteAccessData: AthleteIdKey[] =
-        await submissionService.fetchSubmittedVoteAccess(userId);
-      console.log(submissionData[0]);
-      setSubmissions(submissionData);
-      setsubmittedVoteAccess(submittedVoteAccessData);
+      try {
+        setLoading(true);
+        const submissionData = await submissionService.fetchSubmissions();
+        const submittedVoteAccessData: AthleteIdKey[] =
+          await submissionService.fetchSubmittedVoteAccess(userId);
+        setSubmissions(submissionData);
+        setsubmittedVoteAccess(submittedVoteAccessData);
+      } catch (err) {
+        setError(getErrorMessage(err));
+      } finally {
+        setLoading(false);
+        setInitialized(true);
+      }
     }
     loadData();
   }, [userId]);
@@ -72,12 +85,19 @@ export function useSubmissions({ userId }: UseSubmissionProps) {
   }
 
   async function handleSubmitSubmissions(submission: AttributeSubmission) {
-    const res: SubmissionAPIType = await submissionService.postSubmission(
-      userId,
-      submission,
-    );
-    setSubmissions((prev) => [...prev, res.submission]);
-    setsubmittedVoteAccess([...res.voteAccess]);
+    setCardLoadingId(submission.athleteId);
+    try {
+      const res: SubmissionAPIType = await submissionService.postSubmission(
+        userId,
+        submission,
+      );
+      setSubmissions((prev) => [...prev, res.submission]);
+      setsubmittedVoteAccess([...res.voteAccess]);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setCardLoadingId(null);
+    }
   }
 
   return {
@@ -86,6 +106,10 @@ export function useSubmissions({ userId }: UseSubmissionProps) {
     submittedMVPRestriction,
     hasRevealedAll,
     hasMVPCountries,
+    loading,
+    cardLoadingId,
+    error,
+    initialized,
     handleSubmitSubmissions,
     handleRevealAll,
   };
