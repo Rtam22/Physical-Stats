@@ -37,7 +37,7 @@ function AthletesTab({
         <p>{submissions.error}</p>
       </div>
     );
-  } else if (!submissions.hasRevealedAll) {
+  } else {
     content = (
       <>
         <div className="athletes-button-container">

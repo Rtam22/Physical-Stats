@@ -24,7 +24,6 @@ type CardProps = AthleteCard | AthleteViewCard;
 function AthleteCard(props: CardProps) {
   const { athlete } = props;
   const hasAttributes = checkAttributes(props.athlete.attributes);
-  console.log(hasAttributes);
   const countryCode = getCountryCode(props.athlete.info.team);
   function checkAttributes(attributes: AttributeValues) {
     return Object.values(attributes).some((v) => v > 0);
