@@ -1,3 +1,4 @@
+import Loader from "../../../shared/components/ui/loader";
 import type { TabID } from "../../../types/tabTypes";
 import "./navigationTabs.css";
 
@@ -27,7 +28,10 @@ function NavigationTabs({
 
   if (isOnUsernameStep) return null;
 
-  if (!initialized) return <div className="navigation-loader">loading...</div>;
+  if (!initialized)
+    return (
+      <div className="navigation-loader">{<Loader type="nav" size={50} />}</div>
+    );
 
   return (
     <div className="navigation-container">

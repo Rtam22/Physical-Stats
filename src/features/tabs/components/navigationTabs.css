@@ -7,4 +7,5 @@
 
 .navigation-loader {
   min-height: 28px;
+  max-height: 28px;
 }

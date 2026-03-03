@@ -5,6 +5,7 @@ import ReactCountryFlag from "react-country-flag";
 import { getCountryCode } from "../../../utils/teamUtils";
 import AttributesList from "../../attributes/components/attributesList";
 import type { AttributeValues } from "../../../types/attributeTypes";
+import Loader from "../../../shared/components/ui/loader";
 
 type AthleteCard = {
   type: "card";
@@ -66,7 +67,9 @@ function AthleteCard(props: CardProps) {
         </div>
         <div className="attributes-container">
           {props.type === "card" && props.loading === props.athlete.info.id ? (
-            <div className="loading-container">loading</div>
+            <div className="loading-container">
+              <Loader type="body" size={70} />
+            </div>
           ) : revealAttributes ? (
             <AttributesList attributes={athlete.attributes} />
           ) : (

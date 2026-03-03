@@ -5,6 +5,7 @@ import AthleteGridSection from "../../../athletes/components/athleteGridSection"
 import Filters from "../../../../shared/components/filters/filters";
 import "./athletesTab.css";
 import type { useSubmissions } from "../../../submissions/hooks/useSubmissions";
+import Loader from "../../../../shared/components/ui/loader";
 type AthletesTabProps = {
   filter: {
     values: FilterValue;
@@ -28,12 +29,12 @@ function AthletesTab({
   if (!submissions.initialized || submissions.loading) {
     content = (
       <div>
-        <p>loading...</p>
+        <Loader type="body" size={120} />
       </div>
     );
   } else if (submissions.error) {
     content = (
-      <div>
+      <div className="error-body-container">
         <p>{submissions.error}</p>
       </div>
     );
