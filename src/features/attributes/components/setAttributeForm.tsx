@@ -29,7 +29,7 @@ function SetAttributeForm({
   const [submission, setSubmission] = useState<AttributeSubmission>({
     athleteId: athlete.info.id,
     user: { id: user.id, name: user.name },
-    submissionId: crypto.randomUUID(),
+    id: "",
     createdAt: new Date(),
     favorite: false,
     values: initialFormAttributes,
@@ -89,7 +89,7 @@ function SetAttributeForm({
                     value={submission.values[attribute]}
                     onChange={(e) => {
                       const value = Number(e.target.value);
-                      const clamped = Math.min(10, Math.max(0, value));
+                      const clamped = Math.min(10, Math.max(1, value));
                       setSubmission((prev) => ({
                         ...prev,
                         values: { ...prev.values, [attribute]: clamped },

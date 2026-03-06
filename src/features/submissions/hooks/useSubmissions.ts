@@ -22,7 +22,7 @@ export function useSubmissions({ userId }: UseSubmissionProps) {
   const [initialized, setInitialized] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const [cardLoadingId, setCardLoadingId] = useState<string | null>(null);
+  const [cardLoadingId, setCardLoadingId] = useState<AthleteIdKey | null>(null);
 
   const hasRevealedAll: boolean = useMemo(() => {
     return ALL_ATHLETE_IDS.every((id) => submittedVoteAccess.includes(id));
@@ -80,8 +80,17 @@ export function useSubmissions({ userId }: UseSubmissionProps) {
     loadData();
   }, [userId]);
 
-  function handleRevealAll() {
-    setsubmittedVoteAccess([...ALL_ATHLETE_IDS]);
+  async function handleRevealAll() {
+    const revealedArray = [...ALL_ATHLETE_IDS];
+    try {
+      const res = await submissionService.postUnlockAthletes(
+        userId,
+        revealedArray,
+      );
+      if (res) setsubmittedVoteAccess(revealedArray);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   async function handleSubmitSubmissions(submission: AttributeSubmission) {

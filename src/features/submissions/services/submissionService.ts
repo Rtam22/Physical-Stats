@@ -18,6 +18,16 @@ async function fetchSubmissions() {
   return data;
 }
 
+async function postUnlockAthletes(userId: string, athleteIds: AthleteIdKey[]) {
+  const data = await fetchApi<AthleteIdKey[]>("/unlockedAthletes", {
+    method: "POST",
+    headers: { "user-id": userId },
+    body: JSON.stringify({ athleteIds }),
+  });
+
+  return data;
+}
+
 async function postSubmission(userId: string, submission: AttributeSubmission) {
   const data = await fetchApi<SubmissionAPIType>("/submissions", {
     method: "POST",
@@ -32,4 +42,5 @@ export const submissionService = {
   fetchSubmissions,
   fetchSubmittedVoteAccess,
   postSubmission,
+  postUnlockAthletes,
 };

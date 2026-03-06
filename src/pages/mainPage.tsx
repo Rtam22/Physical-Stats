@@ -29,6 +29,7 @@ import ConfirmationModal from "../shared/components/ui/confirmationModal";
 import AllstarTeamTab from "../features/tabs/components/tabs/allstarTeamTab";
 import TabController from "../features/tabs/components/tabController";
 import { AnimatePresence } from "framer-motion";
+import Loader from "../shared/components/ui/loader";
 
 function MainPage() {
   const [filters, setFilters] = useState<FilterValue>(initialFilters);
