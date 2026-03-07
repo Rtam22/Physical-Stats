@@ -41,9 +41,12 @@ function AthletesTab({
   } else {
     content = (
       <>
-        <div className="athletes-button-container">
-          <button onClick={onRevealAll}>Reveal all stats</button>
-        </div>
+        {!submissions.hasRevealedAll && (
+          <div className="athletes-button-container">
+            <button onClick={onRevealAll}>Reveal all stats</button>
+          </div>
+        )}
+
         <AthleteGridSection
           athletes={athletes}
           submittedVote={submissions.submittedVoteAccess}

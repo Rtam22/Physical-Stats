@@ -29,7 +29,9 @@ import ConfirmationModal from "../shared/components/ui/confirmationModal";
 import AllstarTeamTab from "../features/tabs/components/tabs/allstarTeamTab";
 import TabController from "../features/tabs/components/tabController";
 import { AnimatePresence } from "framer-motion";
-import Loader from "../shared/components/ui/loader";
+import ToastNotification from "../shared/components/ui/toastController";
+import { useToastContext } from "../shared/context/ToastContext";
+import ToastController from "../shared/components/ui/toastController";
 
 function MainPage() {
   const [filters, setFilters] = useState<FilterValue>(initialFilters);
@@ -50,6 +52,7 @@ function MainPage() {
     },
     hasUsername: Boolean(user.name),
   });
+  const toastContext = useToastContext();
 
   async function handleSetTeam(athletes: AthleteDataWithAttributes[]) {
     const athletesId = athletes.map((athlete) => athlete.info.id);
@@ -197,6 +200,10 @@ function MainPage() {
         initialized={submissions.initialized}
       />
       <TabController activeTab={tabs.activeTab} tabs={tabsConfig} />
+      <ToastController
+        toasts={toastContext.toasts}
+        removeToast={toastContext.removeToast}
+      />
     </div>
   );
 }

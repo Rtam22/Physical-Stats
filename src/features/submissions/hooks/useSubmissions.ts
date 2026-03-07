@@ -89,13 +89,14 @@ export function useSubmissions({ userId }: UseSubmissionProps) {
       );
       if (res) setsubmittedVoteAccess(revealedArray);
     } catch (err) {
-      console.log(err);
+      setError(getErrorMessage(err));
     }
   }
 
   async function handleSubmitSubmissions(submission: AttributeSubmission) {
     setCardLoadingId(submission.athleteId);
     try {
+      throw new Error("simulated error");
       const res: SubmissionAPIType = await submissionService.postSubmission(
         userId,
         submission,
@@ -103,7 +104,7 @@ export function useSubmissions({ userId }: UseSubmissionProps) {
       setSubmissions((prev) => [...prev, res.submission]);
       setsubmittedVoteAccess([...res.voteAccess]);
     } catch (err) {
-      console.log(err);
+      setError(getErrorMessage(err));
     } finally {
       setCardLoadingId(null);
     }
