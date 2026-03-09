@@ -29,14 +29,17 @@ import ConfirmationModal from "../shared/components/ui/confirmationModal";
 import AllstarTeamTab from "../features/tabs/components/tabs/allstarTeamTab";
 import TabController from "../features/tabs/components/tabController";
 import { AnimatePresence } from "framer-motion";
-import ToastNotification from "../shared/components/ui/toastController";
 import { useToastContext } from "../shared/context/ToastContext";
-import ToastController from "../shared/components/ui/toastController";
+import ToastController from "../shared/components/layout/toastController";
 
 function MainPage() {
   const [filters, setFilters] = useState<FilterValue>(initialFilters);
+  const toastContext = useToastContext();
   const { user, submitUser, error: userError } = useUser();
-  const submissions = useSubmissions({ userId: user.id });
+  const submissions = useSubmissions({
+    userId: user.id,
+    setToastNotification: toastContext.addToast,
+  });
   const { athletes } = useAthletes({
     attributeSubmissions: submissions.submissions,
   });
@@ -52,7 +55,6 @@ function MainPage() {
     },
     hasUsername: Boolean(user.name),
   });
-  const toastContext = useToastContext();
 
   async function handleSetTeam(athletes: AthleteDataWithAttributes[]) {
     const athletesId = athletes.map((athlete) => athlete.info.id);
@@ -139,7 +141,7 @@ function MainPage() {
               hasMVPCountries={submissions.hasMVPCountries}
               athlete={modal.state.athlete}
               user={{ id: user.id, name: user.name }}
-              handleSubmit={(submission: AttributeSubmission) => {
+              handleSubmit={async (submission: AttributeSubmission) => {
                 submissions.handleSubmitSubmissions(submission);
                 modal.close();
               }}

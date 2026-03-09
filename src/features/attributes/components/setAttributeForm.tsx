@@ -15,7 +15,6 @@ import type { AthleteTeams } from "../../../types/teamType";
 type SetAttributeFormProps = {
   athlete: AthleteDataWithAttributes;
   user: { id: string; name: string };
-
   hasMVPCountries: AthleteTeams[];
   handleSubmit: (submission: AttributeSubmission) => void;
 };
@@ -37,9 +36,11 @@ function SetAttributeForm({
     comment: "",
     ranking: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
-  function handleSubmitForm(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmitForm(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setIsSubmitting(true);
     handleSubmit(submission);
   }
 
@@ -176,7 +177,7 @@ function SetAttributeForm({
             />
           </section>
           <section>
-            <button>Submit</button>
+            <button disabled={isSubmitting}>Submit</button>
           </section>
         </form>
       </div>

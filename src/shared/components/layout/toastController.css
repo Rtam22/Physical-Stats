@@ -1,0 +1,13 @@
+.toast-notification-container {
+  height: auto;
+  width: 100vw;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+}

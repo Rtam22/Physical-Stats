@@ -7,14 +7,17 @@ import React, {
 
 type ToastContextType = {
   toasts: ToastType[];
-  addToast: (toast: ToastType) => void;
+  addToast: (type: ToastVariant, message: string) => void;
   removeToast: (id: string) => void;
 };
 
+export type ToastVariant = "error";
+
 export type ToastType = {
   id: string;
-  type: "error";
+  type: ToastVariant;
   message: string;
+  timer?: number;
 };
 
 const ToastContext = createContext<ToastContextType | undefined>(undefined);
@@ -26,8 +29,8 @@ interface MyProviderProps {
 export const ToastProvider: React.FC<MyProviderProps> = ({ children }) => {
   const [toasts, setToasts] = useState<ToastType[]>([]);
 
-  function addToast(toast: ToastType) {
-    setToasts((prev) => [...prev, toast]);
+  function addToast(type: ToastVariant, message: string) {
+    setToasts((prev) => [...prev, { id: crypto.randomUUID(), type, message }]);
   }
 
   function removeToast(id: string) {
@@ -44,7 +47,7 @@ export const ToastProvider: React.FC<MyProviderProps> = ({ children }) => {
 export const useToastContext = (): ToastContextType => {
   const context = useContext(ToastContext);
   if (!context) {
-    throw new Error("useMyContext must be used within a MyProvider");
+    throw new Error("useToastContext must be used within a Provider");
   }
   return context;
 };

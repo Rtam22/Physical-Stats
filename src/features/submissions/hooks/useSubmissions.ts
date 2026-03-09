@@ -9,12 +9,21 @@ import type {
 } from "../../../types/attributeTypes";
 import { athleteList } from "../../../data/athleteData";
 import { getErrorMessage } from "../../../utils/errorUtils";
+import type { ToastVariant } from "../../../shared/context/ToastContext";
 
 type UseSubmissionProps = {
   userId: string;
+  setToastNotification?: (
+    type: ToastVariant,
+    message: string,
+    timer?: number,
+  ) => void;
 };
 
-export function useSubmissions({ userId }: UseSubmissionProps) {
+export function useSubmissions({
+  userId,
+  setToastNotification,
+}: UseSubmissionProps) {
   const [submissions, setSubmissions] = useState<AttributeSubmission[]>([]);
   const [submittedVoteAccess, setsubmittedVoteAccess] = useState<
     AthleteIdKey[]
@@ -71,6 +80,9 @@ export function useSubmissions({ userId }: UseSubmissionProps) {
         setSubmissions(submissionData);
         setsubmittedVoteAccess(submittedVoteAccessData);
       } catch (err) {
+        if (setToastNotification) {
+          setToastNotification("error", getErrorMessage(err), 1000000);
+        }
         setError(getErrorMessage(err));
       } finally {
         setLoading(false);
@@ -89,14 +101,17 @@ export function useSubmissions({ userId }: UseSubmissionProps) {
       );
       if (res) setsubmittedVoteAccess(revealedArray);
     } catch (err) {
-      setError(getErrorMessage(err));
+      if (setToastNotification) {
+        setToastNotification("error", getErrorMessage(err));
+      } else {
+        setError(getErrorMessage(err));
+      }
     }
   }
 
   async function handleSubmitSubmissions(submission: AttributeSubmission) {
     setCardLoadingId(submission.athleteId);
     try {
-      throw new Error("simulated error");
       const res: SubmissionAPIType = await submissionService.postSubmission(
         userId,
         submission,
@@ -104,7 +119,11 @@ export function useSubmissions({ userId }: UseSubmissionProps) {
       setSubmissions((prev) => [...prev, res.submission]);
       setsubmittedVoteAccess([...res.voteAccess]);
     } catch (err) {
-      setError(getErrorMessage(err));
+      if (setToastNotification) {
+        setToastNotification("error", getErrorMessage(err));
+      } else {
+        setError(getErrorMessage(err));
+      }
     } finally {
       setCardLoadingId(null);
     }
