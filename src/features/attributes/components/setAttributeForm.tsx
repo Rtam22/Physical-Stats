@@ -11,6 +11,7 @@ import type {
   RankKey,
 } from "../../../types/attributeTypes";
 import type { AthleteTeams } from "../../../types/teamType";
+import { Filter } from "bad-words";
 
 type SetAttributeFormProps = {
   athlete: AthleteDataWithAttributes;
@@ -39,9 +40,16 @@ function SetAttributeForm({
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
   async function handleSubmitForm(e: React.FormEvent<HTMLFormElement>) {
+    const filter = new Filter();
     e.preventDefault();
     setIsSubmitting(true);
-    handleSubmit(submission);
+    const filtered: AttributeSubmission = {
+      ...submission,
+      comment: submission.comment
+        ? filter.clean(submission.comment)
+        : submission.comment,
+    };
+    handleSubmit(filtered);
   }
 
   return (
