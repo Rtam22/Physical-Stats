@@ -7,17 +7,29 @@ import type {
 } from "../../../types/athleteType";
 import { athleteList, teamList } from "../../../data/athleteData";
 import { buildTeamView, compileUserTeams } from "../../../utils/teamUtils";
+import type { ToastVariant } from "../../../types/toastTypes";
 
 type UseAthleteTeamProps = {
   athletes: AthleteDataWithAttributes[];
   userId: string;
+  setToastNotification?: (
+    type: ToastVariant,
+    message: string,
+    timer?: number,
+  ) => void;
 };
 
-export function useAthleteTeam({ athletes, userId }: UseAthleteTeamProps) {
+export function useAthleteTeam({
+  athletes,
+  userId,
+  setToastNotification,
+}: UseAthleteTeamProps) {
   const [selectedTeam, setSelectedTeam] = useState<BuildTeamType | null>(null);
   const [userSubmittedTeams, setUserSubmittedTeams] = useState<BuildTeamType[]>(
     [],
   );
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const selectedTeamView: TeamType | null = useMemo(() => {
     if (!selectedTeam) return null;
@@ -47,8 +59,10 @@ export function useAthleteTeam({ athletes, userId }: UseAthleteTeamProps) {
           if (userTeam) setSelectedTeam(userTeam);
         }
       } catch (err) {
-        console.log(err);
+        if (setToastNotification)
+          setToastNotification("error", "Failed to fetch teams");
       }
+      setError("Failed to fetch teams");
     }
     loadData();
   }, []);
@@ -57,22 +71,28 @@ export function useAthleteTeam({ athletes, userId }: UseAthleteTeamProps) {
     selectedAthletes: AthleteIdKey[],
     user: { id: string; name: string },
   ) {
-    const newTeam = {
-      id: "",
-      user: { id: user.id, name: user.name },
-      athleteIds: selectedAthletes,
-    };
-
     try {
+      const newTeam = {
+        id: "",
+        user: { id: user.id, name: user.name },
+        athleteIds: selectedAthletes,
+      };
+      setLoading(true);
       const res = await postAllstarTeam(newTeam);
-      console.log(res);
       setSelectedTeam(res);
       setUserSubmittedTeams((prev) => [...prev, res]);
 
       return { ok: true };
     } catch (err) {
-      console.log(err);
+      if (setToastNotification)
+        setToastNotification(
+          "error",
+          "Unable to create team. Please try again",
+        );
+      setError("Failed to create team");
       return { ok: false };
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -82,6 +102,8 @@ export function useAthleteTeam({ athletes, userId }: UseAthleteTeamProps) {
     countryTeams,
     userSubmittedTeamsView,
     selectedTeam,
+    error,
+    loading,
     handleSetSelectedTeam,
   };
 }

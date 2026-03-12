@@ -68,7 +68,7 @@ function AthleteCard(props: CardProps) {
         <div className="attributes-container">
           {props.type === "card" && props.loading === props.athlete.info.id ? (
             <div className="loading-container">
-              <Loader type="body" size={70} />
+              <Loader type="circle" size={150} />
             </div>
           ) : revealAttributes ? (
             <AttributesList attributes={athlete.attributes} />

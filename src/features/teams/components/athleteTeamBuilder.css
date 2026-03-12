@@ -97,6 +97,14 @@
   border: 1px solid rgb(77, 189, 67);
 }
 
+.team-builder .button-focus {
+  height: 28px;
+  width: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .team-builder .athletes-container {
   display: flex;
   flex-wrap: wrap;

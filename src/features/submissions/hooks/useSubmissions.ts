@@ -9,7 +9,7 @@ import type {
 } from "../../../types/attributeTypes";
 import { athleteList } from "../../../data/athleteData";
 import { getErrorMessage } from "../../../utils/errorUtils";
-import type { ToastVariant } from "../../../shared/context/ToastContext";
+import type { ToastVariant } from "../../../types/toastTypes";
 
 type UseSubmissionProps = {
   userId: string;
@@ -81,7 +81,7 @@ export function useSubmissions({
         setsubmittedVoteAccess(submittedVoteAccessData);
       } catch (err) {
         if (setToastNotification) {
-          setToastNotification("error", getErrorMessage(err), 1000000);
+          setToastNotification("error", "Failed to fetch submissions");
         }
         setError(getErrorMessage(err));
       } finally {

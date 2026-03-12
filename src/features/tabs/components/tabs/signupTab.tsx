@@ -6,9 +6,10 @@ import "./signupTab.css";
 type SignupFormProps = {
   submitUser: (user: UserType) => void;
   error: string | null;
+  loading: boolean;
 };
 
-function SignupTab({ submitUser, error }: SignupFormProps) {
+function SignupTab({ submitUser, error, loading }: SignupFormProps) {
   return (
     <div className="signup-tab">
       <span className="flex">
@@ -16,7 +17,7 @@ function SignupTab({ submitUser, error }: SignupFormProps) {
         <h1 className="red"> Stats</h1>
       </span>
       <Carousel type="tabs" content={teamImages} />{" "}
-      <UserForm submitUser={submitUser} />
+      <UserForm submitUser={submitUser} loading={loading} />
       {error && <span className="error-container">{error}</span>}
     </div>
   );

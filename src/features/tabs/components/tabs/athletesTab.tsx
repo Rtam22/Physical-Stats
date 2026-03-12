@@ -29,7 +29,7 @@ function AthletesTab({
   if (!submissions.initialized || submissions.loading) {
     content = (
       <div>
-        <Loader type="body" size={120} />
+        <Loader type="circle" size={120} />
       </div>
     );
   } else if (submissions.error) {

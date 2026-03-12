@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import "./mainPage.css";
 import type { AthleteDataWithAttributes } from "../types/athleteType";
 import Modal from "../shared/components/layout/modal";
@@ -29,23 +29,34 @@ import ConfirmationModal from "../shared/components/ui/confirmationModal";
 import AllstarTeamTab from "../features/tabs/components/tabs/allstarTeamTab";
 import TabController from "../features/tabs/components/tabController";
 import { AnimatePresence } from "framer-motion";
-import { useToastContext } from "../shared/context/ToastContext";
-import ToastController from "../shared/components/layout/toastController";
+import ToastController, {
+  type ToastLocationType,
+} from "../shared/components/layout/toastController";
+import { useToastController } from "../shared/hooks/useToastController";
 
 function MainPage() {
   const [filters, setFilters] = useState<FilterValue>(initialFilters);
-  const toastContext = useToastContext();
-  const { user, submitUser, error: userError } = useUser();
+  const toast = useToastController();
+  const {
+    user,
+    submitUser,
+    error: userError,
+    loading: userLoading,
+  } = useUser({ setToastNotification: toast.addToast });
   const submissions = useSubmissions({
     userId: user.id,
-    setToastNotification: toastContext.addToast,
+    setToastNotification: toast.addToast,
   });
   const { athletes } = useAthletes({
     attributeSubmissions: submissions.submissions,
   });
   const { filteredAthletes } = useAthleteFilters({ filters, athletes });
 
-  const team = useAthleteTeam({ athletes: athletes, userId: user.id });
+  const team = useAthleteTeam({
+    athletes: athletes,
+    userId: user.id,
+    setToastNotification: toast.addToast,
+  });
   const modal = useModalController();
   const tabs = useMainTabs({
     teams: {
@@ -56,6 +67,10 @@ function MainPage() {
     hasUsername: Boolean(user.name),
   });
 
+  const toastLocation: ToastLocationType = useMemo(() => {
+    return tabs.activeTab === "username" ? "top" : "bottom";
+  }, [tabs.activeTab]);
+
   async function handleSetTeam(athletes: AthleteDataWithAttributes[]) {
     const athletesId = athletes.map((athlete) => athlete.info.id);
     const res = await team.handleSetSelectedTeam(athletesId, user);
@@ -65,7 +80,11 @@ function MainPage() {
     {
       id: "teamBuilder",
       content: (
-        <AthleteTeamBuilder athletes={athletes} handleSetTeam={handleSetTeam} />
+        <AthleteTeamBuilder
+          athletes={athletes}
+          handleSetTeam={handleSetTeam}
+          loading={team.loading}
+        />
       ),
     },
     {
@@ -107,6 +126,7 @@ function MainPage() {
       content: (
         <SignupTab
           error={userError}
+          loading={userLoading}
           submitUser={async (user: UserType) => {
             const result = await submitUser(user);
             if (result.ok) {
@@ -157,7 +177,7 @@ function MainPage() {
         if (!modal.state.open || modal.state.type !== "athleteView")
           return null;
         return (
-          <Modal width="80%" height="90vh" type="middle" onClose={modal.close}>
+          <Modal width="80%" height="95vh" type="middle" onClose={modal.close}>
             <AthleteView
               submissions={submissions.submissions}
               athlete={modal.state.athlete}
@@ -203,8 +223,9 @@ function MainPage() {
       />
       <TabController activeTab={tabs.activeTab} tabs={tabsConfig} />
       <ToastController
-        toasts={toastContext.toasts}
-        removeToast={toastContext.removeToast}
+        toasts={toast.toasts}
+        removeToast={toast.removeToast}
+        toastLocation={toastLocation}
       />
     </div>
   );
