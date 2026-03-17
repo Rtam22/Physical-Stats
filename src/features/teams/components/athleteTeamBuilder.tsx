@@ -3,15 +3,18 @@ import "./athleteTeamBuilder.css";
 import { motion } from "framer-motion";
 import useTeamBuilder from "../hooks/useAthleteTeamBuilder";
 import { useEffect } from "react";
+import Loader from "../../../shared/components/ui/loader";
 
 type AthleteTeamBuilderProps = {
   athletes: AthleteDataWithAttributes[];
   handleSetTeam: (athletes: AthleteDataWithAttributes[]) => void;
+  loading: boolean;
 };
 
 function AthleteTeamBuilder({
   athletes,
   handleSetTeam,
+  loading,
 }: AthleteTeamBuilderProps) {
   const {
     availableAthletes,
@@ -30,7 +33,11 @@ function AthleteTeamBuilder({
   useEffect(() => {}, [currentGenderSelection]);
 
   function handleCompleteTeam() {
-    handleSetTeam(selectedAthletes);
+    try {
+      handleSetTeam(selectedAthletes);
+    } finally {
+      console.log("done");
+    }
   }
 
   function generateSelectedCard(index: number, gender: "male" | "female") {
@@ -49,6 +56,7 @@ function AthleteTeamBuilder({
         onClick={() => removeAthlete(athlete)}
         layout
         transition={{ type: "spring", stiffness: 400, damping: 30 }}
+        disabled={loading}
       >
         <img
           src={athlete.info.imgSm}
@@ -66,10 +74,12 @@ function AthleteTeamBuilder({
         <div className="button-container">
           <button
             className="button-focus main"
-            disabled={!(teamCounter.male === 4 && teamCounter.female === 2)}
+            disabled={
+              !(teamCounter.male === 4 && teamCounter.female === 2) || loading
+            }
             onClick={handleCompleteTeam}
           >
-            Set Team
+            {loading ? <Loader type="dots" size={35} /> : "Set Team"}
           </button>
         </div>
         <div className="selected-team-container">
@@ -105,11 +115,11 @@ function AthleteTeamBuilder({
         >
           {availableAthletes.map((athlete, index) => {
             const isDisabled = selectedAthletes.some(
-              (selected) => athlete.info.id === selected.info.id
+              (selected) => athlete.info.id === selected.info.id,
             );
             const key = athlete.info.id;
             const athleteSelected = selectedAthletes.some(
-              (a) => a.info.id === athlete.info.id
+              (a) => a.info.id === athlete.info.id,
             );
 
             if (athleteSelected)

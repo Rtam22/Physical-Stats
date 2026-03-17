@@ -1,22 +1,33 @@
-import type { AthleteDataWithAttributes } from "../../../types/athleteType";
+import type {
+  AthleteDataWithAttributes,
+  AthleteIdKey,
+} from "../../../types/athleteType";
 import "./athleteView.css";
 import SubmissionPagination from "../../submissions/components/submissionPagination";
 import type { AttributeSubmission } from "../../../types/attributeTypes";
 import AthleteCard from "./athleteCard";
 
 type AtheleteViewProps = {
-  athlete: AthleteDataWithAttributes;
+  athlete: AthleteIdKey;
+  athletes: AthleteDataWithAttributes[];
   submissions: AttributeSubmission[];
 };
 
-function AthleteView({ submissions, athlete }: AtheleteViewProps) {
+function AthleteView({ submissions, athlete, athletes }: AtheleteViewProps) {
+  const selectedAthlete = athletes.find((a) => a.info.id === athlete);
   return (
     <div className="athlete-view">
-      <AthleteCard type="view" athlete={athlete} />
-      <SubmissionPagination
-        submissions={submissions}
-        athlete={athlete.info.id}
-      />
+      {selectedAthlete ? (
+        <>
+          <AthleteCard type="view" athlete={selectedAthlete} />
+          <SubmissionPagination
+            submissions={submissions}
+            athlete={selectedAthlete.info.id}
+          />
+        </>
+      ) : (
+        <div>Could not find athlete</div>
+      )}
     </div>
   );
 }

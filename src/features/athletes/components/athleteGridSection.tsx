@@ -11,11 +11,13 @@ type AthleteGridSection = {
   athletes: AthleteDataWithAttributes[];
   onCardClick: (next: ModalOpenState) => void;
   submittedVote: AthleteIdKey[];
+  cardLoadingId: string | null;
 };
 
 function AthleteGridSection({
   athletes,
   submittedVote,
+  cardLoadingId,
   onCardClick,
 }: AthleteGridSection) {
   const gridItems = useMemo(() => {
@@ -26,6 +28,7 @@ function AthleteGridSection({
         athlete={athlete}
         handleClick={onCardClick}
         hasVoted={submittedVote.includes(athlete.info.id as AthleteIdKey)}
+        loading={cardLoadingId}
       />
     ));
   }, [athletes, submittedVote, onCardClick]);

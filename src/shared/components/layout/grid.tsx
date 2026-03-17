@@ -35,14 +35,10 @@ function Grid({
             <motion.div
               key={item.key}
               layout
-              initial={{ opacity: 0, scale: 0.98 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.96 }}
-              transition={{
-                type: "spring",
-                stiffness: 500,
-                damping: 40,
-              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ opacity: { duration: 0.5, ease: "easeOut" } }}
             >
               {item}
             </motion.div>

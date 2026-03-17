@@ -24,6 +24,7 @@ function useTeamBuilder({ athletes }: useTeamBuilderProps) {
     AthleteDataWithAttributes[]
   >([]);
   const [filters, setFilters] = useState<FilterValue>(baseFilters);
+
   const teamCounter: TeamCounter = useMemo(() => {
     return genderCounter(selectedAthletes);
   }, [selectedAthletes]);
@@ -33,6 +34,7 @@ function useTeamBuilder({ athletes }: useTeamBuilderProps) {
     }
     return "female";
   }, [teamCounter]);
+
   const availableAthletes: AthleteDataWithAttributes[] = useMemo(() => {
     const searchFiltered = applyFilters(athletes, filters);
     const genderFiltered = generateAvailableAthletes(searchFiltered) ?? [];
@@ -62,7 +64,7 @@ function useTeamBuilder({ athletes }: useTeamBuilderProps) {
 
   function removeAthlete(athlete: AthleteDataWithAttributes) {
     setSelectedAthletes((prev) =>
-      prev.filter((a) => a.info.id !== athlete.info.id)
+      prev.filter((a) => a.info.id !== athlete.info.id),
     );
   }
   return {

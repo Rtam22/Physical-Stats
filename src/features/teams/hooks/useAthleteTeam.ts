@@ -1,22 +1,35 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { BuildTeamType, TeamType } from "../../../types/teamType";
-import { teamService } from "../services/teamService";
+import { postAllstarTeam, teamService } from "../services/teamService";
 import type {
   AthleteDataWithAttributes,
   AthleteIdKey,
 } from "../../../types/athleteType";
 import { athleteList, teamList } from "../../../data/athleteData";
-import { buildTeamsTestData } from "../../../data/teamData";
 import { buildTeamView, compileUserTeams } from "../../../utils/teamUtils";
+import type { ToastVariant } from "../../../types/toastTypes";
 
 type UseAthleteTeamProps = {
   athletes: AthleteDataWithAttributes[];
+  userId: string;
+  setToastNotification?: (
+    type: ToastVariant,
+    message: string,
+    timer?: number,
+  ) => void;
 };
 
-export function useAthleteTeam({ athletes }: UseAthleteTeamProps) {
+export function useAthleteTeam({
+  athletes,
+  userId,
+  setToastNotification,
+}: UseAthleteTeamProps) {
   const [selectedTeam, setSelectedTeam] = useState<BuildTeamType | null>(null);
-  const [userSubmittedTeams, setUserSubmittedTeams] =
-    useState<BuildTeamType[]>(buildTeamsTestData);
+  const [userSubmittedTeams, setUserSubmittedTeams] = useState<BuildTeamType[]>(
+    [],
+  );
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const selectedTeamView: TeamType | null = useMemo(() => {
     if (!selectedTeam) return null;
@@ -36,17 +49,51 @@ export function useAthleteTeam({ athletes }: UseAthleteTeamProps) {
     return teamService.buildExistingTeams(teamList, athletes);
   }, [athletes]);
 
-  function handleSetSelectedTeam(
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const data = await teamService.fetchAllstarTeams();
+        setUserSubmittedTeams(data);
+        if (userId) {
+          const userTeam = data.find((teams) => teams.user.id === userId);
+          if (userTeam) setSelectedTeam(userTeam);
+        }
+      } catch (err) {
+        if (setToastNotification)
+          setToastNotification("error", "Failed to fetch teams");
+      }
+      setError("Failed to fetch teams");
+    }
+    loadData();
+  }, []);
+
+  async function handleSetSelectedTeam(
     selectedAthletes: AthleteIdKey[],
-    user: { id: string; name: string }
+    user: { id: string; name: string },
   ) {
-    const newTeam = {
-      id: crypto.randomUUID(),
-      user: { id: user.id, name: user.name },
-      athletes: selectedAthletes,
-    };
-    setSelectedTeam(newTeam);
-    setUserSubmittedTeams((prev) => [...prev, newTeam]);
+    try {
+      const newTeam = {
+        id: "",
+        user: { id: user.id, name: user.name },
+        athleteIds: selectedAthletes,
+      };
+      setLoading(true);
+      const res = await postAllstarTeam(newTeam);
+      setSelectedTeam(res);
+      setUserSubmittedTeams((prev) => [...prev, res]);
+
+      return { ok: true };
+    } catch (err) {
+      if (setToastNotification)
+        setToastNotification(
+          "error",
+          "Unable to create team. Please try again",
+        );
+      setError("Failed to create team");
+      return { ok: false };
+    } finally {
+      setLoading(false);
+    }
   }
 
   return {
@@ -55,6 +102,8 @@ export function useAthleteTeam({ athletes }: UseAthleteTeamProps) {
     countryTeams,
     userSubmittedTeamsView,
     selectedTeam,
+    error,
+    loading,
     handleSetSelectedTeam,
   };
 }

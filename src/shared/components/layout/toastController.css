@@ -1,0 +1,27 @@
+.toast-notification-container {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  padding: 50px;
+  pointer-events: none;
+}
+
+.toast-notification-container.top {
+  justify-content: flex-start;
+}
+
+.toast-notification-container.bottom {
+  justify-content: flex-end;
+}
+
+@media (max-width: 400px) {
+  .toast-notification-container {
+    padding: 0;
+  }
+}

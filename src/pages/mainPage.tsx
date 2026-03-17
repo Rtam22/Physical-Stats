@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import "./mainPage.css";
 import type { AthleteDataWithAttributes } from "../types/athleteType";
 import Modal from "../shared/components/layout/modal";
@@ -29,17 +29,34 @@ import ConfirmationModal from "../shared/components/ui/confirmationModal";
 import AllstarTeamTab from "../features/tabs/components/tabs/allstarTeamTab";
 import TabController from "../features/tabs/components/tabController";
 import { AnimatePresence } from "framer-motion";
+import ToastController, {
+  type ToastLocationType,
+} from "../shared/components/layout/toastController";
+import { useToastController } from "../shared/hooks/useToastController";
 
 function MainPage() {
   const [filters, setFilters] = useState<FilterValue>(initialFilters);
-  const { user, submitUser } = useUser();
-  const submissions = useSubmissions({ userId: user.id });
+  const toast = useToastController();
+  const {
+    user,
+    submitUser,
+    error: userError,
+    loading: userLoading,
+  } = useUser({ setToastNotification: toast.addToast });
+  const submissions = useSubmissions({
+    userId: user.id,
+    setToastNotification: toast.addToast,
+  });
   const { athletes } = useAthletes({
     attributeSubmissions: submissions.submissions,
   });
   const { filteredAthletes } = useAthleteFilters({ filters, athletes });
 
-  const team = useAthleteTeam({ athletes: athletes });
+  const team = useAthleteTeam({
+    athletes: athletes,
+    userId: user.id,
+    setToastNotification: toast.addToast,
+  });
   const modal = useModalController();
   const tabs = useMainTabs({
     teams: {
@@ -50,16 +67,24 @@ function MainPage() {
     hasUsername: Boolean(user.name),
   });
 
-  function handleSetTeam(athletes: AthleteDataWithAttributes[]) {
+  const toastLocation: ToastLocationType = useMemo(() => {
+    return tabs.activeTab === "username" ? "top" : "bottom";
+  }, [tabs.activeTab]);
+
+  async function handleSetTeam(athletes: AthleteDataWithAttributes[]) {
     const athletesId = athletes.map((athlete) => athlete.info.id);
-    tabs.setActiveTab("asiaTeams");
-    team.handleSetSelectedTeam(athletesId, user);
+    const res = await team.handleSetSelectedTeam(athletesId, user);
+    if (res.ok) tabs.setActiveTab("asiaTeams");
   }
   const tabsConfig: TabsConfig[] = [
     {
       id: "teamBuilder",
       content: (
-        <AthleteTeamBuilder athletes={athletes} handleSetTeam={handleSetTeam} />
+        <AthleteTeamBuilder
+          athletes={athletes}
+          handleSetTeam={handleSetTeam}
+          loading={team.loading}
+        />
       ),
     },
     {
@@ -68,10 +93,9 @@ function MainPage() {
         <AthletesTab
           filter={{ values: filters, setFilters }}
           athletes={filteredAthletes}
-          submittedVote={submissions.submittedVoteAccess}
           onCardClick={modal.open}
           onRevealAll={() => modal.open({ open: true, type: "confirmation" })}
-          hasRevealedAll={submissions.hasRevealedAll}
+          submissions={submissions}
         />
       ),
     },
@@ -81,7 +105,7 @@ function MainPage() {
         <TierListGrid
           athletes={filterAthletesBySubmitted(
             submissions.submittedVoteAccess,
-            athletes
+            athletes,
           )}
           onCardClick={modal.open}
         />
@@ -91,9 +115,11 @@ function MainPage() {
       id: "asiaTeams",
       content: (
         <TeamList
+          athletes={athletes}
           type="teams"
           countryTeams={team.countryTeams}
           selectedTeam={team.selectedTeamView}
+          onCardClick={modal.open}
         />
       ),
     },
@@ -101,9 +127,13 @@ function MainPage() {
       id: "username",
       content: (
         <SignupTab
-          submitUser={(user: UserType) => {
-            tabs.setActiveTab("athletes");
-            submitUser(user);
+          error={userError}
+          loading={userLoading}
+          submitUser={async (user: UserType) => {
+            const result = await submitUser(user);
+            if (result.ok) {
+              tabs.setActiveTab("athletes");
+            }
           }}
         />
       ),
@@ -112,9 +142,11 @@ function MainPage() {
       id: "allstarTeam",
       content: (
         <AllstarTeamTab
+          athletes={athletes}
           user={user}
           allstarTeams={team.allstarTeams}
           selectedTeam={team.selectedTeam}
+          onCardClick={modal.open}
         />
       ),
     },
@@ -133,7 +165,7 @@ function MainPage() {
               hasMVPCountries={submissions.hasMVPCountries}
               athlete={modal.state.athlete}
               user={{ id: user.id, name: user.name }}
-              handleSubmit={(submission: AttributeSubmission) => {
+              handleSubmit={async (submission: AttributeSubmission) => {
                 submissions.handleSubmitSubmissions(submission);
                 modal.close();
               }}
@@ -149,10 +181,11 @@ function MainPage() {
         if (!modal.state.open || modal.state.type !== "athleteView")
           return null;
         return (
-          <Modal width="80%" height="90vh" type="middle" onClose={modal.close}>
+          <Modal width="80%" height="95vh" type="middle" onClose={modal.close}>
             <AthleteView
               submissions={submissions.submissions}
-              athlete={modal.state.athlete}
+              athlete={modal.state.athlete.info.id}
+              athletes={athletes}
             />
           </Modal>
         );
@@ -191,8 +224,14 @@ function MainPage() {
         active={tabs.activeTab}
         changeTab={(e) => tabs.setActiveTab(e)}
         allTabs={tabs.availableTabs}
+        initialized={submissions.initialized}
       />
       <TabController activeTab={tabs.activeTab} tabs={tabsConfig} />
+      <ToastController
+        toasts={toast.toasts}
+        removeToast={toast.removeToast}
+        toastLocation={toastLocation}
+      />
     </div>
   );
 }

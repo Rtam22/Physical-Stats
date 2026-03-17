@@ -1,16 +1,22 @@
+import type { AthleteDataWithAttributes } from "../../../types/athleteType";
+import type { ModalOpenState } from "../../../types/modalTypes";
 import type { AllStarTeam, BuildTeamType } from "../../../types/teamType";
 import "./teamRow.css";
 type TeamRowProps = {
+  athletes: AthleteDataWithAttributes[];
   allstarTeam: AllStarTeam | undefined;
   placement: string;
   noHighlight?: boolean;
   selectedTeam: BuildTeamType | null;
+  onCardClick: (next: ModalOpenState) => void;
 };
 function TeamRow({
+  athletes,
   allstarTeam,
   placement,
   selectedTeam,
   noHighlight,
+  onCardClick,
 }: TeamRowProps) {
   const generatePlacement = (place: string) => {
     if (place === "1") return "🏆";
@@ -21,7 +27,7 @@ function TeamRow({
 
   const userSelectedTeam = selectedTeam
     ? allstarTeam?.team.every((athlete) =>
-        new Set(selectedTeam.athletes).has(athlete.info.id)
+        new Set(selectedTeam.athleteIds).has(athlete.info.id),
       )
     : null;
 
@@ -43,11 +49,29 @@ function TeamRow({
         </p>
       </div>
       <div className="athlete-container">
-        {allstarTeam?.team.map((athlete, index) => (
-          <div key={index} className="image-container">
-            <img src={athlete.info.imgSm}></img>
-          </div>
-        ))}
+        {allstarTeam?.team.map((a, index) => {
+          const athlete = athletes.find(
+            (athlete) => athlete.info.id === a.info.id,
+          );
+
+          return (
+            <div
+              key={index}
+              className="image-container"
+              style={{ cursor: athlete ? "pointer" : "default" }}
+              onClick={() => {
+                if (!athlete) return;
+                onCardClick({
+                  open: true,
+                  type: "athleteView",
+                  athlete,
+                });
+              }}
+            >
+              <img src={a.info.imgSm} alt={a.info.name} />
+            </div>
+          );
+        })}
       </div>
       <div className="info-container">
         <p>Total votes:</p>

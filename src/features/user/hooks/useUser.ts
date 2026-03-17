@@ -1,20 +1,49 @@
 import { useState } from "react";
 import type { UserType } from "../../../types/userTypes";
+import { userService } from "../service/userService";
+import { useLocalStorage } from "../../../hooks/useLocalStorage";
+import type { ToastVariant } from "../../../types/toastTypes";
 
-export function useUser() {
-  const [user, setUser] = useState<UserType>({
-    id: crypto.randomUUID(),
+type useUserProps = {
+  setToastNotification?: (
+    type: ToastVariant,
+    message: string,
+    timer?: number,
+  ) => void;
+};
+
+export function useUser({ setToastNotification }: useUserProps = {}) {
+  const [user, setUser] = useLocalStorage<UserType>("user", {
+    id: "",
     name: "",
   });
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
-  function submitUser(user: UserType) {
-    setUser(user);
+  async function submitUser(user: UserType) {
+    setError(null);
+    try {
+      setLoading(true);
+      const data = await userService.postUser(user.name);
+      setUser(data);
+      return { ok: true };
+    } catch (err) {
+      if (setToastNotification)
+        setToastNotification("error", (err as Error).message);
+      else {
+        setError((err as Error).message);
+      }
+
+      return { ok: false };
+    } finally {
+      setLoading(false);
+    }
   }
 
   return {
     user,
     submitUser,
     error,
+    loading,
   };
 }

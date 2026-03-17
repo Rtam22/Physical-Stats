@@ -14,13 +14,23 @@ export type AttributeKey =
 export type AttributeValues = Record<AttributeKey, number>;
 
 export type AttributeSubmission = {
+  id: string;
   athleteId: AthleteIdKey;
   createdAt: Date;
   user: { id: UserId; name: string };
-  submissionId: string;
   favorite: boolean;
   values: AttributeValues;
   mvp?: boolean;
   comment?: string;
   ranking: RankKey | "";
+};
+
+export type SubmissionAPIType = {
+  submission: AttributeSubmission;
+  voteAccess: AthleteIdKey[];
+};
+
+export type SubmittedVoteAccessAPIType = {
+  userId: string;
+  AthleteIdKey: AthleteIdKey[];
 };

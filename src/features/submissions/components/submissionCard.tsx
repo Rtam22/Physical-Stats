@@ -9,10 +9,19 @@ type SubmissionCardProps = {
 function SubmissionCard({ submission }: SubmissionCardProps) {
   return (
     <div className="submission-card">
-      <div className="user-container">
-        <p className="dim">User:</p>
-        <h4 className="title">{submission.user.name}</h4>
+      <div className="submission-top-container">
+        <div className="user-container">
+          <p className="dim">User:</p>
+          <h4 className="title">{submission.user.name}</h4>
+        </div>
+        <div className="right-container">
+          {submission.mvp && (
+            <div className="submission-mvp-container">MVP</div>
+          )}
+          {submission.favorite && <div className="favorite-container">⭐</div>}
+        </div>
       </div>
+
       <div className="flex">
         <div className="comment-container">
           <p className="dim">Comment:</p>

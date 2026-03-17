@@ -1,0 +1,78 @@
+.toast-notification {
+  width: 400px;
+  height: auto;
+  background-color: rgb(84, 154, 63);
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.toast-notification .contents {
+  padding: 10px 0px;
+  display: grid;
+  grid-template-columns: 0.7fr 3fr 0.7fr;
+  align-items: center;
+}
+
+.toast-notification .icon-container {
+  justify-self: center;
+}
+.toast-notification .delete-container {
+  justify-self: center;
+}
+.toast-notification .loading-bar {
+  width: 100%;
+  height: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  position: relative;
+}
+
+.toast-notification .progress-bar {
+  width: 4%;
+  height: 5px;
+  position: absolute;
+  background-color: rgb(224, 80, 80);
+}
+
+.toast-notification .progress-bar.active {
+  width: 100%;
+}
+
+.toast-notification .content-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.toast-notification .delete-button {
+  border: none;
+  pointer-events: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 400px) {
+  .toast-notification {
+    width: 100%;
+  }
+}
+
+/* Error colors*/
+
+.toast-notification.error {
+  background-color: #ffb7b7;
+  color: black;
+}
+
+.toast-notification.error .delete-button:hover {
+  background-color: #f48585;
+}
+
+.toast-notification .loading-bar.error {
+  background-color: #f58989;
+}
+
+.toast-notification .progress-bar.error {
+  background-color: rgb(224, 80, 80);
+}

@@ -1,4 +1,4 @@
-import type { RankKey } from "./attributeTypes";
+import type { AttributeValues, RankKey } from "./attributeTypes";
 import type { AthleteTeams } from "./teamType";
 
 export type UserId = string;

@@ -1,0 +1,65 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id          String  @id @default(uuid())
+  name        String  @unique
+  createdAt   DateTime @default(now())
+  
+  submissions AttributeSubmission[]
+  teams       AllstarTeam[]
+  unlockAthletes UnlockedAthletes[]
+
+}
+
+model AttributeSubmission {
+  id          String   @id @default(uuid())
+  athleteId   String
+  createdAt   DateTime @default(now())
+
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  favorite    Boolean  @default(false)
+  mvp         Boolean? 
+  comment     String?
+  ranking     String?
+
+  values      Json
+
+  @@index([athleteId])
+  @@index([userId])
+  @@unique([userId, athleteId])
+}
+
+model AllstarTeam {
+  id          String   @id @default(uuid())
+
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+
+  athleteIds  String[]  
+  createdAt   DateTime @default(now())
+
+  @@index([userId])
+}
+
+
+
+model UnlockedAthletes { 
+  userId      String @id
+  user        User     @relation(fields: [userId], references: [id])
+
+  athleteIds  String[]  
+}
