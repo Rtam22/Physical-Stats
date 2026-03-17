@@ -1,6 +1,6 @@
 import type { AttributeValues } from "../../../types/attributeTypes";
 import AttributeBar from "./attributeBar";
-import "./AttributesList.css";
+import "./attributesList.css";
 
 type AttributesContainerProps = {
   attributes: AttributeValues;

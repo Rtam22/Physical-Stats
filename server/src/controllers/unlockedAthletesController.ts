@@ -3,7 +3,7 @@ import { prisma } from "../database/prisma.js";
 import { createUnlockAthleteSchema } from "../schemas/unlockAthlete.js";
 import z from "zod";
 
-type CreateSubmissionSchema = z.infer<typeof createUnlockAthleteSchema>;
+type CreateUnlockAthleteSchema = z.infer<typeof createUnlockAthleteSchema>;
 
 export async function fetchUnlockAthletes(req: Request, res: Response) {
   const userId = req.userId;
@@ -25,7 +25,7 @@ export async function fetchUnlockAthletes(req: Request, res: Response) {
 
 export async function postUnlockAthletes(req: Request, res: Response) {
   const userId = req.userId;
-  const body = (req as any).validatedBody as CreateSubmissionSchema;
+  const body = (req as any).validatedBody as CreateUnlockAthleteSchema;
 
   if (!userId) {
     return res.status(401).json({ error: "Missing user-id header" });
