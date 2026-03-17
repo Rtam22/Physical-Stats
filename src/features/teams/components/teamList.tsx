@@ -2,14 +2,24 @@ import { motion } from "framer-motion";
 import type { TeamType } from "../../../types/teamType";
 import TeamCard from "./teamCard";
 import "./teamList.css";
+import type { ModalOpenState } from "../../../types/modalTypes";
+import type { AthleteDataWithAttributes } from "../../../types/athleteType";
 
 type TeamListProps = {
+  athletes: AthleteDataWithAttributes[];
   type: "teams" | "allstarTeams";
   countryTeams: TeamType[];
   selectedTeam: TeamType | null;
+  onCardClick: (next: ModalOpenState) => void;
 };
 
-function TeamList({ countryTeams, selectedTeam, type }: TeamListProps) {
+function TeamList({
+  athletes,
+  countryTeams,
+  selectedTeam,
+  type,
+  onCardClick,
+}: TeamListProps) {
   return (
     <div className="team-list">
       {type === "teams" && (
@@ -20,7 +30,12 @@ function TeamList({ countryTeams, selectedTeam, type }: TeamListProps) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             >
-              <TeamCard type={type} team={selectedTeam} />
+              <TeamCard
+                athletes={athletes}
+                type={type}
+                team={selectedTeam}
+                onCardClick={onCardClick}
+              />
             </motion.div>
           )}
           {countryTeams.map((team) => {
@@ -31,7 +46,12 @@ function TeamList({ countryTeams, selectedTeam, type }: TeamListProps) {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
               >
-                <TeamCard type={type} team={team} />
+                <TeamCard
+                  athletes={athletes}
+                  type={type}
+                  team={team}
+                  onCardClick={onCardClick}
+                />
               </motion.div>
             );
           })}

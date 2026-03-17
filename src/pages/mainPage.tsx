@@ -115,9 +115,11 @@ function MainPage() {
       id: "asiaTeams",
       content: (
         <TeamList
+          athletes={athletes}
           type="teams"
           countryTeams={team.countryTeams}
           selectedTeam={team.selectedTeamView}
+          onCardClick={modal.open}
         />
       ),
     },
@@ -140,9 +142,11 @@ function MainPage() {
       id: "allstarTeam",
       content: (
         <AllstarTeamTab
+          athletes={athletes}
           user={user}
           allstarTeams={team.allstarTeams}
           selectedTeam={team.selectedTeam}
+          onCardClick={modal.open}
         />
       ),
     },
@@ -180,7 +184,8 @@ function MainPage() {
           <Modal width="80%" height="95vh" type="middle" onClose={modal.close}>
             <AthleteView
               submissions={submissions.submissions}
-              athlete={modal.state.athlete}
+              athlete={modal.state.athlete.info.id}
+              athletes={athletes}
             />
           </Modal>
         );
