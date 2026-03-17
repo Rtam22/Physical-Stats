@@ -1,4 +1,4 @@
-import "./TabController.css";
+import "./tabController.css";
 import type { TabID, TabsConfig } from "../../../types/tabTypes";
 
 type TabControllerProps = {
