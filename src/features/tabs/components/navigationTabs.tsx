@@ -30,7 +30,9 @@ function NavigationTabs({
 
   if (!initialized)
     return (
-      <div className="navigation-loader">{<Loader type="nav" size={50} />}</div>
+      <div className="navigation-loader">
+        {<Loader type="dots" size={50} />}
+      </div>
     );
 
   return (

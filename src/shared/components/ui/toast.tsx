@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import type { ToastType } from "../../context/ToastContext";
 import "./toast.css";
 import { capitalize } from "../../../utils/textUtils";
 import { motion } from "framer-motion";
+import type { ToastType } from "../../../types/toastTypes";
 type ToastProps = {
   toast: ToastType;
   removeToast: (id: string) => void;
