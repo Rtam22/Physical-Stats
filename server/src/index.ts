@@ -6,15 +6,17 @@ import allstarTeamsRoutes from "./routes/allstarTeamsRoutes.js";
 import usersRoutes from "./routes/usersRoutes.js";
 import cors from "cors";
 import unlockAthletesRoutes from "./routes/unlockAthletesRoutes.js";
+
 const app = express();
+const PORT = Number(process.env.PORT) || 3000;
 
 app.use(express.json());
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log("Server running on port 3000");
 });
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: process.env.CLIENT_URL || "http://localhost:5173",
     credentials: true,
   }),
 );

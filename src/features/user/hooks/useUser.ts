@@ -19,6 +19,7 @@ export function useUser({ setToastNotification }: useUserProps = {}) {
   });
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
+  const baseError = "Failed to fetch";
 
   async function submitUser(user: UserType) {
     setError(null);
@@ -28,9 +29,15 @@ export function useUser({ setToastNotification }: useUserProps = {}) {
       setUser(data);
       return { ok: true };
     } catch (err) {
-      if (setToastNotification)
-        setToastNotification("error", (err as Error).message);
-      else {
+      if (setToastNotification) {
+        console.log(err);
+        setToastNotification(
+          "error",
+          (err as Error).message === baseError
+            ? "Internal server error"
+            : (err as Error).message,
+        );
+      } else {
         setError((err as Error).message);
       }
 

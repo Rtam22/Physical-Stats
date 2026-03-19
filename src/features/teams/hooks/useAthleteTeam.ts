@@ -60,9 +60,9 @@ export function useAthleteTeam({
         }
       } catch (err) {
         if (setToastNotification)
-          setToastNotification("error", "Failed to fetch teams");
+          setToastNotification("error", "Server not responding");
       }
-      setError("Failed to fetch teams");
+      setError("Server not responding");
     }
     loadData();
   }, []);
