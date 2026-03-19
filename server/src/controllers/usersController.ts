@@ -16,7 +16,7 @@ export async function createUser(req: Request, res: Response) {
       },
     });
     return res.status(201).json(user);
-  } catch (err) {
+  } catch (err: unknown) {
     if (
       err instanceof Prisma.PrismaClientKnownRequestError &&
       err.code === "P2002"

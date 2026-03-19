@@ -80,10 +80,11 @@ export async function fetchSubmissions(req: Request, res: Response) {
       },
     });
 
-    const ordered = data.map((item) => ({
+    const ordered = data.map((item: (typeof data)[number]) => ({
       ...item,
       values: orderValues(item.values as Record<string, unknown>),
     }));
+
     return res.json(ordered);
   } catch (err) {
     console.error(err);
