@@ -128,7 +128,20 @@ function SetAttributeForm({
             </span>
           </section>
           <section>
-            <label htmlFor="ranking">Ranking</label>
+            <label htmlFor="ranking">
+              <p>Ranking</p>
+              <ToolTip
+                information="Tier List Ranking: 
+            Rate how this athlete performed in challenges throughout the show.
+             
+            S: Carried the team and dominated as the clear MVP.
+            A: Strong, reliable performer with major contributions.
+            B: Solid and consistent, helped more than hurt.
+            C: Mixed performance, inconsistent impact overall.
+            D: Weak performer who often held the team back."
+              />
+            </label>
+
             <select
               name="ranking"
               id="ranking"
@@ -170,7 +183,8 @@ function SetAttributeForm({
 
           <section>
             <label htmlFor="mvp" className="favorite">
-              Favorite
+              <p>Favorite</p>
+              <ToolTip information="Add a star to this athlete and help highlight the most popular fan favorites." />
             </label>
             <input
               id="favorite"

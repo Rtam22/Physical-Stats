@@ -5,7 +5,25 @@
   justify-content: center;
 }
 
+.navigation-container .navigation-tab {
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border 0.2s ease;
+}
+
 .navigation-loader {
   min-height: 28px;
   max-height: 28px;
+}
+
+.navigation-container .loading {
+  cursor: default;
+  background-color: #414141;
+  color: #414141;
+  border: 1px solid rgb(167, 167, 167);
+}
+
+.navigation-container .loading:hover {
+  cursor: default;
 }

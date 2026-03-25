@@ -1,4 +1,4 @@
-import Loader from "../../../shared/components/ui/loader";
+import { motion } from "framer-motion";
 import type { TabID } from "../../../types/tabTypes";
 import "./navigationTabs.css";
 
@@ -28,24 +28,23 @@ function NavigationTabs({
 
   if (isOnUsernameStep) return null;
 
-  if (!initialized)
-    return (
-      <div className="navigation-loader">
-        {<Loader type="dots" size={50} />}
-      </div>
-    );
-
   return (
     <div className="navigation-container">
       {allTabs.map((tab, index) => {
         return (
-          <button
-            key={index}
+          <motion.button
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            layout
+            key={TAB_LABELS[tab]}
+            disabled={!initialized}
             onClick={() => changeTab(tab)}
-            className={`${active === tab ? "active" : ""}`}
+            className={`navigation-tab ${active === tab ? "active" : ""} ${!initialized ? "loading" : ""}`}
           >
             {TAB_LABELS[tab]}
-          </button>
+          </motion.button>
         );
       })}
     </div>
