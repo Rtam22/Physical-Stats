@@ -129,7 +129,7 @@ function SetAttributeForm({
           </section>
           <section>
             <label htmlFor="ranking">
-              <p>Ranking</p>
+              <p>Tier</p>
               <ToolTip
                 information="Tier List Ranking: 
             Rate how this athlete performed in challenges throughout the show.

@@ -74,7 +74,7 @@ function AthleteCard(props: CardProps) {
             <AttributesList attributes={athlete.attributes} />
           ) : (
             <div className="attribute-message">
-              "Submit your scores to see how others rated them!"
+              Submit your scores to see how others rated them!
             </div>
           )}
         </div>

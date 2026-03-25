@@ -1,6 +1,12 @@
 .tierlist-grid {
   width: 80%;
-  background-color: rgb(67, 67, 67);
+}
+
+.tierlist-grid .description {
+  text-align: right;
+  width: 100%;
+  padding: 3px 0;
+  color: rgb(156, 156, 156);
 }
 
 .tier-row {
