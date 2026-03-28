@@ -7,6 +7,10 @@
   gap: 10px;
 }
 
+.team-builder .description {
+  color: rgb(156, 156, 156);
+}
+
 .team-builder .button-container {
   padding: 0 20px;
   display: flex;

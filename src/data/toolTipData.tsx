@@ -1,6 +1,6 @@
 export const ratingScaleTooltip = `Rating scale (1-10).
 
-All ratings are relative to other elite competitors.
+All ratings are relative to ALL elite competitors in the competition.
 
 1-4 = lower relative to elite peers.
 5-6 = average elite level.

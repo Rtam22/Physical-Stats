@@ -52,7 +52,7 @@ function TierListGrid({ athletes, onCardClick }: TierListGridProps) {
         );
       })}
       <p className="description">
-        Submit athlete votes to reveal their tier placements
+        Submit athlete scores to reveal their tier placements
       </p>
     </div>
   );

@@ -93,8 +93,9 @@ function AthleteTeamBuilder({
               return generateSelectedCard(index, "female");
             })}
           </div>
-        </div>{" "}
+        </div>
       </div>
+      <p className="description">Vote for your top allstar team</p>
       <div className="search-container">
         <input
           placeholder="Search.."
